@@ -72,6 +72,28 @@
     #11101d 91.61%
   );
 }
+
+.bg-plat{
+
+  /* ff 3.6+ */
+  background:-moz-linear-gradient(90deg, #E3E3E3 0%, #FFFDF7 100%); 
+
+  /* safari 5.1+,chrome 10+ */
+  background:-webkit-linear-gradient(90deg, #E3E3E3 0%, #FFFDF7 100%);
+
+  /* opera 11.10+ */
+  background:-o-linear-gradient(90deg, #E3E3E3 0%, #FFFDF7 100%);
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFDF7', endColorstr='#E3E3E3', GradientType=0 );
+
+  /* ie 10+ */
+  background:-ms-linear-gradient(90deg, #E3E3E3 0%, #FFFDF7 100%);
+
+  /* global 94%+ browsers support */
+  background:linear-gradient(90deg, #E3E3E3 0%, #FFFDF7 100%);
+
+}
 .bg-glass {
   background:-moz-linear-gradient(90deg, rgba(101, 223, 201, 1) 0%, rgba(108, 219, 235, 1) 100%); 
 

@@ -3,18 +3,19 @@ import { useEffect } from 'react';
 
 function WelcomeBanner() {
   const sanityuser = localStorage.getItem('sanityuser');
-  const sanityuser2 = localStorage.getItem('sanityuser2');
-  const sanityuser3 = localStorage.getItem('sanityuser3');
   const person = JSON.parse(sanityuser);
-  const person2 = JSON.parse(sanityuser2);
-  const person3 = JSON.parse(sanityuser3);
-  console.log(person3.plan)
+  
+ 
+  
   useEffect(() => {
-   
-    if(sanityuser=='')
-    return
-   console.log(person)
-  }, []);
+    if(sanityuser != null)
+    console.log(person[0].firstname)
+  
+    return () => {
+      
+    }
+  }, [])
+  
   return (
    
     <div className="relative bg-glass2 p-4 sm:p-6 rounded-xl overflow-hidden mb-8">
@@ -63,7 +64,7 @@ function WelcomeBanner() {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-black font-bold mb-1">Hi, {`${person[0].firstname}`} 👋</h1>
+        <h1 className="text-2xl md:text-3xl text-black font-bold mb-1 uppercase">{person[0].firstname?`${'Hi, '} ${person[0].firstname} 👋 `: 'welcome'}</h1>
         <p class='text-black'>See a Breakdown Of your Earnings</p>
       </div>
 

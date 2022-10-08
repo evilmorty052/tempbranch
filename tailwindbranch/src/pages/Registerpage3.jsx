@@ -7,6 +7,11 @@ import {
   Heading,
   Input,
   Stack,
+  HStack,
+  Radio,
+  RadioGroup,
+  FormHelperText,
+  Select,
   useToast,
 } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
@@ -14,12 +19,14 @@ import { FaGoogle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '../components/Card'
 import DividerWithText from '../components/DividerWithText'
-import { Layout } from '../components/Layout'
+import { Layout } from '../components/Layout2'
 import { useAuth } from '../contexts/AuthContext'
 // import Sidebar from '../partials/Sidebar'
 // import Header from '../partials/Header'
 import { Router, Routes } from 'react-router-dom'
 import { client } from '../../lib/client'
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 
 // const Countertutorial =()=>{
@@ -41,14 +48,14 @@ export default function Registerpage2(sanityuser) {
   const history = useNavigate()
   const { signInWithGoogle, register } = useAuth()
   const [plan, setPlan] = useState('')
-  const [kids, hasKids] = useState()
+  const [service, OptService] = useState('Investment')
   const [wantdemo, setWantDemo] = useState()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const toast = useToast()
   const mounted = useRef(false)
-  const [age, setAge] = useState('')
+  const [age, setAge] = useState()
   const [sanitydata, setSanitydata] = useState()
-
+  const [value, setValue] = useState()
 
 
 //   const query = 
@@ -56,7 +63,7 @@ export default function Registerpage2(sanityuser) {
 // `;
   
 
-sanityuser ={plan, kids, wantdemo }
+sanityuser ={plan, service, wantdemo }
 
   useEffect(() => {
     mounted.current = true
@@ -68,11 +75,11 @@ sanityuser ={plan, kids, wantdemo }
   return (
     <Layout>
       {/* <div className='h-40 bg-green-300'>{`${name}`}</div> */}
-      <header className='text-4xl text-gradient text-center my-12 font-poppins font-extrabold'>
-        <h2 className='text-4xl text-gradient text-center'>Registerpage3:</h2>
-      </header>
+      
+        <h2 className='text-4xl text-blk text-center mb-5 font-poppins uppercase font-semibold'>Final Info...</h2>
+      
 
-      <div className='max-w-md mx-auto mt-4 bg-glass2 rounded-lg px-8 py-8 mb-8' >
+      <div className='max-w-2xl w-full mx-auto mt-4 rounded-lg px-8 py-8 mb-8 bg-wyt  shadow-2xl border border-blk .bounce-in-bottom' >
       {/* <Card maxW='md' mx='auto' mt={4}> */}
         <chakra.form
           onSubmit={async e => {
@@ -84,60 +91,75 @@ sanityuser ={plan, kids, wantdemo }
               // .finally(() => {
               //   mounted.current && setIsSubmitting(false)
               //   console.log(sanityuser)&&setSanitydata([sanityuser])&&console.log({sanitydata})
-                // history('/register/registerpage3')
+                history('/register/confirminfo')
                 
               // })
           }}
         >
           <Stack spacing='6'>
             <FormControl id='plan'>
-              <FormLabel><h1>PICK A PLAN</h1></FormLabel>
-              {/* <input ref={namer}></input><button onClick={Greeting()}></button> */}
-              
-              <Input
-              //  ref={name}
+              <FormLabel>DO YOU WANT A DEMO ?</FormLabel>
+              {/* <Input
                 name='plan'
                 type='input'
-                // autoComplete='email'
+                autoComplete='email'
                 required
                 value={plan}
                 onChange={e => setPlan(e.target.value)}
-              />
-            </FormControl>
-            <FormControl id='kids'>
-              <FormLabel><h1>DO YOU HAVE KIDS?</h1></FormLabel>
-              <Input
-                name='kids'
-                type='input'
-                // autoComplete='password'
-                required
-                value={kids}
-                onChange={e => hasKids(e.target.value)}
-              />
+              /> */}
+            <Select placeholder='Pick an Option'
+            required
+            value={wantdemo}
+            onChange={e => setWantDemo(e.target.value)}>
+              <option>Yes</option>
+              <option>No</option>
+            </Select>
             </FormControl>
             <FormControl id='wantdemo'>
-              <FormLabel>DO YOU WANT A DEMO?</FormLabel>
-              <Input
+              <FormLabel>PICK A PLAN</FormLabel>
+              {/* <Input
                 name='wantdemo'
                 type='input'
                 // autoComplete='password'
                 required
                 value={wantdemo}
                 onChange={e => setWantDemo(e.target.value)}
-              />
+              /> */}
+          <FormControl>
+            {/* <FormLabel>Pick A Plan</FormLabel> */}
+            <Select placeholder='Select plan'
+            value={plan}
+            onChange={e => setPlan(e.target.value)}>
+              <option>Bronze</option>
+              <option>Silver</option>
+              <option>Gold</option>
+              <option>Diamond</option>
+              <option>Platinum</option>
+            </Select>
+            <FormHelperText>Only for Tailoring Your Demo.</FormHelperText>
+          </FormControl>
             </FormControl>
-            {/* <FormControl id='phone'>
-              <FormLabel>Phone Number</FormLabel>
-              <Input
-                name='password'
-                type='tel'
-                autoComplete='password'
-                required
-                value={passwordref}
-                onChange={e => setPassword(e.target.value)}
-              />
-              <input type={'tel'} className='bg-transparent text-white w-full rounded-md'/>
-            </FormControl> */}
+            <FormControl as='fieldset'>
+              <FormLabel as='service'>What Service Are You Interested in?</FormLabel>
+              <RadioGroup defaultValue={service}
+              // value={service}
+              onChange={e => {OptService(e)} }>
+                <HStack spacing='10px'>
+                  <Radio value='DigitalFarming'><span>Digital Farming</span></Radio>
+                  <Radio value='Investment'>Investment</Radio>
+                  <Radio value='Retailing'>Retailing</Radio>
+                  {/* <Radio value='Sage of the six Paths'>Sage of the six Paths</Radio> */}
+                </HStack>
+              </RadioGroup>
+              {/* <FormHelperText>Select only if you're a fan.</FormHelperText> */}
+            </FormControl>
+           <div className=''>
+           {/* <PhoneInput
+      placeholder="Enter phone number"
+      value={value}
+      defaultCountry={'US'}
+      onChange={setValue}/> */}
+            </div> 
             <Button
               type='submit'
               colorScheme='pink'

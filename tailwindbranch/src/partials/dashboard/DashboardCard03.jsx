@@ -3,12 +3,22 @@ import { Link } from 'react-router-dom';
 import LineChart from '../../charts/LineChart01';
 import Icon from '../../images/icon-03.svg';
 import EditMenu from '../EditMenu';
+import { useEffect } from 'react';
 
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
 function DashboardCard03() {
-
+  const sanityuser = localStorage.getItem('sanityuser');
+  // const person1 = localStorage.getItem('sanityuser1');
+  // const person2 = localStorage.getItem('sanityuser2');
+  // const person3 = localStorage.getItem('sanityuser3');
+  const person = JSON.parse(sanityuser);
+  useEffect(() => {
+   
+    if(sanityuser != null)
+   console.log(person[0].email)
+  }, []);
   const chartData = {
     labels: [
       '12-01-2020', '01-01-2021', '02-01-2021',
@@ -81,7 +91,7 @@ function DashboardCard03() {
         <h2 className="text-sm font-semibold text-slate-800 mb-0 text-start font-poppins">Current Plan</h2>
         {/* <div className="text-xs font-semibold text-slate-400 uppercase mb-1">Sales</div> */}
         <div className="flex items-end text-end pb-4">
-          <div className="text-3xl font-bold text-glass mr-2 text-center font-poppins">Gold Standard</div>
+          <div className="text-3xl font-bold text-glass mr-2 text-center font-poppins">{person[0].plan}</div>
           <div>
           {/* <div className="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+49%</div> */}
           </div>

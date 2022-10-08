@@ -67,6 +67,7 @@ sanityuser ={name, email, password}
   return (
     <>
      
+     
       <div className='bg-white h-full'>
         {/* <button className='text-4xl' onClick={(e)=>{e.preventDefault, history('/register/registerpage2')}}>click me</button> */}
       <Routes>

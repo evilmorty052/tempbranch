@@ -20,10 +20,18 @@
       ]
     }
   },
+  
   "parts": [
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
+    }
+  ],
+  "permissions": [
+    {
+      "create": "true",
+      "title": "users"
+      
     }
   ]
 }

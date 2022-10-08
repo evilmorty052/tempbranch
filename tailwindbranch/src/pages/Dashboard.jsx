@@ -26,22 +26,20 @@ import Card2 from '../partials/dashboard/Card2';
 import Banner from '../partials/Banner';
 // import { getsanityuser } from './Loginpage';
 import { useEffect } from 'react';
+import { useQuery } from 'react-query';
 
 function Dashboard() {
-  const sanityuser = localStorage.getItem('sanityuser');
-  useEffect(() => {
+ 
+  
    
-    if(sanityuser=='')
-    return
-   console.log(sanityuser)
-  }, []);
+ 
+  
 
-  // getsanityuser()
-  // console.log(sanityuser)
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
+
     <div className="flex h-screen overflow-hidden bg-black-gradient">
 
       {/* Sidebar */}
@@ -81,44 +79,12 @@ function Dashboard() {
               </div>
 
             </div>
-            {/* <div class='grid grid-flow-col md:flex-col'>
-            <Card />
-            <Card2 />
-            <Card2 />
-            </div> */}
-            
-            {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
-
-              {/* Line chart (Acme Plus) */}
-              {/* Line chart (Acme Advanced) */}
-              <DashboardCard01 />
-              {/* <DashboardCard01 /> */}
+              {/* <DashboardCard01 />
               <DashboardCard02 />
-              {/* Line chart (Acme Professional) */}
               <DashboardCard03 />
-              {/* Bar chart (Direct vs Indirect) */}
-              {/* <DashboardCard04 /> */}
-              {/* Line chart (Real Time Value) */}
-              {/* <DashboardCard05 /> */}
-              {/* Doughnut chart (Top Countries) */}
-              {/* <DashboardCard06 /> */}
-              {/* Table (Top Channels) */}
-              {/* <DashboardCard07 /> */}
-              {/* Line chart (Sales Over Time) */}
-              {/* <DashboardCard08 /> */}
-              {/* Stacked bar chart (Sales VS Refunds) */}
-              {/* <DashboardCard09 /> */}
-              {/* Card (Customers) */}
-              {/* <DashboardCard10 /> */}
-              {/* Card (Reasons for Refunds) */}
-              {/* <DashboardCard11 /> */}
-              {/* Card (Recent Activity) */}
-              {/* <DashboardCard12 /> */}
               <DashboardCard14 />
-              {/* Card (Income/Expenses) */}
-              
-              <DashboardCard13 />
+              <DashboardCard13 /> */}
               
               
             </div>

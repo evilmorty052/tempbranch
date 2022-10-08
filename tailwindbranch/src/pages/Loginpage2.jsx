@@ -21,7 +21,7 @@ import useMounted from '../hooks/useMounted'
 import { client } from '../../lib/client'
 // import './Loginpage.css'
 
-export default function Loginpage(sanityuser) {
+export default function Loginpage2(sanityuser) {
   const history = useNavigate()
   const { signInWithGoogle, login } = useAuth()
   const [email, setEmail] = useState('')
@@ -71,12 +71,16 @@ export default function Loginpage(sanityuser) {
           onSubmit={async e => {
             // setIsSubmitting(true)
             e.preventDefault()
-            localStorage.setItem('email', JSON.stringify(email))&history('/login2')
+            
+            localStorage.setItem('password', JSON.stringify(password))&history('/login3')
+       
+         
+            
           }
        }
         >
           <Stack spacing='6'>
-            <FormControl id='email'>
+            {/* <FormControl id='email'>
               <FormLabel>Email address</FormLabel>
               <Input
                 name='email'
@@ -86,8 +90,8 @@ export default function Loginpage(sanityuser) {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
               />
-            </FormControl>
-            {/* <FormControl id='password'>
+            </FormControl> */}
+            <FormControl id='password'>
               <FormLabel>Password</FormLabel>
               <Input
                 name='password'
@@ -97,7 +101,7 @@ export default function Loginpage(sanityuser) {
                 required
                 onChange={e => setPassword(e.target.value)}
               />
-            </FormControl> */}
+            </FormControl>
             {/* <PasswordField /> */}
             <Button
               type='submit'
@@ -114,11 +118,27 @@ export default function Loginpage(sanityuser) {
           <Button variant='link'>
             <Link to='/register'><span className='text-gradient text-md'>Forgot Password?</span></Link>
           </Button>
-          <Button variant='link' onClick={() => history('/login2')}>
+          <Button variant='link' onClick={() => history('/register')}>
           <span className='text-gradient text-md'>Register</span>
           </Button>
         </HStack>
         <DividerWithText my={6}>OR</DividerWithText>
+        {/* <Button className='w-full bg-blue-gradient py-2 rounded-full'
+          variant='outline'
+          width='full'
+          colorScheme='red'
+          leftIcon={<FaGoogle />}
+          onClick={() =>
+            signInWithGoogle()
+              .then(user => {
+                handleRedirectToOrBack()
+                console.log(user)
+              })
+              .catch(e => console.log(e.message))
+          }
+        >
+          Sign in with Google
+        </Button> */}
         {/* </Card> */}
         </div>
     </Layout>

@@ -8,18 +8,28 @@ import {
   Input,
   Stack,
   useToast,
+  Select,
+  SelectField,
+  NumberInput,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  NumberInputField
 } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import { FaGoogle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '../components/Card'
 import DividerWithText from '../components/DividerWithText'
-import { Layout } from '../components/Layout'
+import { Layout } from '../components/Layout2'
 import { useAuth } from '../contexts/AuthContext'
 // import Sidebar from '../partials/Sidebar'
 // import Header from '../partials/Header'
 import { Router, Routes } from 'react-router-dom'
 import { client } from '../../lib/client'
+import { FaCircle } from 'react-icons/fa'
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 
 // const Countertutorial =()=>{
@@ -47,8 +57,9 @@ export default function Registerpage2(sanityuser) {
   const toast = useToast()
   const mounted = useRef(false)
   const [age, setAge] = useState('')
+  const [phone, setphone] = useState('')
   const [sanitydata, setSanitydata] = useState()
-
+  const [value, setValue] = useState()
 
 
   const query = 
@@ -64,7 +75,7 @@ export default function Registerpage2(sanityuser) {
 // }, [third])
 
 
-sanityuser ={firstname, lastname, age }
+sanityuser ={firstname, lastname, age,phone }
 
   useEffect(() => {
     mounted.current = true
@@ -76,11 +87,12 @@ sanityuser ={firstname, lastname, age }
   return (
     <Layout>
       {/* <div className='h-40 bg-green-300'>{`${name}`}</div> */}
-      <header className='text-4xl text-gradient text-center my-12 font-poppins font-extrabold'>
-        <h2 className='text-4xl text-gradient text-center'>Registerpage2:</h2>
-      </header>
+      
+        <h2 className='text-4xl text-blk text-center mb-5 font-poppins uppercase font-medium'>Some Basic Info ..</h2>
+        
+      
 
-      <div className='max-w-md mx-auto mt-4 bg-glass2 rounded-lg px-8 py-8 mb-8' >
+      <div className='max-w-2xl w-full mx-auto mt-4 rounded-lg px-8 py-8 mb-8 bg-wyt  shadow-2xl border border-blk' >
       {/* <Card maxW='md' mx='auto' mt={4}> */}
         <chakra.form
           onSubmit={async e => {
@@ -123,7 +135,7 @@ sanityuser ={firstname, lastname, age }
                 onChange={e => setlastname(e.target.value)}
               />
             </FormControl>
-            <FormControl id='age'>
+            {/* <FormControl id='age'>
               <FormLabel>AGE</FormLabel>
               <Input
                 name='password'
@@ -133,19 +145,26 @@ sanityuser ={firstname, lastname, age }
                 value={age}
                 onChange={e => setAge(e.target.value)}
               />
-            </FormControl>
-            {/* <FormControl id='phone'>
-              <FormLabel>Phone Number</FormLabel>
-              <Input
-                name='password'
-                type='tel'
-                autoComplete='password'
-                required
-                value={passwordref}
-                onChange={e => setPassword(e.target.value)}
-              />
-              <input type={'tel'} className='bg-transparent text-white w-full rounded-md'/>
             </FormControl> */}
+            <FormControl id='age'>
+              <FormLabel>Age</FormLabel>
+              <div>
+              <NumberInput max={80} min={18}
+              value={age}
+              onChange={value => setAge(value)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+              </div>
+            </FormControl>
+            <PhoneInput
+      placeholder="Enter phone number"
+      value={phone}
+      defaultCountry={'US'}
+      onChange={setphone}/>
             <Button
               type='submit'
               colorScheme='pink'
@@ -157,30 +176,14 @@ sanityuser ={firstname, lastname, age }
             </Button>
           </Stack>
         </chakra.form>
+        
         <Center my={4}>
-          {/* <Button variant='link' onClick={() => history.push('/login')}>
-          <span className='text-gradient text-2xl'>Login</span>  
-          </Button> */}
         </Center>
-        {/* <DividerWithText my={6}>OR</DividerWithText>
-        <Button className='w-full bg-black-gradient' 
-          variant='outline'
-          width = '100%'
-          colorScheme='red'
-          leftIcon={<FaGoogle />}
-          onClick={() =>
-            signInWithGoogle()
-              .then(user => console.log(user))
-              .catch(e => console.log(e.message))
-          }
-        >
-         Sign in with Google
-        </Button> */}
-        {/* <Greeting/> */}
+        
         
         
       </div>
-      {/* </Card> */}
+      
       
     </Layout>
   )

@@ -3,6 +3,7 @@ import { Box, Container } from '@chakra-ui/react'
 import  Navbar  from './Navbar'
 // import  Avbar  from '../components/navbar/Navbar'
 // import './Layout.css'
+import beams from '../assets/beams.jpg'
 
 export function Layout({ children }) {
   return (
@@ -30,13 +31,28 @@ export function Layout({ children }) {
                     
             //     </div>
             // </div> 
-            <div className='min-h-screen  border border-transparent bg-plat'>
-              {/* <div className='px-4'>
-                <Navbar/>
-              </div > */}
-           <div className='px-2 min-w-md min-w-4xl'>  {children}  </div>
+          //   <div className='min-h-screen bg-gray-gradient border border-transparent'>
+          //     <div className='px-4'>
+          //       <Navbar/>
+          //     </div >
+          //  <div className='px-2 min-w-md min-w-4xl'>  {children}  </div>
                
-            </div> 
+          //   </div> 
+          // <div class="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12 px-5   "  style={{
+          //   backgroundImage: `url(${beams})`,
+          //   backgroundSize: "contain",
+          // }}>
+          <div class="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12 px-5 bg-plat sidebar "  >
+  {/* <img src={beams} alt="" class="absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2" width="1308" /> */}
+  {/* <div class="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div> */}
+  
+  
+  
+  <div className=' flex flex-col w-full '>
+  {children}
+  </div>
+    
+</div>
 
 
 
