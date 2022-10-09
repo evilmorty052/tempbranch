@@ -5,6 +5,7 @@ import App from './App';
 import AuthContextProvider from './contexts/AuthContext';
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from "react-query";
+import '../src/pages/App.css'
 
 
 

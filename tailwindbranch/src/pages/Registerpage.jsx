@@ -62,6 +62,11 @@ export default function Registerpage(sanityuser) {
   const mounted = useRef(false)
   const [name, nametag] = useState(null)
   const namer = useRef(null)
+//   const mojoauth = new MojoAuth( "ddfa0887-b4ce-43dc-9ec8-5c4c53522387" );
+//  mojoauth.signInWithStateID()
+//  .then( payload => {
+//      console.log(payload)
+//   })
 
 sanityuser ={email,password,region}
 

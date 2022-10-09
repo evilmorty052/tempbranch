@@ -55,7 +55,7 @@ function Dashboard() {
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
             {/* Welcome banner */}
-            <WelcomeBanner />
+            {/* <WelcomeBanner /> */}
                  {/* <div><h1>{sanityuser.username}</h1></div> */}
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">

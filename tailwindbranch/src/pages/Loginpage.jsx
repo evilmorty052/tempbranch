@@ -19,11 +19,14 @@ import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
 import useMounted from '../hooks/useMounted'
 import { client } from '../../lib/client'
+import { actionCodeSettings } from '../utils/init-firebase'
+
+
 // import './Loginpage.css'
 
 export default function Loginpage(sanityuser) {
   const history = useNavigate()
-  const { signInWithGoogle, login } = useAuth()
+  const { signInWithGoogle, login, sendSignInLink } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -32,6 +35,7 @@ export default function Loginpage(sanityuser) {
   // const mounted = useRef(false)
   const location = useLocation()
   sanityuser ={email, password}
+
    
   // useEffect(() => {
   //   mounted.current = true
@@ -71,6 +75,7 @@ export default function Loginpage(sanityuser) {
           onSubmit={async e => {
             // setIsSubmitting(true)
             e.preventDefault()
+         
             localStorage.setItem('email', JSON.stringify(email))&history('/login2')
           }
        }

@@ -55,8 +55,9 @@ const confirminfo = () => {
 `;
 
   const handlesubmit = async () =>{
-     await client.create(doc).then((res)=>{console.log(person)}).then(client.fetch(query)).then((res)=>{setUser(res)}).finally(()=>{localStorage.setItem('sanityuser', JSON.stringify(user));})
-     history('/')
+   
+    //  await client.create(doc).then((res)=>{console.log(person)}).then(client.fetch(query)).then((res)=>{setUser(res)}).finally(()=>{localStorage.setItem('sanityuser', JSON.stringify(user));})
+    //  history('/')
   }
 
     return ( 

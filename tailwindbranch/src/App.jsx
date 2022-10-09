@@ -42,6 +42,8 @@ import Registerpage1 from './pages/Registerpage1';
 import Registerpage2 from './pages/Registerpage2';
 import StepRegister from './partials/stepregister';
 import Loginpage2 from './pages/Loginpage2';
+import Mojo from './pages/mojo';
+import Welcome from './pages/welcome';
 
 function App() {
   const { currentUser } = useAuth()
@@ -58,7 +60,8 @@ function App() {
     <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/login" element={<Loginpage />} />
+        <Route exact path="/login" element={<Mojo />} />
+        <Route exact path="/welcome" element={<Welcome />} />
         <Route exact path="/login2" element={<Loginpage2 />} />
         <Route exact path="/login3" element={<Confirmsignin />} />
         <Route exact path="/register/*" element={<Registerpage1/>} />

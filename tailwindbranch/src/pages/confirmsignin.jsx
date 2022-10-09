@@ -6,17 +6,48 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useToast } from "@chakra-ui/react";
+import { actionCodeSettings } from "../utils/init-firebase";
+import { isSignInWithEmailLink, signInWithEmailLink,getAuth} from "firebase/auth";
 
-
-
+// Confirm the link is a sign-in with email link.
+const auth = getAuth();
+if (isSignInWithEmailLink(auth, window.location.href)) {
+  // Additional state parameters can also be passed via URL.
+  // This can be used to continue the user's intended action before triggering
+  // the sign-in operation.
+  // Get the email if available. This should be available if the user completes
+  // the flow on the same device where they started it.
+  let email = window.localStorage.getItem('emailForSignIn');
+  if (!email) {
+    // User opened the link on a different device. To prevent session fixation
+    // attacks, ask the user to provide the associated email again. For example:
+    email = window.prompt('Please provide your email for confirmation');
+  }
+  // The client SDK will parse the code from the link for you.
+  signInWithEmailLink(auth, email, window.location.href)
+    .then((result) => {
+      // Clear email from storage.
+      window.localStorage.removeItem('emailForSignIn');
+      // You can access the new user via result.user
+      // Additional user info profile not available via:
+      // result.additionalUserInfo.profile == null
+      // You can check if the user is new or existing:
+      // result.additionalUserInfo.isNewUser
+    })
+    .catch((error) => {
+      // Some error occurred, you can inspect the code: error.code
+      // Common errors could be invalid email and invalid or expired OTPs.
+    });
+}
 const confirmsignin = (ee,ff) => {
+  
   const [user, setUser] = useState(null)
   const history = useNavigate()
   const email = localStorage.getItem('email');
   const password = localStorage.getItem('password');
   ee =  JSON.parse(email);
   ff =  JSON.parse(password);
-  const { signInWithGoogle, login } = useAuth()
+  const { signInWithGoogle, login, sendSignInLink } = useAuth()
   const toast = useToast()
   
 
@@ -42,8 +73,18 @@ useEffect(() => {
       })
       return
     }
+ 
     // your login logic here
     // setIsSubmitting(true)
+    await sendSignInLink(ee, ff, ).then(console.log('sent')).catch(error => {
+      console.log(error.message)
+      toast({
+        description: error.message,
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
+    })
     login(ee, ff).catch(error => {
       console.log(error.message)
       toast({
@@ -81,7 +122,7 @@ useEffect(() => {
     <div class="mx-auto max-w-md">
       <div class="divide-y divide-gray-300/50">
         <div class="space-y-6 py-8 text-base leading-7 justify-center flex flex-col text-gray-600">
-          <p className="text-center text-2xl uppercase">{`Veryfying Your Device`}</p>
+          <p className="text-center text-2xl uppercase">{`Please Enter Your Pin`}</p>
         </div>
         <div class="pt-8 text-base  leading-7 flex space-x-10 ">
           <p class="text-sky-500 hover:text-sky-600" onClick={()=>{history('/register/registerpage3')}}>make adjustments</p>
