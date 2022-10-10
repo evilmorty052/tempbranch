@@ -7,11 +7,14 @@ import { Link } from 'react-router-dom'
 
 
 const welcome = (state, check) => {
- const mojoauth = new MojoAuth( "ddfa0887-b4ce-43dc-9ec8-5c4c53522387" );
- mojoauth.signInWithStateID()
- .then( payload => {
-     console.log(payload)
-  })
+//  const mojoauth = new MojoAuth( "ddfa0887-b4ce-43dc-9ec8-5c4c53522387" );
+//  mojoauth.signInWithStateID()
+//  .then( payload => {
+//      console.log(payload)
+//   })
+const checkuser = () => {
+    
+}
   check = localStorage.getItem('san')
   state = JSON.parse(check)
 useEffect(() => {

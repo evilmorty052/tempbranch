@@ -44,6 +44,7 @@ import StepRegister from './partials/stepregister';
 import Loginpage2 from './pages/Loginpage2';
 import Mojo from './pages/mojo';
 import Welcome from './pages/welcome';
+import Newuser from './pages/newuser';
 
 function App() {
   const { currentUser } = useAuth()
@@ -64,6 +65,7 @@ function App() {
         <Route exact path="/welcome" element={<Welcome />} />
         <Route exact path="/login2" element={<Loginpage2 />} />
         <Route exact path="/login3" element={<Confirmsignin />} />
+        <Route exact path="/newuser" element={<Newuser/>} />
         <Route exact path="/register/*" element={<Registerpage1/>} />
         <Route exact path="/packages" element={<Packages />} />
         <Route exact path="/aboutus" element={<Aboutus />} />
@@ -75,17 +77,17 @@ function App() {
         <Route exact path="/explore" element={<Explore />} />
         <Route exact path="/products" element={<Products />} />
         
-        <Route element={<ProtectedRoutes/>}>
+        {/* <Route element={<ProtectedRoutes/>}>
             <Route path ="/dashboard" element={<Dashboard />} />
             <Route path ="/profile" element={<Dashboardprofile />} />
-        </Route>
+        </Route> */}
         
-        {/* <Route element={currentUser ? <Outlet /> : <Registerpage />}> */}
+        <Route element={currentUser ? <Outlet /> : <Loginpage />}>
             <Route path ="/dashboard" element={<Dashboard />} />
             <Route path ="/profile" element={<Dashboardprofile />} />
             <Route path ="/subscribe" element={<Dashboardsubscribe />} />
             <Route path ="/works" element={<Pickagent />} />
-        {/* </Route> */}
+        </Route>
       
         {/* <Route path="*" element={<Notfound />} /> */}
       
@@ -100,35 +102,35 @@ function App() {
 
 export default App;
 
-function ProtectedRoute(props) {
-  const { currentUser } = useAuth()
-  const { path } = props
-  console.log('path', path)
-  const location = useLocation()
-  console.log('location state', location.state)
+// function ProtectedRoute(props) {
+//   const { currentUser } = useAuth()
+//   const { path } = props
+//   console.log('path', path)
+//   const location = useLocation()
+//   console.log('location state', location.state)
 
-  if (
-    path === '/login' ||
-    path === '/register' ||
-    path === '/forgot-password' ||
-    path === '/reset-password'
-  ) {
-    return currentUser ? (
-      // <Navigate to={location.state?.from ?? '/dashboard'} />
-      <Outlet />
-    ) : (
-      <Route {...props} />
-    )
-  }
-  return currentUser ? (
-    <Route {...props} />
-  ) : (
-    <Navigate
-      to={{
-        pathname: '/login',
-        state: { from: path },
-      }}
-    />
-  )
-}
+//   if (
+//     path === '/login' ||
+//     path === '/register' ||
+//     path === '/forgot-password' ||
+//     path === '/reset-password'
+//   ) {
+//     return currentUser ? (
+//       // <Navigate to={location.state?.from ?? '/dashboard'} />
+//       <Outlet />
+//     ) : (
+//       <Route {...props} />
+//     )
+//   }
+//   return currentUser ? (
+//     <Route {...props} />
+//   ) : (
+//     <Navigate
+//       to={{
+//         pathname: '/login',
+//         state: { from: path },
+//       }}
+//     />
+//   )
+// }
 

@@ -30,8 +30,8 @@ export const useAuth = () => useContext(AuthContext)
 
 export default function AuthContextProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null)
-const  check = localStorage.getItem('san')
-const state = JSON.parse(check)
+// const  check = localStorage.getItem('san')
+// const state = JSON.parse(check)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       setCurrentUser(user ? user : null)
@@ -40,17 +40,17 @@ const state = JSON.parse(check)
       unsubscribe()
     }
   }, [])
-useEffect(() => {
-  if(state === null){
-    const token = localStorage.setItem('san', 0)
-    return
-  }
-if(state.authenticated)
-{setCurrentUser(state.authenticated)}
-  return () => {
-    console.log(state)
-  }
-}, [state])
+// useEffect(() => {
+//   if(state === null){
+//     const token = localStorage.setItem('san', 0)
+//     return
+//   }
+// if(state.authenticated)
+// {setCurrentUser(state.authenticated)}
+//   return () => {
+//     console.log(state)
+//   }
+// }, [state])
 
   useEffect(() => {
     console.log('The user is', currentUser)

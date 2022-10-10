@@ -17,7 +17,7 @@ const protectedroutes = (props) => {
     const location = useLocation()
 
     return (
-        currentUser ? <Outlet/> : <Navigate to={'/login'} />
+        currentUser.authenticated === true ? <Outlet/> : <Navigate to={'/login'} />
     )
     
 }        
