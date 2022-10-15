@@ -20,6 +20,7 @@ import { useAuth } from '../contexts/AuthContext'
 import useMounted from '../hooks/useMounted'
 import { client } from '../../lib/client'
 // import './Loginpage.css'
+import beams from "../assets/beams.jpg"
 
 export default function Loginpage2(sanityuser) {
   const history = useNavigate()
@@ -58,16 +59,14 @@ export default function Loginpage2(sanityuser) {
 
   return (
    
-    <Layout className="bg-glass">
+    <div className="absolute inset-0 bg-plat min-h-screen flex flex-col items-center justify-center ">
+    
+       <h2 className='text-4xl text-slate-600 text-center font-bold mb-5 uppercase font-poppins'>Password</h2> 
        
-      <header className='text-4xl text-gradient text-center my-12 font-poppins font-extrabold'>
-      <h2 className='text-4xl text-gradient text-center'>Welcome Back</h2>
-      </header>
       
-      <div className="max-w-md mx-auto mt-4 bg-glass2 rounded-lg px-8 py-8 mb-8">
-      {/* <Card maxW='md' mx='auto' mt={4} > */}
       
-        <form
+      
+        <form className='bg-white rounded-3xl py-10 px-10 shadow-2xl'
           onSubmit={async e => {
             // setIsSubmitting(true)
             e.preventDefault()
@@ -79,7 +78,7 @@ export default function Loginpage2(sanityuser) {
           }
        }
         >
-          <Stack spacing='6'>
+          <Stack spacing='6' >
             {/* <FormControl id='email'>
               <FormLabel>Email address</FormLabel>
               <Input
@@ -96,16 +95,18 @@ export default function Loginpage2(sanityuser) {
               <Input
                 name='password'
                 type='password'
+               
                 autoComplete='password'
                 value={password}
                 required
+                
                 onChange={e => setPassword(e.target.value)}
               />
             </FormControl>
             {/* <PasswordField /> */}
             <Button
               type='submit'
-              colorScheme='pink'
+              colorScheme='blue'
               size='lg'
               fontSize='md'
               isLoading={isSubmitting}
@@ -114,15 +115,7 @@ export default function Loginpage2(sanityuser) {
             </Button>
           </Stack>
         </form>
-        <HStack justifyContent='space-between' my={4}>
-          <Button variant='link'>
-            <Link to='/register'><span className='text-gradient text-md'>Forgot Password?</span></Link>
-          </Button>
-          <Button variant='link' onClick={() => history('/register')}>
-          <span className='text-gradient text-md'>Register</span>
-          </Button>
-        </HStack>
-        <DividerWithText my={6}>OR</DividerWithText>
+        
         {/* <Button className='w-full bg-blue-gradient py-2 rounded-full'
           variant='outline'
           width='full'
@@ -139,8 +132,8 @@ export default function Loginpage2(sanityuser) {
         >
           Sign in with Google
         </Button> */}
-        {/* </Card> */}
+      
         </div>
-    </Layout>
+  
   )
 }

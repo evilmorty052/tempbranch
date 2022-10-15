@@ -62,16 +62,14 @@ export default function Loginpage(sanityuser) {
 
   return (
    
-    <Layout className="bg-glass">
-       
-      <header className='text-4xl text-gradient text-center my-12 font-poppins font-extrabold'>
-      <h2 className='text-4xl text-gradient text-center'>Welcome Back</h2>
-      </header>
+    <>
+    <div className='absolute inset-0 bg-plat min-h-screen flex flex-col items-center justify-center  '>
+
+      <h2 className='text-4xl text-slate-600 text-center font-bold mb-5 font-poppins uppercase '>Welcome</h2>
       
-      <div className="max-w-md mx-auto mt-4 bg-glass2 rounded-lg px-8 py-8 mb-8">
       {/* <Card maxW='md' mx='auto' mt={4} > */}
       
-        <form
+        <form className='bg-white rounded-3xl py-10 px-10 shadow-2xl '
           onSubmit={async e => {
             // setIsSubmitting(true)
             e.preventDefault()
@@ -106,26 +104,30 @@ export default function Loginpage(sanityuser) {
             {/* <PasswordField /> */}
             <Button
               type='submit'
-              colorScheme='pink'
+              colorScheme='blue'
               size='lg'
               fontSize='md'
               isLoading={isSubmitting}
             >
-              Sign in
+              NEXT
             </Button>
+            
           </Stack>
         </form>
-        <HStack justifyContent='space-between' my={4}>
+        {/* <HStack justifyContent='space-between' my={4}>
           <Button variant='link'>
-            <Link to='/register'><span className='text-gradient text-md'>Forgot Password?</span></Link>
+            <Link to='/register'><span className='text-slate-600 text-md'>Forgot Password?</span></Link>
           </Button>
           <Button variant='link' onClick={() => history('/login2')}>
-          <span className='text-gradient text-md'>Register</span>
+          <span className='text-slate-600 text-md'>Register</span>
           </Button>
-        </HStack>
-        <DividerWithText my={6}>OR</DividerWithText>
+        </HStack> */}
+        {/* <DividerWithText my={6}>OR</DividerWithText> */}
         {/* </Card> */}
         </div>
-    </Layout>
+  
+    </>
+       
+    
   )
 }

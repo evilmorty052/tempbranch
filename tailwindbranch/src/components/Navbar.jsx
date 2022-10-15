@@ -18,7 +18,8 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex py-2 justify-between items-center navbar">
-      <img src={Ml} alt="medic420" className="w-[100px] h-[70px]" />
+      {/* <img src={Ml} alt="medic420" className="w-[100px] h-[70px]" /> */}
+      <h2 className="uppercase text-gray-50 text-2xl  font-poppins font-black tracking-wide  "> MEDIK<span className="text-green-200">420</span>  </h2> 
 
       <ul className="list-none md:flex hidden justify-end items-center flex-1 ">
         {/* {navLinks.map((nav, index) => (
@@ -57,7 +58,7 @@ const Navbar = () => {
 
       <div className="md:hidden flex flex-1 justify-end items-center">
        <Link to={'/login'}><FaUser className="mr-4 text-white"/></Link> 
-        {!currentUser && <Link to={'/register'}><button className="mr-4 bg-indigo-400 px-4 rounded-full text-white font-poppins text-sm py-2">Sign Up</button></Link>}
+        {!currentUser && <Link to={'/register'}><button className="mr-4 bg-green-200 px-4 rounded-full text-blk font-poppins font-black text-sm py-2">Sign Up</button></Link>}
         {!currentUser && ""}
         
         <img

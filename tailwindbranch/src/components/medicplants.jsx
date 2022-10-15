@@ -18,7 +18,7 @@ const medicplants = () => {
   <div class="p-8 md:p-12 lg:px-16 lg:py-24 bg-transparent ">
     <div class="max-w-lg text-center sm:text-left">
       <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl">
-      100% Managed <span className='text-green-400'>Farming</span> for <span className='text-gradient'>Everyone</span>
+      100% Managed <span className='text-green-400'>Farming</span> for <span className='text-green-400'>Everyone</span>
       </h2>
 
       <p

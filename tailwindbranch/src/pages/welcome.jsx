@@ -3,69 +3,72 @@ import MojoAuth from "mojoauth-web-sdk"
 import { Button, Spin } from 'antd'
 import { FaArrowRight } from "react-icons/fa"
 import { Link } from 'react-router-dom'
+import { getAuth } from '../contexts/mojocontext'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { client } from '../../lib/client'
+import { useQuery } from 'react-query'
+import MotionCard from './Aboutus'
 
 
+const welcome = () => {
+const history = useNavigate()
+const {user, setUser, userInfo, fetchuser, handleredirect, test2} = getAuth()
+const [ready, setReady] = useState(false)
 
-const welcome = (state, check) => {
-//  const mojoauth = new MojoAuth( "ddfa0887-b4ce-43dc-9ec8-5c4c53522387" );
-//  mojoauth.signInWithStateID()
-//  .then( payload => {
-//      console.log(payload)
-//   })
-const checkuser = () => {
-    
-}
-  check = localStorage.getItem('san')
-  state = JSON.parse(check)
+
+  
 useEffect(() => {
-  if(state === null){
-    const token = localStorage.setItem('san', 0)
-    return
+  const getReady = () => {
+    setTimeout(()=>{setReady(true)},10000)
   }
-  console.log(state)
-  return () => {
-    
-  }
-}, [state])
+ 
+  getReady()
+  
+}, [ready])
 
-const Redirect = () => {
-    return(
-        <>
-        <Link to={state.authenticated === true ? '/dashboard' :  '/register'}>
-        <i ><FaArrowRight /></i>
-        </Link>
-        </>
+if(ready){
+  return(
+    <>
+    <div className='flex flex-col absolute inset-0 min-h-screen justify-center items-center bg-plat'>
+     <div className='flex w-full items-center justify-center'>
+       <div className='flex flex-col items-center justify-center'>
+         {/* <Spin size='large' spinning={true}/> */}
+         <div className='flex flex-col gap-5'>
+         <h2 onClick={()=>{history('/dashboard')}} className='text-2xl md:text-4xl gap-5 flex items-center justify-center uppercase font-poppins text-blk tracking-wide'><span className='tracking-wide'>Dashboard</span> <span className='text-2xl jello-horizontal'><FaArrowRight/></span> </h2>
+         </div>
+       </div>
+     </div>
+   </div>
+   </>
+  )
+ 
+}
+
+else if (!ready){
+
+  return( 
+
+    <>
+    <div className='flex flex-col absolute inset-0 min-h-screen justify-center items-center bg-plat'>
+      <div className='flex w-full items-center justify-center'>
+        <div className='flex flex-col items-center justify-center'>
+          <Spin size='large' spinning={true}/>
+          <div className='flex'>
+          <h2 className='text-2xl' onClick={()=>{setReady(true)}}>Quick Background Check  </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
     )
 }
 
+
+
+
   
-  return (
-  <>
-   <div className='absolute inset-0 min-h-screen bg-plat flex flex-col justify-center'>
-        <div className='flex items-center w-full justify-center'>
-       <Spin size={'large'}/>
-      </div> 
-    <div>
-        <>
-    {
-        <div>
-            <div className='flex items-center justify-center'>
-            <h1 className='text-blk text-2xl text-center mt-10 gap-4 flex items-center justify-center uppercase'>{state === 0 ? 'Lets get you set up' : 'getting things ready'}<Redirect/></h1>
-            
-            </div>
-         {/* <div className='w-full flex justify-center'>
-            <button>{state === 0 ? 'Register' : 'Continue' }</button>
-            </div> */}
-        </div>
-        }
-     </>
-       
-    
-    </div>  
-  </div>
-  </>
-   
-  )
+ 
 }
 
 export default welcome

@@ -6,7 +6,7 @@ import Button from "./Button";
 const CardDeal = () => (
   <section className={layout.section}>
     <div className={layout.sectionInfo}>
-      <h2 className={styles.heading2}>
+      <h2 className={`${styles.heading2} text-blk`}>
         Find a Great Investment package <br className="sm:block hidden" /> in few easy
         steps.
       </h2>
@@ -18,7 +18,7 @@ const CardDeal = () => (
     </div>
 
     <div className={layout.sectionImg}>
-      <img src={guide} alt="billing" className="w-[100%] h-[100%]" />
+      <img src={guide} alt="billing" className="w-[100%] h-[100%] rounded-3xl" />
     </div>
   </section>
 );

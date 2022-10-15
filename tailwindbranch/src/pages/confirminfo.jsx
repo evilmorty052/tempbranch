@@ -11,11 +11,13 @@ const confirminfo = () => {
   const sanityuser1 = localStorage.getItem('sanityuser1');
   const sanityuser2 = localStorage.getItem('sanityuser2');
   const sanityuser3 = localStorage.getItem('sanityuser3');
+  const token = localStorage.getItem('pin');
   const person1 = JSON.parse(sanityuser1);
   const person2 = JSON.parse(sanityuser2);
   const person3 = JSON.parse(sanityuser3);
+  const pin = JSON.parse(token);
 
-  const person =  Object.assign({}, person1, person2, person3);
+  const person =  Object.assign({}, person1, person2, person3, token);
   const config = client.config()
   console.log(config)
 
@@ -41,7 +43,9 @@ const confirminfo = () => {
                   firstname :`${person.firstname}`,
                   service :`${person.service}`,
                   region :`${person.region}`,
+                  phone :`${person.phone}`,
                   demo :`${person.wantdemo}`,
+                  pin :`${pin}`,
                   investment: 0,
                   earnings: 0,
                   plan:"Inactive"
@@ -56,8 +60,8 @@ const confirminfo = () => {
 
   const handlesubmit = async () =>{
    
-    //  await client.create(doc).then((res)=>{console.log(person)}).then(client.fetch(query)).then((res)=>{setUser(res)}).finally(()=>{localStorage.setItem('sanityuser', JSON.stringify(user));})
-    //  history('/')
+     await client.create(doc).then((res)=>{console.log(person)}).then(client.fetch(query)).then((res)=>{setUser(res)}).finally(()=>{localStorage.setItem('sanityuser', JSON.stringify(user));})
+     history('/')
   }
 
     return ( 
@@ -76,8 +80,8 @@ const confirminfo = () => {
                 <>
                 <div className="">
 
-<div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12 px-5  ">
-  <img src={beams} alt="" class="absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2" width="1308" />
+<div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-plat py-6 sm:py-12 px-5  ">
+  {/* <img src={beams} alt="" class="absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2" width="1308" /> */}
   <div class="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
   <div class="relative rounded-3xl bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
     <div class="mx-auto max-w-md">
@@ -121,10 +125,11 @@ const confirminfo = () => {
                 <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
               </svg>
               <p class="ml-4">
-                    {`AGE: `}<span className="text-base uppercase font bold">{`${person.age}`}</span>
+                    {`PIN: `}<span className="text-base uppercase font bold">{`${pin}`}</span>
                 {/* <code class="text-sm font-bold text-gray-900">tailwind.config.js</code> file */}
               </p>
             </li>
+            
             <li class="flex items-center">
               <svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="11" />

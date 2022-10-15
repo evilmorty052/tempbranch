@@ -3,24 +3,7 @@ import React, { useState } from 'react';
 import MotionCard from './Aboutus';
 import Sidebar from '../partials/Sidebar2';
 import Header from '../partials/Header';
-import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
-import DashboardAvatars from '../partials/dashboard/DashboardAvatars';
-import FilterButton from '../partials/actions/FilterButton';
-import Datepicker from '../partials/actions/Datepicker';
-import DashboardCard01 from '../partials/dashboard/DashboardCard01';
-import DashboardCard02 from '../partials/dashboard/DashboardCard02';
-import DashboardCard03 from '../partials/dashboard/DashboardCard03';
-import DashboardCard04 from '../partials/dashboard/DashboardCard04';
-import DashboardCard05 from '../partials/dashboard/DashboardCard05';
-import DashboardCard06 from '../partials/dashboard/DashboardCard06';
-import DashboardCard07 from '../partials/dashboard/DashboardCard07';
-import DashboardCard08 from '../partials/dashboard/DashboardCard08';
-import DashboardCard09 from '../partials/dashboard/DashboardCard09';
-import DashboardCard10 from '../partials/dashboard/DashboardCard10';
-import DashboardCard11 from '../partials/dashboard/DashboardCard11';
-import DashboardCard12 from '../partials/dashboard/DashboardCard12';
-import DashboardCard13 from '../partials/dashboard/DashboardCard13';
-import DashboardCard14 from '../partials/dashboard/DashboardCard14';
+import PortfolioBanner from '../partials/dashboard/PortfolioBanner';
 import Card from '../partials/dashboard/Card';
 import Card2 from '../partials/dashboard/Card2';
 import Banner from '../partials/Banner';
@@ -29,8 +12,9 @@ import Agents from '../partials/dashboard/AgentCard';
 // import { getsanityuser } from './Loginpage';
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
+import Dashboardsubscribe from './Dashboardsubscribe';
 
-function Dashboard() {
+function DashboardPortfolio() {
  
   
    
@@ -57,7 +41,7 @@ function Dashboard() {
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
             {/* Welcome banner */}
-            <WelcomeBanner />
+            <PortfolioBanner />
                  {/* <div><h1>{sanityuser.username}</h1></div> */}
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
@@ -79,20 +63,13 @@ function Dashboard() {
                     <span className="hidden xs:block ml-2">Add view</span>
                 </button>                 */}
               </div>
-           <div className=' w-full flex gap-8 flex-col sm:flex sm:flex-row sm:items-start'>
+           <div className=' w-full flex gap-8 flex-col sm:flex sm:flex-row sm:items-center justify-center max-w-lg'>
           <Tabs/>
-          <Agents/>
+          {/* <Dashboardsubscribe/> */}
+          {/* <Agents/> */}
            </div>
             </div>
             <div className="grid grid-cols-12 gap-6">
-              <DashboardCard01 />
-              <DashboardCard02 />
-              <DashboardCard03 />
-              <DashboardCard14 />
-              <DashboardCard13 />
-              
-              
-              
               
             </div>
           </div>
@@ -106,4 +83,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default DashboardPortfolio;

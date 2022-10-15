@@ -16,11 +16,11 @@ const Newuser = (state, check, email, password) => {
 const history = useNavigate()
 const [mounteduser, setMountedUser] = useState()
 const { currentUser } = useAuth()
- const mojoauth = new MojoAuth( "ddfa0887-b4ce-43dc-9ec8-5c4c53522387" );
+//  const mojoauth = new MojoAuth( "ddfa0887-b4ce-43dc-9ec8-5c4c53522387" );
 
- const query = 
- ` *[email match "${currentUser}"]
-`;
+//  const query = 
+//  ` *[email match "${currentUser}"]
+// `;
 // const { data: madLibs } = useQuery('madLibsList', () => client.fetch(query));
 
 
@@ -59,7 +59,7 @@ const Redirect = () => {
   return (
   <>
   {
-       mounteduser? (
+       state? (
 <div className='absolute inset-0 min-h-screen bg-plat flex flex-col justify-center'>
         <div className='flex items-center w-full justify-center'>
        
@@ -69,7 +69,12 @@ const Redirect = () => {
     {
         <div>
             <div className='flex items-center justify-center'>
-            <h1 className='text-blk text-2xl text-center  gap-4 flex items-center justify-center uppercase'>{'Lets Set Up Your Account'}</h1>
+               
+               
+                <Link to={'/register'}>
+                <h1 className='text-blk text-2xl text-center  gap-4 flex items-center justify-center uppercase'>{'Lets Set Up Your Account'}<FaArrowRight/></h1>
+                </Link>
+            
             
             </div>
       

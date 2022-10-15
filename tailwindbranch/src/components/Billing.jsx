@@ -4,8 +4,8 @@ import styles, { layout } from "../style";
 
 const Billing = () => (
   <section id="product" className={layout.sectionReverse}>
-    <div className={layout.sectionImgReverse}>
-      <img src={Medicaman} alt="billing" className="w-[100%] h-[100%] relative z-[5]" />
+    <div className={`${layout.sectionImgReverse} rounded-xl`}>
+      <img src={Medicaman} alt="billing" className="w-[100%] h-[100%] relative z-[5] rounded-3xl" />
 
       {/* gradient start */}
       <div className="absolute z-[3] -left-1/2 top-0 w-[50%] h-[50%] rounded-full white__gradient" />
@@ -15,7 +15,7 @@ const Billing = () => (
 
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-        SAY NO TO <br className="sm:block hidden" /> <span className="text-red-400">DISCRIMINATION</span>
+       <span className="text-blk">SAY NO TO </span> <br className="sm:block hidden" /> <span className="text-red-400">DISCRIMINATION</span>
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
         Our Strong private connection with our customers ensures all agents assigned to you are 100% against

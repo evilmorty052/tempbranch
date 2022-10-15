@@ -79,58 +79,70 @@ sanityuser ={email,password,region}
   
 
   return (
-    <Layout>
+    <div className="absolute inset-0 bg-gray-50 min-h-screen flex flex-col items-center justify-center slide-in-elliptic-top-fwd ">
       {/* {<div className='h-40 bg-green-300'>{`${name}`}</div> } */}
       
-        {/* <h2 className='text-xl bg-red-300 text-center mb-5 font-poppins uppercase font-semibold rounded-2xl'><FaCircle/></h2> */}
-      <div className='max-w-2xl w-full mx-auto mt-4 rounded-lg px-8 py-8 mb-8 bg-wyt  shadow-2xl  ' >
+        <h2 className='text-xl text-center mb-5 font-poppins uppercase font-semibold rounded-2xl'>Account Info..</h2>
+      
       {/* <Card maxW='md' mx='auto' mt={4}> */}
-        <chakra.form
+        <form className='bg-plat py-10 px-10 rounded-3xl  min-w-[300px] md:min-w-[500px] shadow-2xl'
           onSubmit={async e => {
             e.preventDefault()
-            if (!email || !password) {
-              toast({
-                description: 'Credentials not valid.',
-                status: 'error',
-                duration: 9000,
-                isClosable: true,
-              })
-              return
-            }
+            // if (!email || !password) {
+            //   toast({
+            //     description: 'Credentials not valid.',
+            //     status: 'error',
+            //     duration: 9000,
+            //     isClosable: true,
+            //   })
+            //   return
+            // }
             // your register logic here
             setIsSubmitting(true)
             register(email, password)
-              .then(res => {})
+              .then(res => {console.log(sanityuser)&localStorage.setItem('sanityuser1', JSON.stringify(sanityuser));
+              history('/register/registerpage2')})
               .catch(error => {
-                console.log(error.message)
+                console.log(error.message)&history('/login')
                 toast({
-                  description: error.message,
+                  description: 'email already in use',
                   status: 'error',
                   duration: 9000,
                   isClosable: true,
                 })
+              return
+               
               })
-              .finally(() => {
+              .finally((error,) => {
                 mounted.current && setIsSubmitting(false)
-                if(password !== passwordref)
-                (toast({
-                  description: 'passwords must match',
-                  status: 'error',
-                  duration: 9000,
-                  isClosable: true,
-                }))
-                
+                if(password !== passwordref){
+                  (toast({
+                    description: 'passwords must match',
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                  }))
+                  return
+                }
+                  
 
-                console.log(sanityuser)&localStorage.setItem('sanityuser1', JSON.stringify(sanityuser));
-                history('/register/registerpage2')
+
+
+              
+                if(error){
+                  console.log(error)
+                }
+                
+                // console.log(sanityuser)&localStorage.setItem('sanityuser1', JSON.stringify(sanityuser));
+                // history('/register/registerpage2')
 
               })
           }}
         >
           <Stack spacing='6'>
             <FormControl id='email'>
-              <FormLabel>Email address</FormLabel>
-              {/* <input ref={namer}></input><button onClick={Greeting()}></button> */}
+              <FormLabel><span className='uppercase font-poppins'>email address</span></FormLabel>
+              
               
               <Input
                ref={name}
@@ -143,7 +155,7 @@ sanityuser ={email,password,region}
               />
             </FormControl>
             <FormControl id='password'>
-              <FormLabel>Password</FormLabel>
+              <FormLabel><span className='uppercase font-poppins'>password</span></FormLabel>
               <Input
                 name='password'
                 type='password'
@@ -154,7 +166,7 @@ sanityuser ={email,password,region}
               />
             </FormControl>
             <FormControl id='passwordref'>
-              <FormLabel>Confirm Password</FormLabel>
+              <FormLabel><span className='uppercase font-poppins'>Confirm password</span></FormLabel>
               <Input
                 name='password'
                 type='password'
@@ -178,7 +190,7 @@ sanityuser ={email,password,region}
               </div>
             </FormControl> */}
             <FormControl>
-  <FormLabel>Region</FormLabel>
+  <FormLabel><span className='uppercase font-poppins'>region</span></FormLabel>
         <Select 
         placeholder='Select Region'
         onChange={e=>{setRegion(e.target.value)}}
@@ -214,15 +226,21 @@ sanityuser ={email,password,region}
           </Stack>
           <div className='flex w-full justify-between mt-10'>
               {/* <button className='text-base  bg-sky-300 px-2 rounded-xl py-4 uppercase'>Previous</button> */}
-              <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              <Button 
+               size='sm'
+               colorScheme='blue' >
               Back
-             </button>
+             </Button>
               {/* <button className='text-base  bg-sky-300 px-2 rounded-xl py-4 uppercase'>Next</button> */}
-              <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              <Button 
+              size='sm'
+              colorScheme='blue'
+              type='submit'
+               >
                 Next
-              </button>
+              </Button>
             </div>
-        </chakra.form>
+        </form>
         <Center my={4}>
           {/* <Button variant='link' onClick={() => history.push('/login')}>
           <span className='text-gradient text-2xl'>Login</span>  
@@ -245,9 +263,9 @@ sanityuser ={email,password,region}
         {/* <Greeting/> */}
         
         
-      </div>
+      
       {/* </Card> */}
       
-    </Layout>
+    </div>
   )
 }

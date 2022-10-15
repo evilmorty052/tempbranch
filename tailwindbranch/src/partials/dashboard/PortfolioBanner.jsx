@@ -1,8 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { motion } from 'framer-motion';
 
-function WelcomeBanner() {
+function PortfolioBanner() {
   const sanityuser = localStorage.getItem('sanityuser');
   const person = JSON.parse(sanityuser);
   
@@ -19,7 +18,7 @@ function WelcomeBanner() {
   
   return (
    
-    <motion.div  className="relative max-w-md bg-blk p-4 sm:p-6 rounded-xl overflow-hidden mb-8 shadow-2xl">
+    <div className="relative max-w-md bg-blk p-4 sm:p-6 rounded-xl overflow-hidden mb-8 shadow-2xl">
 
 
       {/* Content */}
@@ -28,8 +27,8 @@ function WelcomeBanner() {
         <p class='text-gray-100'>See a Breakdown Of your Earnings</p>
       </div>
 
-    </motion.div>
+    </div>
   );
 }
 
-export default WelcomeBanner;
+export default PortfolioBanner;

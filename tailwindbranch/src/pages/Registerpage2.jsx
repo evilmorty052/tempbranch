@@ -7,9 +7,12 @@ import {
   Heading,
   Input,
   Stack,
+  HStack,
   useToast,
   Select,
   SelectField,
+  RadioGroup,
+  Radio,
   NumberInput,
   NumberInputStepper,
   NumberIncrementStepper,
@@ -85,16 +88,15 @@ sanityuser ={firstname, lastname, age,phone }
   }, [])
 
   return (
-    <Layout>
+    <div className="absolute inset-0 bg-gray-50 min-h-screen flex flex-col items-center justify-center ">
       {/* <div className='h-40 bg-green-300'>{`${name}`}</div> */}
       
         <h2 className='text-4xl text-blk text-center mb-5 font-poppins uppercase font-medium'>Some Basic Info ..</h2>
         
       
 
-      <div className='max-w-2xl w-full mx-auto mt-4 rounded-lg px-8 py-8 mb-8 bg-wyt  shadow-2xl border border-blk' >
       {/* <Card maxW='md' mx='auto' mt={4}> */}
-        <chakra.form
+        <form className='bg-plat py-10 px-10 rounded-3xl  min-w-[300px] md:min-w-[500px] shadow-2xl'
           onSubmit={async e => {
             e.preventDefault()
            console.log(sanityuser)&localStorage.setItem('sanityuser2', JSON.stringify(sanityuser));
@@ -146,7 +148,7 @@ sanityuser ={firstname, lastname, age,phone }
                 onChange={e => setAge(e.target.value)}
               />
             </FormControl> */}
-            <FormControl id='age'>
+            {/* <FormControl id='age'>
               <FormLabel>Age</FormLabel>
               <div>
               <NumberInput max={80} min={18}
@@ -159,15 +161,25 @@ sanityuser ={firstname, lastname, age,phone }
               </NumberInputStepper>
             </NumberInput>
               </div>
+            </FormControl> */}
+            <FormControl id='age'>
+              <FormLabel>ARE YOU OVER 18?</FormLabel>
+              <RadioGroup defaultValue='YES'>
+            <HStack spacing='4px'>
+              <Radio value='YES'>YES</Radio>
+              <Radio value='NO'>NO</Radio>
+            </HStack>
+          </RadioGroup>
             </FormControl>
             <PhoneInput
       placeholder="Enter phone number"
       value={phone}
+      required
       defaultCountry={'US'}
       onChange={setphone}/>
             <Button
               type='submit'
-              colorScheme='pink'
+              colorScheme='blue'
               size='lg'
               fontSize='md'
               isLoading={isSubmitting}
@@ -175,7 +187,7 @@ sanityuser ={firstname, lastname, age,phone }
              <span>NEXT</span>
             </Button>
           </Stack>
-        </chakra.form>
+        </form>
         
         <Center my={4}>
         </Center>
@@ -185,6 +197,6 @@ sanityuser ={firstname, lastname, age,phone }
       </div>
       
       
-    </Layout>
+    
   )
 }

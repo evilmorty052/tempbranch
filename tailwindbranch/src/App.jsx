@@ -21,6 +21,7 @@ import './charts/ChartjsConfig';
 
 // Import pages
 import Dashboard from './pages/Dashboard';
+import DashboardAgents from './pages/DashboardAgents';
 import Notfound from './pages/notfound';
 import Dashboardprofile from './pages/Dashboardprofile';
 import Dashboardsubscribe from './pages/Dashboardsubscribe';
@@ -45,6 +46,9 @@ import Loginpage2 from './pages/Loginpage2';
 import Mojo from './pages/mojo';
 import Welcome from './pages/welcome';
 import Newuser from './pages/newuser';
+import Log from './pages/log';
+import SetPin from './pages/SetPin';
+import DashboardPortfolio from './pages/DashboardPortfolio';
 
 function App() {
   const { currentUser } = useAuth()
@@ -61,10 +65,11 @@ function App() {
     <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/login" element={<Mojo />} />
+        <Route exact path="/login" element={<Loginpage/>} />
         <Route exact path="/welcome" element={<Welcome />} />
         <Route exact path="/login2" element={<Loginpage2 />} />
         <Route exact path="/login3" element={<Confirmsignin />} />
+        <Route exact path="/setpin" element={<SetPin/>} />
         <Route exact path="/newuser" element={<Newuser/>} />
         <Route exact path="/register/*" element={<Registerpage1/>} />
         <Route exact path="/packages" element={<Packages />} />
@@ -82,12 +87,13 @@ function App() {
             <Route path ="/profile" element={<Dashboardprofile />} />
         </Route> */}
         
-        <Route element={currentUser ? <Outlet /> : <Loginpage />}>
+        {/* <Route element={currentUser ? <Outlet /> : <Loginpage />}> */}
             <Route path ="/dashboard" element={<Dashboard />} />
             <Route path ="/profile" element={<Dashboardprofile />} />
-            <Route path ="/subscribe" element={<Dashboardsubscribe />} />
-            <Route path ="/works" element={<Pickagent />} />
-        </Route>
+            {/* <Route path ="/subscribe" element={<Dashboardsubscribe />} /> */}
+            <Route exact path ="/dashboard/agents" element={<DashboardAgents />} />
+            <Route exact path ="/dashboard/portfolio" element={<DashboardPortfolio />} />
+        {/* </Route> */}
       
         {/* <Route path="*" element={<Notfound />} /> */}
       

@@ -6,31 +6,31 @@ import Hero3 from "./components/hero3";
 import Medicplants from "./components/medicplants";
 
 const Home = () => (
-  <div className="bg-primary w-full overflow-hidden">
+  <div className="bg-blk w-full overflow-hidden">
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>
     </div>
 
-    <div className={`bg-primary ${styles.flexStart}`}>
+    <div className={`bg-plat ${styles.flexStart}`}>
       <div className={`${styles.boxWidth}`}>
         <Hero />
-        <Stats />
+        {/* <Stats /> */}
         
       </div>
     </div>
     
-    <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
+    <div className={`bg-plat ${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
-        <Section/>
+        {/* <Section/> */}
         
         <Business />
         <CardDeal />
         <Billing />
         <Medicplants />
         <Testimonials />
-        <Clients />
+        {/* <Clients /> */}
         <CTA />
         {/* <Example/> */}
         <Footer />

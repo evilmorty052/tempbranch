@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import MotionCard from './Aboutus';
 import Sidebar from '../partials/Sidebar2';
 import Header from '../partials/Header';
-import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
+import WelcomeBanner from '../partials/dashboard/AgentBanner';
 import DashboardAvatars from '../partials/dashboard/DashboardAvatars';
 import FilterButton from '../partials/actions/FilterButton';
 import Datepicker from '../partials/actions/Datepicker';
@@ -25,20 +25,46 @@ import Card from '../partials/dashboard/Card';
 import Card2 from '../partials/dashboard/Card2';
 import Banner from '../partials/Banner';
 import Tabs from './Aboutus';
-import Agents from '../partials/dashboard/AgentCard';
+import Agents from '../partials/dashboard/Agents';
+import AgentList from '../partials/dashboard/Card';
 // import { getsanityuser } from './Loginpage';
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
+import { client, urlFor } from '../../lib/client';
+import { motion } from 'framer-motion';
+import { FaHeart } from 'react-icons/fa';
+// import agentList from '../partials/dashboard/Card';
+const query = `*[_type == "agents"]{name , lastname , bio, specialties, likes, followers, avatar, description}`
 
-function Dashboard() {
- 
+function DashboardAgents() {
+  // const [agents, setAgents] = useState([
+  //   {name: 'ZIK Stan', agentBio: ' Meet Our Spotlight Agent Of the week Claire! currently ranked 3rd on our Agents Ranking', specialties:['CBD','STOCKS','COCAINE'], agentDesc:'Claire Mac specializes in Crypto trade and CBD Stocks', id: 1}
+  // ])
   
-   
- 
-  
-
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { data: agents } = useQuery('madLibsList', () => client.fetch(query));
+  const [liked, setLiked] = useState(false)
+
+
+  useEffect(() => {
+    if(agents){
+      console.log(agents)
+    }
+  
+    return () => {
+      
+    }
+  }, [])  
+if(!agents){
+  return(
+    <>
+    <h1>loading</h1>
+    </>
+  )
+}
+
+
+
 
   return (
 
@@ -79,17 +105,36 @@ function Dashboard() {
                     <span className="hidden xs:block ml-2">Add view</span>
                 </button>                 */}
               </div>
-           <div className=' w-full flex gap-8 flex-col sm:flex sm:flex-row sm:items-start'>
-          <Tabs/>
+              <div className='w-full mb-8 sm:hidden'>
+                <span className='text-blk text-3xl font-poppins font-bold uppercase'>Top Rated Agents</span>
+              </div>
+           <div className=' w-full flex gap-8 flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 md:items-start'>
+          
+       <AgentList name={agents[0].name} bio={agents[0].bio} description={agents[0].description} avatar={urlFor(agents[0].avatar)}/>
+       <AgentList name={agents[1].name} bio={agents[1].bio} description={agents[1].description} avatar={urlFor(agents[1].avatar)}/>
+       <AgentList name={agents[2].name} bio={agents[2].bio} description={agents[2].description} avatar={urlFor(agents[2].avatar)}/>
+       <div className='w-full mb-8 md:hidden'>
+                <span className='text-blk text-3xl font-poppins font-bold uppercase'>Trending Agents</span>
+              </div>
+              <AgentList name={agents[3].name} bio={agents[3].bio} description={agents[3].description} avatar={urlFor(agents[3].avatar)}/>
+              <AgentList name={agents[4].name} bio={agents[4].bio} description={agents[4].description} avatar={urlFor(agents[4].avatar)}/>
+              <AgentList name={agents[5].name} bio={agents[5].bio} description={agents[5].description} avatar={urlFor(agents[5].avatar)}/>
+              <AgentList name={agents[6].name} bio={agents[6].bio} description={agents[6].description} avatar={urlFor(agents[6].avatar)}/>
+              <AgentList name={agents[7].name} bio={agents[7].bio} description={agents[7].description} avatar={urlFor(agents[7].avatar)}/>
+          {/* <Agents/>
           <Agents/>
+          <Agents/>
+          <Agents/>
+          <Agents/>
+          <Agents/> */}
            </div>
             </div>
             <div className="grid grid-cols-12 gap-6">
-              <DashboardCard01 />
+              {/* <DashboardCard01 />
               <DashboardCard02 />
               <DashboardCard03 />
               <DashboardCard14 />
-              <DashboardCard13 />
+              <DashboardCard13 /> */}
               
               
               
@@ -106,4 +151,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default DashboardAgents;

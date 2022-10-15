@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import LineChart from '../../charts/LineChart01';
 import Icon from '../../images/icon-01.svg';
 import EditMenu from '../EditMenu';
+import { motion, animate, } from 'framer-motion';
+import { FaMoneyBillWave, FaArrowUp , FaChevronUp, FaPlus, FaPlusCircle } from 'react-icons/fa';
 // import {Mymodal, Modalbutton} from '../../components/modal'
 
 // Import utilities
@@ -61,11 +63,12 @@ function DashboardCard014() {
   };
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-glass2 shadow-lg rounded-xl  pl h-max relative border border-slate-200">
+    <motion.div   whileTap={{ scale: 1.1 }}  className="rounded-3xl shadow-2xl flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-gray-50    pl h-max relative border border-slate-200">
       <div className="px-5 pt-5">
         <header className="flex justify-between items-start mb-2">
           {/* Icon */}
-          <img src={Icon} width="32" height="32" alt="Icon 01" />
+          {/* <img src={Icon} width="32" height="32" alt="Icon 01" /> */}
+          <span className='text-4xl text-green-400'><FaPlusCircle /></span> 
           {/* Menu button */}
           {/* <EditMenu className="relative inline-flex">
             <li>
@@ -79,10 +82,11 @@ function DashboardCard014() {
             </li>
           </EditMenu> */}
         </header>
-        <h2 className="text-sm font-bold text-slate-800 mb-0 text-start font-poppins">Total Bonus</h2>
+        <motion.h2 initial={{ opacity: 0 }}  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }} className="text-3xl font-black text-green-300 mb-0 text-start font-poppins uppercase">Bonus</motion.h2>
         {/* <div className="text-xs font-semibold text-slate-400 uppercase mb-1">Sales</div> */}
         <div className="flex items-end text-end pb-4">
-          <div className="text-3xl font-bold text-green-400 mr-2 text-center">$780</div>
+          <div className="text-2xl font-bold text-green-300 mr-2 text-center font-poppins"> <span>$</span><span >450</span></div>
           <div>
           {/* <div className="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+49%</div> */}
           
@@ -90,7 +94,13 @@ function DashboardCard014() {
           
         </div>
         <div class=" absolute bottom-5 right-10 border-b-yellow-600">
-        <img src={Icon} width="32" height="32" alt="Icon 01" />
+        {/* <img src={Icon} width="32" height="32" alt="Icon 01" /> */}
+        
+        <div className='flex  gap-0'>
+        
+        <span className='text-xl text-green-300'><FaPlusCircle /></span> 
+        <span className='text-xl text-green-300'><FaPlusCircle /></span> 
+        </div>
         </div>
       </div>
       {/* Chart built with Chart.js 3 */}
@@ -100,7 +110,7 @@ function DashboardCard014() {
       </div>
       <div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

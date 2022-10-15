@@ -56,7 +56,7 @@ export default function Registerpage2(sanityuser) {
   const [age, setAge] = useState()
   const [sanitydata, setSanitydata] = useState()
   const [value, setValue] = useState()
-
+  
 
 //   const query = 
 //     ` *[firstname match "${firstname}"]
@@ -73,15 +73,14 @@ sanityuser ={plan, service, wantdemo }
   }, [])
 
   return (
-    <Layout>
+    <div className="absolute inset-0 bg-gray-50 min-h-screen flex flex-col items-center justify-center  ">
       {/* <div className='h-40 bg-green-300'>{`${name}`}</div> */}
       
         <h2 className='text-4xl text-blk text-center mb-5 font-poppins uppercase font-semibold'>Final Info...</h2>
       
 
-      <div className='max-w-2xl w-full mx-auto mt-4 rounded-lg px-8 py-8 mb-8 bg-wyt  shadow-2xl border border-blk .bounce-in-bottom' >
       {/* <Card maxW='md' mx='auto' mt={4}> */}
-        <chakra.form
+        <form className='bg-plat py-10 px-10 rounded-3xl  min-w-[300px] md:min-w-[500px] shadow-2xl'
           onSubmit={async e => {
             e.preventDefault()
            console.log(sanityuser)&localStorage.setItem('sanityuser3', JSON.stringify(sanityuser));
@@ -91,7 +90,7 @@ sanityuser ={plan, service, wantdemo }
               // .finally(() => {
               //   mounted.current && setIsSubmitting(false)
               //   console.log(sanityuser)&&setSanitydata([sanityuser])&&console.log({sanitydata})
-                history('/register/confirminfo')
+                history('/setpin')
                 
               // })
           }}
@@ -116,7 +115,7 @@ sanityuser ={plan, service, wantdemo }
             </Select>
             </FormControl>
             <FormControl id='wantdemo'>
-              <FormLabel>PICK A PLAN</FormLabel>
+              <FormLabel>PICK A PLAN BELOW</FormLabel>
               {/* <Input
                 name='wantdemo'
                 type='input'
@@ -144,7 +143,7 @@ sanityuser ={plan, service, wantdemo }
               <RadioGroup defaultValue={service}
               // value={service}
               onChange={e => {OptService(e)} }>
-                <HStack spacing='10px'>
+                <HStack spacing='5px'>
                   <Radio value='DigitalFarming'><span>Digital Farming</span></Radio>
                   <Radio value='Investment'>Investment</Radio>
                   <Radio value='Retailing'>Retailing</Radio>
@@ -160,17 +159,33 @@ sanityuser ={plan, service, wantdemo }
       defaultCountry={'US'}
       onChange={setValue}/> */}
             </div> 
-            <Button
+            {/* <Button
               type='submit'
-              colorScheme='pink'
+              colorScheme='blue'
               size='lg'
               fontSize='md'
               isLoading={isSubmitting}
             >
              <span>NEXT</span>
-            </Button>
+            </Button> */}
+               <div className='flex w-full justify-between mt-10'>
+              {/* <button className='text-base  bg-sky-300 px-2 rounded-xl py-4 uppercase'>Previous</button> */}
+              <Button 
+               size='md'
+               colorScheme='blue' >
+              Back
+             </Button>
+              {/* <button className='text-base  bg-sky-300 px-2 rounded-xl py-4 uppercase'>Next</button> */}
+              <Button 
+              size='md'
+              colorScheme='blue'
+              type='submit'
+               >
+                Next
+              </Button>
+            </div>
           </Stack>
-        </chakra.form>
+        </form>
         <Center my={4}>
           {/* <Button variant='link' onClick={() => history.push('/login')}>
           <span className='text-gradient text-2xl'>Login</span>  
@@ -193,9 +208,9 @@ sanityuser ={plan, service, wantdemo }
         {/* <Greeting/> */}
         
         
-      </div>
+     
       {/* </Card> */}
       
-    </Layout>
+    </div>
   )
 }

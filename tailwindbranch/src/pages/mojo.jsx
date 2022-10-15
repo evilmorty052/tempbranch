@@ -10,7 +10,7 @@ import { mojoauth } from "./newuser"
 
 
 
-export function Mojo() {
+export function Mojo(   ) {
 const [payload, setPayload] = React.useState(null)
 const history = useNavigate()
 // const [token, setToken] =useState(()=>{localStorage.setItem('san',JSON.stringify(0))})
@@ -55,17 +55,20 @@ React.useEffect(() => {
         });
 	mojoauth.signIn().then(payload => {
 	    setPayload(payload)&localStorage.setItem('san',JSON.stringify(payload))&console.log(payload)
-	    // document.getElementById("mojoauth-passwordless-form").remove()
+	    document.getElementById("mojoauth-passwordless-form").remove()
 
 	});
 }, [mojoauth])
 return (
     <>
     
-    <div className={!payload ? 'flex flex-col' : 'flex flex-col  absolute inset-0 bg-plat min-h-screen items-center justify-center z-50'}>
+    <div className={  'flex flex-col  absolute inset-0 bg-plat min-h-screen items-center justify-center '}>
+        <>
         <div >
-            <h1 className="text-2xl flex items-center text-blk gap-5"  onClick={()=>{handlenext()}}>Continue to Dashboard <i><FaArrowRight/></i> </h1>
+          {id? <h1 className="text-2xl flex items-center text-blk gap-5"  onClick={()=>{handlenext()}}>Continue to Dashboard <i><FaArrowRight/></i> </h1> : <div></div>  }  
         </div>
+        </>
+      
     </div>
    
     <div>

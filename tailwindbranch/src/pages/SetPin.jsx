@@ -9,7 +9,6 @@ import { useToast } from "@chakra-ui/react";
 import { actionCodeSettings } from "../utils/init-firebase";
 import { isSignInWithEmailLink, signInWithEmailLink,getAuth} from "firebase/auth";
 import { Input, Button } from "@chakra-ui/react";
-import { Spin } from 'antd'
 
 // Confirm the link is a sign-in with email link.
 const auth = getAuth();
@@ -41,9 +40,9 @@ if (isSignInWithEmailLink(auth, window.location.href)) {
       // Common errors could be invalid email and invalid or expired OTPs.
     });
 }
-const confirmsignin = (ee,ff, pin ) => {
+const SetPin = (ee,ff, pin ) => {
   
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(null)
   const history = useNavigate()
   const email = localStorage.getItem('email');
   const password = localStorage.getItem('password');
@@ -56,51 +55,35 @@ const confirmsignin = (ee,ff, pin ) => {
   const [pin3, setpin3] = useState('')
   const [pin4, setpin4] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+
   pin = `${pin1}${pin2}${pin3}${pin4}`
-  // const pin =  Object.assign({}, pin1, pin2, pin3);
   
 
   const query = 
-  ` *[email == "${ee}"&& password =="${ff}"]
+  ` *[email match "${ee}"&& password =="${ff}"]
 `;
 
 useEffect(() => {
-    client.fetch(query).then((data)=>{setUser(data)&localStorage.setItem('sanityuser', JSON.stringify(user))&console.log(user[0].pin)}).catch((error)=>{console.log(error)})
-    
-
-    // return () =>{
-    //   if(user){
-    //     console.log(user)
-    //   }
-    // }
-    
-}, [pin])
+    client.fetch(query).then((data)=>{setUser(data)}).catch((error)=>{console.log(error)})
+}, [])
 
 //   const query = 
 //     ` *[email match "${person.email}"]
 // `;
 
   const handlesubmit = async () =>{
-    if (!ee || !ff) {
-      // toast({
-      //   description: 'Credentials not valid.',
-      //   status: 'error',
-      //   duration: 9000,
-      //   isClosable: true,
-      // })
-      history('/login')
+    // if (!ee || !ff) {
+    //   toast({
+    //     description: 'Credentials not valid.',
+    //     status: 'error',
+    //     duration: 9000,
+    //     isClosable: true,
+    //   })
+    //   history('/login')
       
-      return
-    }
+    //   return
+    // }
     if(!pin1 || !pin2 || !pin3 || !pin4 ){
-      console.log('kkk')
-      toast({
-       description:'CHECK YOUR PIN',
-      })
-
-      return
-     }
-    if(pin !== user[0].pin){
       console.log('kkk')
       toast({
        description:'CHECK YOUR PIN',
@@ -117,7 +100,8 @@ useEffect(() => {
     // console.log(pin)
  
     // your login logic here
-    setIsSubmitting(true)
+    setIsSubmitting(true)&localStorage.setItem("pin", JSON.stringify(pin))&console.log(pin)&history('/register/confirminfo')
+
     // await sendSignInLink(ee, ff, ).then(console.log('sent')).catch(error => {
     //   console.log(error.message)
     //   toast({
@@ -127,36 +111,30 @@ useEffect(() => {
     //     isClosable: true,
     //   })
     // })
-    // console.log(pin)
-    login(ee, ff).catch(error => {
-      console.log(error.message)
-      toast({
-        description: 'INVALID EMAIL OR PASSWORD TRY AGAIN',
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-      }) && history('/login')
-      return
-    }).then(()=>{client.fetch(query).then((data)=>{
-    setUser(data)})
-                    
-  if(user[0].pin == pin){
-    history('/welcome')
-  }})&localStorage.setItem('sanityuser', JSON.stringify(user))
-    
+    // login(ee, ff).catch(error => {
+    //   console.log(error.message)
+    //   toast({
+    //     description: 'INVALID EMAIL OR PASSWORD TRY AGAIN',
+    //     status: 'error',
+    //     duration: 9000,
+    //     isClosable: true,
+    //   }) && history('/login')
+    //   return
+    // }).then(()=>{client.fetch(query).then((data)=>{setUser(data)})&localStorage.setItem('pin', JSON.stringify(pin))
+    // setTimeout(() => {history('/welcome')}, 5000);})
     
      
   }
-      if(!user){
-        return(
-         <>
-         <div className="inset-0 min-h-screen absolute flex flex-col items-center justify-center">
-          <Spin/>
-         </div>
-         </>
-        ) 
-      }
- 
+
+  // const handlesubmit = () => {
+   
+  //   if(!pin1 || !pin2 || !pin3 || !pin4  ){
+  //    console.log('kkk')
+  //    toast({
+  //     description:'Incomplete pin',
+  //    })
+  //   }
+  // }
 
     return (
     //     <Layout>
@@ -181,13 +159,17 @@ useEffect(() => {
     <div class="mx-auto max-w-md">
       <div class="divide-y divide-gray-300/50">
         <div class="space-y-6 py-8 text-base leading-7 justify-center flex flex-col text-gray-600">
-          <p className="text-center text-2xl uppercase font-poppins font-bold">{`Please Enter Your Pin`}</p>
+          <p className="text-center text-2xl uppercase font-poppins font-bold">{`Choose Your Pin`}</p>
           {/* <input type="password"  className="rounded-2xl"/> */}
           <div className="  flex items-center justify-between">
           <Input required value={pin1} onChange={e => setpin1(e.target.value)&console.log(pin1)} type='password' maxLength={1} className='max-w-[50px]  rounded-md text-center '/>
           <Input required value={pin2} onChange={e => setpin2(e.target.value)&console.log(pin2)} type="password" maxLength={1} className='max-w-[50px]  rounded-md text-center '/>
           <Input required value={pin3} onChange={e => setpin3(e.target.value)&console.log(pin3)} type="password" maxLength={1} className='max-w-[50px]  rounded-md text-center '/>
           <Input required value={pin4} onChange={e => setpin4(e.target.value)&console.log(pin4)} type="password" maxLength={1} className='max-w-[50px]  rounded-md text-center '/>
+        {/* <div className="flex items-center justify-center w-full">
+        <input required value={pin4} onChange={e => setpin4(e.target.value)&console.log(pin4)} type="text" maxLength={4} className='max-w-[250px]  font-poppins text-2xl   tracking-[1em] flex justify-center w-full rounded-md text-center '/>
+        </div>   */}
+         
           </div>
           <Button
              type="submit"
@@ -197,7 +179,7 @@ useEffect(() => {
             onClick={()=>{handlesubmit()}}
             isLoading={isSubmitting}>
             
-            Sign In
+            Sign Up
           </Button>
         </div>
         {/* <div class="pt-8 text-base  leading-7 flex space-x-10 ">
@@ -216,6 +198,6 @@ useEffect(() => {
      );
 }
  
-export default confirmsignin;
+export default SetPin;
 
 

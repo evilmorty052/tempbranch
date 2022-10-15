@@ -4,6 +4,9 @@ import LineChart from '../../charts/LineChart01';
 import Icon from '../../images/icon-03.svg';
 import EditMenu from '../EditMenu';
 import { useEffect } from 'react';
+import { FaUnlock } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
+import { motion } from 'framer-motion';
 
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
@@ -70,11 +73,12 @@ function DashboardCard03() {
   };
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-glass2 shadow-lg rounded-xl  pl h-max relative border border-slate-200">
-      <div className="px-5 pt-5">
+    <motion.div animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}   whileTap={{ scale: 1.1 }}  className="  shadow-2xl flex flex-col col-span-full sm:col-span-6 xl:col-span-4  rounded-3xl  pl h-max relative">
+      <div className="px-5 pt-5 bg-slate-700 rounded-3xl">
         <header className="flex justify-between items-start mb-2">
           {/* Icon */}
-          <img src={Icon} width="32" height="32" alt="Icon 01" />
+         <span className='text-4xl text-white'><FaLock/></span> 
+          {/* <img src={Icon} width="32" height="32" alt="Icon 01" /> */}
           {/* Menu button */}
           {/* <EditMenu className="relative inline-flex">
             <li>
@@ -88,17 +92,18 @@ function DashboardCard03() {
             </li>
           </EditMenu> */}
         </header>
-        <h2 className="text-sm font-semibold text-slate-800 mb-0 text-start font-poppins">Current Plan</h2>
+        <h2 className="text-xl font-semibold text-gray-100 mb-0 text-start font-poppins">Current Plan</h2>
         {/* <div className="text-xs font-semibold text-slate-400 uppercase mb-1">Sales</div> */}
         <div className="flex items-end text-end pb-4">
-          <div className="text-3xl font-bold text-glass mr-2 text-center font-poppins">{person[0].plan}</div>
+          <div className="text-3xl font-bold text-glass mr-2 text-center uppercase text-red-300 font-poppins">{person[0].plan}</div>
           <div>
           {/* <div className="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">+49%</div> */}
           </div>
           
         </div>
         <div class=" absolute bottom-5 right-10 border-b-yellow-600">
-        <img src={Icon} width="32" height="32" alt="Icon 01" />
+          
+          <div className="wobble-hor-bottom"><span className='  text-2xl text-green-200 '><FaUnlock/></span> </div>
         </div>
       </div>
       {/* Chart built with Chart.js 3 */}
@@ -108,7 +113,7 @@ function DashboardCard03() {
       </div>
       <div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -77,7 +77,7 @@ function Sidebar({
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            <h2 className='text-3xl font-poppins font-extrabold text-green-300'>MEDIC 420</h2>
+            <h2 className='text-3xl font-poppins font-extrabold text-blk'>MEDIK <span className='text-green-400'>420</span> </h2>
             {/* <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
                 <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">

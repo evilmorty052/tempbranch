@@ -38,7 +38,7 @@ function DashboardCard04() {
   };
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-blue-gradient shadow-lg rounded-sm border border-slate-200 pl h-max relative">
+    <div className="  flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-blue-gradient shadow-lg rounded-sm border border-slate-200 pl h-max relative">
       <div className="px-5 pt-5">
         <header className="flex justify-between items-start mb-2">
           {/* Icon */}
