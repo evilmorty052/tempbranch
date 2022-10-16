@@ -28,13 +28,13 @@ export const getAuth = () => useContext(UserContext)
     
     const history = useNavigate()
 
-    useEffect(() => {
-     if(!test){
-        localStorage.setItem('san', JSON.stringify(0))&console.log('san changed');
-     }
-     if(!userInfo){
-        setUserInfo([])&console.log('user info set')
-     }
+    // useEffect(() => {
+    //  if(!test){
+    //     localStorage.setItem('san', JSON.stringify(0))&console.log('san changed');
+    //  }
+    //  if(!userInfo){
+    //     setUserInfo([])&console.log('user info set')
+    //  }
     //  if(test === JSON.stringify('undefined')){
     //     localStorage.setItem('san', JSON.stringify(0))&console.log('san changed');
     //  }
@@ -42,11 +42,11 @@ export const getAuth = () => useContext(UserContext)
        
     //  }
 
-     if(!test2){
-        localStorage.setItem('user', JSON.stringify(1))&console.log('user changed');
-     }
+    //  if(!test2){
+    //     localStorage.setItem('user', JSON.stringify(1))&console.log('user changed');
+    //  }
        
-      }, [])
+    //   }, [])
     
 
 
@@ -59,13 +59,13 @@ export const getAuth = () => useContext(UserContext)
     //   }
 
 
-    function login() {
-            const mojoauth = new MojoAuth("ddfa0887-b4ce-43dc-9ec8-5c4c53522387",{
-                source:[{type:'email', feature:'otp'}],
-            });
-        mojoauth.signIn().then(payload => { 
-        localStorage.setItem('san', JSON.stringify(payload))&document.getElementById("mojoauth-passwordless-form").remove&setIsAuth(true)})
-      }
+    // function login() {
+    //         const mojoauth = new MojoAuth("ddfa0887-b4ce-43dc-9ec8-5c4c53522387",{
+    //             source:[{type:'email', feature:'otp'}],
+    //         });
+    //     mojoauth.signIn().then(payload => { 
+    //     localStorage.setItem('san', JSON.stringify(payload))&document.getElementById("mojoauth-passwordless-form").remove&setIsAuth(true)})
+    //   }
 
     // function login() {
     //         const mojoauth = new MojoAuth("ddfa0887-b4ce-43dc-9ec8-5c4c53522387",{
@@ -78,19 +78,19 @@ export const getAuth = () => useContext(UserContext)
 
 
 
-    function fetchuser() {
-        if(userInfo !== null){
-            let query = 
-            ` *[email == "${userInfo.user.identifier}"]
-           `;
-        //    client.fetch(query).then((data)=> (setUser(data)))
-           client.fetch(query).then((data)=> (localStorage.setItem('user',JSON.stringify(data))))
+    // function fetchuser() {
+    //     if(userInfo !== null){
+    //         let query = 
+    //         ` *[email == "${userInfo.user.identifier}"]
+    //        `;
+    //     //    client.fetch(query).then((data)=> (setUser(data)))
+    //        client.fetch(query).then((data)=> (localStorage.setItem('user',JSON.stringify(data))))
        
-        }
-        else{
-            console.log('user is null')
-        }
-      }
+    //     }
+    //     else{
+    //         console.log('user is null')
+    //     }
+    //   }
     
     // function fetchuser() {
     //     if(userInfo !== null || []){
@@ -106,19 +106,19 @@ export const getAuth = () => useContext(UserContext)
     //     }
     //   }
 
-      function handleredirect () {
-        if(user)
-        setTimeout(()=>{
-            if(user.length > 0){
-             history('/dashboard')
-            console.log(user)
-            }
-            else if(user.length < 1){
-                history('/newuser')
-            }
-        }, 1000);
+      // function handleredirect () {
+      //   if(user)
+      //   setTimeout(()=>{
+      //       if(user.length > 0){
+      //        history('/dashboard')
+      //       console.log(user)
+      //       }
+      //       else if(user.length < 1){
+      //           history('/newuser')
+      //       }
+      //   }, 1000);
          
-      }
+      // }
         
   
 

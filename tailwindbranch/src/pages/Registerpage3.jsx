@@ -7,209 +7,120 @@ import {
   Heading,
   Input,
   Stack,
-  HStack,
-  Radio,
-  RadioGroup,
-  FormHelperText,
-  Select,
   useToast,
+  Select,
+  SelectField,
+  NumberInput,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  NumberInputField
+  
 } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import { FaGoogle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '../components/Card'
 import DividerWithText from '../components/DividerWithText'
-import { Layout } from '../components/Layout2'
 import { useAuth } from '../contexts/AuthContext'
-// import Sidebar from '../partials/Sidebar'
-// import Header from '../partials/Header'
 import { Router, Routes } from 'react-router-dom'
-import { client } from '../../lib/client'
+import { Layout } from '../components/Layout2'
+import { FaAnchor } from 'react-icons/fa'
+import { FaCircle } from 'react-icons/fa'
 import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
-
-
-// const Countertutorial =()=>{
-  
-//   const [Counter, setcounter] = useState(1);
-//   const CounterAdd =()=>{
-//     setcounter(Counter + 1)
-//   };
-//   return(
-//     <div >
-//       {<div className='flex gap-3'><Button onClick={()=>{ setcounter(Counter + 1)}}>dd</Button>{Counter}</div>}
-//     </div>
-//   )
-// }
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import ListBox from '../components/listbox2'
 
 
 
-export default function Registerpage2(sanityuser) {
+
+
+export default function Registerpage(sanityuser) {
   const history = useNavigate()
   const { signInWithGoogle, register } = useAuth()
-  const [plan, setPlan] = useState('')
-  const [service, OptService] = useState('Investment')
-  const [wantdemo, setWantDemo] = useState()
+  const [email, setEmail] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [passwordref, setPasswordref] = useState('')
+  const [region, setRegion] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const toast = useToast()
-  const mounted = useRef(false)
-  const [age, setAge] = useState()
-  const [sanitydata, setSanitydata] = useState()
-  const [value, setValue] = useState()
+
   
 
-//   const query = 
-//     ` *[firstname match "${firstname}"]
-// `;
+
+
+const handlesubmit = async () => {
+  history('/dashboard')
+
+}
+
   
-
-sanityuser ={plan, service, wantdemo }
-
-  useEffect(() => {
-    mounted.current = true
-    return () => {
-      mounted.current = false
-    }
-  }, [])
-
+  
+   
   return (
-    <div className="absolute inset-0 bg-gray-50 min-h-screen flex flex-col items-center justify-center  ">
-      {/* <div className='h-40 bg-green-300'>{`${name}`}</div> */}
-      
-        <h2 className='text-4xl text-blk text-center mb-5 font-poppins uppercase font-semibold'>Final Info...</h2>
-      
+    <div className="absolute inset-0 bg-plat min-h-screen flex flex-col slide-in-elliptic-top-fwd py-5  ">
+      {/* <!--
+  This component uses @tailwindcss/forms
 
-      {/* <Card maxW='md' mx='auto' mt={4}> */}
-        <form className='bg-plat py-10 px-10 rounded-3xl  min-w-[300px] md:min-w-[500px] shadow-2xl'
-          onSubmit={async e => {
-            e.preventDefault()
-           console.log(sanityuser)&localStorage.setItem('sanityuser3', JSON.stringify(sanityuser));
-            // your register logic here
-            // setIsSubmitting(true)
-              //  getdata()
-              // .finally(() => {
-              //   mounted.current && setIsSubmitting(false)
-              //   console.log(sanityuser)&&setSanitydata([sanityuser])&&console.log({sanitydata})
-                history('/setpin')
-                
-              // })
-          }}
-        >
-          <Stack spacing='6'>
-            <FormControl id='plan'>
-              <FormLabel>DO YOU WANT A DEMO ?</FormLabel>
-              {/* <Input
-                name='plan'
-                type='input'
-                autoComplete='email'
-                required
-                value={plan}
-                onChange={e => setPlan(e.target.value)}
-              /> */}
-            <Select placeholder='Pick an Option'
-            required
-            value={wantdemo}
-            onChange={e => setWantDemo(e.target.value)}>
-              <option>Yes</option>
-              <option>No</option>
-            </Select>
-            </FormControl>
-            <FormControl id='wantdemo'>
-              <FormLabel>PICK A PLAN BELOW</FormLabel>
-              {/* <Input
-                name='wantdemo'
-                type='input'
-                // autoComplete='password'
-                required
-                value={wantdemo}
-                onChange={e => setWantDemo(e.target.value)}
-              /> */}
-          <FormControl>
-            {/* <FormLabel>Pick A Plan</FormLabel> */}
-            <Select placeholder='Select plan'
-            value={plan}
-            onChange={e => setPlan(e.target.value)}>
-              <option>Bronze</option>
-              <option>Silver</option>
-              <option>Gold</option>
-              <option>Diamond</option>
-              <option>Platinum</option>
-            </Select>
-            <FormHelperText>Only for Tailoring Your Demo.</FormHelperText>
-          </FormControl>
-            </FormControl>
-            <FormControl as='fieldset'>
-              <FormLabel as='service'>What Service Are You Interested in?</FormLabel>
-              <RadioGroup defaultValue={service}
-              // value={service}
-              onChange={e => {OptService(e)} }>
-                <HStack spacing='5px'>
-                  <Radio value='DigitalFarming'><span>Digital Farming</span></Radio>
-                  <Radio value='Investment'>Investment</Radio>
-                  <Radio value='Retailing'>Retailing</Radio>
-                  {/* <Radio value='Sage of the six Paths'>Sage of the six Paths</Radio> */}
-                </HStack>
-              </RadioGroup>
-              {/* <FormHelperText>Select only if you're a fan.</FormHelperText> */}
-            </FormControl>
-           <div className=''>
-           {/* <PhoneInput
-      placeholder="Enter phone number"
-      value={value}
-      defaultCountry={'US'}
-      onChange={setValue}/> */}
-            </div> 
-            {/* <Button
-              type='submit'
-              colorScheme='blue'
-              size='lg'
-              fontSize='md'
-              isLoading={isSubmitting}
-            >
-             <span>NEXT</span>
-            </Button> */}
-               <div className='flex w-full justify-between mt-10'>
-              {/* <button className='text-base  bg-sky-300 px-2 rounded-xl py-4 uppercase'>Previous</button> */}
-              <Button 
-               size='md'
-               colorScheme='blue' >
-              Back
-             </Button>
-              {/* <button className='text-base  bg-sky-300 px-2 rounded-xl py-4 uppercase'>Next</button> */}
-              <Button 
-              size='md'
-              colorScheme='blue'
-              type='submit'
-               >
-                Next
-              </Button>
-            </div>
-          </Stack>
-        </form>
-        <Center my={4}>
-          {/* <Button variant='link' onClick={() => history.push('/login')}>
-          <span className='text-gradient text-2xl'>Login</span>  
-          </Button> */}
-        </Center>
-        {/* <DividerWithText my={6}>OR</DividerWithText>
-        <Button className='w-full bg-black-gradient' 
-          variant='outline'
-          width = '100%'
-          colorScheme='red'
-          leftIcon={<FaGoogle />}
-          onClick={() =>
-            signInWithGoogle()
-              .then(user => console.log(user))
-              .catch(e => console.log(e.message))
-          }
-        >
-         Sign in with Google
-        </Button> */}
-        {/* <Greeting/> */}
+  yarn add @tailwindcss/forms
+  npm install @tailwindcss/forms
+
+  plugins: [require('@tailwindcss/forms')]
+--> */}
+
+<div  className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+  <div  className="mx-auto max-w-lg text-center">
+    <h1 className="text-2xl font-bold sm:text-3xl text-blk uppercase">Final info..</h1>
+
+    <p className="mt-4 text-gray-500 uppercase font-poppins">
+      we Promise this is the last bit of info we need to finish setting up your account
+    </p>
+  </div>
+
+  <form onSubmit={(e)=>{ e.preventDefault()
+    handlesubmit()}}  className="mx-auto mt-8 mb-0 max-w-md space-y-4">
+    <div>
+      {/* <label for="email" class="sr-only">Email</label> */}
+
+      <div className="relative">
+        {/* <input
+          type="text"
+           className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+          placeholder="FIRST NAME"
+          value={firstName}
+          onChange={e => setFirstName(e.target.value)}
+        /> */}
+       
+        <div  className="relative">
+      <label htmlFor="">DO YOU WANT A DEBIT CARD ?</label>
+        <ListBox/>
+
+      </div>
         
-        
-     
-      {/* </Card> */}
+
+      </div>
+    </div>
+ <div className=' space-x-2'>
+        <input type="checkbox" name="" id="" />
+        <label htmlFor="">I CERTIFY I AM 18 AND ABOVE</label>
+        </div>
+    <div>
+      {/* <label for="password" class="sr-only">Password</label> */}
+      
+    </div>
+
+    <div className=" ">
+      <div className='mt-10 flex items-center justify-between'>
+      <button onclick={()=>{history(-1)}}className='text-base bg-green-300 px-4 py-2 rounded-md w-20 h-10 text-white uppercase shadow-2xl font-poppins font-medium'>BACK</button>
+     <button type='submit'   className='text-base bg-green-300 px-4 py-2 rounded-md w-20 h-10 text-white uppercase shadow-2xl font-poppins font-medium'>Next</button>
+      </div>
+    </div>
+  </form>
+</div>
+
       
     </div>
   )

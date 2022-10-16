@@ -29,7 +29,7 @@ import Agents from '../partials/dashboard/Agents';
 import AgentList from '../partials/dashboard/Card';
 // import { getsanityuser } from './Loginpage';
 import { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import {useQuery} from '@tanstack/react-query'
 import { client, urlFor } from '../../lib/client';
 import { motion } from 'framer-motion';
 import { FaHeart } from 'react-icons/fa';
@@ -42,7 +42,7 @@ function DashboardAgents() {
   // ])
   
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { data: agents } = useQuery('madLibsList', () => client.fetch(query));
+  const { data: agents } = useQuery(['madLibsList'], () => client.fetch(query));
   const [liked, setLiked] = useState(false)
 
 

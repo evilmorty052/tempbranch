@@ -17,21 +17,21 @@ const hero1 = () => {
         </p>
       </div>
 
-      <div className="flex flex-row justify-between items-center w-full text-center ">
-        <h1 className=" bounce-in-bottom  flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+      <div className="flex flex-row justify-between items-center w-full ">
+        <h1 className=" bounce-in-bottom  flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-blk ss:leading-[100.8px] leading-[75px] bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
           Investment<br className="sm:block hidden" />{" "}
-          <span className="text-gradient text-center">Made Easy</span>{" "}
+          <span className="text-green-300 text-center">Made Easy</span>{" "}
         </h1>
         <div className="ss:flex hidden md:mr-4 mr-0">
           
-          <GetStarted />
+          {/* <GetStarted /> */}
           
         </div>
       </div>
 
       <h1 className="font-poppins font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] w-full">
         
-      <p className={`${styles.paragraph} max-w-[470px] mt-5 font-poppins text-center ml-0 md:ml-8`}>
+      <p className={`${styles.paragraph} max-w-[470px] mt-5 font-poppins  text-blk`}>
         Invest In just a few clicks, Without the hassle of day trading. We help you build long-term wealth your way—$5 at a time.
       </p>
       </h1>

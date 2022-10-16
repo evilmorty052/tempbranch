@@ -7,196 +7,149 @@ import {
   Heading,
   Input,
   Stack,
-  HStack,
   useToast,
   Select,
   SelectField,
-  RadioGroup,
-  Radio,
   NumberInput,
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
   NumberInputField
+  
 } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import { FaGoogle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '../components/Card'
 import DividerWithText from '../components/DividerWithText'
-import { Layout } from '../components/Layout2'
 import { useAuth } from '../contexts/AuthContext'
-// import Sidebar from '../partials/Sidebar'
-// import Header from '../partials/Header'
 import { Router, Routes } from 'react-router-dom'
-import { client } from '../../lib/client'
+import { Layout } from '../components/Layout2'
+import { FaAnchor } from 'react-icons/fa'
 import { FaCircle } from 'react-icons/fa'
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
-
-
-// const Countertutorial =()=>{
-  
-//   const [Counter, setcounter] = useState(1);
-//   const CounterAdd =()=>{
-//     setcounter(Counter + 1)
-//   };
-//   return(
-//     <div >
-//       {<div className='flex gap-3'><Button onClick={()=>{ setcounter(Counter + 1)}}>dd</Button>{Counter}</div>}
-//     </div>
-//   )
-// }
+// import 'react-phone-number-input/style.css'
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import PhoneInput from 'react-phone-input-2'
+// import 'react-phone-input-2/lib/style.css'
+import ListBox from '../components/listbox'
+import RadioGroups from '../components/radiogroup'
+import { client } from '../../lib/client'
 
 
 
-export default function Registerpage2(sanityuser) {
+
+export default function Registerpage(firstname, lastname, email) {
   const history = useNavigate()
   const { signInWithGoogle, register } = useAuth()
-  const [firstname, setFirstname] = useState('')
-  const [lastname, setlastname] = useState('')
-  const [passwordref, setPasswordref] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [email, setEmail] = useState('')
+  // const [lastName, setLastName] = useState('')
+  // const [firstName, setFirstName] = useState('')
   const toast = useToast()
-  const mounted = useRef(false)
-  const [age, setAge] = useState('')
-  const [phone, setphone] = useState('')
-  const [sanitydata, setSanitydata] = useState()
-  const [value, setValue] = useState()
+  
+const fname = localStorage.getItem('firstname')
+const lname = localStorage.getItem('lastname')
+const emailID = localStorage.getItem('email')
+firstname = JSON.parse(fname)
+lastname = JSON.parse(lname)
+email = JSON.parse(emailID)
 
 
-  const query = 
-    ` *[firstname match "${firstname}"]
-`;
 
-// useEffect(() => {
-//   first
+// sanityuser ={firstName, lastName}
 
-//   return () => {
-//     second
-//   }
-// }, [third])
+const doc = { 
+  _type: "users",
+  lastname:`${lastname}`,
+  password :`0000`,
+  email :`${email}`,
+  firstname :`${firstname}`,
+  service :`Investment`,
+  region :`Europe`,
+  phone :`0000000000`,
+  demo :'yes',
+  pin :`0000`,
+  investment: 0,
+  earnings: 0,
+  plan:"Inactive"
 
+}
 
-sanityuser ={firstname, lastname, age,phone }
+const handlesubmit = async () => {
+  // localStorage.setItem('service',JSON.stringify(sanityuser))
+  client.create(doc)
+  
+  
+  // console.log(sanityuser)
+}
 
-  useEffect(() => {
-    mounted.current = true
-    return () => {
-      mounted.current = false
-    }
-  }, [])
-
+  
+  
+   
   return (
-    <div className="absolute inset-0 bg-gray-50 min-h-screen flex flex-col items-center justify-center ">
-      {/* <div className='h-40 bg-green-300'>{`${name}`}</div> */}
-      
-        <h2 className='text-4xl text-blk text-center mb-5 font-poppins uppercase font-medium'>Some Basic Info ..</h2>
-        
-      
+    <div className="absolute inset-0 bg-plat min-h-screen flex flex-col slide-in-elliptic-top-fwd py-5  ">
+      {/* <!--
+  This component uses @tailwindcss/forms
 
-      {/* <Card maxW='md' mx='auto' mt={4}> */}
-        <form className='bg-plat py-10 px-10 rounded-3xl  min-w-[300px] md:min-w-[500px] shadow-2xl'
-          onSubmit={async e => {
-            e.preventDefault()
-           console.log(sanityuser)&localStorage.setItem('sanityuser2', JSON.stringify(sanityuser));
-            // your register logic here
-            // setIsSubmitting(true)
-              //  getdata()
-              // .finally(() => {
-              //   mounted.current && setIsSubmitting(false)
-              //   console.log(sanityuser)&&setSanitydata([sanityuser])&&console.log({sanitydata})
-                history('/register/registerpage3')
-                
-              // })
-          }}
-        >
-          <Stack spacing='6'>
-            <FormControl id='firstname'>
-              <FormLabel><h1>FIRST NAME</h1></FormLabel>
-              {/* <input ref={namer}></input><button onClick={Greeting()}></button> */}
-              
-              <Input
-              //  ref={name}
-                name='firstname'
-                type='input'
-                // autoComplete='email'
-                required
-                value={firstname}
-                onChange={e => setFirstname(e.target.value)}
-              />
-            </FormControl>
-            <FormControl id='lastname'>
-              <FormLabel><h1>LAST NAME</h1></FormLabel>
-              <Input
-                name='lastname'
-                type='input'
-                // autoComplete='password'
-                required
-                value={lastname}
-                onChange={e => setlastname(e.target.value)}
-              />
-            </FormControl>
-            {/* <FormControl id='age'>
-              <FormLabel>AGE</FormLabel>
-              <Input
-                name='password'
-                type='number'
-                // autoComplete='password'
-                required
-                value={age}
-                onChange={e => setAge(e.target.value)}
-              />
-            </FormControl> */}
-            {/* <FormControl id='age'>
-              <FormLabel>Age</FormLabel>
-              <div>
-              <NumberInput max={80} min={18}
-              value={age}
-              onChange={value => setAge(value)}>
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-              </div>
-            </FormControl> */}
-            <FormControl id='age'>
-              <FormLabel>ARE YOU OVER 18?</FormLabel>
-              <RadioGroup defaultValue='YES'>
-            <HStack spacing='4px'>
-              <Radio value='YES'>YES</Radio>
-              <Radio value='NO'>NO</Radio>
-            </HStack>
-          </RadioGroup>
-            </FormControl>
-            <PhoneInput
-      placeholder="Enter phone number"
-      value={phone}
-      required
-      defaultCountry={'US'}
-      onChange={setphone}/>
-            <Button
-              type='submit'
-              colorScheme='blue'
-              size='lg'
-              fontSize='md'
-              isLoading={isSubmitting}
-            >
-             <span>NEXT</span>
-            </Button>
-          </Stack>
-        </form>
-        
-        <Center my={4}>
-        </Center>
-        
-        
-        
+  yarn add @tailwindcss/forms
+  npm install @tailwindcss/forms
+
+  plugins: [require('@tailwindcss/forms')]
+--> */}
+
+<div  className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+  <div  className="mx-auto max-w-lg text-center">
+    <h1 className="text-2xl font-bold sm:text-3xl text-blk uppercase">Pick A Service</h1>
+
+    <p className="mt-4 text-gray-500 uppercase font-poppins">
+      We use this info to tailor your onboarding experience
+    </p>
+  </div>
+
+  <form onSubmit={(e)=>{ e.preventDefault()
+    handlesubmit()}}  className="mx-auto mt-8 mb-0 max-w-md space-y-4">
+    <div>
+      {/* <label for="email" class="sr-only">Email</label> */}
+
+      <div className="relative">
+        {/* <input
+          type="text"
+           className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+          placeholder="FIRST NAME"
+          value={firstName}
+          onChange={e => setFirstName(e.target.value)}
+        /> */}
+         <RadioGroups/>
+
       </div>
+    </div>
+
+    <div>
+      {/* <label for="password" class="sr-only">Password</label> */}
+      <div  className="relative">
+        {/* <input
+          type="text"
+          class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+          placeholder={'LAST NAME'}
+          value={lastName}
+          onChange={e => setLastName(e.target.value)}
+        /> */}
+      </div>
+    </div>
+         {/* <div>
+          <label htmlFor="PICK A REGION">PICK A REGION:</label>
+          <ListBox/>
+         </div> */}
+   
+  </form>
+  <div className=" ">
+      <div className='mt-10 flex items-center justify-between'>
+      <button onClick={()=>{history('/register')}} className='text-base bg-green-300 px-4 py-2 rounded-md w-20 h-10 text-white uppercase shadow-2xl font-poppins font-medium'>Back</button>
+     <button onClick={()=>{handlesubmit()&history('/register/registerpage3')}}  className='text-base bg-green-300 px-4 py-2 rounded-md w-20 h-10 text-white uppercase shadow-2xl font-poppins font-medium'>Next</button>
+      </div>
+    </div>
+</div>
+
       
-      
-    
+    </div>
   )
 }

@@ -18,8 +18,8 @@ const Feature1 = () => (
       {/* gradient end */}
     </div>
     <div className={layout.sectionInfo}>
-      <h2 className={`${styles.heading2} px-4`}>
-        Never Miss An<span className='text-gradient'>Opportunity</span> <br className="sm:block hidden" /> 
+      <h2 className={`${styles.heading2} px-4 space-x-3`}>
+        VITAL<span className='text-gradient'>UPDATES</span> <br className="sm:block hidden" /> 
       </h2>
       {/* <span className="text-red-400">DISCRIMINATION</span> */}
       <p className={`${styles.paragraph} max-w-[470px] mt-5 text-white px-4`}>

@@ -1,135 +1,104 @@
 import React, { useState } from 'react';
+import PricingCard from '../components/PricingCard';
+import Navbar from '../components/Navbar'
+import image from '../assets/Dman1.png'
+import Hero from '../components/hero3';
+import styles from '../style';
+import CTA from '../components/CTA2';
+import Plan2 from '../components/plans/plan2';
+import Plan3 from '../components/plans/plan3';
 
-import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
-import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
-import DashboardAvatars from '../partials/dashboard/DashboardAvatars';
-import FilterButton from '../partials/actions/FilterButton';
-import Datepicker from '../partials/actions/Datepicker';
-import DashboardCard01 from '../partials/dashboard/DashboardCard01';
-import DashboardCard02 from '../partials/dashboard/DashboardCard02';
-import DashboardCard03 from '../partials/dashboard/DashboardCard03';
-import DashboardCard04 from '../partials/dashboard/DashboardCard04';
-import DashboardCard05 from '../partials/dashboard/DashboardCard05';
-import DashboardCard06 from '../partials/dashboard/DashboardCard06';
-import DashboardCard07 from '../partials/dashboard/DashboardCard07';
-import DashboardCard08 from '../partials/dashboard/DashboardCard08';
-import DashboardCard09 from '../partials/dashboard/DashboardCard09';
-import DashboardCard10 from '../partials/dashboard/DashboardCard10';
-import DashboardCard11 from '../partials/dashboard/DashboardCard11';
-import DashboardCard12 from '../partials/dashboard/DashboardCard12';
-import DashboardCard13 from '../partials/dashboard/DashboardCard13';
-import DashboardCard14 from '../partials/dashboard/DashboardCard14';
-import Card from '../partials/dashboard/Card';
-import Card2 from '../partials/dashboard/Card2';
-import Banner from '../partials/Banner';
-import Pickagent from './pickagent';
+
+
 
 function Dashboardprofile() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-gradient">
+    <>
+    <div className='flex flex-col bg-plat'>
+         <div className='bg-blk px-5 py-2'>
+            <Navbar/>
+         </div>
+         {/* <section className='mt-10 w-full flex px-5 flex-col items-center'>
+            <div className=' bg-blk py-10 px-10 rounded-3xl  max-w-4xl'>
+                  <div className='md:flex md:flex-row flex flex-col md:space-x-10'>
+                      <div className=' md:space-y-5  flex-2'>
+                            <h3 className='text-white text-4xl self-center uppercase md:tracking-wide'>We Have A Plan For Everyone</h3>
+                            <p className='text-xl uppercase text-white'>Just pick one to start earning with medik 420 <br />its that simple!</p>
+                      </div>
+                      <div className=' bg-white rounded-3xl max-w-md'>
+                        <img src={image} alt="" className=" relative z-[5] "/>
 
-      {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-      {/* Content area */}
-      <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden ">
-
-        {/*  Site header */}
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-        <main>
-          <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-
-            {/* Welcome banner */}
-            <WelcomeBanner />
-
-            {/* Dashboard actions */}
-            <div className="sm:flex sm:justify-between sm:items-center mb-8">
-
-              {/* Left: Avatars */}
-              {/* <DashboardAvatars /> */}
-
-              {/* Right: Actions */}
-              <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2 ">
-                {/* Filter button */}
-                {/* <FilterButton /> */}
-                {/* Datepicker built with flatpickr */}
-                {/* <Datepicker /> */}
-                {/* Add view button */}
-                {/* <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                    <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
-                        <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                    </svg>
-                    <span className="hidden xs:block ml-2">Add view</span>
-                </button>                 */}
+                      </div>
+                  </div> 
+ 
+            </div>
+         </section> */}
+         <div className='px-5'>
+         <Hero/>
+         </div>
+         
+         <div  className='hidden md:flex w-full justify-center my-10 '>
+           <h3  className='text-4xl uppercase  font poppins text-bold'>Plans and pricing</h3>
+         </div>
+         <div className='w-full flex-col px-4  flex mt-10 md:hidden'>
+             <h1 className='sm:text-2xl sm:text-center font-poppins text-blk text-left text-xl font-bold tracking-wider md:text-4xl uppercase '>Starter PLANS to get you up and running.</h1>
+             <p className=' sm:text-center sm:text-xl font-poppins font-medium text-lg'>invest withdraw or cancel anytime on all plans.</p>
+         </div>
+         <div className=' w-full h-full  flex flex-col px-4 py-10 md:px-10'>
+              <div className=' space-y-5 flex flex-col sm:flex-row sm:flex sm:space-x-10 sm:space-y-0 md:items-center md:justify-center'>
+                <div className='hidden md:flex md:flex-col'>
+                  <h1 className='text-2xl uppercase font-poppins font-bold'>
+                  Starter PLANS to get you up and running.
+                  </h1>
+                  <p className='  font-poppins font-medium text-xl uppercase'>invest withdraw or cancel anytime on all plans.</p>
+                </div>
+                <PricingCard/>
+                <Plan2/>
               </div>
-
-            </div>
-            {/* <div class='grid grid-flow-col md:flex-col'>
-            <Card />
-            <Card2 />
-            <Card2 />
-            </div> */}
-            
-            {/* Cards */}
-            <div className="flex gap-4 flex-wrap">
-
-              {/* Line chart (Acme Plus) */}
-              {/* Line chart (Acme Advanced) */}
-              {/* <DashboardCard01 /> */}
-              
-    {/* <div className='bg-glass2 h-max rounded-full text-center px-2 py-1'>
-      <a class="buy-with-crypto"
-        href="https://commerce.coinbase.com/checkout/b9e23fa5-8270-489b-97b1-ce43669c4129">
-          <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-      </a>
-      <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
-      </script>
-    </div> */}
-              
-             
-               
-              
-              {/* <DashboardCard01 /> */}
-              {/* <DashboardCard02 /> */}
-              {/* Line chart (Acme Professional) */}
-              {/* <DashboardCard03 /> */}
-              {/* Bar chart (Direct vs Indirect) */}
-              {/* <DashboardCard04 /> */}
-              {/* Line chart (Real Time Value) */}
-              {/* <DashboardCard05 /> */}
-              {/* Doughnut chart (Top Countries) */}
-              {/* <DashboardCard06 /> */}
-              {/* Table (Top Channels) */}
-              {/* <DashboardCard07 /> */}
-              {/* Line chart (Sales Over Time) */}
-              {/* <DashboardCard08 /> */}
-              {/* Stacked bar chart (Sales VS Refunds) */}
-              {/* <DashboardCard09 /> */}
-              {/* Card (Customers) */}
-              {/* <DashboardCard10 /> */}
-              {/* Card (Reasons for Refunds) */}
-              {/* <DashboardCard11 /> */}
-              {/* Card (Recent Activity) */}
-              {/* <DashboardCard12 /> */}
-              {/* <DashboardCard14 /> */}
-              {/* Card (Income/Expenses) */}
-              
-              {/* <DashboardCard13 /> */}
-              
-              
-            </div>
-          </div>
-        </main>
-
-        <Banner />
-
-      </div>
+         </div>
+         <div className='px-4 md:px-20'>
+            <CTA stext={'TRY'} btext={'MEDIK 420 STASH'} paragraph={'BUILD WEALTH YOUR OWN WAY'}/>
+         </div>
+         <div className='w-full flex-col px-4  flex mt-10 md:hidden'>
+             <h1 className='sm:text-2xl sm:text-center font-poppins text-blk text-left text-xl font-bold tracking-wider md:text-4xl uppercase'>average PLANS to begin maximizing your returns.</h1>
+             <p className='sm:text-center sm:text-xl text-lg font-poppins font-medium'>comfortable returns on all plans in this tier</p>
+         </div>
+         <div className=' w-full h-full  flex flex-col px-4 py-10 md:px-10'>
+              <div className=' space-y-5 flex flex-col sm:flex-row sm:flex sm:space-x-10 sm:space-y-0 md:items-center md:justify-center'>
+              <div className='hidden md:flex md:flex-col'>
+                  <h1 className='text-2xl uppercase font-poppins font-bold'>
+                  average PLANS to begin maximizing your returns.
+                  </h1>
+                  <p className='  font-poppins font-medium text-xl uppercase'>comfortable returns on all plans in this tier</p>
+                </div>
+                <Plan3/>
+                <PricingCard/>
+              </div>
+         </div>
+         <div className='px-4 md:px-20'>
+            <CTA stext={'TRY'} btext={'MEDIK 420 STASH'} paragraph={'BUILD WEALTH YOUR OWN WAY'}/>
+         </div>
+         <div className='w-full flex-col px-4  flex mt-10 md:hidden'>
+             <h1 className='sm:text-2xl sm:text-center font-poppins text-blk text-left text-xl font-bold tracking-wider md:text-4xl uppercase'>Maximized PLANS for optimum returns.</h1>
+             <p className='sm:text-center sm:text-xl text-lg font-poppins font-medium'>Daily returns are included on all plans in this tier</p>
+         </div>
+         <div className=' w-full h-full  flex flex-col px-4 py-10 md:px-10'>
+              <div className=' space-y-5 flex flex-col sm:flex-row sm:flex sm:space-x-10 sm:space-y-0 md:items-center md:justify-center'>
+              <div className='hidden md:flex md:flex-col'>
+                  <h1 className='text-2xl uppercase font-poppins font-bold'>
+                  Maximized PLANS for optimum returns.
+                  </h1>
+                  <p className='  font-poppins font-medium text-xl uppercase'>Daily returns are included on all plans in this tier</p>
+                </div>  
+                <PricingCard/>
+                <PricingCard/>
+              </div>
+         </div>
     </div>
+    </>
   );
 }
 

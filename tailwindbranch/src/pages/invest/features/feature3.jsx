@@ -9,11 +9,11 @@ const Feature3 = () => (
     <div className='mx-auto max-w-screen-md'>
   <section id="product" className={`${layout.sectionReverse} `}>
     <div className={layout.sectionInfo}>
-      <h2 className={`${styles.heading2} px-4 `}>
-        Never Miss An <span className='text-gradient'>Opportunity</span> <br className="sm:block hidden" /> 
+      <h2 className={`${styles.heading2} px-4 text-blk`}>
+        NO MISSED <span className='text-green-300'>CHANCES</span> <br className="sm:block hidden" /> 
       </h2>
       {/* <span className="text-red-400">DISCRIMINATION</span> */}
-      <p className={`${styles.paragraph} max-w-[470px] mt-5 text-white px-4`}>
+      <p className={`${styles.paragraph} max-w-[470px] mt-5 text-blk px-4 sm:text-lg`}>
       Always Stay in the Loop With Handy Information Always at your fingertips.
         
       </p>

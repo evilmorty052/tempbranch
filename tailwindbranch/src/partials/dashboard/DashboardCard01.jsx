@@ -19,17 +19,8 @@ import { Switch } from '@headlessui/react'
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 import { useState } from 'react';
 
-function DashboardCard01() {
-  const sanityuser = localStorage.getItem('sanityuser');
-  // const person1 = localStorage.getItem('sanityuser1');
-  // const person2 = localStorage.getItem('sanityuser2');
-  // const person3 = localStorage.getItem('sanityuser3');
-  const person = JSON.parse(sanityuser);
-  useEffect(() => {
-   
-    if(sanityuser != null)
-   console.log(person[0].email)
-  }, []);
+function DashboardCard01({earnings}) {
+  
 
   const [showing , isShowing] = useState(false)
   const [enabled, setEnabled] = useState(false)
@@ -110,7 +101,7 @@ function DashboardCard01() {
         <div className="flex items-end text-end pb-4">
           {/* <div className="text-3xl font-bold text-green-400 mr-2 text-center">{person.firstname}</div> */}
           <div>
-          <div className="text-3xl  font-poppins text-blk font-bold px-1.5  rounded-full">{enabled ? `${'$ '}${person[0].earnings}`: ''}</div>
+          <div className="text-3xl  font-poppins text-blk font-bold px-1.5  rounded-full">{enabled ? `${'$ '}${earnings}`: ''}</div>
           </div>
           
         </div>

@@ -22,10 +22,7 @@ import { FaGoogle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '../components/Card'
 import DividerWithText from '../components/DividerWithText'
-// import { Layout } from '../components/Layout'
 import { useAuth } from '../contexts/AuthContext'
-// import Sidebar from '../partials/Sidebar'
-// import Header from '../partials/Header'
 import { Router, Routes } from 'react-router-dom'
 import { Layout } from '../components/Layout2'
 import { FaAnchor } from 'react-icons/fa'
@@ -35,26 +32,16 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
-// const Countertutorial =()=>{
-  
-//   const [Counter, setcounter] = useState(1);
-//   const CounterAdd =()=>{
-//     setcounter(Counter + 1)
-//   };
-//   return(
-//     <div >
-//       {<div className='flex gap-3'><Button onClick={()=>{ setcounter(Counter + 1)}}>dd</Button>{Counter}</div>}
-//     </div>
-//   )
-// }
 
 
 
-export default function Registerpage(sanityuser) {
+
+export default function Registerpage(fname, lname) {
   const history = useNavigate()
   const { signInWithGoogle, register } = useAuth()
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [firstName, setFirstName] = useState('')
   const [passwordref, setPasswordref] = useState('')
   const [region, setRegion] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -62,209 +49,83 @@ export default function Registerpage(sanityuser) {
   const mounted = useRef(false)
   const [name, nametag] = useState(null)
   const namer = useRef(null)
-//   const mojoauth = new MojoAuth( "ddfa0887-b4ce-43dc-9ec8-5c4c53522387" );
-//  mojoauth.signInWithStateID()
-//  .then( payload => {
-//      console.log(payload)
-//   })
 
-sanityuser ={email,password,region}
 
-  useEffect(() => {
-    mounted.current = true
-    return () => {
-      mounted.current = false
-    }
-  }, [])
+// fname ={firstName}
+// lname ={lastName}
+
+
+const handlesubmit = async () => {
+  localStorage.setItem('firstname',JSON.stringify(firstName))&localStorage.setItem('lastname',JSON.stringify(lastName))
+  history('/register/registerpage2')
+ 
+}
+
+
+
   
-
+  
+   
   return (
-    <div className="absolute inset-0 bg-gray-50 min-h-screen flex flex-col items-center justify-center slide-in-elliptic-top-fwd ">
-      {/* {<div className='h-40 bg-green-300'>{`${name}`}</div> } */}
-      
-        <h2 className='text-xl text-center mb-5 font-poppins uppercase font-semibold rounded-2xl'>Account Info..</h2>
-      
-      {/* <Card maxW='md' mx='auto' mt={4}> */}
-        <form className='bg-plat py-10 px-10 rounded-3xl  min-w-[300px] md:min-w-[500px] shadow-2xl'
-          onSubmit={async e => {
-            e.preventDefault()
-            // if (!email || !password) {
-            //   toast({
-            //     description: 'Credentials not valid.',
-            //     status: 'error',
-            //     duration: 9000,
-            //     isClosable: true,
-            //   })
-            //   return
-            // }
-            // your register logic here
-            setIsSubmitting(true)
-            register(email, password)
-              .then(res => {console.log(sanityuser)&localStorage.setItem('sanityuser1', JSON.stringify(sanityuser));
-              history('/register/registerpage2')})
-              .catch(error => {
-                console.log(error.message)&history('/login')
-                toast({
-                  description: 'email already in use',
-                  status: 'error',
-                  duration: 9000,
-                  isClosable: true,
-                })
-              return
-               
-              })
-              .finally((error,) => {
-                mounted.current && setIsSubmitting(false)
-                if(password !== passwordref){
-                  (toast({
-                    description: 'passwords must match',
-                    status: 'error',
-                    duration: 9000,
-                    isClosable: true,
-                  }))
-                  return
-                }
-                  
+    <div className="absolute inset-0 bg-plat min-h-screen flex flex-col slide-in-elliptic-top-fwd py-5  ">
+      {/* <!--
+  This component uses @tailwindcss/forms
 
+  yarn add @tailwindcss/forms
+  npm install @tailwindcss/forms
 
+  plugins: [require('@tailwindcss/forms')]
+--> */}
 
-              
-                if(error){
-                  console.log(error)
-                }
-                
-                // console.log(sanityuser)&localStorage.setItem('sanityuser1', JSON.stringify(sanityuser));
-                // history('/register/registerpage2')
+<div  className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+  <div  className="mx-auto max-w-lg text-center">
+    <h1 className="text-2xl font-bold sm:text-3xl text-blk uppercase">Lets get some info..</h1>
 
-              })
-          }}
-        >
-          <Stack spacing='6'>
-            <FormControl id='email'>
-              <FormLabel><span className='uppercase font-poppins'>email address</span></FormLabel>
-              
-              
-              <Input
-               ref={name}
-                name='email'
-                type='email'
-                autoComplete='email'
-                required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
-            </FormControl>
-            <FormControl id='password'>
-              <FormLabel><span className='uppercase font-poppins'>password</span></FormLabel>
-              <Input
-                name='password'
-                type='password'
-                autoComplete='password'
-                required
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </FormControl>
-            <FormControl id='passwordref'>
-              <FormLabel><span className='uppercase font-poppins'>Confirm password</span></FormLabel>
-              <Input
-                name='password'
-                type='password'
-                // autoComplete='password'
-                required
-                value={passwordref}
-                onChange={e => setPasswordref(e.target.value)}
-              />
-             
-            </FormControl>
-            {/* <FormControl id='phone'>
-              <FormLabel>Mobile</FormLabel>
-              <div>
-              <NumberInput max={80} min={18}>
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-              </div>
-            </FormControl> */}
-            <FormControl>
-  <FormLabel><span className='uppercase font-poppins'>region</span></FormLabel>
-        <Select 
-        placeholder='Select Region'
-        onChange={e=>{setRegion(e.target.value)}}
-        value={region}
-        required>
-          <option>Europe</option>
-          <option>North America</option>
-          <option>South America</option>
-          <option>Asia</option>
-          <option>Africa</option>
-        </Select>
-   </FormControl>
-          
-            {/* <Button 
-              type='submit'
-              colorScheme='pink'
-              size='lg'
-              fontSize='md'
-              isLoading={isSubmitting}
-            >
-             NEXT
-            </Button> */}
-            
-            {/* <Button
-              type='submit'
-              colorScheme='pink'
-              size='lg'
-              fontSize='md'
-              isLoading={isSubmitting}
-            >
-             PREVIOUS
-            </Button> */}
-          </Stack>
-          <div className='flex w-full justify-between mt-10'>
-              {/* <button className='text-base  bg-sky-300 px-2 rounded-xl py-4 uppercase'>Previous</button> */}
-              <Button 
-               size='sm'
-               colorScheme='blue' >
-              Back
-             </Button>
-              {/* <button className='text-base  bg-sky-300 px-2 rounded-xl py-4 uppercase'>Next</button> */}
-              <Button 
-              size='sm'
-              colorScheme='blue'
-              type='submit'
-               >
-                Next
-              </Button>
-            </div>
-        </form>
-        <Center my={4}>
-          {/* <Button variant='link' onClick={() => history.push('/login')}>
-          <span className='text-gradient text-2xl'>Login</span>  
-          </Button> */}
-        </Center>
-        {/* <DividerWithText my={6}>OR</DividerWithText>
-        <Button className='w-full bg-black-gradient' 
-          variant='outline'
-          width = '100%'
-          colorScheme='red'
-          leftIcon={<FaGoogle />}
-          onClick={() =>
-            signInWithGoogle()
-              .then(user => console.log(user))
-              .catch(e => console.log(e.message))
-          }
-        >
-         Sign in with Google
-        </Button> */}
-        {/* <Greeting/> */}
-        
-        
-      
-      {/* </Card> */}
+    <p className="mt-4 text-gray-500 uppercase font-poppins">
+      we will never share your info with any 3rd party provider or store your data on an external server
+    </p>
+  </div>
+
+  <form onSubmit={(e)=>{ e.preventDefault()
+    handlesubmit()}}  className="mx-auto mt-8 mb-0 max-w-md space-y-4">
+    <div>
+      {/* <label for="email" class="sr-only">Email</label> */}
+
+      <div className="relative">
+        <input
+          type="text"
+           className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+          placeholder="FIRST NAME"
+          value={firstName}
+          onChange={e => setFirstName(e.target.value)}
+        />
+
+      </div>
+    </div>
+
+    <div>
+      {/* <label for="password" class="sr-only">Password</label> */}
+      <div  className="relative">
+        <input
+          type="text"
+          class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+          placeholder={'LAST NAME'}
+          value={lastName}
+          onChange={e => setLastName(e.target.value)}
+        />
+
+      </div>
+    </div>
+
+    <div className=" ">
+      <div className='mt-10 flex items-center justify-between'>
+      <button onClick={()=>{history('/')}} className='text-base bg-green-300 px-4 py-2 rounded-md w-20 h-10 text-white uppercase shadow-2xl font-poppins font-medium'>Home</button>
+     <button type='submit'   className='text-base bg-green-300 px-4 py-2 rounded-md w-20 h-10 text-white uppercase shadow-2xl font-poppins font-medium'>Next</button>
+      </div>
+    </div>
+  </form>
+</div>
+
       
     </div>
   )

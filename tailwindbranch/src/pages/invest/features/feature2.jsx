@@ -18,11 +18,11 @@ const Feature2 = () => (
     </div>
 
     <div className={layout.sectionInfo}>
-      <h2 className={`${styles.heading2} px-4 `}>
-        LEARN HOW TO <span className='text-gradient'>INVEST</span> <br className="sm:block hidden" /> 
+      <h2 className={`${styles.heading2} px-4 text-blk `}>
+        LEARN HOW TO <span className='text-green-300'>INVEST</span> <br className="sm:block hidden" /> 
       </h2>
       {/* <span className="text-red-400">DISCRIMINATION</span> */}
-      <p className={`${styles.paragraph} max-w-[470px] mt-5 text-white px-4`}>
+      <p className={`${styles.paragraph} max-w-[470px] mt-5 text-blk px-4`}>
       We’ll help you build and manage a diversified portfolio with personalized advice based on your risk level.
         
       </p>

@@ -43,7 +43,7 @@ import Registerpage1 from './pages/Registerpage1';
 import Registerpage2 from './pages/Registerpage2';
 import StepRegister from './partials/stepregister';
 import Loginpage2 from './pages/Loginpage2';
-import Mojo from './pages/mojo';
+
 import Welcome from './pages/welcome';
 import Newuser from './pages/newuser';
 import Log from './pages/log';
@@ -65,7 +65,7 @@ function App() {
     <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/login" element={<Loginpage/>} />
+        <Route exact path="/login" element={<Log/>} />
         <Route exact path="/welcome" element={<Welcome />} />
         <Route exact path="/login2" element={<Loginpage2 />} />
         <Route exact path="/login3" element={<Confirmsignin />} />
