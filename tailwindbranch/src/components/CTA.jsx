@@ -4,8 +4,8 @@ import Button from "./Button";
 const CTA = () => (
   <section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
     <div className="flex-1 flex flex-col">
-      <h2 className={styles.heading2}>Try <span className="text-gradient">MediK 420 now!</span></h2>
-      <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
+      <h2 className={`${styles.heading2} uppercase`}>Try <span className="text-green-300">MediK 420 </span><span className="text-white">now!</span></h2>
+      <p className={`${styles.paragraph} max-w-[470px] mt-5 text-white`}>
         Everything you need to Grow your investment.
       </p>
     </div>

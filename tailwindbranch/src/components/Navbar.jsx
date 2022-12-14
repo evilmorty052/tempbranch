@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import Popover from '../partials/popover'
 import Popover2 from '../partials/popover2'
-import { NavLink as Link } from "react-router-dom";
+import { NavLink as Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 
 
@@ -15,11 +15,12 @@ const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const { logout, currentUser } = useAuth()
+ const history = useNavigate()
 
   return (
     <nav className="w-full flex py-2 justify-between items-center navbar">
       {/* <img src={Ml} alt="medic420" className="w-[100px] h-[70px]" /> */}
-      <h2 className="uppercase text-gray-50 text-2xl  font-poppins font-black tracking-wide  "> MEDIK<span className="text-green-200">420</span>  </h2> 
+      <h2 onClick={()=>history('/')}  className="uppercase text-gray-50 text-2xl  font-poppins font-black tracking-wide  "> MEDIK<span className="text-green-200">420</span>  </h2> 
 
       <ul className="list-none md:flex hidden justify-end items-center flex-1 ">
         {/* {navLinks.map((nav, index) => (
@@ -39,11 +40,11 @@ const Navbar = () => {
         <Popover/>
         {/* <Navlink to='/learn' name='Learn'/> */}
         {/* <Navlink to='/aboutus' name='About Us'/> */}
-        <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white">SHOP CBD</a>
+        <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white">Shop</a>
         {/* <Navlink to='https://products-31e31.web.app' name='Packages'/> */}
         <Popover2/>
          {!currentUser && <Navlink to='/login' name='Login' />}
-        {!currentUser && <Navlink to='/register' name='Register' />}
+        {!currentUser && <Navlink to='/pick' name='Register' />}
         {currentUser && <Navlink to='/profile' name='profile' />}
         {currentUser && (
   <Navlink
@@ -89,11 +90,11 @@ const Navbar = () => {
           <Navlink to='/' name='Home'/>
           {/* <Navlink to='/dashboard' name='Dashboard'/> */}
           {/* <Navlink to='/https://products-31e31.web.app' name='Packages'/> */}
-          <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white">SHOP CBD</a>
+        {currentUser && <Navlink to='/profile' name='Dashboard' />}
+          <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white mx-4">Shop</a>
           {/* <Navlink to='/aboutus' name='About Us'/> */}
          {!currentUser && <Navlink to='/login' name='Login' />}
-        {!currentUser && <Navlink to='/register' name='Register' />}
-        {currentUser && <Navlink to='/profile' name='Profile' />}
+        {!currentUser && <Navlink to='/pick' name='Register' />}
         <Popover/>
         <Popover2/>
         {currentUser && (

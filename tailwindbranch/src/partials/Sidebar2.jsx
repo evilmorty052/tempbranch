@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FaArrowRight, FaHandHoldingUsd, FaBriefcase, FaGraduationCap, FaChartLine, FaPowerOff, FaUserTie } from 'react-icons/fa';
-
-
+import { Tooltip } from 'antd';
+import UserAvatar from '../images/user-avatar-32.png';
 
 import SidebarLinkGroup from './SidebarLinkGroup';
 
 function Sidebar({
+  avatar,
   sidebarOpen,
   setSidebarOpen
 }) {
@@ -56,11 +57,11 @@ function Sidebar({
       <div className={`fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden="true"></div>
 
       {/* Sidebar */}
-      <div className='bg-inherit relative'>
+      <div className='bg-slate-900 relative'>
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-glass2 p-4 transition-all duration-500 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-64'}`}
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-glass2 p-4 transition-all duration-500 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-64'}`}
       >
 
         {/* Sidebar header */}
@@ -80,7 +81,9 @@ function Sidebar({
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            <h2 className='text-3xl font-poppins font-extrabold text-blk'>MEDIK <span className='text-green-400'>420</span> </h2>
+            <h2 className='text-3xl font-poppins font-extrabold text-blk 2xl:block'>MEDIK <span className='text-green-400'>420</span> </h2>
+            {/* <h2 className='text-3xl font-poppins font-extrabold text-blk hidden lg:block 2xl:hidden'>M <span className='text-green-400'></span> </h2> */}
+            {/* <img className="w-8 h-8 rounded-full hidden md:block" src={avatar} width="32" height="32" alt="User" /> */}
           </NavLink>
         </div>
 
@@ -95,105 +98,100 @@ function Sidebar({
             <ul className="mt-3 space-y-8 md:space-y-10">
               {/* Dashboard */}
               <div className='hover:bg-green-400 rounded-3xl'>
+            
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname === '/' && 'bg-slate-900'}`}>
                 <NavLink end to="/dashboard" className={`block text-glass hover:text-white truncate transition duration-150 ${pathname === '/' && 'hover:text-slate-200'}`}>
                   <div className="flex items-center">
-                    {/* <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path className={`fill-current text-slate-400 ${pathname === '/' && '!text-indigo-500'}`} d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z" />
-                      <path className={`fill-current text-slate-600 ${pathname === '/' && 'text-indigo-600'}`} d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z" />
-                      <path className={`fill-current text-slate-400 ${pathname === '/' && 'text-indigo-200'}`} d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z" />
-                    </svg> */}
+              
                     <span className='text-2xl'><FaChartLine/></span>
-                    <span className="flex font-poppins gap-4 justify-center items-center text-lg font-bold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">DASHBOARD  </span>
+                    <span className="flex font-poppins gap-4 justify-center items-center text-lg font-bold ml-3 lg:opacity-100 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">DASHBOARD  </span>
                   </div>
                 </NavLink>
               </li>
+           
+            
               </div>
               <div className='hover:bg-green-400 rounded-3xl'>
+
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname === '/' && 'bg-slate-900'}`}>
                 <NavLink end to="/dashboard/portfolio" className={`block text-glass hover:text-white truncate transition duration-150 ${pathname === '/' && 'hover:text-slate-200'}`}>
                   <div className="flex items-center">
-                    {/* <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path className={`fill-current text-slate-400 ${pathname === '/' && '!text-indigo-500'}`} d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z" />
-                      <path className={`fill-current text-slate-600 ${pathname === '/' && 'text-indigo-600'}`} d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z" />
-                      <path className={`fill-current text-slate-400 ${pathname === '/' && 'text-indigo-200'}`} d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z" />
-                    </svg> */}
+          
                     <span className='text-2xl'><FaBriefcase/></span>
-                    <span className="font-bold font-poppins flex gap-4 justify-center items-center  text-lg ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">PORTFOLIO </span>
+                    <span className="font-bold font-poppins flex gap-4 justify-center items-center  text-lg ml-3 lg:opacity-100 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">PORTFOLIO </span>
                   </div>
                 </NavLink>
               </li>
+      
               </div>
               <div className='hover:bg-green-400 rounded-3xl'>
+             
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname === '/' && 'bg-slate-900'}`}>
-                <NavLink end to="/profile" className={`block text-glass hover:text-white truncate transition duration-150 ${pathname === '/profile' && 'hover:text-slate-200'}`}>
+                <NavLink end to="/coach" className={`block text-glass hover:text-white truncate transition duration-150 ${pathname === '/profile' && 'hover:text-slate-200'}`}>
                   <div className="flex items-center">
-                    {/* <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path className={`fill-current text-slate-400 ${pathname === '/' && '!text-indigo-500'}`} d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z" />
-                      <path className={`fill-current text-slate-600 ${pathname === '/' && 'text-indigo-600'}`} d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z" />
-                      <path className={`fill-current text-slate-400 ${pathname === '/' && 'text-indigo-200'}`} d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z" />
-                    </svg> */}
+                   
                     <span className='text-2xl'><FaGraduationCap/></span>
-                    <span className=" font-bold font-poppins flex gap-4 justify-center items-center  text-lg  ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">COACH </span>
+                    <span className=" font-bold font-poppins flex gap-4 justify-center items-center  text-lg  ml-3 lg:opacity-100 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">COACH </span>
                   </div>
                 </NavLink>
               </li>
+      
               </div>
               <div className='hover:bg-green-400 rounded-3xl'>
-
+    
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('inbox') && 'bg-slate-900'}`}>
                 <NavLink end to="/profile" className={`block text-glass hover:text-white truncate transition duration-150 ${pathname.includes('inbox') && 'hover:text-slate-200'}`}>
                   <div className="flex items-center ">
-                    {/* <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path className={`fill-current text-slate-600 ${pathname.includes('inbox') && 'text-indigo-500'}`} d="M16 13v4H8v-4H0l3-9h18l3 9h-8Z" />
-                      <path className={`fill-current text-slate-400 ${pathname.includes('inbox') && 'text-indigo-300'}`} d="m23.72 12 .229.686A.984.984 0 0 1 24 13v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-8c0-.107.017-.213.051-.314L.28 12H8v4h8v-4H23.72ZM13 0v7h3l-4 5-4-5h3V0h2Z" />
-                    </svg> */}
+                  
                     <span className='text-2xl'><FaHandHoldingUsd/></span>
-                    <span className=" font-poppins flex gap-4 justify-center items-center  text-lg font-bold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">WITHDRAW </span>
+                    <span className=" font-poppins flex gap-4 justify-center items-center  text-lg font-bold ml-3 lg:opacity-100 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">WITHDRAW </span>
                   </div>
                 </NavLink>
               </li>
-             
+
               </div>
               <div className='hover:bg-green-400 rounded-3xl'>
 
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('inbox') && 'bg-slate-900'}`}>
-                <NavLink end to="/dashboard/agents" className={`block text-glass hover:text-white truncate transition duration-150 ${pathname.includes('inbox') && 'hover:text-slate-200'}`}>
+                <NavLink end to="/agents" className={`block text-glass hover:text-white truncate transition duration-150 ${pathname.includes('inbox') && 'hover:text-slate-200'}`}>
                   <div className="flex items-center ">
-                    {/* <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path className={`fill-current text-slate-600 ${pathname.includes('inbox') && 'text-indigo-500'}`} d="M16 13v4H8v-4H0l3-9h18l3 9h-8Z" />
-                      <path className={`fill-current text-slate-400 ${pathname.includes('inbox') && 'text-indigo-300'}`} d="m23.72 12 .229.686A.984.984 0 0 1 24 13v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-8c0-.107.017-.213.051-.314L.28 12H8v4h8v-4H23.72ZM13 0v7h3l-4 5-4-5h3V0h2Z" />
-                    </svg> */}
                     <span className='text-2xl'><FaUserTie/></span>
-                    <span className=" font-poppins flex gap-4 justify-center items-center  text-lg font-bold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">AGENTS </span>
+                    <span className=" font-poppins flex gap-4 justify-center items-center  text-lg font-bold ml-3 lg:opacity-100 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">AGENTS </span>
+                  </div>
+                </NavLink>
+              </li>
+
+              </div>
+              <div className='  absolute bottom-20 hidden lg:block   w-14 2xl:hidden'>
+
+              <li className={` py-2 rounded-sm mb-0.5 last:mb-0  `}>
+                <NavLink end to="/dashboard/agents" className={`block text-glass hover:text-white truncate transition duration-150 `}>
+                  <div className="flex  ">
+                    <div className='bg-blk p-2 rounded-full'>
+                    <span className='text-4xl text-red-500'><FaPowerOff/></span>
+                    </div>
+                    
+                    <span className=" font-poppins flex gap-4 justify-center items-center  text-lg font-bold ml-3 lg:opacity-100 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">AGENTS </span>
                   </div>
                 </NavLink>
               </li>
              
               </div>
+              <div className='lg:hidden 2xl:block'>
               <li className='absolute bottom-20 bg-black  text-red-400 flex flex-col items-center justify-center h-16 w-16 rounded-full text-bold text-4xl font-poppins'>
                 <button  onClick={async e => {
       e.preventDefault()
       await logout()
     }}><FaPowerOff/></button>
               </li>
+              </div>
+          
              
             </ul>
           </div>
         </div>
 
-        {/* Expand / collapse button */}
-        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
-          <div className="px-3 py-2">
-            <button onClick={() => setSidebarExpanded(sidebarExpanded)}>
-              <span className="sr-only">Expand / collapse sidebar</span>
-              <svg className="w-6 h-6 fill-current sidebar-expanded:rotate-180" viewBox="0 0 24 24">
-                <path className="text-slate-400" d="M19.586 11l-5-5L16 4.586 23.414 12 16 19.414 14.586 18l5-5H7v-2z" />
-                <path className="text-slate-600" d="M3 23H1V1h2z" />
-              </svg>
-            </button>
-          </div>
-      </div>
+      
     </div>
       
     </div>

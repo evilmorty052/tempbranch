@@ -13,6 +13,55 @@ import Plan3 from '../components/plans/plan3';
 
 function Dashboardprofile() {
 
+  const available = [
+    {
+    name: 'Dedicated Agent',
+  
+  },
+    {
+    name: 'Daily Payout',
+
+  },
+    {
+    name: 'Daily Payout',
+
+  },
+    {
+    name: 'Daily Payout',
+
+  },
+    {
+    name: 'Daily Payout',
+
+  },
+]
+  const unavailable = [
+    {
+    name: 'Video Call',
+  
+  },
+    {
+    name: 'Another Thing',
+
+  },
+    {
+    name: 'Another Thing',
+
+  },
+    {
+    name: 'Another Thing',
+
+  },
+    {
+    name: 'Another Thing',
+
+  },
+    {
+    name: 'Another Thing',
+
+  },
+]
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -55,7 +104,7 @@ function Dashboardprofile() {
                   </h1>
                   <p className='  font-poppins font-medium text-xl uppercase'>invest withdraw or cancel anytime on all plans.</p>
                 </div>
-                <PricingCard/>
+                <PricingCard available={available} unavailable={unavailable}/>
                 <Plan2/>
               </div>
          </div>

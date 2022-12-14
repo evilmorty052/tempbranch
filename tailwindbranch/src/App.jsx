@@ -23,13 +23,12 @@ import './charts/ChartjsConfig';
 import Dashboard from './pages/Dashboard';
 import DashboardAgents from './pages/DashboardAgents';
 import Notfound from './pages/notfound';
-import Dashboardprofile from './pages/Dashboardprofile';
+import Pricing from './pages/Pricing';
 import Dashboardsubscribe from './pages/Dashboardsubscribe';
 import Home  from './Home'
-import Loginpage from './pages/Loginpage'
+
 import Registerpage from './pages/Registerpage'
 import Pickagent from './pages/pickagent';
-import Packages from './pages/packages';
 import Investing from './pages/invest/investing';
 // import Whoweare from './pages/whoweare';
 import Aboutus from './pages/Aboutus';
@@ -41,14 +40,22 @@ import Explore from './pages/explore/explore';
 import Products from './pages/explore/products/products';
 import Registerpage1 from './pages/Registerpage1';
 import Registerpage2 from './pages/Registerpage2';
-import StepRegister from './partials/stepregister';
-import Loginpage2 from './pages/Loginpage2';
+
+
+import Test from './pages/test';
 
 import Welcome from './pages/welcome';
 import Newuser from './pages/newuser';
 import Log from './pages/log';
 import SetPin from './pages/SetPin';
 import DashboardPortfolio from './pages/DashboardPortfolio';
+import Agents from './pages/Agents/Agents';
+import Agentprofile from './pages/Agents/Agentprofile';
+import ServicePicker from './pages/ServicePicker';
+import Digitalfarming from './pages/Digitalfarming';
+import SmallBiz from './pages/SmallBiz';
+import Withdrawal from './pages/Withdrawal';
+import Coach from './pages/Coach';
 
 function App() {
   const { currentUser } = useAuth()
@@ -63,16 +70,17 @@ function App() {
   return (
     <>
     <Routes>
+        <Route exact path="/test" element={<Test />} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/login" element={<Log/>} />
         <Route exact path="/welcome" element={<Welcome />} />
-        <Route exact path="/login2" element={<Loginpage2 />} />
         <Route exact path="/login3" element={<Confirmsignin />} />
         <Route exact path="/setpin" element={<SetPin/>} />
         <Route exact path="/newuser" element={<Newuser/>} />
         <Route exact path="/register/*" element={<Registerpage1/>} />
-        <Route exact path="/packages" element={<Packages />} />
+        <Route exact path="/digital" element={<Digitalfarming/>} />
+        <Route exact path="/smallbiz" element={<SmallBiz/>} />
         <Route exact path="/aboutus" element={<Aboutus />} />
         <Route exact path="/invest" element={<Investing />} />
         <Route exact path="/kids" element={<Kids />} />
@@ -81,6 +89,13 @@ function App() {
         <Route exact path="/learn" element={<Learn />} />
         <Route exact path="/explore" element={<Explore />} />
         <Route exact path="/products" element={<Products />} />
+        <Route exact path="/pick" element={<ServicePicker />} />
+        <Route exact path="/withdraw" element={<Withdrawal />} />
+        <Route exact path="/coach" element={<Coach />} />
+        <Route path="/agents" element={<Agents />} ></Route>
+        <Route path="/agentprofile/*"  element={<Outlet/>} >
+        <Route path=":agentid" element={<Agentprofile />} ></Route>
+        </Route>
         
         {/* <Route element={<ProtectedRoutes/>}>
             <Route path ="/dashboard" element={<Dashboard />} />
@@ -89,9 +104,9 @@ function App() {
         
         {/* <Route element={currentUser ? <Outlet /> : <Loginpage />}> */}
             <Route path ="/dashboard" element={<Dashboard />} />
-            <Route path ="/profile" element={<Dashboardprofile />} />
+            <Route path ="/pricing" element={<Pricing />} />
             {/* <Route path ="/subscribe" element={<Dashboardsubscribe />} /> */}
-            <Route exact path ="/dashboard/agents" element={<DashboardAgents />} />
+            {/* <Route exact path ="/dashboard/agents" element={<DashboardAgents />} /> */}
             <Route exact path ="/dashboard/portfolio" element={<DashboardPortfolio />} />
         {/* </Route> */}
       

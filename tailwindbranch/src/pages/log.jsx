@@ -9,6 +9,8 @@ import MojoAuth from "mojoauth-web-sdk"
 import { useState } from 'react'
 import { client } from '../../lib/client'
 import {useQuery} from '@tanstack/react-query'
+import { Button, Result } from 'antd'
+import Loader from '../components/Loader'
 
 
 function log () {
@@ -22,12 +24,15 @@ const [test , setTest] =useState()
 
 
 
+
 useEffect(() => {
-	const mojoauth = new MojoAuth("ddfa0887-b4ce-43dc-9ec8-5c4c53522387",{
+	const mojoauth = new MojoAuth("test-872efdab-6b61-418c-a0a6-5bc689a06f4d",{
        source:[{type:'email', feature:'otp'}]
         });
+
 	mojoauth.signIn().then(payload => {
-	    setPayload(payload)&setIsAuth(true)
+	    setPayload(payload)
+      setIsAuth(true)
 	    // document.getElementById("mojoauth-passwordless-form").remove();
 	})
 }, [])
@@ -48,21 +53,37 @@ const { data: user } = getQuery(['userlist'], () => client.fetch(query),{enabled
 
 
 
+
+
 useEffect(() => {
-  
+
   if(isAuth){
- localStorage.setItem('email', JSON.stringify(userId))
+ localStorage.setItem('email', userId)
+ setTimeout(() => {
+   history('/dashboard')
+ }, 3000);
   }
 
 }, [isAuth])
 
 
+if(isAuth){
+  return(
+    <>
+    <Result
+    status="success"
+    title="Logged In Successfully!"
+    subTitle="You Will Be Redirected To Your Dashboard Shortly"
+  />
+    </>
+  )
+}
 
 
 
   return (
     <>
-    <div className={isAuth?'absolute inset-0 min-h-screen bg-plat items-center flex flex-col justify-center z-50' :'hidden'}>
+    {/* <div className={isAuth?'absolute inset-0 min-h-screen bg-plat items-center flex flex-col justify-center z-50' :'hidden'}>
         <div>
              <div className="flex items-center gap-3">
 
@@ -70,12 +91,12 @@ useEffect(() => {
             onClick={()=>{user && user.length < 1 ? history('/newuser'):history('/dashboard') }}
             className='text-4xl font-poppins uppercase  jello-horizontal hover:cursor-pointer' >Continue 
            </h1>
-           {/* <span className='text-xl'>&rarr; </span> */}
+       
            </div>
            
         </div>
         
-    </div>
+    </div> */}
     <div id={ "mojoauth-passwordless-form" } />
     </>
   )

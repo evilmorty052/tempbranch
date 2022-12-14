@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { Children, useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
+import { Button } from 'antd'
 
 const plans = [
   {
@@ -13,16 +14,16 @@ const plans = [
   },
 ]
 
-export default function RadioGroups() {
-  const [selected, setSelected] = useState(plans[0])
+export default function RadioGroups({options, func, show}) {
+  const [selected, setSelected] = useState(options?.[0])
 
   return (
     <div className="w-full px-4">
       <div className="mx-auto w-full max-w-md">
-        <RadioGroup value={selected} onChange={setSelected}>
+        <RadioGroup defaultChecked={options?.[0]} value={selected} onChange={setSelected}>
           <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
           <div className="space-y-2">
-            {plans.map((plan) => (
+            {options?.map((plan) => (
               <RadioGroup.Option
                 key={plan.name}
                 value={plan}
@@ -33,7 +34,7 @@ export default function RadioGroups() {
                       : ''
                   }
                   ${
-                    checked ? 'bg-sky-900 bg-opacity-75 text-white' : 'bg-white'
+                    checked ? 'bg-green-300 bg-opacity-75 text-white' : 'bg-white'
                   }
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                 }
@@ -66,8 +67,8 @@ export default function RadioGroups() {
                         </div>
                       </div>
                       {checked && (
-                        <div className="shrink-0 text-white">
-                          <CheckIcon className="h-6 w-6" />
+                        <div className="shrink-0  ">
+                          <CheckIcon className="h-6 w-6 text-slate-800 " />
                         </div>
                       )}
                     </div>
@@ -76,8 +77,17 @@ export default function RadioGroups() {
               </RadioGroup.Option>
             ))}
           </div>
+       
         </RadioGroup>
+      {show &&  
+      <div className='mt-10 w-full'>
+        <button className='w-full py-2 border border-white shadow-xl  rounded-3xl'  style={{ background:"#86efac", borderColor: "white" }}  shape='round' size='large'  type='primary'  onClick={()=>{func(selected)}}>
+          Confirm
+        </button>
+        </div>}
+     
       </div>
+    
     </div>
   )
 }

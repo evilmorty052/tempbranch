@@ -18,11 +18,11 @@ const Feature4 = () => (
     </div>
 
     <div className={layout.sectionInfo}>
-      <h2 className={`${styles.heading2} px-4 `}>
-      Investing but make it . <span className='text-gradient'>Personal</span> <br className="sm:block hidden" /> 
+      <h2 className={`${styles.heading2} px-4 text-blk `}>
+      Investing but make it . <span className='text-green-300'>Personal</span> <br className="sm:block hidden" /> 
       </h2>
       {/* <span className="text-red-400">DISCRIMINATION</span> */}
-      <p className={`${styles.paragraph} max-w-[470px] mt-5 text-white px-4`}>
+      <p className={`${styles.paragraph} max-w-[470px] mt-5 text-blk px-4`}>
       Build wealth your way with Smart Portfolio, our robo-advisor that invests for you based on your goals. Just add cash and we’ll do the rest.
         
       </p>

@@ -2,14 +2,24 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { signInWithPhoneNumber, isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth'
 
+// const firebaseConfig = {
+//   apiKey: import.meta.env.VITE_APP_API_KEY,
+//   apiKey: 'AIzaSyAF4G7EWZ7iwj9PNfxYtIzo3P0zQ0G4CeQ',
+//   authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
+//   projectId: import.meta.env.VITE_APP_PROJECT_ID,
+//   storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
+//   messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
+//   appId: import.meta.env.VITE_APP_APP_ID,
+// }
+
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_APP_API_KEY,
-  // apiKey: 'AIzaSyAF4G7EWZ7iwj9PNfxYtIzo3P0zQ0G4CeQ',
-  authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_APP_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_APP_APP_ID,
+  // apiKey: import.meta.env.VITE_APP_API_KEY,
+  apiKey: 'AIzaSyBZZ5-u5Z9F-Ks_KsgqgW5LSvIihBwDFvo',
+  authDomain: 'sideproject-50aa3.firebaseapp.com',
+  projectId: 'sideproject-50aa3',
+  storageBucket: 'sideproject-50aa3.appspot.com',
+  messagingSenderId: '111602191243',
+  appId: '1:111602191243:web:91c80631e08476e01cfd8e',
 }
 
 const app = initializeApp(firebaseConfig)

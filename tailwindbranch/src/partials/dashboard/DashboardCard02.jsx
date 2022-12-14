@@ -13,7 +13,7 @@ import { Switch } from '@headlessui/react'
 
 
 function DashboardCard02({investment}) {
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(true)
 
   const chartData = {
     labels: [

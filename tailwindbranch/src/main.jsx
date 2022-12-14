@@ -18,7 +18,7 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient} retry={6} >
-  <ReactQueryDevtools initialIsOpen={true} />
+  {/* <ReactQueryDevtools initialIsOpen={false} /> */}
   <React.StrictMode>
     <Router>
        <AuthContextProvider>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useRef} from 'react';
 // import {Mymodal, Modalbutton} from '../components/modal'
 import MotionCard from './Aboutus';
 import Sidebar from '../partials/Sidebar2';
@@ -15,22 +15,35 @@ import Agents from '../partials/dashboard/AgentCard';
 // import { getsanityuser } from './Loginpage';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { client } from '../../lib/client';
+import { client, urlFor } from '../../lib/client';
+import Loader from '../components/Loader';
+import cbd from '../assets/airbnb.png'
+import { FaPlusCircle } from 'react-icons/fa';
+import AnimatedSidebar from '../components/AnimatedSidebar'
+
 
 function Dashboard() {
   const emailID = localStorage.getItem('email')
-  const email = JSON.parse(emailID)
-  let query = `*[email == "${email}"]`
+  let query = `*[email == "${emailID}"]`
   const { data: user } = useQuery(['userlist'], () => client.fetch(query))
   ;
 
- 
   
+
+
+  
+
+
+ let notifications = user && user[0].notifications 
+//  let preview = notifications && notifications.reverse()
+
 
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 if(!user){
-  return <h1>loading...</h1>
+  return (
+    <Loader/>
+  )
 }
   return (
 <>
@@ -38,29 +51,33 @@ if(!user){
   <div className="flex h-screen overflow-hidden bg-plat">
 
   {/* Sidebar */}
-  <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
+  <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} avatar={user[0].avatar && urlFor(user[0].avatar)}/>
+   
   {/* Content area */}
   <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden ">
 
     {/*  Site header */}
-    <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+    <div >
+    <Header 
+    
+    sidebarOpen={sidebarOpen}
+   setSidebarOpen={setSidebarOpen}
+    name={user[0].firstname}
+    notifications={user[0].notifications && notifications}
+    avatar={user[0].avatar ? `${urlFor(user[0].avatar)}` : cbd} />
+    </div>
 
     <main>
-      <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+      <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto element-1">
 
         {/* Welcome banner */}
-        <div className='hidden md:flex md:w-full md:justify-around'>
-        <WelcomeBanner name={user[0].firstname} />
-        <WelcomeBanner name={user[0].firstname} />
-        <WelcomeBanner name={user[0].firstname} />
+        <div className='hidden sm:w-full px-5  sm:flex gap-x-4 justify-center' >
+         <div className='self-center flex justify-items-start pr-5 py-2'><WelcomeBanner name={user[0].firstname} text="Here's Your Daily Breakdown" /></div>
+         <div className='flex self-end pl-5'><Tabs/></div>
         </div>
-        <div className=' md:hidden'>
-        <WelcomeBanner name={user[0].firstname} />
+        <div className='sm:hidden' >
+        <WelcomeBanner name={user[0].firstname} text="Here's Your Daily Breakdown" />
         </div>
-        
-        
-             {/* <div><h1>{sanityuser.username}</h1></div> */}
         {/* Dashboard actions */}
         <div className="sm:flex sm:justify-between sm:items-center mb-8">
 
@@ -69,45 +86,30 @@ if(!user){
 
           {/* Right: Actions */}
           <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-            {/* Filter button */}
-            {/* <FilterButton /> */}
-            {/* Datepicker built with flatpickr */}
-            {/* <Datepicker /> */}
-            {/* Add view button */}
-            {/* <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
-                    <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                </svg>
-                <span className="hidden xs:block ml-2">Add view</span>
-            </button>                 */}
           </div>
        <div className=' w-full flex gap-8 flex-col sm:flex sm:flex-row sm:items-start'>
-     <div className=' sm:self-center'><Tabs/></div> 
-     <div className="max-w-sm">
-     <Agents/>
+     <div className=' sm:self-center sm:hidden md:hidden'><Tabs/></div> 
+     <div className="max-w-sm step-2 sm:hidden md:hidden">
+     
       </div> 
-     <div className="hidden sm:hidden md:flex md:max-w-sm">
+     <div className="hidden sm:hidden md:hidden">
      <Agents/>
       </div> 
        </div>
         </div>
-        <div className="grid grid-cols-12 gap-6">
+        <div  className="grid grid-cols-12 gap-6">
           <DashboardCard01 earnings={user[0].earnings} />
-          <DashboardCard02  investment={user[0].investment}/>
+          <DashboardCard02 investment={user[0].investment}/>
           <DashboardCard03 plan={user[0].plan}/>
-          <DashboardCard14 />
+          <DashboardCard14 text='Total Bonus' amount='100' icon={<FaPlusCircle/>}/>
           <DashboardCard13 />
-          
-          
-          
-          
         </div>
       </div>
       
     </main>
-    
-    {/* <Banner /> */}
 
+    {/* <Banner /> */}
+  
   </div>
 </div>
 }

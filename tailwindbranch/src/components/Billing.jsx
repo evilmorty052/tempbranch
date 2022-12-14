@@ -1,5 +1,5 @@
 import { apple, bill, google } from "../assets";
-import Medicaman from "../assets/Medicpeople.png";
+import Medicaman from "../assets/medikpeeps.png";
 import styles, { layout } from "../style";
 
 const Billing = () => (

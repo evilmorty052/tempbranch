@@ -2,6 +2,7 @@ import React from 'react'
 import { Navbar } from '../../components'
 import styles from '../../style'
 import Hero1 from './heroes/hero1'
+import {Hero} from '../SmallBiz'
 import Feature1 from './features/feature1'
 import Feature2 from './features/feature2'
 import Feature3 from './features/feature3'
@@ -13,6 +14,8 @@ import Example from '../../components/disclosure/disclosure2'
 import PricingCard from '../../components/PricingCard'
 import Plan1 from '../../components/plans/plan1' 
 import { FaChevronRight } from 'react-icons/fa'
+import investmentphone from '../../assets/phone.png'
+import Banner from '../../partials/Banner'
 
 const investing = () => {
   return (
@@ -25,8 +28,15 @@ const investing = () => {
     </div>
 
     <div className={`bg-plat ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Hero1 />
+      <div className={`${styles.boxWidth} my-10 px-4`}>
+        <Hero 
+        color={'text-green-300'}
+        span={'EASY'}
+         bg={'bg-slate-200'}
+        image={investmentphone} 
+        title={'INVESTMENT MADE'}
+         subtext="Invest In just a few clicks, Without the hassle of day trading. We help you build long-term wealth your way—$5 at a time."
+         buttonText={'Learn More'}/>
         {/* <Stats /> */}
       </div>
     </div>
@@ -37,18 +47,20 @@ const investing = () => {
         <CTA1 />
         <div className='hidden sm:flex md:flex'><Feature3 /></div>
         <div className='ss:hidden'><Feature1/></div>
+          
+          <div className='my-5 '>
+          <h3 className='text-center text-blk text-4xl font-poppins font-medium'>Start Earning Today!</h3></div>
+        <div className='grid grid-cols-1 gap-5 md:grid-cols-2 justify-center w-full '>
+          <div className='flex justify-center'>
+          <PricingCard/>
+          </div>
+          <div className='flex justify-center'>
+          <PricingCard/>
+          </div>
+        
 
-        <div className=' hidden sm: mt-10 sm:flex sm:justify-between mb-10'>
-        <div><PricingCard/></div>
-        <div><PricingCard/></div>
-        <div className='sm:hidden md:flex'><PricingCard/></div>
         </div>
-        <div className='sm:hidden flex flex-col space-y-10 mb-10'>
-          <PricingCard/>
-          <PricingCard/>
-          <PricingCard/>
-        </div>
-       <div className=' mb-10 text-center space-x-3 flex items-center justify-center font-poppins font-bold '><h3 className='text-white text-4xl tracking-wide'>VIEW ALL PLANS</h3> <span className='text-lg text-green-300'><FaChevronRight/></span> </div>
+       <div className=' my-10 text-center space-x-3 flex items-center justify-center font-poppins font-bold '><h3 className='text-blk text-4xl tracking-wide'>VIEW ALL PLANS</h3> <span className='text-lg text-green-300'><FaChevronRight/></span> </div>
         
       
         
@@ -71,9 +83,11 @@ const investing = () => {
         
       </div>
     </div>
-    <Example/>
-    <Footer />
+    {/* <Example/> */}
+ 
   </div>
+ <div className='bg-plat px-3'><Footer /></div> 
+ <Banner/>
     </>
   )
 }

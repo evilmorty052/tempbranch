@@ -14,6 +14,9 @@ import Feature4 from './features/feature4'
 import Feature5 from './features/feature5'
 import Feature6 from './features/feature6'
 import Example from '../../components/disclosure/disclosure'
+import Agenthero from '../Agents/components/Agenthero'
+import Dynamichero from '../Agents/components/Dynamichero'
+import Img from '../../assets/Iphone1.png'
 
 const Smart = () => {
   return (
@@ -27,20 +30,25 @@ const Smart = () => {
 
     <div className={`bg-primary ${styles.flexStart}`}>
       <div className={`${styles.boxWidth}`}>
-        <Hero2 />
+      <Dynamichero 
+      headline={'Automated Investment Simplified'}
+      sub={'Our State Of the Art Investment AI Trained for years by the best Agents Around Makes Investment decisions a breeze Give it a try today!'}
+       action={'Get Started'}
+       img={Img}
+       />
         
         {/* <Stats /> */}
       </div>
     </div>
     
-    <div className={`bg-slate-400 ${styles.paddingX} ${styles.flexCenter}`}>
+    <div className={`bg-plat ${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
         <Feature4 />
         <CTA1 />
         <div className='hidden md:flex'><Feature5 /></div>
         <div className='ss:hidden'></div>
         <Feature6/>
-        <Pricing/>
+
         {/* <Example/> */}
         
         
