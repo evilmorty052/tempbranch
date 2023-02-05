@@ -1,17 +1,22 @@
 import styles from "../style";
 import { logo } from "../assets";
-import Ml from '../assets/logo1.png'
+import Ml from '../assets/hemplogo.png'
 import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => (
   <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
     <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
       <div className="flex-[1] flex flex-col justify-start mr-10">
+        <div className="flex items-center">
+        <div>
         <img
           src={Ml}
           alt="hoobank"
           className="w-[266px] h-[72.14px] object-contain"
         />
+        </div>
+        <h3 className="uppercase font-black ">MEdik 420</h3>
+        </div>
         <p className={`${styles.paragraph} mt-4 max-w-[312px]`}>
           A new way to Invest In CBD
         </p>

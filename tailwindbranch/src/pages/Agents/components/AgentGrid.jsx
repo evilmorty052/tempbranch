@@ -99,7 +99,7 @@ const AgentGrid = ({list,headline }) => {
         
    { list?.map((agent)=>{
      let liked
-     likedagents.map((item)=> {
+     likedagents?.map((item)=> {
    
       switch (item._ref) {
         case agent._id:

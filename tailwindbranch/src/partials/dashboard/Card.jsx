@@ -34,7 +34,8 @@ const [liked, setLiked] = useState(likes)
       .append('liked', [{_ref: id, _type: 'reference' } ])
       .commit({autoGenerateArrayKeys: true,}).then((res)=>{
       console.log(res)
-     res && likesup()})
+    //  res && likesup()
+    })
      )
   }
 

@@ -20,15 +20,16 @@ import Banner from '../../partials/Banner'
 const investing = () => {
   return (
     <>
-    <div className="bg-blk w-full overflow-hidden">
-    <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+    <div className="bg-blk w-full overflow-hidden relative">
+    <Navbar />
         <div className={`${styles.boxWidth}`}>
-          <Navbar />
+          
         </div>
+    <div className={`${styles.paddingX} ${styles.flexCenter}`}>
     </div>
 
     <div className={`bg-plat ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth} my-10 px-4`}>
+      <div className={`${styles.boxWidth} my-20 px-4`}>
         <Hero 
         color={'text-green-300'}
         span={'EASY'}

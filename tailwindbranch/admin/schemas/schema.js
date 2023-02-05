@@ -3,11 +3,13 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import users from './users'
 import agents from './agents'
 import pricing from './pricing'
+import videos from './videos'
+import store from './store'
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   name: 'default',
-  types: schemaTypes.concat([ users,agents,pricing ]),
+  types: schemaTypes.concat([ users,agents,pricing,videos, store ]),
 })

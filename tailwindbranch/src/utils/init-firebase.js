@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { signInWithPhoneNumber, isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth'
-
+import {getFirestore, doc, collection, getDocs, addDoc, onSnapshot, query, where, setDoc} from 'firebase/firestore'
+import React,{ useState} from 'react'
 // const firebaseConfig = {
 //   apiKey: import.meta.env.VITE_APP_API_KEY,
 //   apiKey: 'AIzaSyAF4G7EWZ7iwj9PNfxYtIzo3P0zQ0G4CeQ',
@@ -24,54 +25,88 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-export const auth = getAuth(app)
+const db = getFirestore()
+const colRef = collection(db, 'users')
+let users = []
 
-if (isSignInWithEmailLink(auth, window.location.href)) {
-  // Additional state parameters can also be passed via URL.
-  // This can be used to continue the user's intended action before triggering
-  // the sign-in operation.
-  // Get the email if available. This should be available if the user completes
-  // the flow on the same device where they started it.
-  let email = window.localStorage.getItem('emailForSignIn');
-  if (!email) {
-    // User opened the link on a different device. To prevent session fixation
-    // attacks, ask the user to provide the associated email again. For example:
-    email = window.prompt('Please provide your email for confirmation');
-  }
-  // The client SDK will parse the code from the link for you.
-  signInWithEmailLink(auth, email, window.location.href)
-    .then((result) => {
-      // Clear email from storage.
-      window.localStorage.removeItem('emailForSignIn');
-      // You can access the new user via result.user
-      // Additional user info profile not available via:
-      // result.additionalUserInfo.profile == null
-      // You can check if the user is new or existing:
-      // result.additionalUserInfo.isNewUser
-    })
-    .catch((error) => {
-      // Some error occurred, you can inspect the code: error.code
-      // Common errors could be invalid email and invalid or expired OTPs.
-    });
+export function fetch() {
+// const [data, setdata] = useState(null)
+  return(
+    getDocs(q)
+    .then((snapshot)=>{
+    setdata(snapshot.docs)
+    console.log(data)
+    users = snapshot.docs.map((doc)=>{
+        return{
+          ...doc.data()
+        }
+    
+      })
+      // snapshot.docs.forEach((doc)=>{
+      //   data.push({...doc.data(), id: doc.id})
+        
+      // })
+      
+    }).catch((err)=>console.log(err))
+  )
+}
+let id = localStorage.getItem('id') 
+let q = query(colRef, where('id', '==', `${id}`))
+//real time collection
+
+export async function getuser() {
+
+  return(
+    onSnapshot(q, (snapshot)=>{
+      let list =[]
+      snapshot.docs.forEach((doc)=>{
+       list.push({...doc.data()})
+          
+          
+         })
+         console.log(list)  
+       })
+  )
+
+
+ 
 }
 
-export const actionCodeSettings = {
-  // URL you want to redirect back to. The domain (www.example.com) for this
-  // URL must be in the authorized domains list in the Firebase Console.
-  url: 'https://sideproject-50aa3.web.app/',
-  // This must be true.
-  handleCodeInApp: true,
-  iOS: {
-    bundleId: 'https://sideproject-50aa3.web.app/.ios'
-  },
-  android: {
-    packageName: 'https://sideproject-50aa3.web.app/.android',
-    installApp: true,
-    minimumVersion: '12'
-  },
-  dynamicLinkDomain: 'tarararara.page.link'
-};
 
-import {  sendSignInLinkToEmail } from "firebase/auth";
+
+
+
+
+
+
+// export const newuser = (id)=>{
+
+//   return(
+//     setDoc(colRef, {
+//       name: 'added',
+//       id: id
+//     }).then((res)=>{
+   
+//     }, 'hhhhh')
+    
+//   )
+// } 
+export const newuser = async(id)=>{
+
+  return(
+    await setDoc(doc(db, "users", 'ikikikkkl'), {
+      name: "Los Angeles",
+      state: "CA",
+      country: "USA",
+      id: id
+    })
+    
+  )
+} 
+
+export const auth = getAuth(app)
+
+
+
 
 

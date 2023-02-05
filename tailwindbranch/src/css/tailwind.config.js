@@ -25,6 +25,8 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        space: ["space-grotesk", "sans-serif"],
+      
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1.5' }],
@@ -39,12 +41,14 @@ module.exports = {
         '6xl': ['3.75rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       },
       screens: {
+        xxs: '390px',
         xs: '480px',
         ss: "620px",
         sm: "768px",
         md: "1060px",
         lg: "1200px",
         xl: "1700px",
+        '2xl': '1536px',
       },
       borderWidth: {
         3: '3px',

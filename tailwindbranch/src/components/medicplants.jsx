@@ -17,22 +17,22 @@ const medicplants = () => {
 >
   <div class="p-8 md:p-12 lg:px-16 lg:py-24 bg-transparent ">
     <div class="max-w-lg text-center sm:text-left">
-      <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl">
-      100% Managed <span className='text-green-400'>Farming</span> for <span className='text-green-400'>Everyone</span>
+      <h2 class="text-2xl font-bold text-slate-800 sm:text-3xl md:text-5xl">
+      100% <span className='text-green-400'>ECO FRIENDLY</span><span className='text-green-400'></span>
       </h2>
 
       <p
-        class="hidden max-w-md text-white/90 md:mt-6 md:text-lg md:leading-relaxed md:block"
+        class="hidden max-w-md text-slate-800 md:mt-6 md:text-lg md:leading-relaxed md:block"
       >
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore
         officia corporis quasi doloribus iure architecto quae voluptatum beatae
         excepturi dolores.
       </p>
 
-      <div class="mt-4 sm:mt-8">
+      {/* <div class="mt-4 sm:mt-8">
         <Button/>
         
-      </div>
+      </div> */}
     </div>
   </div>
 </aside>

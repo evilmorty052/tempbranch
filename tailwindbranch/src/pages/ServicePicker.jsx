@@ -35,7 +35,7 @@ const history = useNavigate()
   return (
     <div className='flex min-h-screen font-poppins bg-plat  '>
          <div className='container mx-auto py-4 flex flex-col items-center '>
-          <div className='my-10'>
+          <div className='my-10 px-4'>
             <h3 className='text-center font-bold uppercase text-2xl lg:text-4xl'>Pick A Sign Up Option</h3>
             <p className='text-center'>Please Pick your preffered Option To Continue Signing Up.</p>
           </div>

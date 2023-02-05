@@ -60,9 +60,11 @@ const { logout, currentUser } = useAuth()
               <Popover.Panel className="absolute z-10 bg-black-gradient rounded-lg text-left sidebar">
         <div className="flex px-10 py-5  text-lg font-poppins text-white font-medium">
             <ul className='list-none flex flex-col gap-4 whitespace-nowrap'>
+           <Navlink to={'/aboutus'}  name='MEDIK 420'/>
+           <Navlink to={'/hiveai'}  name='Hive A.I'/>
+           <Navlink to={'/digital'}  name='Digital Farming'/>
+           <Navlink to={'/smallbiz'}  name='Business Assistance'/>
            <Navlink to={'/learn'}  name='Learn'/>
-           <Navlink to={'/aboutus'}  name='About Us'/>
-           <Navlink to={'/products'}  name='Products'/>
            
             </ul>
         </div>

@@ -14,7 +14,7 @@ const plans = [
   },
 ]
 
-export default function RadioGroups({options, func, show}) {
+export default function RadioGroups({options, func, func2, show , show2}) {
   const [selected, setSelected] = useState(options?.[0])
 
   return (
@@ -83,6 +83,12 @@ export default function RadioGroups({options, func, show}) {
       <div className='mt-10 w-full'>
         <button className='w-full py-2 border border-white shadow-xl  rounded-3xl'  style={{ background:"#86efac", borderColor: "white" }}  shape='round' size='large'  type='primary'  onClick={()=>{func(selected)}}>
           Confirm
+        </button>
+        </div>}
+      {show2 &&  
+      <div className='mt-4 w-full'>
+        <button className='w-full text-white py-2 border border-white shadow-xl  rounded-3xl'  style={{ background:"#1a1a1a", borderColor: "white" }}  shape='round' size='large'  type='primary'  onClick={()=>{func2(selected)}}>
+          Skip
         </button>
         </div>}
      

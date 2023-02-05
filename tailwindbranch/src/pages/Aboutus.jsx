@@ -66,7 +66,7 @@ export default function Tabs() {
     <>
     <motion.div >
       
-    <div className="w-full max-w-md px-2  sm:px-0">
+    <div className="w-full max-w-md min-w-[250px] sm:min-w-[600px] lg:min-w-[400px] 2xl:min-w-[600px]  px-2  sm:px-0">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
           {Object.keys(categories).map((category) => (
@@ -86,7 +86,7 @@ export default function Tabs() {
             </Tab>
           ))}
         </Tab.List>
-        <Tab.Panels className="mt-2">
+        <Tab.Panels className="mt-2 ">
           {Object.values(categories).map((posts, idx) => (
             <Tab.Panel
               key={idx}

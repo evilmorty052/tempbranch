@@ -2,15 +2,100 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../../utils/Transition';
 import { Badge, message } from 'antd';
+import { client } from '../../../lib/client';
+import { useQuery } from '@tanstack/react-query';
 
-function Notifications({msg}) {
-
+function Notifications({msg, unread, test}) {
+  const [messages, setmessages] = useState([])
+  const [unreadmsg, setunreadmsg] = useState(messages)
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const [read, setread] = useState(false)
+  let email = localStorage.getItem('email')
+  const query = `*[email == "${email}"]`
+  const {isloading, isfetched , refetch , data : user} = useQuery(['messages'],()=> client.fetch(query))
+  let token = user && user[0]._id
+  // let list = messages?.map((m)=>{
+  //   if(m._key == msg){
+  //     return{
+  //       ...m,
+  //       read: read
+  //     }
+  //   }
+  // })
   const trigger = useRef(null);
   const dropdown = useRef(null);
 
+  function handleunread() {
+  let msg = localStorage.getItem('msg')
+    // setunreadmsg(unread.lenght -1)
+    let list = messages?.map((m)=>{
+      if(m._key == msg){
+        return{
+          ...m,
+          read: true
+        } 
+      }
+      else{
+        return{
+          ...m
+        }
+      }
+
+    })
+let unread = list.filter((i)=>{
+  return(
+    i.read !== true
+  )
+})
+
+
+
+
+
+    setmessages(list)
+    setunreadmsg(unread)
+    console.log(user)
+   
+    client.patch(token)
+    .set({notifications: list})
+    .commit().then((res)=> {
+      console.log(res)
+       setTimeout(() => {
+        refetch()
+        setTimeout(() => {
+          refetch()
+        }, 1000 * 5);
+       }, 1000 * 5);})
+    
+  }
+
+  useEffect(() => {
+    client.listen(`*[email == "${email}"]`).subscribe(event => {
+      ;
+    });
+  
+    
+  }, [])
+
+  const notread = ()=> {
+    let not =  messages?.filter((m)=>{
+        return(
+          m.read !== true
+        )
+      })
+    setunreadmsg(not)
+    }
+
+  useEffect(() => {
+    notread()
+    // refetch()
+  
+    
+  }, [messages])
+  
   // close on click outside
+
+
   useEffect(() => {
     const clickHandler = ({ target }) => {
       if (!dropdownOpen || dropdown.current.contains(target) || trigger.current.contains(target)) return;
@@ -30,17 +115,21 @@ function Notifications({msg}) {
     return () => document.removeEventListener('keydown', keyHandler);
   });
 
+  
+
   return (
    
 
 
     <div className="relative inline-flex ml-3">
-    <Badge count={msg && msg.length} size='small' dot={'true'}>
+    <Badge count={unreadmsg.length} size='small' >
       <button
         ref={trigger}
         className={`w-8 h-8 flex items-center justify-center bg-white  transition duration-150 rounded-full ${dropdownOpen && 'bg-slate-200'}`}
         aria-haspopup="true"
-        onClick={() => setDropdownOpen(!dropdownOpen)}
+        onClick={() => {
+        // handleunread()
+        setDropdownOpen(!dropdownOpen)}}
         aria-expanded={dropdownOpen}
       >
         <span className="sr-only">Notifications</span>
@@ -52,7 +141,7 @@ function Notifications({msg}) {
       </button>
       </Badge>
       <Transition
-        className="origin-top-right z-10 absolute top-full right-0 -mr-48 sm:mr-0 min-w-80 bg-glass border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+        className="origin-top-right z-10 absolute top-full right-0 -mr-48 sm:mr-0 min-w-80 bg-slate-300 border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
         show={dropdownOpen}
         enter="transition ease-out duration-200 transform"
         enterStart="opacity-0 -translate-y-2"
@@ -66,20 +155,25 @@ function Notifications({msg}) {
           onFocus={() => setDropdownOpen(true)}
           onBlur={() => setDropdownOpen(false)}
         >
-          <div className="text-xs font-semibold text-slate-400 uppercase pt-1.5 pb-2 px-4 bg-glass2">Notifications</div>
+          <div className="text-xs font-semibold text-slate-400 uppercase pt-1.5 pb-2 px-4 bg-primary">Notifications</div>
           <ul className=''>
 
-        {msg && msg.map((message)=>{
+        {!isloading && messages?.map((message)=>{
+         
           return(
               <>
-                <li className="border-b border-slate-200 last:border-0" key={message._key}>
+              
+                <li onClick={()=> {
+                  localStorage.setItem('msg', message._key)
+                  handleunread()}
+                   }  className="border-b border-slate-200 last:border-0" key={message?._key}>
                   <Link
                     className="block py-2 px-4 hover:bg-slate-50"
                     to="#0"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    // onClick={() => setDropdownOpen(!dropdownOpen)}
                   >
-                    <h3 className="block text-sm mb-2 uppercase">📣 {message.title}</h3>
-                    <p>{message.message}</p>
+                   <Badge dot={message.read == true ? false : true}  ><h3 className="block text-sm mb-2 uppercase">{message?.title}</h3></Badge> 
+                    <p>{message?.message}</p>
                     <span className="block text-xs font-medium text-slate-400 my-2">Feb 12, 2021</span>
                   </Link>
                 </li>

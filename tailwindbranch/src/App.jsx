@@ -40,6 +40,8 @@ import Explore from './pages/explore/explore';
 import Products from './pages/explore/products/products';
 import Registerpage1 from './pages/Registerpage1';
 import Registerpage2 from './pages/Registerpage2';
+import Hive from './pages/Hive';
+import Path from './pages/Path';
 
 
 import Test from './pages/test';
@@ -56,6 +58,9 @@ import Digitalfarming from './pages/Digitalfarming';
 import SmallBiz from './pages/SmallBiz';
 import Withdrawal from './pages/Withdrawal';
 import Coach from './pages/Coach';
+import AgentEnlist from './pages/Agents/AgentEnlist';
+import ProfileSettingsPage from './pages/ProfilePage';
+import Advisor from './pages/Advisor';
 
 function App() {
   const { currentUser } = useAuth()
@@ -71,8 +76,12 @@ function App() {
     <>
     <Routes>
         <Route exact path="/test" element={<Test />} />
+        <Route exact path="/profile" element={<ProfileSettingsPage/>} />
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/path" element={<Path />} />
+        <Route exact path="/advisor/*" element={<Advisor />} />
         <Route exact path="/home" element={<Home />} />
+        <Route exact path="/enlist/*" element={<AgentEnlist />} />
         <Route exact path="/login" element={<Log/>} />
         <Route exact path="/welcome" element={<Welcome />} />
         <Route exact path="/login3" element={<Confirmsignin />} />
@@ -82,6 +91,7 @@ function App() {
         <Route exact path="/digital" element={<Digitalfarming/>} />
         <Route exact path="/smallbiz" element={<SmallBiz/>} />
         <Route exact path="/aboutus" element={<Aboutus />} />
+        <Route exact path="/hiveai" element={<Hive />} />
         <Route exact path="/invest" element={<Investing />} />
         <Route exact path="/kids" element={<Kids />} />
         <Route exact path="/retirement" element={<Retirement/>} />

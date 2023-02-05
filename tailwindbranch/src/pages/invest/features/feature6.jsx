@@ -20,8 +20,8 @@ const Feature6 = () => (
     {/* </div> */}
 
     <div className={`${layout.sectionInfo}`}>
-      <h2 className={`${styles.heading2} px-4 text-center`}>
-        Unlock Your Financial<span className='text-gradient'> Future</span> <br className="sm:block hidden" /> 
+      <h2 className={`${styles.heading2} px-4 text-center text-blk`}>
+        Unlock Your Financial<span className='text-green-400'> Future</span> <br className="sm:block hidden" /> 
       </h2>
       {/* <span className="text-red-400">DISCRIMINATION</span> */}
       {/* <p className={`${styles.paragraph} max-w-[470px] mt-5 text-white px-4`}>
@@ -34,19 +34,19 @@ const Feature6 = () => (
         <div className=''>
           <div className='flex flex-col md:flex-row mb-5 items-center'>
           <img className=' w-20'  src={Pie} alt="" /> 
-          <h3 className="font-poppins font-semibold text-4xl text-white">Smart Advisors</h3> 
+          <h3 className="font-poppins font-semibold text-4xl text-blk">Smart Advisors</h3> 
         </div>
           
           
-          <p className={`${styles.paragraph} px-4 text-white `}>The MEDIC 420 Investment Team oversees the selection and allocation of your Smart Mix.</p>
+          <p className={`${styles.paragraph} px-4 text-blk `}>The MEDIC 420 Investment Team oversees the selection and allocation of your Smart Mix.</p>
         </div>
         <div>
           <div className='flex flex-col md:flex-row mb-5 items-center' >
           <img className=' w-20' src={Fees} alt="" />
-          <h3 className="font-poppins font-semibold text-4xl text-white">Smart Transactions</h3>
+          <h3 className="font-poppins font-semibold text-4xl text-blk">Smart Transactions</h3>
           </div>
         
-          <p className={`${styles.paragraph} px-4 text-white `}>Add or remove cash, and we’ll automatically move you closer to your ideal investment mix..</p>
+          <p className={`${styles.paragraph} px-4 text-blk `}>Add or remove cash, and we’ll automatically move you closer to your ideal investment mix..</p>
        </div>
         </div>
         {/* <img src={apple} alt="google_play" className="w-[128.86px] h-[42.05px] object-contain mr-5 cursor-pointer" />

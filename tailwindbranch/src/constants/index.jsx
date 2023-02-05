@@ -5,21 +5,21 @@ import CountUp from 'react-countup';
 
 export const navLinks = [
   {
-    id: "home",
+    id: "/",
     title: "Home",
   },
   {
-    id: "features",
-    title: "Features",
+    id: "/invest",
+    title: "",
   },
-  // {
-  //   id: "product",
-  //   title: "Product",
-  // },
-  // {
-  //   id: "clients",
-  //   title: "Clients",
-  // },
+  {
+    id: "product",
+    title: "Product",
+  },
+  {
+    id: "clients",
+    title: "Clients",
+  },
 ];
 
 export const features = [

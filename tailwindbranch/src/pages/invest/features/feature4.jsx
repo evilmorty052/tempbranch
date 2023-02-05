@@ -9,7 +9,7 @@ const Feature4 = () => (
     <div className='mx-auto max-w-screen-md'>
   <section id="product" className={`${layout.sectionReverse} `}>
     <div className={layout.sectionImgReverse}>
-      <img src={Iphone} alt="phone" className="w-[70%] h-[100%] relative z-[5]" />
+      <img src={Iphone} alt="phone" className="w-[100%] h-[100%] relative z-[5]" />
 
       {/* gradient start */}
       <div className="absolute z-[3] -left-1/2 top-0 w-[50%] h-[50%] rounded-full white__gradient" />

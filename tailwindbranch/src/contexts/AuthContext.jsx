@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { auth } from '../utils/init-firebase'
+
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -12,7 +14,7 @@ import {
   confirmPasswordReset,
 } from 'firebase/auth'
 
-import { actionCodeSettings } from '../utils/init-firebase'
+
 
 const AuthContext = createContext({
   currentUser: null,
