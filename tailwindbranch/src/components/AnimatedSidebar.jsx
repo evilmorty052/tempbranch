@@ -8,6 +8,8 @@ import subscribe  from '../assets/subscribe.png'
 import bag  from '../assets/shoppingbag.png'
 import home  from '../assets/house.png'
 import search  from '../assets/search.png'
+import job  from '../assets/job.png'
+
 
 
 
@@ -149,6 +151,7 @@ const AnimatedSidebar = ({links, setSidebarOpen, sidebarOpen, isExpanded, setIsE
               exit={{ x: '-100%', }}
               transition={{ delay:  0.4 , duration: 0.2}}
             >
+              <Link to={'/hive'}>
               <div className='p-2 '>
               <a className='flex items-center bg-white relative  rounded-lg' >
               <div className='p-3'>
@@ -184,6 +187,8 @@ const AnimatedSidebar = ({links, setSidebarOpen, sidebarOpen, isExpanded, setIsE
                    
                   } */}
               </div>
+              </Link>
+              
             </motion.li>
               <motion.li
               
@@ -213,6 +218,43 @@ const AnimatedSidebar = ({links, setSidebarOpen, sidebarOpen, isExpanded, setIsE
               
               </div>
             </motion.li>
+             
+            {
+              path != '/jobs' &&
+              <motion.li
+              
+                
+              initial={{ x: '-100%', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: '-100%', }}
+              transition={{ delay:  0.4 , duration: 0.2}}
+            >
+              <div className='p-2 '>
+                <>
+                <Link to={'/jobs'}>
+                <a className='flex items-center bg-white relative  rounded-lg' >
+              <div className='p-3'>
+               <div className='w-8 '>
+                  <img className='w-full' src={job} alt="nnnn" />
+                </div>
+              </div> 
+                <span  className='text-xl font-bold uppercase'>
+                Job Search
+                </span>
+                {/* <div className='flex w-full items-center justify-end pr-5  '>
+               <div className=''>
+               <span  onClick={()=> hive ? sethive(false) : sethive(true)} className='text-sm '>{ hive ? <FaChevronUp/> :  <FaChevronDown/> }</span>
+              </div> 
+                </div> */}
+            
+              </a>
+                </Link>
+                
+                </>
+              
+              
+              </div>
+            </motion.li>}
               <motion.li
               
                 
@@ -247,7 +289,7 @@ const AnimatedSidebar = ({links, setSidebarOpen, sidebarOpen, isExpanded, setIsE
                        <Link to={'/hiveai'}>
                        <li className='text-lg font-bold'>HIVE MIND</li>
                        </Link>
-                       <Link to={'/'}>
+                       <Link to={'/team'}>
                        <li className='text-lg font-bold'>MEDIK 420</li>
                        </Link>
                        <Link to={'/smallbiz'}>

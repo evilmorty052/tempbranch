@@ -34,7 +34,7 @@ import Investing from './pages/invest/investing';
 import Aboutus from './pages/Aboutus';
 import Retirement from './pages/invest/retirement'
 import Kids from './pages/invest/kids'
-import Smart from './pages/invest/smartpofolio'
+import Smart from './pages/invest/Smartpofolio'
 import Learn from './pages/explore/learn/learn';
 import Explore from './pages/explore/explore';
 import Products from './pages/explore/products/products';
@@ -42,7 +42,8 @@ import Registerpage1 from './pages/Registerpage1';
 import Registerpage2 from './pages/Registerpage2';
 import Hive from './pages/Hive';
 import Path from './pages/Path';
-
+import Jobs from './pages/Jobs';
+import Team from './pages/Team';
 
 import Test from './pages/test';
 
@@ -61,6 +62,7 @@ import Coach from './pages/Coach';
 import AgentEnlist from './pages/Agents/AgentEnlist';
 import ProfileSettingsPage from './pages/ProfilePage';
 import Advisor from './pages/Advisor';
+import HiveLanding from './pages/HiveLanding';
 
 function App() {
   const { currentUser } = useAuth()
@@ -75,7 +77,11 @@ function App() {
   return (
     <>
     <Routes>
+
+        <Route exact path="/team" element={<Team />} />
+        <Route exact path="/hive" element={<HiveLanding />} />
         <Route exact path="/test" element={<Test />} />
+        <Route exact path="/jobs" element={<Jobs />} />
         <Route exact path="/profile" element={<ProfileSettingsPage/>} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/path" element={<Path />} />

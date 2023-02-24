@@ -1,154 +1,213 @@
-import React, { useState } from 'react';
-import PricingCard from '../components/PricingCard';
-import Navbar from '../components/Navbar'
-import image from '../assets/Dman1.png'
-import Hero from '../components/hero3';
-import styles from '../style';
-import CTA from '../components/CTA2';
-import Plan2 from '../components/plans/plan2';
-import Plan3 from '../components/plans/plan3';
+import React from 'react'
 
-
-
-
-function Dashboardprofile() {
-
-  const available = [
-    {
-    name: 'Dedicated Agent',
-  
-  },
-    {
-    name: 'Daily Payout',
-
-  },
-    {
-    name: 'Daily Payout',
-
-  },
-    {
-    name: 'Daily Payout',
-
-  },
-    {
-    name: 'Daily Payout',
-
-  },
-]
-  const unavailable = [
-    {
-    name: 'Video Call',
-  
-  },
-    {
-    name: 'Another Thing',
-
-  },
-    {
-    name: 'Another Thing',
-
-  },
-    {
-    name: 'Another Thing',
-
-  },
-    {
-    name: 'Another Thing',
-
-  },
-    {
-    name: 'Another Thing',
-
-  },
-]
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
+const Pricing = () => {
   return (
     <>
-    <div className='flex flex-col bg-plat'>
-         <div className='bg-blk px-5 py-2'>
-            <Navbar/>
-         </div>
-         {/* <section className='mt-10 w-full flex px-5 flex-col items-center'>
-            <div className=' bg-blk py-10 px-10 rounded-3xl  max-w-4xl'>
-                  <div className='md:flex md:flex-row flex flex-col md:space-x-10'>
-                      <div className=' md:space-y-5  flex-2'>
-                            <h3 className='text-white text-4xl self-center uppercase md:tracking-wide'>We Have A Plan For Everyone</h3>
-                            <p className='text-xl uppercase text-white'>Just pick one to start earning with medik 420 <br />its that simple!</p>
-                      </div>
-                      <div className=' bg-white rounded-3xl max-w-md'>
-                        <img src={image} alt="" className=" relative z-[5] "/>
-
-                      </div>
-                  </div> 
- 
-            </div>
-         </section> */}
-         <div className='px-5'>
-         <Hero/>
-         </div>
-         
-         <div  className='hidden md:flex w-full justify-center my-10 '>
-           <h3  className='text-4xl uppercase  font poppins text-bold'>Plans and pricing</h3>
-         </div>
-         <div className='w-full flex-col px-4  flex mt-10 md:hidden'>
-             <h1 className='sm:text-2xl sm:text-center font-poppins text-blk text-left text-xl font-bold tracking-wider md:text-4xl uppercase '>Starter PLANS to get you up and running.</h1>
-             <p className=' sm:text-center sm:text-xl font-poppins font-medium text-lg'>invest withdraw or cancel anytime on all plans.</p>
-         </div>
-         <div className=' w-full h-full  flex flex-col px-4 py-10 md:px-10'>
-              <div className=' space-y-5 flex flex-col sm:flex-row sm:flex sm:space-x-10 sm:space-y-0 md:items-center md:justify-center'>
-                <div className='hidden md:flex md:flex-col'>
-                  <h1 className='text-2xl uppercase font-poppins font-bold'>
-                  Starter PLANS to get you up and running.
-                  </h1>
-                  <p className='  font-poppins font-medium text-xl uppercase'>invest withdraw or cancel anytime on all plans.</p>
-                </div>
-                <PricingCard available={available} unavailable={unavailable}/>
-                <Plan2/>
-              </div>
-         </div>
-         <div className='px-4 md:px-20'>
-            <CTA stext={'TRY'} btext={'MEDIK 420 STASH'} paragraph={'BUILD WEALTH YOUR OWN WAY'}/>
-         </div>
-         <div className='w-full flex-col px-4  flex mt-10 md:hidden'>
-             <h1 className='sm:text-2xl sm:text-center font-poppins text-blk text-left text-xl font-bold tracking-wider md:text-4xl uppercase'>average PLANS to begin maximizing your returns.</h1>
-             <p className='sm:text-center sm:text-xl text-lg font-poppins font-medium'>comfortable returns on all plans in this tier</p>
-         </div>
-         <div className=' w-full h-full  flex flex-col px-4 py-10 md:px-10'>
-              <div className=' space-y-5 flex flex-col sm:flex-row sm:flex sm:space-x-10 sm:space-y-0 md:items-center md:justify-center'>
-              <div className='hidden md:flex md:flex-col'>
-                  <h1 className='text-2xl uppercase font-poppins font-bold'>
-                  average PLANS to begin maximizing your returns.
-                  </h1>
-                  <p className='  font-poppins font-medium text-xl uppercase'>comfortable returns on all plans in this tier</p>
-                </div>
-                <Plan3/>
-                <PricingCard/>
-              </div>
-         </div>
-         <div className='px-4 md:px-20'>
-            <CTA stext={'TRY'} btext={'MEDIK 420 STASH'} paragraph={'BUILD WEALTH YOUR OWN WAY'}/>
-         </div>
-         <div className='w-full flex-col px-4  flex mt-10 md:hidden'>
-             <h1 className='sm:text-2xl sm:text-center font-poppins text-blk text-left text-xl font-bold tracking-wider md:text-4xl uppercase'>Maximized PLANS for optimum returns.</h1>
-             <p className='sm:text-center sm:text-xl text-lg font-poppins font-medium'>Daily returns are included on all plans in this tier</p>
-         </div>
-         <div className=' w-full h-full  flex flex-col px-4 py-10 md:px-10'>
-              <div className=' space-y-5 flex flex-col sm:flex-row sm:flex sm:space-x-10 sm:space-y-0 md:items-center md:justify-center'>
-              <div className='hidden md:flex md:flex-col'>
-                  <h1 className='text-2xl uppercase font-poppins font-bold'>
-                  Maximized PLANS for optimum returns.
-                  </h1>
-                  <p className='  font-poppins font-medium text-xl uppercase'>Daily returns are included on all plans in this tier</p>
-                </div>  
-                <PricingCard/>
-                <PricingCard/>
-              </div>
-         </div>
+    <Header/>
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Pricing</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p>
+      <div class="flex mx-auto border-2 border-indigo-500 rounded overflow-hidden mt-6">
+        <button class="py-1 px-4 bg-indigo-500 text-white focus:outline-none">Monthly</button>
+        <button class="py-1 px-4 focus:outline-none">Annually</button>
+      </div>
     </div>
+    <div class="flex flex-wrap -m-4">
+      <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
+        <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+          <h2 class="text-sm tracking-widest title-font mb-1 font-medium">START</h2>
+          <h1 class="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">Free</h1>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Vexillologist pitchfork
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Tumeric plaid portland
+          </p>
+          <p class="flex items-center text-gray-600 mb-6">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Mixtape chillwave tumeric
+          </p>
+          <button class="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Button
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+        </div>
+      </div>
+      <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
+        <div class="h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden">
+          <span class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
+          <h2 class="text-sm tracking-widest title-font mb-1 font-medium">PRO</h2>
+          <h1 class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+            <span>$38</span>
+            <span class="text-lg ml-1 font-normal text-gray-500">/mo</span>
+          </h1>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Vexillologist pitchfork
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Tumeric plaid portland
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Hexagon neutra unicorn
+          </p>
+          <p class="flex items-center text-gray-600 mb-6">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Mixtape chillwave tumeric
+          </p>
+          <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Button
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+        </div>
+      </div>
+      <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
+        <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+          <h2 class="text-sm tracking-widest title-font mb-1 font-medium">BUSINESS</h2>
+          <h1 class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+            <span>$56</span>
+            <span class="text-lg ml-1 font-normal text-gray-500">/mo</span>
+          </h1>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Vexillologist pitchfork
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Tumeric plaid portland
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Hexagon neutra unicorn
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Vexillologist pitchfork
+          </p>
+          <p class="flex items-center text-gray-600 mb-6">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Mixtape chillwave tumeric
+          </p>
+          <button class="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Button
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+        </div>
+      </div>
+      <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
+        <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+          <h2 class="text-sm tracking-widest title-font mb-1 font-medium">SPECIAL</h2>
+          <h1 class="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+            <span>$72</span>
+            <span class="text-lg ml-1 font-normal text-gray-500">/mo</span>
+          </h1>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Vexillologist pitchfork
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Tumeric plaid portland
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Hexagon neutra unicorn
+          </p>
+          <p class="flex items-center text-gray-600 mb-2">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Vexillologist pitchfork
+          </p>
+          <p class="flex items-center text-gray-600 mb-6">
+            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>Mixtape chillwave tumeric
+          </p>
+          <button class="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Button
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </>
   );
+};
+
+function Header({close, back}) {
+  return(
+      <div className='absolute top-0 left-0 w-full bg-blk px-4 py-2 flex justify-between z-50'>
+          <h2   className="uppercase md:hidden text-gray-50 text-2xl  font-poppins font-black tracking-wide  "> MEDIK<span className="text-green-200">420</span>  </h2> 
+          <div onClick={back} className='flex justify-end items-center'>
+            <p onClick={back} className='text-white text-xl uppercase'>back</p>
+          </div>
+      </div>
+  )
 }
 
-export default Dashboardprofile;
+export default Pricing

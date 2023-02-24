@@ -46,6 +46,11 @@ const Navbar = ({setpathopen, open}) => {
     pathid ='Digital Farming'
     view = <SecondaryNav open={open} setpathopen={handleuser} pathid={pathid} setactive={setactive}/>
     break;
+  
+    case '/hive':
+    pathid ='One Hive'
+    view = <SecondaryNav open={open} setpathopen={handleuser} pathid={pathid} setactive={setactive}/>
+    break;
 
   case '/smallbiz':
     pathid ='ONE HIVE'
@@ -64,11 +69,12 @@ const Navbar = ({setpathopen, open}) => {
     
     case '/hiveai':
     pathid ='HIVE MIND'
-    view = <SecondaryNav open={open} setpathopen={handleuser} pathid={pathid} setactive={setactive}/>
+    view = <SecondaryNav open={open} setpathopen={handleuser} pathid={pathid} setactive={setactive} path={path}/>
     
     break;
  
   default:
+    view = <DefaultNav setpathopen={handleuser} open={open} path={path} />
     break;
  }
 
@@ -115,6 +121,7 @@ function DefaultNav({setpathopen, open , path}) {
         <Popover/>
         <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white">Shop</a>
         <Popover2/>
+        {path != '/jobs' && <Link to='/jobs'  className='ml-[-10px] text-white text-xl font-bold' >Job Search</Link>}
         </div>
         <div className="flex">
         {!currentUser && <Navlink to='/login' name='Login' />}
@@ -178,7 +185,7 @@ function DefaultNav({setpathopen, open , path}) {
   )
 }
 
-function SecondaryNav({setpathopen, pathid, setactive, open}) {
+function SecondaryNav({setpathopen, pathid, setactive, open, path}) {
  
   const [toggle, setToggle] = useState(false);
   const { logout, currentUser } = useAuth()
@@ -199,6 +206,7 @@ function SecondaryNav({setpathopen, pathid, setactive, open}) {
         <Popover/>
         <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white">Shop</a>
         <Popover2/>
+        {path != '/jobs' && <Navlink to='/jobs' name='Job Search' />}
         </div>
         <div className="flex">
         {!currentUser && <Navlink to='/login' name='Login' />}

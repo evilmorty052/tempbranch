@@ -20,7 +20,7 @@ import stashlogo from '../assets/stashlogo.png'
 import { FaPlusCircle } from 'react-icons/fa';
 import { FaChevronRight } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 function Dashboard() {
@@ -286,8 +286,8 @@ function LaptopSidebar({avatar , stashlogo}) {
           </a>
         </li>
         <li>
-          <a
-            href="#"
+          <Link
+             to={'/dashboard/portfolio'}
             class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
           >
             <svg
@@ -308,7 +308,7 @@ function LaptopSidebar({avatar , stashlogo}) {
               />
             </svg>
             <span class="group-hover:text-gray-700 dark:group-hover:text-gray-50">Portfolio</span>
-          </a>
+          </Link>
         </li>
         <li>
           <a

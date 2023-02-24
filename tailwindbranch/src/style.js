@@ -5,6 +5,8 @@ const styles = {
   
   paragraph: "font-poppins font-normal text-dim White text-[18px] leading-[30.8px]",
 
+  content: 'text-gray-800 font-normal text-[18px] leading-[20px] sm:text-xl',
+
   flexCenter: "flex justify-center items-center",
   flexStart: "flex justify-center items-start",
 

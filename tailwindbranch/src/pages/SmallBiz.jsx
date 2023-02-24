@@ -47,7 +47,7 @@ export function LandingPage(Children) {
         image="https://via.placeholder.com/800x600"
       />
       <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2 gap-4 my-10">
-        <Feature
+        {/* <Feature
           title="Digital Expansion"
           description="Boost Your Earnings By Acquiring More Land."
           image="https://via.placeholder.com/200x200"
@@ -66,11 +66,9 @@ export function LandingPage(Children) {
           title="Total Control"
           description="Choose From a Variety Of Strains To Be Planted and Harvested By Proffesionals"
           image="https://via.placeholder.com/200x200"
-        />
+        /> */}
       </div>
-      {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Learn More
-      </button> */}
+      
     </main>
   );
 }
@@ -78,7 +76,7 @@ function SmallLandingPage(Children) {
   return (
     <>
     <DynamicHero/>
-    <main className="mx-auto  px-4 py-8 max-w-7xl">
+    <main className="mx-auto  px-4 py-1 max-w-7xl">
        {/* <Hero
         bg={'bg-green-200/40'}
         title="INTRODUCING ONE HIVE "
@@ -86,7 +84,7 @@ function SmallLandingPage(Children) {
         buttonText="Learn More"
         image="https://via.placeholder.com/800x600"
       /> */}
-      <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2 gap-4 my-10">
+      {/* <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2 gap-4 my-10">
         <Feature
           title="Delivery Made Easy"
           description="Every Tier Of the One Sales programme includes at least One Delivery Vehicle to get you up and running "
@@ -107,12 +105,10 @@ function SmallLandingPage(Children) {
           description="Get exclusive Access to the One Hive AI to get game changing Insights And Compare Sales Data With Other One Sales Programme Participants"
           image="https://via.placeholder.com/200x200"
         />
-      </div>
-      {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Learn More
-      </button> */}
+      </div> */}
+      
     </main>
-    <GridHero/>
+    {/* <GridHero/> */}
     </>
   );
 }
@@ -170,34 +166,18 @@ export function Video({ title, description, image, poster }) {
 
 const SmallBiz = () => {
 const [isexpanded, setisexpanded] = useState(false)
-const links = [
-  {
-  title: 'Home',
-  icon:  <FaHome/>
 
-},
-  {
-  title: 'Investing'
-},
-  {
-  title: 'Shop'
-},
-  {
-  title: 'Hive'
-},
-]
   return (
   <>
   
-  <div className='bg-plat relative flex flex-col'>
+  <div className='bg-plat min-h-screen relative flex flex-col'>
    <Navbar open={setisexpanded}/>
    <div className='lg:hidden'>
   <AnimatedSidebar
-   links = {links}
    setIsExpanded={setisexpanded}
    isExpanded={isexpanded}/>
   </div>
-   <div onClick={()=> isexpanded && setexpanded(false)} className=''>
+   <div onClick={()=> isexpanded && setisexpanded(false)} className=''>
    <SmallLandingPage/>
   </div>
   
@@ -215,22 +195,22 @@ export default SmallBiz
 function DynamicHero(params) {
   return(
     <>
-    <section class="text-gray-600 body-font bg-primary">
-  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+    <section class="text-gray-600 body-font ">
+  <div class="container mx-auto flex px-2 pt-24 md:flex-row flex-col items-center">
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
       <img class="object-cover object-center rounded" alt="hero" src="https://via.placeholder.com/720x600"/>
     </div>
     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white uppercase">Introducing<br/> One Hive</h1>
-      <p class="mb-8 leading-relaxed text-white">Ever Wanted To Own A Small Business ? Make Your Dreams Come True With Medik 420 In Just A Few Clicks</p>
-      <div class="flex w-full md:justify-start justify-center items-end">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-blk uppercase">Introducing<br/> <p className='text-green-400 leading-relaxed'>One Hive</p></h1>
+      <p class="mb-8 leading-relaxed text-blk sm:text-2xl">An Ecosystem Designed For Individuals StartUps and Small Businesses to Earn or Grow from a single Platform Join One Hive To see How We Can Help You</p>
+      {/* <div class="flex w-full md:justify-start justify-center items-end">
         <div class="relative mr-4 lg:w-full xl:w-1/2 w-2/4">
           <label for="hero-field" class="leading-7 text-sm text-white">Email</label>
           <input type="text" id="hero-field" name="hero-field" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
         </div>
         <button class="inline-flex text-white bg-green-300 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Apply</button>
       </div>
-      <p class="text-sm mt-2 text-white mb-8 w-full">Neutra shabby chic ramps, viral fixie.</p>
+      <p class="text-sm mt-2 text-white mb-8 w-full">Neutra shabby chic ramps, viral fixie.</p> */}
     </div>
   </div>
 </section>
@@ -240,57 +220,7 @@ function DynamicHero(params) {
 }
 
 
-function GridHero(params) {
- return(
-  <>
- <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap w-full mb-20">
-      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Pitchfork Kickstarter Taxidermy</h1>
-        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
-      </div>
-      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
-    </div>
-    <div class="flex flex-wrap -m-4">
-      <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
-          <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content"/>
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-        </div>
-      </div>
-      <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
-          <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/721x401" alt="content"/>
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Colosseum Roma</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-        </div>
-      </div>
-      <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
-          <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/722x402" alt="content"/>
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Great Pyramid of Giza</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-        </div>
-      </div>
-      <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
-          <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/723x403" alt="content"/>
-          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">San Francisco</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  </>
- )
-}
+
 
 export function NewsLetter(params) {
   return(
