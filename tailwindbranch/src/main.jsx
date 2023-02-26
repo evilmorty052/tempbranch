@@ -8,6 +8,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '../src/pages/App.css'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { store } from './Redux/store';
+import {Provider} from 'react-redux'
 
 
 
@@ -18,20 +20,21 @@ const queryClient = new QueryClient();
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <QueryClientProvider client={queryClient} retry={6} >
-  {/* <ReactQueryDevtools initialIsOpen={false} /> */}
   <React.StrictMode>
+    <Provider store={store}>
+
+   <QueryClientProvider client={queryClient} retry={6} >
+  <ReactQueryDevtools initialIsOpen={false} />
     <Router>
        <AuthContextProvider>
          <ChakraProvider>
            <App />
          </ChakraProvider> 
        </AuthContextProvider>
-      
     </Router>
-  </React.StrictMode>
- 
 </QueryClientProvider>  
+    </Provider>
+  </React.StrictMode>
 );
 
 

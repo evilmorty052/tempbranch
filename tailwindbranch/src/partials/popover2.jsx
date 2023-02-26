@@ -41,7 +41,7 @@ const { logout, currentUser } = useAuth()
 
   return (
     <Popover className="relative">
-      <Popover.Button className={` text-xl text-green-300  font-poppins font-bold gap-4 mx-2`}><span className='flex items-center bg-transparent px-2 py-1 rounded-lg' >Explore<ChevronDownIcon
+      <Popover.Button className={` text-base text-green-300  font-poppins font-bold gap-4 mx-2`}><span className='flex items-center bg-transparent px-2 py-1 rounded-lg' >Explore<ChevronDownIcon
                 className={`${open ? '' : 'text-opacity-70'}
                   ml-2 h-5 w-5 text-green-300 transition duration-150 ease-in-out group-hover:text-opacity-80`}
                 aria-hidden="true"

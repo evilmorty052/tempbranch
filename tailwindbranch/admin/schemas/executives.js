@@ -1,6 +1,6 @@
 export default {
-    name: 'store',
-    title: 'Store',
+    name: 'executives',
+    title: 'Executives',
     type: 'document',
     fields: [
       {
@@ -14,8 +14,8 @@ export default {
         type: 'image'
       },
       {
-        name: 'category',
-        title: 'Category',
+        name: 'position',
+        title: 'Position',
         type: 'string'
       },
       {
@@ -23,21 +23,8 @@ export default {
         title: 'Description',
         type: 'text'
       },
-      {
-        name: 'roi',
-        title: 'ROI',
-        type: 'number'
-      },
-      {
-        name: 'website',
-        title: 'Website',
-        type: 'string'
-      },
-      {
-        name: 'seats',
-        title: 'Seats',
-        type: 'number'
-      }
+      
+     
     ]
   }
   

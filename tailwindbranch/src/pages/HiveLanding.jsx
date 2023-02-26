@@ -4,6 +4,7 @@ import phone from '../assets/retirementphone.png'
 import hemp from '../assets/hemplogo.png'
 import { CTA, Navbar } from '../components'
 import AnimatedSidebar from '../components/AnimatedSidebar'
+import { Link } from 'react-router-dom'
 
 const HiveLanding = () => {
     const [searchmode, setsearchmode] = useState(false)
@@ -93,6 +94,11 @@ function FeatureCard(params) {
             </div> 
           </div> 
         </div>
+        <div className='w-full justify-center flex my-8'>
+        <button  className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+              {'Apply'}
+            </button>
+        </div>
       </div>
     </div>
   </div>
@@ -127,14 +133,11 @@ export function LeftCard({setSearchMode, image}) {
                   veniam aspernatur quam mollitia.
                 </p>
 
-                <div
-                  href=""
-                  class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-sky-100 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
-                >
-                  <span onClick={setSearchMode} class="relative text-base font-semibold text-sky-600 dark:text-white">
-                    Browse now
-                  </span>
-                </div>
+                <Link to={'/hivebiz'} className='w-full justify-center flex my-8'>
+        <button  className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+              {'Browse'}
+            </button>
+        </Link>
               </div>
             </div>
           </div>
@@ -147,7 +150,7 @@ export function LeftCard({setSearchMode, image}) {
 function HiveHero({func}) {
     return (
       <>
-        <div class="pt-32 md:py-12 xl:container px-2 md:px-12">
+        <div class="pt-20 md:py-12 xl:container px-2 md:px-12">
           <div aria-hidden="true" class="absolute inset-0 my-auto w-96 h-32 rotate-45 bg-gradient-to-r from-primaryLight to-secondaryLight blur-3xl opacity-50 dark:opacity-20" ></div>
             
           <div class="relative lg:flex lg:items-center lg:gap-12">
@@ -296,12 +299,10 @@ function ServiceCard(params) {
           Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam
           tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.
         </p>
-        <a
-          href="#"
-          class="relative mx-auto flex h-10 w-10 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-100 dark:before:border-gray-600 before:transition before:duration-300 group-hover:before:scale-125"
-        >
-          <span class="text-primary">&rightarrow;</span>
-        </a>
+      
+        <button  className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+              {'Apply'}
+            </button>
       </div>
       <div class="group space-y-6 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
         <img
@@ -316,12 +317,9 @@ function ServiceCard(params) {
           tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.
         </p>
 
-        <a
-          href="#"
-          class="relative mx-auto flex h-10 w-10 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-100 dark:before:border-gray-600 before:transition before:duration-300 group-hover:before:scale-125"
-        >
-          <span class="text-primary">&rightarrow;</span>
-        </a>
+        <button  className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+              {'Apply'}
+            </button>
       </div>
       <div class="group space-y-6 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
         <img
@@ -335,12 +333,9 @@ function ServiceCard(params) {
           Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam
           tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.
         </p>
-        <a
-          href="#"
-          class="relative mx-auto flex h-10 w-10 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-100 dark:before:border-gray-600 before:transition before:duration-300 group-hover:before:scale-125"
-        >
-          <span class="text-primary">&rightarrow;</span>
-        </a>
+        <button  className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+              {'Get Started'}
+            </button>
       </div>
     </div>
   </div>

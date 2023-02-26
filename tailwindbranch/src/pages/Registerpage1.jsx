@@ -14,7 +14,7 @@ import { FaGoogle } from 'react-icons/fa'
 import { Route, useNavigate } from 'react-router-dom'
 import { Card } from '../components/Card'
 import DividerWithText from '../components/DividerWithText'
-import { Layout } from '../components/Layout'
+
 import { useAuth } from '../contexts/AuthContext'
 // import Sidebar from '../partials/Sidebar'
 // import Header from '../partials/Header'

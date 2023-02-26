@@ -17,9 +17,10 @@ import Qkmenu from  "../src/partials/qkmenu"
 import Confirmsignin from './pages/confirmsignin';
 
 
-import './charts/ChartjsConfig';
-
 // Import pages
+
+
+
 import Dashboard from './pages/Dashboard';
 import DashboardAgents from './pages/DashboardAgents';
 import Notfound from './pages/notfound';
@@ -63,6 +64,7 @@ import AgentEnlist from './pages/Agents/AgentEnlist';
 import ProfileSettingsPage from './pages/ProfilePage';
 import Advisor from './pages/Advisor';
 import HiveLanding from './pages/HiveLanding';
+import HiveBiz from './pages/HiveBiz';
 
 function App() {
   const { currentUser } = useAuth()
@@ -77,9 +79,9 @@ function App() {
   return (
     <>
     <Routes>
-
         <Route exact path="/team" element={<Team />} />
         <Route exact path="/hive" element={<HiveLanding />} />
+        <Route exact path="/hivebiz" element={<HiveBiz />} />
         <Route exact path="/test" element={<Test />} />
         <Route exact path="/jobs" element={<Jobs />} />
         <Route exact path="/profile" element={<ProfileSettingsPage/>} />

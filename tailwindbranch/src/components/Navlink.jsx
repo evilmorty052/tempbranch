@@ -14,7 +14,7 @@ export default function Navlink({ to, name, ...rest }) {
         // variant={isActive ? 'outline' : 'ghost'}
         // colorScheme={isActive ? 'pink' : ''}
         {...rest}
-      className='button text-xl text-white  font-poppins font-bold flex gap-4 mx-4'>
+      className='button text-base text-white  font-poppins font-bold flex gap-4 mx-4'>
         {name}
       </li>
     </Link>

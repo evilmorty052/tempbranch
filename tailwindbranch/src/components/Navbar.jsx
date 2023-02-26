@@ -119,9 +119,9 @@ function DefaultNav({setpathopen, open , path}) {
         <div className="flex self-center items-center">
       {path != '/' &&  <Navlink to='/' name='Home'/>}
         <Popover/>
-        <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white">Shop</a>
+        <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-base font-bold text-white">Shop</a>
         <Popover2/>
-        {path != '/jobs' && <Link to='/jobs'  className='ml-[-10px] text-white text-xl font-bold' >Job Search</Link>}
+        {path != '/jobs' && <Link to='/jobs'  className='ml-[-10px] text-white text-base font-bold' >Job Search</Link>}
         </div>
         <div className="flex">
         {!currentUser && <Navlink to='/login' name='Login' />}
@@ -164,7 +164,7 @@ function DefaultNav({setpathopen, open , path}) {
           <Navlink to='/' name='Home'/>
        
         {currentUser && <Navlink to='/dashboard' name='Dashboard' />}
-          <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white mx-4">Shop</a>
+          <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-base font-bold text-white mx-4">Shop</a>
          {!currentUser && <Navlink to='/login' name='Login' />}
         {!currentUser && <Navlink to='/pick' name='Register' />}
         <Popover/>
@@ -204,7 +204,7 @@ function SecondaryNav({setpathopen, pathid, setactive, open, path}) {
         <div className="flex self-center items-center">
         <Navlink to='/' name='Home'/>
         <Popover/>
-        <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-xl font-bold text-white">Shop</a>
+        <a href="https://products-31e31.web.app" target='blank' className="font-poppins text-base font-bold text-white">Shop</a>
         <Popover2/>
         {path != '/jobs' && <Navlink to='/jobs' name='Job Search' />}
         </div>

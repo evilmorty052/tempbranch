@@ -24,7 +24,7 @@ import { Card } from '../components/Card'
 import DividerWithText from '../components/DividerWithText'
 import { useAuth } from '../contexts/AuthContext'
 import { Router, Routes } from 'react-router-dom'
-import { Layout } from '../components/Layout2'
+
 import { FaAnchor } from 'react-icons/fa'
 import { FaCircle } from 'react-icons/fa'
 import 'react-phone-number-input/style.css'

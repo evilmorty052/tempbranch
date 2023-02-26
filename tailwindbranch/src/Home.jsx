@@ -28,11 +28,15 @@ import { NewsLetter } from "./pages/SmallBiz";
 
 
 
+
 const Home = () => {
 const [expanded, setexpanded] = useState(false)
 const [path, setpath] = useState(false)
 const [modalopen, setmodalopen] = useState(false)
 const history = useNavigate()
+
+
+
 
 
 // let query = `*[_type == "video"]{title, url}`
