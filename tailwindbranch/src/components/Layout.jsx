@@ -1,10 +1,14 @@
 import React from 'react'
+import Navbar from './Navbar'
 
-const Layout = () => {
+const Layout = ({children}) => {
   return (
-    <div>
-      
+    <>
+  <Navbar/>
+    <div className='h-[h-100vh-400px]'>
+      {children}
     </div>
+      </>
   )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaBuilding, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import honeycomb from '../assets/honeycomb.png'
 import plant  from '../assets/growth.png'
@@ -285,18 +285,30 @@ const AnimatedSidebar = ({links, setSidebarOpen, sidebarOpen, isExpanded, setIsE
                     
                   <motion.div initial={{y:'100%'}} animate={{y:'0'}} exit={{y:'-100%'}}
                    className='pt-2 px-10 flex flex-col gap-y-5'>
-                       <ul className='flex flex-col gap-y-3'>
-                       <Link to={'/hiveai'}>
-                       <li className='text-lg font-bold'>HIVE MIND</li>
-                       </Link>
+                       <ul className='flex flex-col gap-y-5'>
                        <Link to={'/team'}>
-                       <li className='text-lg font-bold'>MEDIK 420</li>
+                       <li className='text-[16px] flex gap-x-3 items-center font-bold'>
+                        <a className='text-gray-600'><FaBuilding/></a>
+                        <a className='leading-[0.5]'>Medik 420</a>
+                       </li>
+                       </Link>
+                       <Link to={'/hiveai'}>
+                       <li className='text-[16px] flex gap-x-3 items-center font-bold'>
+                        <a className='text-gray-600'><FaBuilding/></a>
+                        <a className='leading-[0.5]'>Hive Mind</a>
+                       </li>
                        </Link>
                        <Link to={'/smallbiz'}>
-                       <li className='text-lg font-bold'>Digital Farming</li>
+                       <li className='text-[16px] flex gap-x-3 items-center font-bold'>
+                        <a className='text-gray-600'><FaBuilding/></a>
+                        <a className='leading-[0.5]'>Digital Farming</a>
+                       </li>
                        </Link>
                        <Link to={'/agents'}>
-                       <li className='text-lg font-bold'>Agency Program</li>
+                       <li className='text-[16px] flex gap-x-3 items-center font-bold'>
+                        <a className='text-gray-600'><FaBuilding/></a>
+                        <a className='leading-[0.5]'>Agency Program</a>
+                       </li>
                        </Link>
                        </ul>
                    </motion.div>
@@ -304,6 +316,7 @@ const AnimatedSidebar = ({links, setSidebarOpen, sidebarOpen, isExpanded, setIsE
                 }
               </div>
             </motion.li>
+            <Link to={'/pricing'}>
               <motion.li
               
                 
@@ -312,6 +325,7 @@ const AnimatedSidebar = ({links, setSidebarOpen, sidebarOpen, isExpanded, setIsE
                 exit={{ x: '-100%', }}
                 transition={{ delay:  0.4 , duration: 0.2}}
               >
+                
                 <div className='p-2 '>
                 <a className='flex items-center bg-white rounded-lg' >
                 <div className='p-3'>
@@ -325,6 +339,7 @@ const AnimatedSidebar = ({links, setSidebarOpen, sidebarOpen, isExpanded, setIsE
                 </a>
                 </div>
               </motion.li>
+                </Link>
               {/* <motion.li
               
                 

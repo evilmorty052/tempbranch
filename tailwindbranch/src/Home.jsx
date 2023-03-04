@@ -20,6 +20,7 @@ import '../src/stax.css'
 import { client } from "../lib/client";
 import { useQuery } from "@tanstack/react-query";
 import { NewsLetter } from "./pages/SmallBiz";
+import { Link} from "react-router-dom";
 
 
 
@@ -131,7 +132,6 @@ if(path){
     <div onClick={()=> expanded && setexpanded(false)} className={`bg-plat  ${styles.flexStart}`}>
       <div className={`${styles.boxWidth}  px-4 `}>
       <Hero
-        // subtext=" focus on markets where technology, innovation, and capital can unlock long-term value and drive Your Financial growth"
         buttonText="GET STARTED"
         image="https://via.placeholder.com/800x600"
       />
@@ -185,18 +185,17 @@ export default Home;
 
 
  function Hero({ title, subtext, buttonText, image, bg ,span, color, textcolor}) {
- 
+ const history = useNavigate()
       
   return (
     <section className={`${bg} relative px-4 mt-20 font-space rounded-3xl mb-5`}>
       <div className="relative max-w-7xl mx-auto">
-      
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between lg:justify-center">
-          <div className="w-full md:w-1/2 mb-12 md:mb-0  sm:px-10">
-          <a href="#" class="sm:inline-flex justify-between items-center py-1 px-1 pr-4 mb-2 text-sm text-gray-700 bg-gray-100 rounded-full hidden  hover:bg-gray-200  shadow-md" role="alert">
+      <a  onClick={()=> history('/hive')}  class="sm:inline-flex justify-between items-center py-1 px-1 pr-4 mb-2 text-sm text-gray-700 bg-gray-100 rounded-full hidden  hover:bg-gray-200  shadow-md z-50" role="alert">
             <span class="text-xs bg-green-300 rounded-full text-white px-4 py-1.5 mr-3">New</span> <span class="text-sm font-medium">Hive 2.1 is here! See what's new</span> 
             <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
         </a>
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between lg:justify-center">
+          <div className="w-full md:w-1/2 mb-12 md:mb-0  sm:px-10">
             <h1 className={` font-space text-3xl font-bold  text-left sm:text-left uppercase sm:text-[60px]  ${textcolor}`}>{`Build Wealth`}</h1>
             <p className="text-xl leading-normal mb-8 text-left  sm:text-left ">{
               <>
@@ -217,13 +216,7 @@ export default Home;
               {buttonText}
             </button>
             </div>
-          </div>
-          {/* <img
-            className="w-full md:w-1/2 rounded-lg shadow-2xl"
-            src={image}
-            alt={title}
-          /> */}
-        
+          </div>  
         <video
             className="rounded-2xl transform-gpu object-cover min-h-[372px]  min-w-[340px] sm:w-full lg:h-auto lg:w-1/2 mb-8 shadow-2xl"
             src="https://cdn.sanity.io/files/noj3nhym/production/e6d370d50c94bb32d8f28262791f62555bb7e9cc.mp4" poster="https://cdn.sanity.io/images/noj3nhym/production/d5f8fb875f672f0200bc64411bbfda8893fb74f7-2051x1596.png"
@@ -232,8 +225,8 @@ export default Home;
             muted
             loop
           />
-          <a href="#" class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-2 text-sm text-gray-700 bg-gray-100 rounded-full sm:hidden  hover:bg-gray-200  shadow-md" role="alert">
-            <span class="text-xs bg-green-300 rounded-full text-white px-1 uppercase py-1.5 mr-3">New</span> <span class="text-sm font-medium ">One Hive is Here Learn More</span> 
+          <a onClick={()=> history('/hive')} class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-2 text-sm text-gray-700 bg-gray-100 rounded-full sm:hidden  hover:bg-gray-200  shadow-md" role="alert">
+            <span onClick={()=> history('/hive')} class="text-xs bg-green-300 rounded-full text-white px-1 uppercase py-1.5 mr-3">New</span> <span class="text-sm font-medium ">One Hive is Here Learn More</span> 
             <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
         </a>
         {/* <div className="absolute inset-0 bg-gray-400 bg-opacity-75"></div> */}
@@ -326,16 +319,7 @@ function Hiring(params) {
           description="From Delivery Men to Customer Care Representatives Browse through a Large catalogue of Available Positions Offered By Startups And Small Businesses Sponsored By Medik 420."
           image="https://via.placeholder.com/200x200"
         />
-        {/* <Feature
-          title="AGENCY"
-          description=""
-          image="https://via.placeholder.com/200x200"
-        /> */}
-        {/* <Feature
-          title="Grow For Us"
-          description="Do You Have A Greenthumb? Earn Extra Bucks By the Side By helping Us Grow (only available in us & canada)"
-          image="https://via.placeholder.com/200x200"
-        /> */}
+      
       </div>
     </>
   )

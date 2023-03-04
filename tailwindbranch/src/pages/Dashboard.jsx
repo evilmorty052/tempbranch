@@ -29,32 +29,6 @@ function Dashboard() {
   let query = `*[email == "${emailID}"]`
   const { data: user } = useQuery(['userlist'], () => client.fetch(query))
   ;
-// const db = getFirestore()
-// const colRef = collection(db, 'users')
-// let id = localStorage.getItem('id') 
-// let q = filter(colRef, where('id', '==', `${id}`))
-// let list =[]
-// const [userdata, setuserdata] = useState(list)
-// function getuser() {
-
-//     return(
-//       onSnapshot(q, (snapshot)=>{
-//         let list =[]
-//         snapshot.docs.forEach((doc)=>{
-//          list.push({...doc.data()})
-            
-            
-//            })
-//            console.log(list)  
-//          })
-//     )
-  
-  
-   
-//   }
-
-
-
 
  let notifications = user && user[0].notifications 
 //  let preview = notifications && notifications.reverse()

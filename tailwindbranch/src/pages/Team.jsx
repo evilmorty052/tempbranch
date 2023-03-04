@@ -4,12 +4,21 @@ import { Navbar } from '../components'
 import AnimatedSidebar from '../components/AnimatedSidebar'
 import useFetch from '../hooks/useFetch'
 import {LogoCloud} from '../components/index'
+import styles from '../style'
+import pie from '../assets/pie2.svg'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+
 
 const Team = () => {
 const query = `*[_type == 'executives']`
 const data = useFetch(query, 'execs')
 const [tab1, settab1] = useState(false)
 const [tab2, settab2] = useState(true)
+const [expanded, setexpanded] = useState(false)
+
+function open(params) {
+  !expanded ? setexpanded(true) : setexpanded(false)
+}
 
 function handleTabs(params) {
   if(tab1){
@@ -24,103 +33,15 @@ function handleTabs(params) {
 
   return (
     <>
-    <Navbar/>
-    <AnimatedSidebar/>
-    {/* <section class="text-gray-600 body-font bg-plat">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-col text-center w-full mb-20">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Our Team</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them.</p>
-    </div>
-    <div class="flex flex-wrap -m-2">
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">Holden Caulfield</h2>
-            <p class="text-gray-500">UI Designer</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/84x84"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">Henry Letham</h2>
-            <p class="text-gray-500">CTO</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/88x88"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">Oskar Blinde</h2>
-            <p class="text-gray-500">Founder</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/90x90"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">John Doe</h2>
-            <p class="text-gray-500">DevOps</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/94x94"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">Martin Eden</h2>
-            <p class="text-gray-500">Software Engineer</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/98x98"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">Boris Kitua</h2>
-            <p class="text-gray-500">UX Researcher</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/100x90"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">Atticus Finch</h2>
-            <p class="text-gray-500">QA Engineer</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/104x94"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">Alper Kamu</h2>
-            <p class="text-gray-500">System</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
-        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-          <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/108x98"/>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 title-font font-medium">Rodrigo Monchi</h2>
-            <p class="text-gray-500">Product Manager</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> */}
-<MainHero/>
-<div>
+    <Navbar open={open}/>
+    <AnimatedSidebar isExpanded={expanded} setIsExpanded={setexpanded}/>
+    <div onClick={()=> expanded && setexpanded(false)}>
+    <MainHero/>
+    <div>
    <Tabs tab1={tab1} tab2={tab2} setactive={handleTabs}/>
-</div>
+    </div>
+    </div>
+
 {!tab1 ? <TeamGrid data={data} /> : <AboutUs/>}
     </>
   )
@@ -231,34 +152,176 @@ function MainHero(params) {
   return(
     <>
     <div>
-      <div>
-        <div>
-          <h3>We create financial opportunity.</h3>
-          <p>We’re here to help everyday Americans invest and build wealth, $5 at a time.</p>
+      <div className='sm:flex items-center sm:px-4 lg:px-16 sm:gap-4 md:container md:mx-auto '>
+        <div className='px-2 mb-8'>
+          <h3 className={styles.sectionHeading}>We create financial opportunity.</h3>
+          <p className={styles.content}>We’re here to help everyday Americans invest and build wealth, $5 at a time.</p>
         </div>
-        <div>
-          <div>
-            <ul>
+        <div className='mx-auto container max-w-[450px]  w-[90%] my-4'>
+          <div className='py-8 px-8 bg-gray-100 rounded-2xl'>
+            <ul className='grid grid-cols-2 md:items-center gap-4'>
               <li>
-                <p>2022</p>
-                <p>Medik Launched</p>
+                <p className='text-[32px] font-medium'>2022</p>
+                <p className='text-[16px] '>Medik Launched</p>
               </li>
               <li>
-              <p>2022</p>
-              <p>Medik Launched</p>
+              <p className='text-[32px] font-medium'>16k+</p>
+                <p className='text-[16px]'>Unique Investors</p>
               </li>
               <li>
-              <p>2022</p>
-              <p>Medik Launched</p>
+              <p className='text-[32px] font-medium'>$480 +</p>
+                <p className='text-[16px]'>in VC funding</p>
               </li>
               <li>
-              <p>2022</p>
-              <p>Medik Launched</p>
+              <p className='text-[32px] font-medium'>200 +</p>
+                <p className='text-[16px]'>Jobs Provided</p>
               </li>
             </ul>
           </div>
         </div>
       </div>
+    </div>
+    <Section/>
+    <Mission/>
+    <Values/>
+    </>
+  )
+ }
+
+ function Section(params) {
+  return(
+    <>
+    
+    <div class="py-16">
+  <div class="xl:container m-auto px-6 text-gray-600 md:px-12 xl:px-16">
+    <div class="lg:bg-gray-50 dark:lg:bg-darker lg:p-16 rounded-[4rem] space-y-6 md:flex flex-row md:gap-6 justify-center md:space-y-0 lg:items-center">
+      <div class="md:5/12 lg:w-1/2">
+        <img
+          src={pie}
+          alt="image"
+          loading="lazy"
+          width=""
+          height=""
+        />
+      </div>
+      <div class="md:7/12 lg:w-1/2">
+        <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+          We Make Sure You Always Get A Piece
+        </h2>
+        <p class="my-8 text-gray-600 dark:text-gray-300">
+        Our founders came from Wall Street. During their time there, Brandon Krieg and Ed Robinson both realized that wealth creation systems—particularly investing—were stacked against everyday Americans.
+
+They left their jobs with a simple mission: make investing easy and affordable for everyone. Today, Medik is helping over 6 million people create a more secure financial future for themselves.
+        </p>
+       
+      </div>
+    </div>
+  </div>
+</div>
+                                    
+    </>
+  )
+ }
+
+ function Mission(params) {
+    return(
+      <>
+      <div className='container mx-auto max-w-5xl py-8'>
+        <div className='flex flex-col items-center gap-y-8'>
+          <div>
+            <img src={pie} alt="" />
+          </div>
+          <div>
+               <div className='space-y-4 sm:space-y-8 px-4 sm:px-8'>
+                <h3 className={`${styles.sectionHeading} text-center`}>We’re changing the status quo.</h3>
+                <p  className={`${styles.content} text-center`}>Our founders came from Wall Street. During their time there, Brandon Krieg and Ed Robinson both realized that wealth creation systems—particularly investing—were stacked against everyday Americans.They left their jobs with a simple mission: make investing easy and affordable for everyone. Today, Stash is helping over 6 million people create a more secure financial future for themselves.</p>
+                <p className='text-gray-600 text-[10px] text-center'>Disclosure: This is not an endorsement or a statement of satisfaction by any Medik client and is defined by the number of clients who have e-signed.</p>
+               </div>
+          </div>
+        </div>
+      </div>
+      </>
+    )
+ }
+
+ function Values() {
+  const [text, settext] = useState(1)
+  const [disabled, setdisabled] = useState(false)
+  
+  let snippet
+  let title
+  
+  switch (text) {
+    case 1:
+      title = 'Prioritize people.'
+      snippet = 'We believe a diverse, authentic, and inclusive culture empowers us to grow together.'
+      break;
+  
+      case 2:
+      title = 'Obsess over the customer.'
+      snippet = 'We have a mission mindset and always strive to build the best experience for everyday Americans.'
+      break;
+      
+      case 3:
+      title = 'Take Ownership'
+      snippet = 'As the risk-takers, drivers, and doers behind each initiative, we take responsibility for our contributions individually and as a team.'
+      break;
+      
+      case 4:
+      title = 'Create Solutions'
+      snippet = 'We challenge the status quo and apply our creative energy to solve complex problems in fresh, new ways.'
+      break;
+  
+    default:
+      break;
+  }
+
+  function handleIncrease(params) {
+    if(text >= 4){
+      settext(1)
+      return
+    }
+
+    settext(prev => prev + 1)
+  }
+  
+  function handleDecrease(params) {
+    if(text <= 1){
+      settext(1)
+      return
+    }
+
+    settext(prev => prev -1)
+  }
+
+
+
+  return(
+    <>
+    <div className='w-full bg-gray-300 py-10'>
+        <div className='container mx-auto'>
+          <div className='flex flex-col items-center'>
+           <div className='mb-8'>
+               <div className='mb-2'>
+               <h3 className={`${styles.sectionHeading} text-center text-gray-800`}>Our Core Values</h3>
+               </div>
+                <div
+                 className='px-4 w-72 sm:w-[400px] md:w-[600px] sm:h-[200px] md:h-[] h-40 '>
+                <h3
+                 className={`${styles.sectionSubHeadingCenter} text-center text-gray-800 transition-all ease-in-out duration-300`}>{title}</h3>
+                <div className='py-4 '>
+                <p className={`${styles.contentCenter} text-gray-800 transition-all ease-in`}>{snippet}</p>
+                </div>
+                </div>
+           </div>
+           <div className='flex  w-1/2 sm:w-[20%]'>
+              <div className='flex justify-between w-full '>
+                <FaAngleLeft style={{fontSize: '30px' , color: 'steelblue'}} onClick={handleDecrease} />
+                <FaAngleRight style={{fontSize: '30px' , color: 'steelblue'}} onClick={handleIncrease}/>
+              </div>
+           </div>
+          </div>
+        </div>
     </div>
     </>
   )

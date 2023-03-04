@@ -1,12 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 
 
 const logincookie = localStorage.setItem('logincookie', false)
+const loggedinstate = localStorage.getItem('logincookie')
 
 
 const initialState = {
-    loggedin: localStorage.getItem('logincookie'),
+    loggedin: loggedinstate ? true : false,
     userInfo: null
     
 }
@@ -22,4 +23,5 @@ export const user = createSlice({
     }
 })
 
+export const {loggedin} = user.getInitialState()
 export const {login} = user.actions

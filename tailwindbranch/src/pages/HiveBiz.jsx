@@ -1,5 +1,5 @@
 import React,{Children, useRef, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Miniheader from '../components/Miniheader'
 import hemp from '../assets/hemplogo.png'
 import useFetch from '../hooks/useFetch'
@@ -19,7 +19,7 @@ const dispatch = useDispatch()
 const keyword = useSelector((state)=> state.hivebizSlice.filteredKeyWord)
 const searchTerm = useSelector((state)=> state.hivebizSlice.searchTerm)
 
-console.log(searchTerm)
+const history = useNavigate()
 
 const tags = [
     {
@@ -158,7 +158,7 @@ if(investing){
 
   return (
     <>
-    <Miniheader back={handleShowInvestPage}/>
+    <Miniheader back={()=> history('/hive')}/>
     <div  className='pt-[60px] px-1'>
     <Page handleFilter={handleFilter} tags={tags} func={handleShowInvestPage} data={keyword == 'All' || !searchTerm ? hiveData : hives}/>
     </div>
@@ -317,8 +317,8 @@ function HiveInvest({back}) {
     return(
         <>
         <Miniheader back={back}/>
-        <div>
-            
+        <div className="py-20">
+            you are here
         </div>
         </>
     )

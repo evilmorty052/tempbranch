@@ -34,11 +34,6 @@ const Hive = () => {
        setIsExpanded={setisexpanded}
        isExpanded={isexpanded} />
        <Navbar/>
-        <div className={`${styles.boxWidth}`}>
-            <div>
-             
-            </div>
-        </div>
         <div className={`mt-20`}>
             <div className={`${styles.boxWidth} px-4`}>
             <Hero

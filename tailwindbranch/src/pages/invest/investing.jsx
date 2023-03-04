@@ -16,81 +16,63 @@ import Plan1 from '../../components/plans/plan1'
 import { FaChevronRight } from 'react-icons/fa'
 import investmentphone from '../../assets/phone.png'
 import Banner from '../../partials/Banner'
+import AnimatedSidebar from '../../components/AnimatedSidebar'
 
 const investing = () => {
   return (
     <>
-    <div className="bg-blk w-full overflow-hidden relative">
-    <Navbar />
-        <div className={`${styles.boxWidth}`}>
-          
-        </div>
-    <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+    <Navbar /> 
+    <AnimatedSidebar/>  
+    <div className='bg-plat h-[100vh]'>
+     <MainHero/>
     </div>
-
-    <div className={`bg-plat ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth} my-20 px-4`}>
-        <Hero 
-        color={'text-green-300'}
-        span={'EASY'}
-         bg={'bg-slate-200'}
-        image={investmentphone} 
-        title={'INVESTMENT MADE'}
-         subtext="Invest In just a few clicks, Without the hassle of day trading. We help you build long-term wealth your way—$5 at a time."
-         buttonText={'Learn More'}/>
-        {/* <Stats /> */}
-      </div>
-    </div>
-    
-    <div className={`bg-plat ${styles.paddingX} ${styles.flexCenter}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Feature2 />
-        <CTA1 />
-        <div className='hidden sm:flex md:flex'><Feature3 /></div>
-        <div className='ss:hidden'><Feature1/></div>
-          
-          <div className='my-5 '>
-          <h3 className='text-center text-blk text-4xl font-poppins font-medium'>Start Earning Today!</h3></div>
-        <div className='grid grid-cols-1 gap-5 md:grid-cols-2 justify-center w-full '>
-          <div className='flex justify-center'>
-          <PricingCard/>
-          </div>
-          <div className='flex justify-center'>
-          <PricingCard/>
-          </div>
-        
-
-        </div>
-       <div className=' my-10 text-center space-x-3 flex items-center justify-center font-poppins font-bold '><h3 className='text-blk text-4xl tracking-wide'>VIEW ALL PLANS</h3> <span className='text-lg text-green-300'><FaChevronRight/></span> </div>
-        
-      
-        
-        
-        {/* <Section/>
-        
-        <Business />
-        <CardDeal />
-        <Billing />
-        <Medicplants />
-        <Testimonials />
-        <Clients />
-        <CTA />
-        
-        <Footer /> */}
-        
-        
-        
-        
-        
-      </div>
-    </div>
-    {/* <Example/> */}
- 
-  </div>
- <div className='bg-plat px-3'><Footer /></div> 
- <Banner/>
     </>
   )
 }
 
+function MainHero(params) {
+  return(
+   <>
+   
+   <body class="bg-gray-900 md:pt-20 pb-10 ">
+     
+     <div class="border-b  ">
+         <div class="container  m-auto px-6 pt-24 md:px-12  lg:pt-[4.8rem] lg:px-7">
+             <div class="grid lg:grid-cols-2 items-center gap-12 px-2 md:px-0">
+                 <div class="col-span-1">
+                     <div class="relative w-full">
+                         <img src={investmentphone} alt="shoes" loading="lazy" width="100%" height="640"/>
+                      
+                     </div>
+                 </div>
+ 
+                 <div class="relative col-span-1">
+                     <h1 class="font-bold text-5xl sm:text-6xl md:text-7xl xl:text-8xl text-white text-center">Automated<br
+                             ></br><span className='text-cyan-800'>Investing.</span></h1>
+                     <div class="mt-8 lg:mt-16 space-y-8">
+                         <p class="text-gray-300 text-center ">Smart Portfolio is a robo-advisor that gives you a diversified portfolio based on your risk profile. It’s the easy way to invest.</p>
+                         {/* <div class="flex space-x-4 mt-6">
+                             <button type="button" title="Start buying"
+                                 class="w-full py-3 px-6 text-center rounded-full transition duration-300 bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800 sm:w-max">
+                                 <span class="block text-white text-sm">
+                                     Shop now
+                                 </span>
+                             </button>
+                             <button type="button" title="Start buying"
+                                 class="w-full py-3 px-6 text-center rounded-full transition border border-gray-200 dark:border-gray-700 sm:w-max">
+                                 <span class="block text-gray-800 text-sm dark:text-white">
+                                     View store
+                                 </span>
+                             </button>
+                         </div> */}
+                     </div>'
+                 </div>
+             </div>
+         </div>
+     </div>
+ </body>
+                                     
+   </>
+  )
+ }
 export default investing

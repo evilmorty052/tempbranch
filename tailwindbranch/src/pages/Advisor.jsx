@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import pattern from '../assets/pattern.png'
 import stashlogo from '../assets/stashlogo.png'
 import { FaChevronRight, FaEnvelope } from 'react-icons/fa';
-import { Cascade } from './test';
+
 
 
 

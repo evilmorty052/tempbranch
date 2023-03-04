@@ -65,6 +65,7 @@ import ProfileSettingsPage from './pages/ProfilePage';
 import Advisor from './pages/Advisor';
 import HiveLanding from './pages/HiveLanding';
 import HiveBiz from './pages/HiveBiz';
+import {Settings} from './pages/Settings/index'
 
 function App() {
   const { currentUser } = useAuth()
@@ -79,6 +80,7 @@ function App() {
   return (
     <>
     <Routes>
+        <Route exact path="/settings" element={<Settings />} />
         <Route exact path="/team" element={<Team />} />
         <Route exact path="/hive" element={<HiveLanding />} />
         <Route exact path="/hivebiz" element={<HiveBiz />} />
