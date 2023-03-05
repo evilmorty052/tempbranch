@@ -7,6 +7,9 @@ import PrivacySettings from "./PrivacySettings";
 import InvestmentSettings from "./InvestmentSettings";
 import NotificationSettings from "./NotificationSettings";
 import LaptopSettings from "./LaptopSettings";
+import { MenuItem } from "./partials/Menuitem";
+import Menuswitch, {MenuCheckBox} from "./partials/Menuswitch";
+import MenuSlider from "./partials/MenuSlider";
 
 export{
     Settings,
@@ -17,6 +20,10 @@ export{
     PrivacySettings,
     InvestmentSettings,
     NotificationSettings,
-    LaptopSettings
+    LaptopSettings,
+    MenuItem,
+    Menuswitch,
+    MenuCheckBox,
+    MenuSlider
     
 }
