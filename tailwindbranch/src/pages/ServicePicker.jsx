@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import RadioGroups from '../components/radiogroup'
 import { useNavigate } from 'react-router-dom'
 

@@ -13,7 +13,7 @@ import { useAuth } from './contexts/AuthContext'
 
 import './css/style.css';
 import './index.css'
-import Qkmenu from  "../src/partials/qkmenu"
+
 import Confirmsignin from './pages/confirmsignin';
 
 
@@ -25,11 +25,10 @@ import Dashboard from './pages/Dashboard';
 import DashboardAgents from './pages/DashboardAgents';
 import Notfound from './pages/notfound';
 import Pricing from './pages/Pricing';
-import Dashboardsubscribe from './pages/Dashboardsubscribe';
+
 import Home  from './Home'
 
 import Registerpage from './pages/Registerpage'
-import Pickagent from './pages/pickagent';
 import Investing from './pages/invest/investing';
 // import Whoweare from './pages/whoweare';
 import Aboutus from './pages/Aboutus';

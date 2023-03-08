@@ -9,7 +9,10 @@ import NotificationSettings from "./NotificationSettings";
 import LaptopSettings from "./LaptopSettings";
 import { MenuItem } from "./partials/Menuitem";
 import Menuswitch, {MenuCheckBox} from "./partials/Menuswitch";
-import MenuSlider from "./partials/MenuSlider";
+import MenuSlider from "./partials/MenuSlider"
+import MenuButton from "./partials/MenuButton";
+import UpdateScreen from "./UpdateScreen";
+import {SuccessMessage} from './partials/Message'
 
 export{
     Settings,
@@ -24,6 +27,9 @@ export{
     MenuItem,
     Menuswitch,
     MenuCheckBox,
-    MenuSlider
+    MenuSlider,
+    MenuButton,
+    UpdateScreen,
+    SuccessMessage
     
 }

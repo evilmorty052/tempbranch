@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import {useState} from 'react';
 import { motion } from 'framer-motion';
 import { Tag } from 'antd';
 import { FaChartLine } from 'react-icons/fa';

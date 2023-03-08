@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import MojoAuth from "mojoauth-web-sdk"
 import { Button, Spin } from 'antd'
 import { FaArrowRight } from "react-icons/fa"

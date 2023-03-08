@@ -33,7 +33,7 @@ function AllSettings(params) {
     
     return(
         <>
-        <div className='flex '>
+        <div className='flex bg-plat h-screen '>
             <div className='pt-2.5 sm:pt-20 lg:pt-20 container mx-auto  '>
                   <div>
                     <div className='hidden sm:block'>

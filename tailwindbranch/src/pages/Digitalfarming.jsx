@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+
 import Dynamicnav from '../partials/Dynamicnav'
 import { LandingPage, Hero } from './SmallBiz'
 import Header from '../partials/Header'

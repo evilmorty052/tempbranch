@@ -1,11 +1,46 @@
 import { useState } from "react";
 import { FaAngleRight, FaArrowLeft, FaUser } from "react-icons/fa";
 import styles from "../../style";
+import {MenuItem, MenuCheckBox} from './index'
 
 const NotificationSettings = ({func}) => {
+  const list =[
+    {
+      itemHeader: 'Trade Alert',
+      itemSubtext: 'If Enabled We will Collect Data About Your Trades On our Platform. We Collect This Information To Train Our A.i And Create Connections With Other Users',
+      switch:      <MenuCheckBox/>
+        },
+    {
+      itemHeader: 'Deposit Alert',
+      itemSubtext: 'Get Alerts On Every Deposits',
+      switch:      <MenuCheckBox/>
+    },
+    {
+      itemHeader: 'Withdrawal Alert',
+      itemSubtext: 'Get Notified On Every Withdrawal',
+      switch:      <MenuCheckBox/>
+    },
+    
+    {
+      itemHeader: 'Private Messages',
+      itemSubtext: 'Receive Alerts For Private Messages',
+      switch:      <MenuCheckBox/>
+    },
+    {
+      itemHeader: 'Crew Requests',
+      itemSubtext: 'Get Notified Anytime A user Sends You A crew Request',
+      switch:      <MenuCheckBox/>
+    },
+    
+  ]
+
+  const itemHeader = 'Notification Settings'
+  const itemSubtext = 'Customize Or Disable Your Notifications'
+
+  
   return (
     <>
-      <ul className=" col-span-2 px-2  lg:items-start sm:pl-5  flex flex-col gap-y-5 slide-in-right">
+      {/* <ul className=" col-span-2 px-2  lg:items-start sm:pl-5  flex flex-col gap-y-5 slide-in-right">
       <div className=' flex items-center gap-x-8 px-4 sm:hidden'>
         <a className={styles.SettingsIcon} ><FaArrowLeft onClick={func} /></a> 
          <div>
@@ -88,7 +123,9 @@ const NotificationSettings = ({func}) => {
        
        
       
-      </ul>
+      </ul> */}
+
+<MenuItem buttonText={'Update'} func={func} list={list} itemHeader={itemHeader} itemSubtext={itemSubtext}/>
     </>
   );
 }

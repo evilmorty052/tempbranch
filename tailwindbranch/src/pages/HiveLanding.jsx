@@ -55,7 +55,7 @@ const HiveLanding = () => {
           <HiveHero func={func} />
         </div>
         <div className="container mx-auto px-4 sm:px-16">
-          <Tabs tab1={tab1} tab2={tab2} setactive={handleTabs} />
+          <Tabs section1={'Startups'} section2={'Investors'} tab1={tab1} tab2={tab2} setactive={handleTabs} />
         </div>
         <div>
           {tab2 && (

@@ -299,7 +299,7 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
                 <Card firstname={name} lastname={lastname}/>
               </div>
               <div className='p-6 2xl:p-4'>
-                <Tabs/>
+                <Tabs />
               </div>
               </div>
                 </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaAngleRight, FaArrowLeft, FaUser } from "react-icons/fa";
+import { FaAngleRight, FaArrowLeft, FaBrain, FaCreditCard, FaRobot, FaUser } from "react-icons/fa";
 import styles from "../../style";
 import {MenuItem, Menuswitch, MenuCheckBox, MenuSlider} from './index'
 
@@ -27,6 +27,11 @@ const AutoInvest = () => {
       itemSubtext: 'Allow Auto-invest to Notify you on every Investment',
       switch:      <Menuswitch checked={investmentnotifications}/>
     },
+    {
+      itemHeader: 'Max Investment',
+      itemSubtext: 'Adjust The Maximum Percentage of Your Portfolio Auto Invest Is Authorized To Spend',
+      switch:      <a className={styles.SettingsIcon}><FaAngleRight/></a>
+    },
     // {
     //   itemHeader: 'One Hive Activity',
     //   itemSubtext: 'Download A Visualization Of One Hive Activity',
@@ -41,15 +46,18 @@ const AutoInvest = () => {
   return(
 
   <>
+  <div className="max-w-xl">
+
  <MenuItem func={()=> setautoinvest(false)} itemSubtext={itemSubtext} buttonText={'save'} itemHeader={itemHeader} list={list}>
-   <div className="">
+   {/* <div className="">
    <div className="max-w-[70%]">
-   <p className="text-[16px]">Max Investment</p>
-   <span className="text-[12px]">Adjust The Maximum Percentage of Your Portfolio Auto Invest Is Authorized To Spend</span>
+   <p className={styles.SettingOption}>Max Investment</p>
+   <span className={styles.SettingOptionSubtext}>Adjust The Maximum Percentage of Your Portfolio Auto Invest Is Authorized To Spend</span>
   </div>
    <MenuSlider/>
-   </div>
+   </div> */}
  </MenuItem>
+  </div>
   </>
   )
 }
@@ -74,6 +82,11 @@ const SmartPortfolioSettings = () => {
       itemHeader: 'Startups',
       itemSubtext: 'Allow Smart Portfolio Invest In High Performing Startups from Medik 420',
       switch:      <MenuCheckBox/>
+    },
+    {
+      itemHeader: 'Risk level',
+      itemSubtext: 'Adjust How Much Risk You Want Smart Portfolio To Take On Your Behalf',
+      switch:      <a className={styles.SettingsIcon}><FaAngleRight/></a>     
     },
     
   ]
@@ -285,7 +298,7 @@ return(
         <li onClick={()=> setdebitcard(true)} className='relative sm:min-w-[80%] flex items-center  '>
             <div>
             <a className={styles.SettingsIcon}>
-              <FaUser />
+              <FaCreditCard />
             </a>
             </div>
               <div className=' ml-8 pr-4'>
@@ -294,7 +307,7 @@ return(
                  Lock Your Debit Card Or Adjust Settings
                 </p>
               </div>
-          <div className=' absolute right-2 hidden'>
+          <div className=' absolute right-2 hidden sm:block'>
                 <a>
                   <FaAngleRight />
                 </a>
@@ -303,7 +316,7 @@ return(
         <li onClick={()=> setsmart(true)}  className='relative flex items-center sm:min-w-[80%] '>
             <div>
             <a className={styles.SettingsIcon}>
-              <FaUser />
+              <FaBrain />
             </a>
             </div>
               <div className='min-w-[80%] ml-8 pr-4'>
@@ -312,7 +325,7 @@ return(
                   choose what trading information you share
                 </p>
               </div>
-          <div className=' absolute right-2 hidden'>
+          <div className=' absolute right-2 hidden sm:block'>
                 <a>
                   <FaAngleRight />
                 </a>
@@ -321,7 +334,7 @@ return(
         <li onClick={()=> setautoinvest(true)}  className='relative sm:min-w-[80%] flex items-center  '>
             <div>
             <a className={styles.SettingsIcon}>
-              <FaUser />
+              <FaRobot />
             </a>
             </div>
               <div className=' ml-8 pr-8'>
@@ -330,7 +343,7 @@ return(
                  Turn On Auto Invest
                 </p>
               </div>
-          <div className=' absolute right-2 hidden'>
+          <div className=' absolute right-2 hidden sm:block'>
                 <a>
                   <FaAngleRight />
                 </a>

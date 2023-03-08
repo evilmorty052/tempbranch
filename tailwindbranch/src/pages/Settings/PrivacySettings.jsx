@@ -1,12 +1,41 @@
 import { FaUser,  FaArrowLeft,  FaAngleRight } from "react-icons/fa";
 import styles from "../../style";
 import { useState } from "react";
+import {MenuItem, MenuCheckBox, Menuswitch} from './index'
 
 
 const PrivacySettings = ({func}) => {
+
+  const list =[
+    {
+      itemHeader: 'Trading Information',
+      itemSubtext: 'If Enabled We will Collect Data About Your Trades On our Platform. We Collect This Information To Train Our A.i And Create Connections With Other Users',
+      switch:      <MenuCheckBox/>
+        },
+    {
+      itemHeader: 'Investment Information',
+      itemSubtext: 'If Enabled We will Share Data About Your Investments With other Users On our Platform',
+      switch:      <MenuCheckBox/>
+    },
+    
+    {
+      itemHeader: 'Location Information',
+      itemSubtext: 'Allow Medik 420 to Share Your Location With Other Users',
+      switch:      <MenuCheckBox/>
+    },
+    {
+      itemHeader: 'Profile',
+      itemSubtext: 'Allow Medik 420 To Share Information like Your Profile Image And Username if Disabled You Will Appear as Anonymous To Other Users',
+      switch:      <MenuCheckBox/>
+    },
+    
+  ]
+
+  const itemHeader = 'Privacy Settings'
+  const itemSubtext = 'Choose What Information You Want Us To Collect Or Share'
   return (
     <>
-      <ul className=" col-span-2 px-2  lg:items-start sm:pl-5  flex flex-col gap-y-5 slide-in-right">
+      {/* <ul className=" col-span-2 px-2  lg:items-start sm:pl-5  flex flex-col gap-y-5 slide-in-right">
       <div className=' flex items-center gap-x-8 px-4 sm:hidden'>
          <a className={ styles.SettingsIcon} ><FaArrowLeft onClick={func} /></a>
          <div>
@@ -14,14 +43,7 @@ const PrivacySettings = ({func}) => {
          <p>evilmorty052@proton.me</p>
          </div>
          </div>
-          {/* <div className='pl-4 hidden sm:block  space-y-2'>
-          <h3 className={styles.UiHeading}><FaArrowLeft/></h3>
-          <h3
-              className={`text-gray-600 text-[14px] font-semibold font-space hidden lg:block`}
-            >
-              Manage What Information you Share
-            </h3>
-          </div> */}
+        
           <div className='pl-4 block  sm:hidden  space-y-2'>
          
           <h3
@@ -112,7 +134,8 @@ const PrivacySettings = ({func}) => {
         </li>
        
       
-      </ul>
+      </ul> */}
+      <MenuItem buttonText={'Update'} func={func} list={list} itemHeader={itemHeader} itemSubtext={itemSubtext}/>
     </>
   );
 }

@@ -132,21 +132,21 @@ const LaptopSettings = () => {
      else if (privacy) {
         return(
             <>
-            <PrivacySettings/>
+            <PrivacySettings func={()=> setaccountSettings(true)}/>
             </>
         )
      }
      else if (investmentSettings) {
         return(
             <>
-           <InvestmentSettings/>
+           <InvestmentSettings func={()=> setaccountSettings(true)}/>
             </>
         )
      }
      else if (notifications) {
         return(
             <>
-           <NotificationSettings/>
+           <NotificationSettings func={()=> setaccountSettings(true)}/>
             </>
         )
      }

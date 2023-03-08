@@ -1,15 +1,10 @@
-import React, { useState , useRef} from 'react';
+import { useState , useRef} from 'react';
 // import {Mymodal, Modalbutton} from '../components/modal'
 import MotionCard from './Aboutus';
 import Sidebar from '../partials/Sidebar2';
 import Header from '../partials/Header';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
-import DashboardCard01 from '../partials/dashboard/DashboardCard01';
-import DashboardCard02 from '../partials/dashboard/DashboardCard02';
-import DashboardCard03 from '../partials/dashboard/DashboardCard03';
-import DashboardCard04 from '../partials/dashboard/DashboardCard04';
-import DashboardCard13 from '../partials/dashboard/DashboardCard13';
-import DashboardCard14 from '../partials/dashboard/DashboardCard14';
+
 // import Tabs from './Aboutus';
 import Agents from '../partials/dashboard/AgentCard';
 // import { getsanityuser } from './Loginpage';
@@ -18,17 +13,9 @@ import { useQuery } from '@tanstack/react-query';
 import { client, urlFor } from '../../lib/client';
 import Loader from '../components/Loader';
 import cbd from '../assets/hemplogo.png'
-import graph from '../assets/graph1.png'
-import { Tabs } from 'antd';
-import Registerpage from './Registerpage3';
-import Smallcard from '../components/smallcard';
 import { Button, Progress } from 'antd';
 import AnimatedSidebar from '../components/AnimatedSidebar';
 import  Accountcard from '../components/Accountcard'
-import { Slider , Col, InputNumber, Row} from 'antd';
-import { background } from '@chakra-ui/react';
-import {Tour} from 'antd'
-import DashboardCard014 from '../partials/dashboard/DashboardCard14';
 import IconBox from '../components/iconBox';
 import { DollarOutlined, BankOutlined, PlusCircleOutlined, ExperimentOutlined } from '@ant-design/icons';
 import pattern from '../assets/pattern.png'

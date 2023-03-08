@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from '../../style';
-import { FaAngleRight, FaArrowLeft, FaUser } from 'react-icons/fa';
-import {MenuCheckBox }from './index'
+import { FaAngleRight, FaArrowLeft, FaDownload, FaLock, FaPowerOff, FaUser } from 'react-icons/fa';
+import {MenuCheckBox, Menuswitch, MenuItem, UpdateScreen, MenuButton }from './index'
 
 const AccountInfo = ({func}) => {
 
@@ -15,48 +15,57 @@ const AccountSettings = () => {
   const [username, setusername] = useState(false)
   const [phone, setphone] = useState(false)
   const [mailing, setmailing] = useState(false)
+  
+  const [email, setemail] = useState(null)
+  const [usernameValue, setusernameValue] = useState(null)
+  const [phoneValue, setphoneValue] = useState(null)
+  const [mailingValue, setmailingValue] = useState(null)
+  
 
 
   if(emailchange){
     return(
-      <UpdateScreen  updateText={'Update Email Address'} header={"Change Email Address"} placeholder={'evilmorty052@proton.me'} func={()=> setemailchange(false)}/>
+      <UpdateScreen cleanupFunction={()=> setemailchange(false)} onChange={(e)=> setemail(e.target.value)} update={email} succestext={'Email updated'} updateText={'Update'} header={"Change Email Address"} placeholder={'evilmorty052@proton.me'} func={()=> setemailchange(false)}/>
     )
   }
 
   else if(username){
     return(
-      <UpdateScreen updateText={'Update Username'} header={"Change Username"} placeholder={'evilmorty052'} func={()=> setusername(false)}/>
+      <UpdateScreen cleanupFunction={()=> setusername(false)} onChange={(e)=> setusernameValue(e.target.value)} update={usernameValue} succestext={'Username Updated'} updateText={'Update'} header={"Change Username"} placeholder={'evilmorty052'} func={()=> setusername(false)}/>
     )
   }
 
   else if(phone){
     return(
-      <UpdateScreen updateText={'Add Phone Number'} header={"Phone Number"} placeholder={'216-788-8899'} func={()=> setphone(false)}/>
+      <UpdateScreen cleanupFunction={()=> setphone(false)} onChange={(e)=> setphoneValue(e.target.value)} update={phoneValue} succestext={'Phone Number Updated'} updateText={'Update'} header={"Phone Number"} placeholder={'216-788-8899'} func={()=> setphone(false)}/>
     )
   }
   
   else if(mailing){
     return(
-      <UpdateScreen updateText={'Update Mailing Address'} header={"Change Mailing Address"} placeholder={'evilmorty052@proton.me'} func={()=> setmailing(false)}/>
+      <UpdateScreen cleanupFunction={()=> setmailing(false)} onChange={(e)=> setmailingValue(e.target.value)} update={mailingValue} succestext={'Mailing Address Updated'} updateText={'Update'} header={"Change Mailing Address"} placeholder={'evilmorty052@proton.me'} func={()=> setmailing(false)}/>
     )
   }
 
 
   return(
     <>
-    <div>
+    <div className='col-span-2 max-w-md'>
        <div>
            <div className='flex items-center gap-x-5'>
-             <a onClick={()=> setaccount(false)}><FaArrowLeft/></a>
-            <h3> Account Information</h3>
+             <a className={styles.SettingsIcon} onClick={()=> setaccount(false)}><FaArrowLeft/></a>
+             <div className='flex-col gap-y-4'>
+             <h3 className={styles.UiHeading}> Account Information</h3>
+            <p className={styles.UiSubHeading}>Manage Your Account Information At Any Time</p>
+             </div>
            </div>
            <div>
-             <ul className='flex flex-col gap-y-4 px-2 py-8'>
+             <ul className='flex flex-col  gap-y-2 px-2 py-8'>
                  <ListItem func={()=> setusername(true)} itemHeader={'Username'} itemSubtext={'Morty619052'}/>
-                 <ListItem func={()=> setemailchange(true)} itemHeader={'email'} itemSubtext={'evilmorty@mail.com'}/>
-                 <ListItem func={()=> setphone(true)} itemHeader={'phone'} itemSubtext={'Not Added'}/>
+                 <ListItem func={()=> setemailchange(true)} itemHeader={'Email'} itemSubtext={'evilmorty@mail.com'}/>
+                 <ListItem func={()=> setphone(true)} itemHeader={'Phone'} itemSubtext={'Not Added'}/>
                  <ListItem func={()=> setmailing(true)} itemHeader={'Mailing Address'} itemSubtext={'12 White Hart Lane Michigan 8080  usa'}/>
-                 <ListItem func={()=> seteverified(true)}itemHeader={'Verified'} itemSubtext={'No'}/>
+                 {/* <ListItem func={()=> seteverified(true)}itemHeader={'Verified'} itemSubtext={'No'}/> */}
              </ul>
            </div>
        </div>
@@ -81,17 +90,17 @@ const DownloadData = () => {
     {
       itemHeader: 'Trading History',
       itemSubtext: 'Download An Archive Of All Trading Activity ',
-      switch:      <MenuCheckbox/>
+      switch:      <MenuCheckBox/>
     },
     {
       itemHeader: 'Investment Portfolio',
       itemSubtext: 'Download An Archive Of Your Investment Portfolio ',
-      switch:      <MenuCheckbox/>
+      switch:      <MenuCheckBox/>
     },
     {
       itemHeader: 'One Hive Activity',
       itemSubtext: 'Download A Visualization Of One Hive Activity',
-      switch:      <MenuCheckbox/>
+      switch:      <MenuCheckBox/>
     },
   ]
 
@@ -106,9 +115,21 @@ const DownloadData = () => {
 }
 
 const DeactivateAccount = () => {
+  const [deactivate, setdeactivate] = useState(false)
+  const list =[
+    {
+      itemHeader: 'Deactivate Account',
+      itemSubtext: 'This Action Can Not Be Reversed',
+      switch:      <Menuswitch checked={deactivate} onClick={()=> !deactivate ? setdeactivate(true) : setdeactivate(false) }/>
+    },
+    
+  ]
+
+  const itemHeader = 'Deactivate Your Account'
+  const itemSubtext = 'Confirm Termination Of Your Account'
   return(
     <>
-    Delete Account
+   <MenuItem func={()=>  setdeleteData(false)}  list={list} itemHeader={itemHeader} itemSubtext={itemSubtext} buttonText={'Deactivate'}/>
     </>
   )
 }
@@ -199,7 +220,7 @@ else if (deleteData) {
                         email address.
                       </p>
                     </div>
-                <div className=' absolute right-2 hidden'>
+                <div className=' absolute right-2 hidden sm:block'>
                       <a>
                         <FaAngleRight />
                       </a>
@@ -208,7 +229,7 @@ else if (deleteData) {
               <li onClick={()=> setchangePassword(true)} className='relative sm:min-w-[80%] flex items-center  '>
                   <div>
                   <a className={styles.SettingsIcon}>
-                    <FaUser />
+                    <FaLock />
                   </a>
                   </div>
                     <div className=' ml-8 pr-8'>
@@ -217,7 +238,7 @@ else if (deleteData) {
                         Change Your Password At Any Time
                       </p>
                     </div>
-                <div className=' absolute right-2 hidden'>
+                <div className=' absolute right-2 hidden sm:block'>
                       <a>
                         <FaAngleRight />
                       </a>
@@ -226,7 +247,7 @@ else if (deleteData) {
               <li onClick={()=> setdownloadData(true)} className='relative sm:min-w-[80%] flex items-center  '>
                   <div>
                   <a className={styles.SettingsIcon}>
-                    <FaUser />
+                  <FaDownload/>
                   </a>
                   </div>
                     <div className=' ml-8 pr-8'>
@@ -235,7 +256,7 @@ else if (deleteData) {
                         Download A copy Of All your Trading And Investment Activity<br className='hidden sm:block'/> On Medik 420
                       </p>
                     </div>
-                <div className=' absolute right-2 hidden'>
+                <div className=' absolute right-2 hidden sm:block'>
                       <a>
                         <FaAngleRight />
                       </a>
@@ -244,7 +265,7 @@ else if (deleteData) {
               <li onClick={()=> setdeleteData(true)} className='relative sm:min-w-[80%] flex items-center  '>
                   <div>
                   <a className={styles.SettingsIcon}>
-                    <FaUser />
+                    <FaPowerOff/>
                   </a>
                   </div>
                     <div className=' ml-8 pr-8'>
@@ -253,7 +274,7 @@ else if (deleteData) {
                        Find out How you Can Delete Your Account
                       </p>
                     </div>
-                <div className=' absolute right-2 hidden'>
+                <div className=' absolute right-2 hidden sm:block'>
                       <a>
                         <FaAngleRight />
                       </a>
@@ -281,23 +302,23 @@ function ListItem({func , itemHeader, itemSubtext}) {
         role="tab"
         aria-selected="false"
         data-testid="pivot"
-        className="text-sm tap-transparent pointer-events-auto bg-transparent text-inherit font-inherit list-none  align-stretch border-0 box-border flex flex-col flex-shrink-0 mb-0 ml-0 mr-0 mt-0 min-w-0 relative z-0 pl-4 pr-4 pb-3 pt-3 transition duration-200 bg-none shadow-none outline-none cursor-pointer justify-between min-h-[48px]"
+        className="text-sm slide-in-right tap-transparent pointer-events-auto bg-transparent text-inherit font-inherit list-none  align-stretch border-0 box-border flex flex-col flex-shrink-0 mb-0 ml-0 mr-0 mt-0 min-w-0 relative z-0 pl-4 pr-4 pb-3 pt-3 transition duration-200 bg-none shadow-none outline-none cursor-pointer justify-between min-h-[48px]"
       >
         <div className="flex-shrink-0 flex-grow-1 flex min-w-0 min-h-0 p-0 m-0 relative z-0 align-center justify-between">
-          <div class="select-none box-border flex flex-col items-stretch justify-start w-auto h-auto p-0 m-0 relative z-0 bg-transparent cursor-pointer text-inherit border-solid border-0 text-left whitespace-pre-wrap align-middle text-base font-normal leading-5 font-sans flex-grow flex-shrink" >
+          <div className="select-none box-border flex flex-col items-stretch justify-start w-auto h-auto p-0 m-0 relative z-0 bg-transparent cursor-pointer text-inherit border-solid border-0 text-left whitespace-pre-wrap align-middle text-base font-normal leading-5 font-sans flex-grow flex-shrink" >
             <div
               dir="ltr"
-              class="inline-block  font-normal text-base text-gray-900 leading-normal whitespace-pre-wrap break-words"
+              class="inline-block leading-normal whitespace-pre-wrap break-words"
             >
-              <span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
+              <span class={styles.SettingOption}>
                 {itemHeader}
               </span>
             </div>
             <div
               dir="ltr"
-              class="text-xs font-normal leading-4 text-blue-gray-600"
+              className="text-xs font-normal leading-4 text-blue-gray-600"
             >
-              <span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
+              <span className={styles.SettingOptionSubtext}>
                 {itemSubtext}
               </span>
             </div>
@@ -305,7 +326,7 @@ function ListItem({func , itemHeader, itemSubtext}) {
           <svg
             viewBox="0 0 24 24"
             aria-hidden="true"
-            class="-webkit-text-size-adjust-100 -webkit-tap-highlight-color-rgba-0-0-0-0 pointer-events-auto font-inherit list-none text-align-inherit cursor-pointer -webkit-box-direction-normal inline-block fill-current h-5 max-w-full relative align-text-bottom select-none flex-shrink-0 text-blue-600 pl-3"          >
+            className={`${styles.SettingsIcon} -webkit-text-size-adjust-100 -webkit-tap-highlight-color-rgba-0-0-0-0 pointer-events-auto font-inherit list-none text-align-inherit cursor-pointer -webkit-box-direction-normal inline-block fill-current h-5 max-w-full relative align-text-bottom select-none flex-shrink-0  pl-3`}          >
             <g>
               <path d="M14.586 12L7.543 4.96l1.414-1.42L17.414 12l-8.457 8.46-1.414-1.42L14.586 12z"></path>
             </g>
@@ -316,94 +337,13 @@ function ListItem({func , itemHeader, itemSubtext}) {
   );
 }
 
-function MenuItem({func, itemHeader, itemSubtext, list, buttonText}) {
-  return (
-    <>
-    <div className='slide-in-right'>
-     <div className=' flex items-center gap-x-8 px-4  pb-6'>
-         <a className={ styles.SettingsIcon} ><FaArrowLeft onClick={func} /></a>
-         <div className=''>
-         <span>{itemHeader}</span>
-         </div>
-     </div>
-      <div className='py-2 px-2.5'>
-      <p className={styles.UiSubHeading}>{itemSubtext}</p>
-      </div>
-      {
-        list?.map((menuItem)=>{
-          return(
-            <a
-        onClick={func}
-        role="tab"
-        aria-selected="false"
-        data-testid="pivot"
-        className="text-sm tap-transparent pointer-events-auto bg-transparent text-inherit font-inherit list-none  align-stretch border-0 box-border flex flex-col flex-shrink-0 mb-0 ml-0 mr-0 mt-0 min-w-0 relative z-0 pl-4 pr-4 pb-3 pt-3 transition duration-200 bg-none shadow-none outline-none cursor-pointer justify-between min-h-[48px]"
-      >
-        <div className="flex-shrink-0 flex-grow-1 flex min-w-0 min-h-0 p-0 m-0 relative z-0 align-center justify-between">
-          <div class="select-none box-border flex flex-col items-stretch justify-start w-auto h-auto p-0 m-0 relative z-0 bg-transparent cursor-pointer text-inherit border-solid border-0 text-left whitespace-pre-wrap align-middle text-base font-normal leading-5 font-sans flex-grow flex-shrink" >
-            <div
-              dir="ltr"
-              class="inline-block  font-normal text-base text-gray-900 leading-normal whitespace-pre-wrap break-words"
-            >
-              <span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
-                {menuItem.itemHeader}
-              </span>
-            </div>
-            <div
-              dir="ltr"
-              class="text-xs font-normal leading-4 text-blue-gray-600"
-            >
-              <span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
-                {menuItem.itemSubtext}
-              </span>
-            </div>
-          </div>
-          <a
-            
-            class="-webkit-text-size-adjust-100 pt-4 -webkit-tap-highlight-color-rgba-0-0-0-0 pointer-events-auto font-inherit list-none text-align-inherit cursor-pointer -webkit-box-direction-normal inline-block fill-current h-5 max-w-full relative align-text-bottom select-none flex-shrink-0 text-blue-600 pl-3" >
-           <input className='rounded-md border-gray-400  focus:border-green-300' type="checkbox" />
-          </a>
-        </div>
-      </a>
-          )
-        })
-      }
-      <div className='py-12 w-full flex justify-end px-4'>
-        <a className='py-2 px-4 bg-green-300 rounded-md  text-gray-600 text-[15px] font-medium hover:bg-green-400 hover:text-gray-800 cursor-pointer outline outline-gray-200 shadow-md'>{buttonText}</a>
-      </div>
-      </div>
-    </>
-  );
-}
 
-const  UpdateScreen = ({func, header, updateText, placeholder,}) => {
-  return(
-    <>
-    <div>
-       <div>
-       <div className=' flex items-center gap-x-8 px-4 '>
-         <a className={ styles.SettingsIcon} ><FaArrowLeft onClick={func} /></a>
-         <div>
-         <span>{header}</span>
-         {/* <p>evilmorty052@proton.me</p> */}
-         </div>
-         </div>
-           <div className='py-8 px-8'>
-              <input placeholder={placeholder} type="text" className='py-2 rounded-lg w-72' /> 
-              <div className='py-8 text-center'>
-                  <span>{updateText}</span>
-              </div>
-           </div>
-       </div>
-    </div>
-    </>
-  )
-}
+
 
 const  PasswordUpdateScreen = ({func, header, updateText, placeholder,}) => {
   return(
     <>
-    <div>
+    <div className='slide-in-right'>
        <div>
        <div className=' flex items-center gap-x-8 px-4 '>
          <a className={ styles.SettingsIcon} ><FaArrowLeft onClick={func} /></a>
@@ -422,12 +362,13 @@ const  PasswordUpdateScreen = ({func, header, updateText, placeholder,}) => {
            <div className='px-8 flex flex-col gap-y-4'>
            <input placeholder={'New Password'} type="text" className={styles.Input} /> 
            <input placeholder={'Confirm Password'} type="text" className={styles.Input} /> 
-           </div>
-            <div className='text-center py-8'>
-              <p>Update Password</p>
+           <div className='flex w-full py-8'>
+              <MenuButton buttonText={'Update'}/>
             </div>
+           </div>
        </div>
     </div>
     </>
   )
 }
+

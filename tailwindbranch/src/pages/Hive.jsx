@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import  {useState} from 'react'
 import { Hero } from './SmallBiz'
 import styles from '../style'
 import Dynamicnav from '../partials/Dynamicnav'

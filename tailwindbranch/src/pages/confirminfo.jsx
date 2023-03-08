@@ -1,6 +1,5 @@
-import { layout } from "@chakra-ui/react";
+
 import { client } from "../../lib/client";
-import beams from "../assets/beams.jpg"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
