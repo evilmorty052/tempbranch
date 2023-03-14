@@ -183,6 +183,11 @@ export default {
               type: 'string'
             } ,
             {
+              title: 'Description',
+              name: 'description',
+              type: 'string'
+            } ,
+            {
               title: 'Balance',
               name: 'balance',
               type: 'string'

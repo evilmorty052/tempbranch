@@ -34,14 +34,15 @@ const Hive = () => {
        setIsExpanded={setisexpanded}
        isExpanded={isexpanded} />
        <Navbar/>
-        <div className={`mt-20`}>
+        <div className={`mt-20 container max-w-5xl mx-auto`}>
             <div className={`${styles.boxWidth} px-4`}>
             <Hero
         bg={'bg-slate-400'}
         textcolor={'text-white'}
-        title="HIVE MIND"
-        subtext="The Future of Passive Income. experience all the benefits and utilities of owning a sophisticated hemp farm right from the comfort of your home"
-        buttonText="Learn More"
+        title="B.E.M"
+        subtext="Business Evaluation Model. A Game Changer In Business Analysis And Automation."
+        
+        buttonText="Request Demo"
         image="https://via.placeholder.com/800x600"/>
             </div>
       

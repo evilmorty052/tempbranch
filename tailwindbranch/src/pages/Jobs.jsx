@@ -85,7 +85,7 @@ async function searchJobs() {
             <Hero/>
        <div className='flex items-center flex-col gap-y-4 mb-8 sm:flex-row sm:justify-center sm:gap-5 '>
       <JobSearchInput placeholder={'What'} onChange={(e)=> setwhat(e.target.value)} value={what} />
-      <JobSearchInput placeholder={'Zip Code'} onChange={(e)=> setwhere(e.target.value)} value={where}/>
+      <JobSearchInput placeholder={'Where'} onChange={(e)=> setwhere(e.target.value)} value={where}/>
       <a onClick={searchJobs}  className='sm:hidden w-72 py-2 px-4 flex justify-center rounded-xl bg-green-300 shadow-2xl'>Search</a>
       </div>
       <div className='w-full sm:flex justify-center px-10 hidden'>
@@ -120,7 +120,7 @@ function Hero(params) {
     <div class="text-center lg:w-2/3 w-full">
       <div class="flex flex-col items-center justify-center">
       <h1 class="title-font sm:text-4xl text-3xl mb-2 font-medium text-gray-900 text-center">Search Open Positions  Available In Your Area</h1>
-      <p class="mb-4 text-center leading-relaxed">Click the Boxes Below To begin Searching Open Positions  in your area by typing or slecting from the available options</p>
+      <p class="mb-4 text-center leading-relaxed">Click the Boxes Below To begin Searching Open Positions  in your area </p>
       </div>
     </div>
   </div>
@@ -217,7 +217,7 @@ function JobCard({salary, company, title, description, contract, location, time,
   </div>
 
 </a> */}
-<article class="rounded-xl border border-gray-700 bg-gray-800 p-4 relative">
+<article class="rounded-xl border border-gray-700 bg-gray-800 p-4 relative w-full">
   <div class="flex items-center gap-4">
     <div>
       <h3 class="text-lg font-medium text-white">{title}</h3>
@@ -242,10 +242,10 @@ function JobCard({salary, company, title, description, contract, location, time,
         href="#"
         class="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600"
       >
-        <strong class="font-medium text-white">Salary</strong>
+        <strong class="font-medium text-white"> Annual Salary</strong>
 
-        <p class="mt-1 text-xs font-medium text-gray-300">
-      {salary}
+        <p class="mt-1 text-base font-medium text-gray-300">
+      ${salary} 
         </p>
       </a>
     </li>
@@ -279,7 +279,7 @@ function JobCard({salary, company, title, description, contract, location, time,
    </button>
   </div>
   <div className='absolute top-4 right-4'>
-  <a href={`${url}`} target='_blank'><FaLink style={{fontSize: '30px', color: '#f9f8f8'}}/></a>  
+  {/* <a href={`${url}`} target='_blank'><FaLink style={{fontSize: '20px', color: '#f9f8f8'}}/></a>   */}
   </div>
 </article>
 

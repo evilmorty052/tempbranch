@@ -20,6 +20,7 @@
     "@heroicons/react": "^2.0.8",
     "@lottiefiles/react-lottie-player": "^3.5.2",
     "@reduxjs/toolkit": "^1.9.3",
+    "@sanity/cli": "^3.6.0",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "@tailwindcss/forms": "^0.5.2",

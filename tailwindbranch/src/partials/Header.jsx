@@ -26,7 +26,7 @@ function Header({
     case '/dashboard/settings':
       dashboardpaths = true
       break;
-    case '/dashboard':
+    case '/dashboard/Dashboard':
       dashboardpaths = true
       break;
     case '/dashboard/portfolio':
@@ -82,9 +82,9 @@ function Header({
   const history = useNavigate()
 
   return (
-    <header className=" top-0 sticky bg-blk shadow-2xl border-b border-slate-200 z-30">
+    <header className=" top-0 sticky bg-gray-800 shadow-2xl border-b border-slate-200 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 -mb-px">
+        <div className="flex items-center justify-between h-12 -mb-px">
 
           {/* Header: Left side */}
           <div className="flex">

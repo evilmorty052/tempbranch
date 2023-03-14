@@ -4,6 +4,7 @@ import { FaAngleLeft, FaAngleRight, FaCircle } from 'react-icons/fa'
 import hemp from '../../assets/hemplogo.png'
 import Globe from '../../assets/globe.png'
 import Gate from '../../assets/gate.png'
+import { Link } from 'react-router-dom'
 
 const Services = () => {
 
@@ -68,7 +69,7 @@ const Services = () => {
                 </div>
                 <div className="  ">
                   <div class="gap-4 sm:hidden pb-8 flex  ">
-                    {tab1 && <div   id="1" class={`group  min-w-[85vw]  space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none `}>
+                    {tab1 && <div   id="1" class={`group slide-in-right  min-w-[85vw]  space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none `}>
                       <img 
                         class="mx-auto w-24"
                         src={Globe}
@@ -79,17 +80,20 @@ const Services = () => {
                         Community
                       </h3>
                       <p>
-                        Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                        at cum, consectetur ullam tempora ipsa iste officia sed
-                        officiis! Incidunt ea animi officiis.
+                      One Hive Is A community of Startups Innovators And Investors. By simply Joining One Hive You Gain Immediate Access to Hundreds Of People Speaking the Language Of Wealth
                       </p>
       
-                      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                        {"Apply"}
-                      </button>
+                      <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                     </div>}
                     { tab2 &&
-       <div class="group min-w-[100vw]   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+       <div class="group min-w-[100vw] slide-in-right  space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
        <img
          class="mx-auto w-24"
          src={Gate}
@@ -100,18 +104,21 @@ const Services = () => {
 Gateway      
  </h3>
        <p>
-         Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-         at cum, consectetur ullam tempora ipsa iste officia sed
-         officiis! Incidunt ea animi officiis.
+       A Financial Platform SuperCharged With Artficial Intelligence And Real Time Data One Hive Is A GateWay To Previously Out Of Reach Opportunities
        </p>
       
-       <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-         {"Apply"}
-       </button>
+       <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
       </div>
                     }
                    { tab3 &&
-       <div class="group min-w-[100vw]   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+       <div class="group min-w-[100vw] slide-in-right  space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
        <img
          class="mx-auto w-24"
          src="https://www.pngrepo.com/png/401106/512/antenna-bars.png"
@@ -122,13 +129,16 @@ Gateway
          Passive Income
        </h3>
        <p>
-         Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-         at cum, consectetur ullam tempora ipsa iste officia sed
-         officiis! Incidunt ea animi officiis.
+       A Modern Platform For Generating Passive Income Powered By <Link to={'/bem'} className='text-blue-400'>Bem</Link> To provide Fixed Return Investments. With One Hive You Always know Exactly What You Are getting.
        </p>
-       <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-         {"Get Started"}
-       </button>
+       <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
       </div>
                    }
                    
@@ -145,19 +155,22 @@ Gateway
                         Community
                       </h3>
                       <p>
-                        Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                        at cum, consectetur ullam tempora ipsa iste officia sed
-                        officiis! Incidunt ea animi officiis.
+                        One Hive Is A community of Startups Innovators And Investors. By simply Joining One Hive You Gain Immediate Access to Hundreds Of People Speaking the Language Of Wealth
                       </p>
       
-                      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                        {"Apply"}
-                      </button>
+                      <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                     </div>
                     <div class="group   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
                       <img
                         class="mx-auto w-24"
-                        src="https://www.pngrepo.com/png/46221/512/globe.png"
+                        src={Gate}
                         alt="illustration"
                         loading="lazy"
                       />
@@ -165,14 +178,17 @@ Gateway
                         Gateway
                       </h3>
                       <p>
-                        Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                        at cum, consectetur ullam tempora ipsa iste officia sed
-                        officiis! Incidunt ea animi officiis.
+                         A Financial Platform SuperCharged With Artficial Intelligence And Real Time Data One Hive Is A GateWay To Previously Out Of Reach Opportunities
                       </p>
       
-                      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                        {"Apply"}
-                      </button>
+                      <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                     </div>
                     <div className="sm:col-span-2 flex justify-center lg:col-span-1">
                       <div class="group max-w-sm space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
@@ -186,13 +202,16 @@ Gateway
                           Passive Income
                         </h3>
                         <p>
-                          Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                          at cum, consectetur ullam tempora ipsa iste officia sed
-                          officiis! Incidunt ea animi officiis.
+                         A Modern Platform For Generating Passive Income Powered By <Link to={'/bem'} className='text-blue-400'>Bem</Link> To provide Fixed Return Investments. With One Hive You Always know Exactly What You Are getting.
                         </p>
-                        <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                          {"Get Started"}
-                        </button>
+                        <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                       </div>
                     </div>
                   </div>
@@ -224,11 +243,11 @@ let snippet
 
   switch (tab1, tab2 , tab3) {
     case tab1:
-    snippet = 'A Community For Money Makers' 
+    snippet = ' A Gateway To Connect With Modern Opportunities Before They Get Out Of Reach' 
       break;
     
     case tab2:
-    snippet = 'A Gateway To Connect With Modern Opportunities Before They Get Out Of Reach' 
+    snippet = 'A Community For Money Makers' 
       break;
     
     case tab3:
@@ -246,7 +265,7 @@ let snippet
         <div>
           <div>
             <h3 className={`${styles.sectionHeadingCenter} sm:hidden`}>What Is One Hive?</h3>
-            <p className={`${styles.contentCenter} sm:hidden`}>{snippet}</p>
+            <p className={`${styles.contentCenter} sm:hidden slide-in-right`}>{snippet}</p>
             <h3 className={`${styles.sectionHeadingCenter} hidden sm:block`}>What Is One Hive?</h3>
             {/* <p className={`${styles.contentCenter} sm:block hidden`}>{snippet}</p> */}
           </div>

@@ -2,16 +2,22 @@ import {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Miniheader from '../components/Miniheader'
 import hemp from '../assets/hemplogo.png'
+import people from '../assets/people01.png'
+import people2 from '../assets/people02.png'
+import people3 from '../assets/people03.png'
 import useFetch from '../hooks/useFetch'
 import { urlFor } from '../../lib/client'
 import Loader from '../components/Loader'
 import {Tabs} from './hive/index'
 import { useSelector, useDispatch } from 'react-redux'
-import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp, FaCircle, FaDollarSign, FaInfo , FaLock, FaQuestion} from 'react-icons/fa'
+import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp, FaCircle, FaDollarSign, FaInfo , FaLock, FaQuestion, FaSpinner} from 'react-icons/fa'
 import styles from '../style'
 import { Line, Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import CurrencyInput from '../components/CurrencyInput'
+// import  {ErrorMessage}  from ' ./Settings/partials/Message'
+import { ErrorMessage } from './Settings'
+
 
 
 const HiveBiz = () => {
@@ -19,7 +25,7 @@ const [investing, setinvesting] = useState(false)
 const [ActiveCompany, setActiveCompany] = useState(null)
 const [filterKeyWord, setfilterKeyWord] = useState('All')
 
-const dispatch = useDispatch()
+
 // const keyword = useSelector((state)=> state.hivebizSlice.filteredKeyWord)
 const [keyword, setkeyword] = useState('All')
 const [SearchTerm, setSearchTerm] = useState(null)
@@ -174,35 +180,13 @@ function HiveInvest({back, ActiveCompany}) {
   const [adoption, setadoption] = useState(true)
   const [funding, setfunding] = useState(false)
 
-  const  alsoinvested = [
-    {
-      id: 1,
-      name: 'asd',
-      image: hemp,
-      category: 'Other'
-    },
-    {
-      id: 2,
-      name: 'qwe',
-      image: hemp,
-      category: 'finance'
-      
-    },
-    {
-      id: 3,
-      name: 'rty',
-      image: hemp,
-      category: 'A.i'
-    },
-    {id: 4,
-      name: 'uio',
-      image: hemp,
-    },
-    {id: 4,
-      name: 'uio',
-      image: hemp,
-    }
-  ]
+  const [investmentSize, setinvestmentSize] = useState()
+  const [period, setperiod] = useState(2)
+  const [ROI, setROI] = useState(null)
+
+  const [openModal, setopenModal] = useState(false)
+
+  
 
   function handleTabs(params) {
     if(statsTab){
@@ -214,6 +198,22 @@ function HiveInvest({back, ActiveCompany}) {
     else if (invesTab){
       setinvesTab(false)
       setstatsTab(true)
+    }
+    console.log('clcked')
+  }
+
+  function handleModal(e) {
+    if(!investmentSize){
+      ErrorMessage('Investment Size must be greater than 0')
+      console.log('clcked')
+      return
+    } 
+    
+    openModal ? setopenModal(false) : setopenModal(true)
+
+    if (e.target.id == 'modalcontainer'|| e.target.id == 'closemodalbutton') {
+      openModal ? setopenModal(false) : setopenModal(true)
+      
     }
     console.log('clcked')
   }
@@ -234,7 +234,7 @@ function HiveInvest({back, ActiveCompany}) {
       <>
       <Miniheader companyName={ActiveCompany.name} avatar={ urlFor(ActiveCompany.image)} back={back}/>
 
-      <div className="py-[60px] container mx-auto max-w-5xl z-50">
+      <div className="pt-[90px] pb-20 container mx-auto max-w-5xl z-50">
        <div>
            <div className='px-2'>
               <div className='flex flex-col items-center gap-x-4 pb-4'>
@@ -293,17 +293,17 @@ function HiveInvest({back, ActiveCompany}) {
               <div className='py-2'>
                  <div className='space-y-2.5 flex flex-col'>
                     <span>Target Investment Amount</span>
-                    <CurrencyInput/>  
-                    <button className='bg-green-300 px-4 py-2 rounded-xl'>Invest</button>
+                    <CurrencyInput value={investmentSize} setValue={setinvestmentSize}/>  
+                    <button onClick={handleModal} className='bg-green-300 px-4 py-2 rounded-xl'>Invest</button>
                  </div>
               </div>   
            </a>
              </div>  
-             <LockupCard/> 
+             <LockupCard setperiod={setperiod} period={period}/> 
            </div>
            <div className='flex gap-y-5 flex-col sm:hidden slide-in-right px-1.5 '>
-             <LockupCard/> 
              <div className='px-4  slide-in-right container mx-auto max-w-[450px]'>
+             <div className='py-8'><LockupCard setperiod={setperiod} period={period}/> </div>
            <a className='space-y-8 bg-gray-700'>
              <div className='flex items-center gap-x-4 py-4 bg-gray-200 px-2 rounded-md'>
                 <div className='w-10'>
@@ -319,17 +319,19 @@ function HiveInvest({back, ActiveCompany}) {
                  <div className='space-y-2.5 flex flex-col'>
                     <span>Target Investment Amount</span>
                     {/* <Input suffix={<span className='text-base font-bold bg-gray-400 px-4 rounded-r-xl'>USD</span>} prefix={<FaDollarSign/>} type={'number'}></Input> */}
-                   <CurrencyInput/>
-                   <button className='bg-green-300 px-4 py-2 rounded-xl'>Invest</button>
+                    <CurrencyInput value={investmentSize} setValue={setinvestmentSize}/> 
+                   <button onClick={handleModal} className='bg-green-300 px-4 py-2 rounded-xl'>Invest</button>
                  </div>
               </div>   
            </a>
              </div>  
             
+            
            </div>
            </>
           }
        </div>
+       <Modal ROI={ROI} investmentSize={investmentSize} period={period} handleModal={handleModal} openModal={openModal}/>
       </div>
       </>
   )
@@ -393,7 +395,7 @@ const FilteredHivesTest = hiveData?.filter((item,index)=>{
 
 function Page ({ data, func, tags, handleFilter, tab1 , tab2, tab3, tab4 }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const dispatch = useDispatch()
+ 
   
  
 
@@ -427,7 +429,7 @@ function Page ({ data, func, tags, handleFilter, tab1 , tab2, tab3, tab4 }) {
   <>
   <div className='flex gap-x-[4px] items-center'>
   {circles.map((item, index)=>{
-  let number = index
+
    
     return(
       <>
@@ -452,7 +454,9 @@ function Page ({ data, func, tags, handleFilter, tab1 , tab2, tab3, tab4 }) {
 
   return (
     <>
-    <div className='py-10'>
+    { !hiveData ? <div className='flex justify-center items-center py-20 '><FaSpinner rotate={'true'} style={{fontSize: '40px'}} /></div> 
+       :
+      <div className='py-10'>
    { !SearchTerm && <div className="flex topnav w-full justify-center items-center">
                       <ul className="flex  min-w-[280px] justify-center items-center ">
                      <li className="text-2xl mr-2">
@@ -513,7 +517,7 @@ function Page ({ data, func, tags, handleFilter, tab1 , tab2, tab3, tab4 }) {
                     </li>
                       </ul>
          </div>}
-    </div>
+    </div>}
    
     </>
   );
@@ -556,7 +560,7 @@ function Tags({word,}) {
            {tags.map((item)=>(
               <>
                <a className='cursor-pointer' >
-                  <div className={ keyword != item.word ? `bg-gray-400 w-[110px]  py-1 px-2 text-center rounded-xl ` : `bg-green-300 w-[110px]  py-1 px-2 text-center rounded-xl`}>
+                  <div className={ keyword != item.word ? `bg-gray-300 w-[110px]  py-1 px-2 text-center rounded-xl ` : `bg-green-300 shadow-md shadow-green-100 w-[110px]  py-1 px-2 text-center rounded-xl`}>
                   <span  onClick={()=>handleFilter(item.word)} className='text-base font-medium'>{item.word}</span> 
                   </div>                
               </a>
@@ -590,7 +594,7 @@ if(investing){
     <div className='w-full sm:flex px-2  sm:justify-center'>
         <input onChange={(e) => {
           setSearchTerm(e.target.value)
-        }} placeholder='search companies' type={'search'} className='border-red-300 border rounded-2xl w-full  sm:w-6/12 py-2 relative'/>
+        }} placeholder='search companies' type={'search'} className='border-gray-300 border rounded-2xl w-full focus:ring-green-200 shadow-inner  sm:w-6/12 py-2 relative'/>
         
      </div>
     {/* <Page  tags={tags} func={handleShowInvestPage} data={keyword == 'All' ? hiveData : FilteredHives}/> */}
@@ -717,9 +721,10 @@ function StatisticsCard(params) {
     <h3 class="text-3xl font-bold sm:text-4xl">100+</h3>
   </div>
 
-  {/* <p class="mt-4 font-medium text-gray-500">
-    Our Bem Model Is Still in beta And Should not be Considered Accurate
-  </p> */}
+  <p class="mt-4 font-medium text-gray-500">
+    This is The Total Score From Our Business Evaluation Model (BEM) 
+    find Out More About BEM A.I And Evaluation Criteria <Link className='text-blue-400' to={'/'}>here</Link>
+  </p>
   <a className='absolute top-2 right-2 text-blue-500'><FaQuestion/></a>
 </a>
 
@@ -730,29 +735,29 @@ function StatisticsCard(params) {
 function GridCard(params) {
   return(
 
-<div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+<div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 ">
     <div class="flex items-center justify-between mb-4">
-        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Top Investors</h5>
+        <h5 class="text-xl font-bold leading-none text-gray-900 ">Top Investors</h5>
         {/* <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
             View all
         </a> */}
    </div>
    <div class="flow-root">
-        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <ul role="list" class="divide-y divide-gray-200 ">
             <li class="py-3 sm:py-4">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Neil image"/>
+                        <img class="w-8 h-8 rounded-full" src={people} alt="Neil image"/>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        <p class="text-sm font-medium text-gray-900 truncate ">
                             Neil Sims
                         </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                        <p class="text-sm text-gray-500 truncate ">
                             email@windster.com
                         </p>
                     </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                         $320
                     </div>
                 </div>
@@ -760,17 +765,17 @@ function GridCard(params) {
             <li class="py-3 sm:py-4">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/>
+                        <img class="w-8 h-8 rounded-full" src={people2} alt="Bonnie image"/>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        <p class="text-sm font-medium text-gray-900 truncate ">
                             Bonnie Green
                         </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                        <p class="text-sm text-gray-500 truncate ">
                             email@windster.com
                         </p>
                     </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                         $3467
                     </div>
                 </div>
@@ -778,17 +783,17 @@ function GridCard(params) {
             <li class="py-3 sm:py-4">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-2.jpg" alt="Michael image"/>
+                        <img class="w-8 h-8 rounded-full" src={people3} alt="Michael image"/>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        <p class="text-sm font-medium text-gray-900 truncate ">
                             Michael Gough
                         </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                        <p class="text-sm text-gray-500 truncate ">
                             email@windster.com
                         </p>
                     </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                         $67
                     </div>
                 </div>
@@ -796,17 +801,17 @@ function GridCard(params) {
             <li class="py-3 sm:py-4">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-4.jpg" alt="Lana image"/>
+                        <img class="w-8 h-8 rounded-full" src={people3} alt="Lana image"/>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        <p class="text-sm font-medium text-gray-900 truncate ">
                             Lana Byrd
                         </p>
                         <p class="text-sm text-gray-500 truncate dark:text-gray-400">
                             email@windster.com
                         </p>
                     </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                         $367
                     </div>
                 </div>
@@ -814,17 +819,17 @@ function GridCard(params) {
             <li class="pt-3 pb-0 sm:pt-4">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Thomas image"/>
+                        <img class="w-8 h-8 rounded-full" src={people} alt="Thomas image"/>
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        <p class="text-sm font-medium text-gray-900 truncate ">
                             Thomes Lean
                         </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                        <p class="text-sm text-gray-500 truncate ">
                             email@windster.com
                         </p>
                     </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    <div class="inline-flex items-center text-base font-semibold text-gray-900 d">
                         $2367
                     </div>
                 </div>
@@ -836,8 +841,10 @@ function GridCard(params) {
   )
 }
 
-function LockupCard(params) {
-  const [period, setperiod] = useState(2)
+
+
+function LockupCard({period, setperiod}) {
+ 
 
   const handleIncrease = () => {
     if (period + 2 > 12) {
@@ -993,14 +1000,14 @@ const activeUsers = signups.map((value) => Math.round(value * 0.92));
       {
         label: 'Signups',
         data: signups,
-        fill: false,
+        fill: true,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
       },
       {
         label: 'Active Users',
         data: activeUsers,
-        fill: false,
+        fill: true,
         borderColor: '#00c4ee',
         tension: 0.1
       }
@@ -1092,7 +1099,7 @@ const PictureLine = ({ pictures }) => {
 
         <img
           
-          src={hemp}
+          src={people}
           alt={`Picture `}
           className={`w-7 h-7 object-cover  `}
         />
@@ -1101,7 +1108,7 @@ const PictureLine = ({ pictures }) => {
 
         <img
           
-          src={hemp}
+          src={people2}
           alt={`Picture `}
           className={`w-7 h-7 object-cover  `}
         />
@@ -1110,7 +1117,7 @@ const PictureLine = ({ pictures }) => {
 
         <img
           
-          src={hemp}
+          src={people3}
           alt={`Picture `}
           className={`w-7 h-7 object-cover `}
         />
@@ -1119,7 +1126,7 @@ const PictureLine = ({ pictures }) => {
 
         <img
           
-          src={hemp}
+          src={people}
           alt={`Picture `}
           className={`w-7 h-7 object-cover  `}
         />
@@ -1129,6 +1136,111 @@ const PictureLine = ({ pictures }) => {
     </div>
   );
 };
+
+function Modal({openModal, handleModal , period, investmentSize,}){
+  const history = useNavigate()
+  function InvestCard(params) {
+    // switch (period) {
+    //   case 2:
+    //     ROI = 4.8
+    //     break;
+    //   case 4:
+    //     ROI
+    //     break;
+    //   case 6:
+    //     setROI(4.5)
+    //     break;
+    //   case 8:
+    //     setROI(5.5)
+    //     break;
+    //   case 10:
+    //     setROI(6.5)
+    //     break;
+    //   case 12:
+    //     setROI(7.5)
+    
+    //   default:
+    //     break;
+    // }
+    return(
+  
+      <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8  relative">
+          <div class="flex items-center justify-between mb-4">
+              <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Investment Terms</h5>
+         </div>
+         <div class="flow-root">
+              <ul role="list" class="divide-y divide-gray-200 ">
+                  <li class="py-3 sm:py-4">
+                      <div class="flex items-center space-x-4">
+                          <div class="flex-1 min-w-0">
+                              <p class="text-sm font-medium text-gray-900 truncate ">
+                                  Investment Size
+                              </p>
+                              <p class="text-[12px] sm:text-sm text-gray-500 truncate ">
+                                  total amount investing
+                              </p>
+                          </div>
+                          <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
+                          {investmentSize}
+                          </div>
+                      </div>
+                  </li>
+                  <li class="py-3 sm:py-4">
+                      <div class="flex items-center space-x-4">
+                          
+                          <div class="flex-1 min-w-0">
+                              <p class="text-sm font-medium text-gray-900 truncate ">
+                                 ROI 
+                              </p>
+                              <p class="text-[12px] sm:text-sm text-gray-500 truncate dark:text-gray-400">
+                                  Expected Return On investment
+                              </p>
+                          </div>
+                          <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
+                          2.9%
+                          </div>
+                      </div>
+                  </li>
+                  <li class="py-3 sm:py-4">
+                      <div class="flex items-center space-x-4">
+                          
+                          <div class="flex-1 min-w-0">
+                              <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                  Lockup Period
+                              </p>
+                              <p class="text-[12px] sm:text-sm text-gray-500 truncate dark:text-gray-400">
+                                  Number of months to lock up
+                              </p>
+                          </div>
+                          <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                              {period} months
+                          </div>
+                      </div>
+                  </li>
+                  <li class="py-3 sm:py-4">
+                      <div class="flex items-center space-x-4">
+                          <button onClick={()=> history('/path')}  class="flex-1 min-w-0 bg-green-300 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">Invest</button>
+                      </div>
+                  </li>
+              </ul>
+         </div>
+          <div id='closemodalbutton' onClick={handleModal} className='absolute top-2 right-2 font-black cursor-pointer'>X</div>
+      </div>
+      
+        )
+  }
+
+  return(
+   
+    <>
+    { openModal &&  <div onClick={handleModal} id='modalcontainer' className='fixed z-50 backdrop:blur-xl inset-0 bg-gray-400/50 overflow-y-auto flex justify-center items-center'>
+         <a className='w-[350px] h-[350px] sm:w-[450px] p-2 bg-wyt' >
+           <InvestCard/>
+         </a>
+    </div>}
+    </>
+  )
+}
 
 export default HiveBiz
 

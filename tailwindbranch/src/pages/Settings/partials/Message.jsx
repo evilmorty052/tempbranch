@@ -1,6 +1,11 @@
 import { message } from 'antd';
 
-export const SuccessMessage = (text) => {
+ const SuccessMessage = (text) => {
     message.success(`${text}`)
 }
+
+const ErrorMessage = (text) => {
+    message.error(`${text}`)
+}
     
+export { SuccessMessage, ErrorMessage }

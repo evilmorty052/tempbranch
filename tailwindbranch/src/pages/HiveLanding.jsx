@@ -6,6 +6,12 @@ import { CTA, Navbar } from "../components";
 import AnimatedSidebar from "../components/AnimatedSidebar";
 import { Link } from "react-router-dom";
 import pie from "../assets/pie2.svg";
+import Map from '../assets/globe illustration.svg'
+import TeamScreen from '../assets/teamup.svg'
+import Coperate from '../assets/coperate.svg'
+import registerbusiness from '../assets/registerbusiness.svg'
+import assistance from '../assets/assistance.svg'
+import BEM from '../assets/BEM.svg'
 import styles from "../style";
 import { FaAngleLeft, FaAngleRight, FaCircle } from "react-icons/fa";
 import {Header , HiveHero, Services, Tabs, LeftCard, BizServices} from './hive/index'
@@ -87,7 +93,7 @@ function FeatureCard(params) {
             </div>
             <div class="md:7/12 lg:w-1/2">
               <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
-                Boost Your Business Earnings
+                Get Funding In Two Easy Steps
               </h2>
               <p class="my-8 text-gray-600 dark:text-gray-300">
                 Getting Funding Has Never Been Easier For New And existing
@@ -112,10 +118,10 @@ function FeatureCard(params) {
                   </div>
                   <div class="w-5/6">
                     <h4 class="font-semibold text-lg text-gray-700 dark:text-indigo-300">
-                      Crowd Funding
+                     1. Register
                     </h4>
                     <p class="text-gray-500 dark:text-gray-400">
-                      Asperiores nemo possimus nesciunt quam mollitia.
+                  Complete A Quick Sign Up Process Including Verification
                     </p>
                   </div>
                 </div>
@@ -136,13 +142,14 @@ function FeatureCard(params) {
                   </div>
                   <div class="w-5/6">
                     <h4 class="font-semibold text-lg text-gray-700 dark:text-teal-300">
-                      Capital Assistance
+                    2. Business Evaluation
                     </h4>
                     <p class="text-gray-500 dark:text-gray-400">
-                      Asperiores nemo possimus nesciunt quam mollitia.
+                    You Dont Need to Get you Hands Dirty To Get An Evaluation. Simply Request Access To <span className="text-blue-400">BEM</span> And watch The Magic Happen
                     </p>
                   </div>
                 </div>
+               
               </div>
               <div className="w-full justify-center flex my-8">
                 <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
@@ -161,14 +168,169 @@ function FeatureCard(params) {
   );
 }
 
+function ServicesCard({investors, startups}) {
+
+  return(
+    <>
+    
+    {investors && 
+    <div class="relative w-full  py-16">
+  <div class="container relative mx-auto px-6 text-gray-500 md:px-12">
+    <div class="grid gap-6 md:mx-auto md:w-8/12 lg:w-full lg:grid-cols-3">
+      <div class="group space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+        <img
+          class="mx-auto w-24 lg:h-[68px]"
+          src={Map}
+          alt="illustration"
+          loading="lazy"
+        />
+        <h3 class="text-2xl font-semibold text-gray-800 ">Browse Startups</h3>
+        <p>
+         Browse All Startups Participating In the One Hive Funding Programme
+        </p>
+       
+        <div className="lg:pb-[22px] ">
+        <Link to='/hivebiz'>
+    <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+                  {"Browse"}
+        </button> 
+      </Link> 
+        </div> 
+        
+      </div>
+      <div class="group space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 ">
+        <img
+          class="mx-auto w-24 lg:h-[68px]"
+          src={Coperate}
+          alt="illustration"
+          loading="lazy"
+        />
+        <h3 class="text-2xl font-semibold text-gray-800 ">Syndicates</h3>
+        <p>
+         Browse or Apply To All Open Investment Syndicates.
+        </p>
+
+        <div className="lg:pb-[22px] ">
+        <Link to='/path'>
+    <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+                  {"Browse"}
+        </button> 
+      </Link> 
+        </div> 
+      </div>
+      <div class="group space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 ">
+        <img
+          class="mx-auto w-24 lg:h-[68px]"
+          src={TeamScreen}
+          alt="illustration"
+          loading="lazy"
+        />
+        <h3 class="text-2xl font-semibold text-gray-800 ">Co-Invest</h3>
+        <p>
+          Find users interested in creating Investment Syndicates
+        </p>
+        <div className="lg:pb-[22px] ">
+        <Link to='/path'>
+    <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+                  {"Browse"}
+        </button> 
+      </Link> 
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>}
+{startups && <div class="relative py-16">
+  <div class="container relative m-auto px-6 text-gray-500 md:px-12">
+    <div class="grid gap-6 md:mx-auto md:w-8/12 lg:w-full lg:grid-cols-3">
+      <div class="group space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 ">
+        <img
+          class="mx-auto w-24 lg:h-[68px]"
+          src={registerbusiness}
+          alt="illustration"
+          loading="lazy"
+        />
+        <h3 class="text-2xl font-semibold text-gray-800 ">Register Startup</h3>
+        <p>
+          Register Your Already Existing Business To Qualify for All Benefits Of One Hive 
+        </p>
+        <div className="lg:pb-[22px] ">
+        <Link to='/path'>
+    <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+                  {"Register"}
+        </button> 
+      </Link> 
+        </div> 
+      </div>
+      <div class="group space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 ">
+        <img
+          class="mx-auto w-24 lg:h-[68px]"
+          src={BEM}
+          alt="illustration"
+          loading="lazy"
+        />
+        <h3 class="text-2xl font-semibold text-gray-800 ">B.E.M</h3>
+        <p>
+          Request access to our Business evaluation Model Or Download Your Results.
+        </p>
+        <div className="lg:pb-[22px] ">
+        <Link to='/path'>
+    <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+                  {"Setup"}
+        </button> 
+      </Link> 
+        </div> 
+      </div>
+      <div class="group space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 ">
+        <img
+          class="mx-auto w-24 lg:h-[68px]"
+          src={assistance}
+          alt="illustration"
+          loading="lazy"
+        />
+        <h3 class="text-2xl font-semibold text-gray-800 ">Business Assistance</h3>
+        <p>
+          find out the different ways we can help you get your business up and running
+        </p>
+        <div className="lg:pb-[22px] ">
+        <Link to='/path'>
+    <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+                  {"Apply"}
+        </button> 
+      </Link> 
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>}                                
+    </>
+  )
+}
 
 
 function SearchHive({ back }) {
+ const [investors, setinvestors] = useState(true)
+ const [startups, setstartups] = useState(false)
+ 
+ function handleTabs(params) {
+   if (investors) {
+    setinvestors(false)
+    setstartups(true)
+   }
+  else if (startups) {
+    setstartups(false)
+    setinvestors(true)
+   }
+ }
+
   return (
     <>
-      <div className="bg-plat relative  flex flex-1">
+      <div className=" relative bg-plat flex flex-1">
         <Header back={back} />
-        <ServiceCard />
+        <div className="py-10 max-w-6xl container mx-auto">
+        <Tabs setactive={handleTabs} tab1={investors} tab2={startups} section1={'Investors'} section2={'Startups'}/>
+        <ServicesCard investors={investors} startups={startups}/>
+        </div>
       </div>
     </>
   );

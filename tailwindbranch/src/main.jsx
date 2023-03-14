@@ -24,12 +24,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
 
    <QueryClientProvider client={queryClient} retry={6} >
-  <ReactQueryDevtools initialIsOpen={false} />
+  {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     <Router>
        <AuthContextProvider>
-         <ChakraProvider>
+        
            <App />
-         </ChakraProvider> 
+       
        </AuthContextProvider>
     </Router>
 </QueryClientProvider>  

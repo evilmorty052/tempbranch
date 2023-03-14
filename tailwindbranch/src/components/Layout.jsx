@@ -5,11 +5,15 @@ const Layout = ({children}) => {
   return (
     <>
   <Navbar/>
-    <div className='h-[h-100vh-400px]'>
+    <div className='pt-[60px]'>
+      <div className=''>
       {children}
+      </div> 
     </div>
       </>
   )
 }
+
+
 
 export default Layout

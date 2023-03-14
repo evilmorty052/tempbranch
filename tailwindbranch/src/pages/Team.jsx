@@ -67,7 +67,7 @@ function TeamGrid({data}) {
      
      {data?.map((item)=>(
       <>
-      <ExecCard image={urlFor(item.image)} />
+      <ExecCard name={item.name} title={item.position} image={urlFor(item.image)} />
       </>
      ))}
     </div>
@@ -84,7 +84,7 @@ function TeamGrid({data}) {
   )
 }
 
-function ExecCard({image}) {
+function ExecCard({image, name, title}) {
   return(
     <div class="group relative rounded-3xl  space-y-6 overflow-hidden">
     <img
@@ -97,8 +97,8 @@ function ExecCard({image}) {
     />
     <div class="absolute bottom-0 inset-x-0 h-max mt-auto px-8 py-6 bg-gray-800 dark:bg-white translate-y-24 transition duration-300 ease-in-out group-hover:translate-y-0">
       <div>
-        <h4 class="text-xl font-semibold dark:text-gray-700 text-white">Hentoni Doe</h4>
-        <span class="block text-sm text-gray-500">CEO-Founder</span>
+        <h4 class="text-xl font-semibold dark:text-gray-700 text-white">{name}</h4>
+        <span class="block text-sm text-gray-500">{title}</span>
       </div>
       <p class="mt-8 text-gray-300 dark:text-gray-600">Quae labore quia tempora dolor impedit. Possimus, sint ducimus ipsam?</p>
     </div>

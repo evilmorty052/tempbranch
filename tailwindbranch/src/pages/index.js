@@ -11,7 +11,7 @@ import Dashboardsubscribe from './Dashboardsubscribe';
 import Home  from '../Home'
 
 import Registerpage from './Registerpage'
-import Pickagent from './pickagent';
+
 import Investing from './invest/investing';
 
 import Aboutus from './Aboutus';
@@ -26,7 +26,6 @@ import Registerpage2 from './Registerpage2';
 import Hive from './Hive';
 import Path from './Path';
 import Jobs from './Jobs';
-import Team from './pages/Team';
 
 import Test from './test';
 
@@ -47,6 +46,8 @@ import ProfileSettingsPage from './ProfilePage';
 import Advisor from './Advisor';
 import HiveLanding from './HiveLanding';
 import HiveBiz from './HiveBiz';
+import Bem from "./hive/Bem";
+import { Settings } from "./Settings/index";
 
 export {
    Hive,
@@ -79,7 +80,6 @@ export {
    Products,
    SetPin,
    ServicePicker,
-   Pickagent,
    Coach,
    Confirmsignin,
    Welcome,
@@ -89,5 +89,7 @@ export {
    Retirement,
    Smart,
    Registerpage1,
-   Registerpage2
+   Registerpage2,
+   Bem,
+   Settings
 }

@@ -4,6 +4,7 @@ import { FaAngleLeft, FaAngleRight, FaCircle } from 'react-icons/fa'
 import hemp from '../../assets/hemplogo.png'
 import Globe from '../../assets/globe.png'
 import Gate from '../../assets/gate.png'
+import { Link } from 'react-router-dom'
 
 const BizServices = () => {
 
@@ -14,15 +15,19 @@ const BizServices = () => {
     
    
     function handleIncreaseSlide(params) {
+      // if (tab1) {
+      //   settab1(false)
+      //   settab2(true)
+      // }
       if (tab1) {
         settab1(false)
-        settab2(true)
+        settab3(true)
       }
   
-      else if(tab2){
-         settab2(false)
-         settab3(true)
-      }
+      // else if(tab2){
+      //    settab2(false)
+      //    settab3(true)
+      // }
   
       else if (tab3){
         settab3(false)
@@ -35,19 +40,20 @@ const BizServices = () => {
   
     }
     function handleDecreaseSlide(params) {
+      
       if (tab1) {
         settab1(false)
         settab4(true)
       }
   
-      else if(tab2){
-         settab2(false)
-         settab1(true)
-      }
+      // else if(tab2){
+      //    settab2(false)
+      //    settab1(true)
+      // }
   
       else if (tab3){
         settab3(false)
-        settab2(true)
+        settab1(true)
       }
       else if (tab4){
         settab4(false)
@@ -59,7 +65,7 @@ const BizServices = () => {
           <>
             <div class="relative pt-4 pb-8 sm:pb-16 border-b-4 container sm:max-w-[95%] mx-auto border-gray-200">
               <div class="container max-w-4xl xl:max-w-7xl relative m-auto px-[10px] text-gray-500 md:px-12">
-                <HowCanWeHelp tab1={tab1} tab2={tab2} tab3={tab3}/>
+                <HowCanWeHelp tab1={tab1} tab2={tab2} tab3={tab3} tab4={tab4}/>
                 <div className="flex sm:hidden pt-1 pb-4 mx-auto  justify-center w-1/2">
                   <div className="flex  w-full">
                       <ul className="flex  w-full justify-center items-center  gap-x-8">
@@ -67,7 +73,7 @@ const BizServices = () => {
                      <FaAngleLeft onClick={handleDecreaseSlide}  />
                     </li>
                         <l1 className={`text-gray-800 ${tab1 && 'text-2xl text-green-400'}`}><FaCircle/></l1>
-                        <l1 className={`text-gray-800 ${tab2 && 'text-2xl text-green-400'}`}><FaCircle/></l1>
+                        {/* <l1 className={`text-gray-800 ${tab2 && 'text-2xl text-green-400'}`}><FaCircle/></l1> */}
                         <l1 className={`text-gray-800 ${tab3 && 'text-2xl text-green-400'}`}><FaCircle/></l1>
                         <l1 className={`text-gray-800 ${tab4 && 'text-2xl text-green-400'}`}><FaCircle/></l1>
                      <li className="text-2xl">
@@ -79,7 +85,7 @@ const BizServices = () => {
                 <div className="  ">
                   <div class="gap-4 sm:hidden pb-8 flex  ">
                     {tab1 && 
-                    <div    class={`group  min-w-[85vw]  space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none `}>
+                    <div    class={`group slide-in-right  min-w-[85vw]  space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none `}>
                       <img 
                         class="mx-auto w-24"
                         src={Globe}
@@ -90,18 +96,21 @@ const BizServices = () => {
                         Build
                       </h3>
                       <p>
-                        Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                        at cum, consectetur ullam tempora ipsa iste officia sed
-                        officiis! Incidunt ea animi officiis.
+                        A Platform To Build Your Business By Bringing Your Ideas To Life With Our State Of The Art Tools or Get You Up And Running With Easy Funding
                       </p>
       
-                      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                        {"Apply"}
-                      </button>
+               <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                     </div>
                     }
                     { tab2 &&
-       <div class="group min-w-[100vw]   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+       <div class="group min-w-[100vw] slide-in-right   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
        <img
          class="mx-auto w-24"
          src={Gate}
@@ -112,18 +121,20 @@ const BizServices = () => {
 Connect   
  </h3>
        <p>
-         Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-         at cum, consectetur ullam tempora ipsa iste officia sed
-         officiis! Incidunt ea animi officiis.
+         Connect With A DataBase of Over 400K Users And Counting. Or Get In Touch With Key Execs In The Business Landscape. The Possibilities Are Near Limitless
        </p>
+       <div>
+               <Link to={'/path'}>
       
-       <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-         {"Apply"}
-       </button>
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
       </div>
                     }
                    { tab3 &&
-       <div class="group min-w-[100vw]   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+       <div class="group min-w-[100vw] slide-in-right   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
        <img
          class="mx-auto w-24"
          src="https://www.pngrepo.com/png/401106/512/antenna-bars.png"
@@ -134,17 +145,20 @@ Connect
          Business Evaluation
        </h3>
        <p>
-         Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-         at cum, consectetur ullam tempora ipsa iste officia sed
-         officiis! Incidunt ea animi officiis.
+         Save Time And Cost On An Existing Business or Business Idea By Utilizing Our Business Evaluation Model (BEM) To Forecast Business Revenue And Viability in the Modern Market 
        </p>
-       <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-         {"Get Started"}
-       </button>
+       <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
       </div>
                    }
                    { tab4 &&
-       <div class="group min-w-[100vw]   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
+       <div class="group min-w-[100vw] slide-in-right   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
        <img
          class="mx-auto w-24"
          src="https://www.pngrepo.com/png/401106/512/antenna-bars.png"
@@ -155,13 +169,16 @@ Connect
          Crowd Funding
        </h3>
        <p>
-         Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-         at cum, consectetur ullam tempora ipsa iste officia sed
-         officiis! Incidunt ea animi officiis.
+         Backed By BEM One Hive Exposes Your Business To Over 30K Investors From Around The World. Simply Evaluate Your Business Using BEM To Get Estimated Revenue You Can Access Upfront And A Simple Repayment Plan  
        </p>
-       <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-         {"Get Started"}
-       </button>
+       <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
       </div>
                    }
                    
@@ -178,14 +195,17 @@ Connect
                         Build
                       </h3>
                       <p>
-                        Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                        at cum, consectetur ullam tempora ipsa iste officia sed
-                        officiis! Incidunt ea animi officiis.
+                      A Platform To Build Your Business By Bringing Your Ideas To Life With Our State Of The Art Tools or Get You Up And Running With Easy Funding
                       </p>
       
-                      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                        {"Apply"}
-                      </button>
+                      <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                     </div>
                     <div class="group   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
                       <img
@@ -198,14 +218,17 @@ Connect
                         Connect
                       </h3>
                       <p>
-                        Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                        at cum, consectetur ullam tempora ipsa iste officia sed
-                        officiis! Incidunt ea animi officiis.
+                      Connect With A DataBase of Over 400K Users And Counting. Or Get In Touch With Key Execs In The Business Landscape. The Possibilities Are Near Limitless
                       </p>
       
-                      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                        {"Apply"}
-                      </button>
+                      <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                     </div>
                     <div class="group   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
                       <img
@@ -218,14 +241,17 @@ Connect
                         Business Evaluation
                       </h3>
                       <p>
-                        Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                        at cum, consectetur ullam tempora ipsa iste officia sed
-                        officiis! Incidunt ea animi officiis.
+                      Save Time And Cost On An Existing Business or Business Idea By Utilizing Our Business Evaluation Model (BEM) To Forecast Business Revenue And Viability in the Modern Market Get to Know How Valuable Your Business Idea could be In A few Steps
                       </p>
       
-                      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                        {"Apply"}
-                      </button>
+                      <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                     </div>
                     <div class="group   space-y-6 border border-gray-100  rounded-3xl bg-white  px-8 py-12 text-center shadow-2xl shadow-gray-600/10 dark:shadow-none">
                       <img
@@ -238,14 +264,17 @@ Connect
                         Crowd Funding
                       </h3>
                       <p>
-                        Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                        at cum, consectetur ullam tempora ipsa iste officia sed
-                        officiis! Incidunt ea animi officiis.
+                      Backed By BEM One Hive Exposes Your Business To Over 30K Investors From Around The World. Simply Evaluate Your Business Using BEM To Get Estimated Revenue You Can Access Upfront And A Simple Repayment Plan  
                       </p>
       
-                      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
-                        {"Apply"}
-                      </button>
+                      <div>
+               <Link to={'/path'}>
+      
+      <button className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl">
+        {"Get Started"}
+      </button>
+     </Link>
+               </div>
                     </div>
                   </div>
                 </div>
@@ -256,7 +285,7 @@ Connect
                      <FaAngleLeft onClick={handleDecreaseSlide}  />
                     </li>
                         <l1 className={`text-gray-800 ${tab1 && 'text-2xl text-green-400'}`}><FaCircle/></l1>
-                        <l1 className={`text-gray-800 ${tab2 && 'text-2xl text-green-400'}`}><FaCircle/></l1>
+                        {/* <l1 className={`text-gray-800 ${tab2 && 'text-2xl text-green-400'}`}><FaCircle/></l1> */}
                         <l1 className={`text-gray-800 ${tab3 && 'text-2xl text-green-400'}`}><FaCircle/></l1>
                         <l1 className={`text-gray-800 ${tab4 && 'text-2xl text-green-400'}`}><FaCircle/></l1>
                      <li className="text-2xl">
@@ -271,24 +300,30 @@ Connect
         );
 }
 
-function HowCanWeHelp({ tab1, tab2, tab3}) {
+function HowCanWeHelp({ tab1, tab2, tab3, tab4}) {
  
 let snippet
 
-  switch (tab1, tab2 , tab3) {
+  switch (tab1, tab2 , tab3, tab4) {
+    
     case tab1:
-    snippet = 'A Community For Money Makers' 
+    snippet = 'Save Time And Expenses' 
       break;
     
     case tab2:
-    snippet = 'A Gateway To Connect With Modern Opportunities Before They Get Out Of Reach' 
+    snippet = 'Amplify Your Growth Or Get Up And Running ' 
       break;
     
     case tab3:
-    snippet = 'A Modern Source Of Passive Income' 
+    snippet = '' 
+      break;
+    
+    case tab4:
+    snippet = 'Access Your Future Revenue Today Using One Hive.' 
       break;
   
     default:
+      
       break;
   }
 

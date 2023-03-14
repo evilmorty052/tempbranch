@@ -41,7 +41,7 @@ module.exports = {
         '6xl': ['3.75rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       },
       screens: {
-        xxs: '390px',
+        xxs: '350px',
         xs: '480px',
         ss: "620px",
         sm: "768px",

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import pie from '../../assets/pie2.svg'
 
 const HiveHero = ({func}) => {
@@ -32,27 +33,32 @@ const HiveHero = ({func}) => {
                       ></path>
                     </svg>
                   </a>
-                  <h1 class="text-gray-900 font-bold text-4xl md:text-6xl lg:text-5xl xl:text-6xl ">
-                    Welcome <br className="hidden md:block" /> To One{" "}
-                    <br className="md:hidden" />
-                    <span class="text-primary dark:text-primaryLight">Hive.</span>
+                  {/* <h1 class="text-gray-900 font-bold text-4xl md:text-6xl lg:text-5xl xl:text-6xl ">
+                    Welcome <br className="hidden md:block" /> <br className="md:hidden" /> To One{" "}
+                    
+                    <span class="text-primary ">Hive.</span>
+                  </h1> */}
+                  <h1 class="text-gray-900 font-bold text-4xl md:text-6xl lg:text-5xl xl:text-6xl uppercase ">
+                     One{" "}<span class="text-primary ">Hive.</span>
                   </h1>
-                  <p class="mt-8 text-gray-600 dark:text-gray-300">
+                  <p class="mt-4 text-gray-600 ">
                     The Fastest Growing Community Of Startups and Investors on the
                     Internet
                   </p>
                   <div>
                     <div className="my-4">
-                      <button
+                    
+                    <button
                         onClick={func}
                         className="bg-green-300 shadow-xl hover:bg-green-400 text-black font-bold py-4 px-6  w-full rounded-3xl"
                       >
                         {"Get Started"}
                       </button>
+                    
                     </div>
       
                   </div>
-                  <div class="mt-12 flex gap-6 lg:gap-12 justify-between grayscale dark:grayscale-0">
+                  <div class="mt-12 flex gap-6 lg:gap-12 justify-between grayscale ">
                     <img
                       src="./images/clients/airbnb.svg"
                       class="h-8 sm:h-10 w-auto lg:h-12"

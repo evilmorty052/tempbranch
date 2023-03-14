@@ -68,7 +68,7 @@ const Navbar = ({setpathopen, open}) => {
     break;
     
     case '/hiveai':
-    pathid ='HIVE MIND'
+    pathid ='B.E.M'
     view = <SecondaryNav open={open} setpathopen={handleuser} pathid={pathid} setactive={setactive} path={path}/>
     
     break;

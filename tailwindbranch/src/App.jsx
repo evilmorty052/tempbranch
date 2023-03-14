@@ -45,7 +45,7 @@ import Path from './pages/Path';
 import Jobs from './pages/Jobs';
 import Team from './pages/Team';
 
-import Test from './pages/test';
+import Test from './pages/Test';
 
 import Welcome from './pages/welcome';
 import Newuser from './pages/newuser';
@@ -64,7 +64,9 @@ import ProfileSettingsPage from './pages/ProfilePage';
 import Advisor from './pages/Advisor';
 import HiveLanding from './pages/HiveLanding';
 import HiveBiz from './pages/HiveBiz';
-import {Settings} from './pages/Settings/index'
+import {Settings,} from './pages/Settings/index'
+import {Bem} from './pages/index'
+import DashboardScreen from './partials/dashboard/DashboardScreen';
 
 function App() {
   const { currentUser } = useAuth()
@@ -79,11 +81,12 @@ function App() {
   return (
     <>
     <Routes>
+      <Route exact path="/bem" element={<Bem/>} />
         <Route exact path="/settings" element={<Settings />} />
         <Route exact path="/team" element={<Team />} />
         <Route exact path="/hive" element={<HiveLanding />} />
         <Route exact path="/hivebiz" element={<HiveBiz />} />
-        <Route exact path="/test" element={<Test />} />
+        <Route exact path="/test/*" element={<Test />} />
         <Route exact path="/jobs" element={<Jobs />} />
         <Route exact path="/profile" element={<ProfileSettingsPage/>} />
         <Route exact path="/" element={<Home />} />
@@ -122,11 +125,11 @@ function App() {
         </Route> */}
         
         {/* <Route element={currentUser ? <Outlet /> : <Loginpage />}> */}
-            <Route path ="/dashboard" element={<Dashboard />} />
+            <Route path ="/dashboard/*" element={<DashboardScreen />} />
             <Route path ="/pricing" element={<Pricing />} />
             {/* <Route path ="/subscribe" element={<Dashboardsubscribe />} /> */}
             {/* <Route exact path ="/dashboard/agents" element={<DashboardAgents />} /> */}
-            <Route exact path ="/dashboard/portfolio" element={<DashboardPortfolio />} />
+            {/* <Route exact path ="/dashboard/portfolio" element={<DashboardPortfolio />} /> */}
         {/* </Route> */}
       
         {/* <Route path="*" element={<Notfound />} /> */}

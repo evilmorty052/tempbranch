@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const CurrencyInput = () => {
-    const [value, setValue] = useState(''); // Use state to store the input value
+const CurrencyInput = ({value, setValue}) => {
+     // Use state to store the input value
   
     // Format the input value as a currency
     const handleChange = (event) => {

@@ -28,7 +28,7 @@ const loadervariant = {
 
 
   return (
-    <div className='min-h-screen bg-black-gradient-2 flex justify-center items-center'>
+    <div className='min-h-screen w-full  flex justify-center items-center'>
         <motion.div className='flex gap-x-2 '>
         <motion.div className=' w-20 h-20 bg-white rounded-full flex justify-center items-center '
         variants={loadervariant}

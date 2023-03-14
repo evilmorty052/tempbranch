@@ -2,11 +2,9 @@ import React, { useState , useRef} from 'react';
 import Sidebar from '../partials/Sidebar2';
 import Header from '../partials/Header';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
-import DashboardCard01 from '../partials/dashboard/DashboardCard01';
-import DashboardCard02 from '../partials/dashboard/DashboardCard02';
-import DashboardCard03 from '../partials/dashboard/DashboardCard03';
+
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
-import DashboardCard14 from '../partials/dashboard/DashboardCard14';
+
 import Tabs from './Aboutus';
 import Agents from '../partials/dashboard/AgentCard';
 // import { getsanityuser } from './Loginpage';
@@ -53,7 +51,7 @@ if(!user){
           onClick={() => {
             sidebarOpen && setSidebarOpen(false);
           }}
-          className="flex lg:hidden h-screen overflow-hidden bg-plat"
+          className="flex lg:hidden h-screen overflow-hidden bg-plat pb-[73px]"
         >
           {/* Sidebar */}
           <Sidebar
@@ -132,6 +130,7 @@ if(!user){
                   <DashboardCard13 />
                 </div>
               </div>
+              <Navigation/>
             </main>
             {/* {Tab display} */}
 
@@ -187,6 +186,90 @@ if(!user){
     </>
   );
 }
+
+function Navigation  () {
+  const Menus = [
+    { name: "Home", icon: "home-outline", dis: "translate-x-0" },
+    { name: "Profile", icon: "person-outline", dis: "translate-x-16" },
+    { name: "Dashboard", icon: "chatbubble-outline", dis: "translate-x-32" },
+    { name: "Photos", icon: "camera-outline", dis: "translate-x-48" },
+    { name: "Settings", icon: "settings-outline", dis: "translate-x-64" },
+  ];
+  const [active, setActive] = useState(2);
+  return (
+    <div className="bg-white max-h-[4.4rem] min-w-[339px] px-6 mt-10 fixed bottom-0 w-full sm:hidden rounded-t-xl">
+      <ul className="flex relative">
+        <span
+          className={`bg-green-300 duration-500  ${Menus[active].dis} border-4 border-gray-900 h-16 w-16 absolute
+         -top-5 rounded-full`}
+        >
+          <span
+            className="w-3.5 h-3.5 bg-transparent absolute top-4 -left-[18px] 
+          rounded-tr-[11px] shadow-myShadow1"
+          ></span>
+          <span
+            className="w-3.5 h-3.5 bg-transparent absolute top-4 -right-[18px] 
+          rounded-tl-[11px] shadow-myShadow2"
+          ></span>
+        </span>
+        {Menus.map((menu, i) => (
+          <li key={i} className="w-16">
+            <a
+              className="flex flex-col items-center justify-center text-center pt-6"
+              onClick={() => setActive(i)}
+            >
+              <span
+                className={`text-xl cursor-pointer duration-500 ${
+                  i === active && "-mt-6 text-white"
+                }`}
+              >
+                <ion-icon name={menu.icon}></ion-icon>
+              </span>
+              <span
+                className={` ${
+                  active === i
+                    ? "translate-y-4 duration-700 opacity-100"
+                    : "opacity-0 translate-y-10"
+                } `}
+              >
+                {menu.name}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+
+// function BottomNav(params) {
+//   const Menus = [
+//     { name: "Home", icon: "home-outline", dis: "translate-x-0" },
+//     { name: "Profile", icon: "person-outline", dis: "translate-x-16" },
+//     { name: "Dashboard", icon: "chatbubble-outline", dis: "translate-x-32" },
+//     { name: "Photos", icon: "camera-outline", dis: "translate-x-48" },
+//     { name: "Settings", icon: "settings-outline", dis: "translate-x-64" },
+//   ];
+//   const [active, setActive] = useState(0);
+
+//   return(
+//     <>
+//     <div className='bg-gray-100 fixed bottom-0 w-full h-[73px] p-2'>
+//       <ul className='flex gap-x-2 justify-center'>
+//         {Menus.map((menu)=>{
+//           return(
+//           <li className='flex flex-col items-center'>
+//            <ion-icon name={menu.icon}></ion-icon>
+//            <span>{menu.name}</span>
+//           </li>
+//           )
+//         })}
+//       </ul>
+//     </div>
+//     </>
+//   )
+// }
 
 export default Dashboard;
 

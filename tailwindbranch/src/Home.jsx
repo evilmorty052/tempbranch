@@ -135,8 +135,6 @@ if(path){
         buttonText="GET STARTED"
         image="https://via.placeholder.com/800x600"
       />
-        {/* <HeroCloned/> */}
-        {/* <Stats /> */}
         
       </div>
     </div>
@@ -153,20 +151,13 @@ if(path){
     </div> */}
     <div onClick={()=> expanded && setexpanded(false)} className={`bg-plat ${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
-        {/* <Section/> */}
-        {/* <Highlight/> */}
-        {/* <Business /> */}
         <CardDeal />
        <div className="sm:hidden"><Technology/></div> 
         <CTA />
-        {/* <Medicplants /> */}
+ 
         <div className="sm:hidden"> <Hiring/></div>
         <Billing />
-        {/* <Testimonials /> */}
-        {/* <Clients /> */}
-        {/* <Example/> */}
-        {/* <Footer /> */}
-      {/* <Banner/> */}
+        
         
         
         
@@ -281,12 +272,12 @@ function Technology(params) {
      <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2 gap-4 my-10">
         <Feature
           title="One Hive"
-          description=" Join A Community Of Startups, Growers, Wingmen And Retailers to start earning by growing supporting or selling.  "
+          description=" Join A Community Of Startups, Investors, Innovators And Retailers connected in real time to start earning by growing supporting or selling.  "
           image={hive}
         />
         <Feature
-          title="HIVE A.I"
-          description="Learn About The Artificial Intelligence Behind The One Hive Program"
+          title="BEM"
+          description="Learn About Our Business Evaluation Model Fondly Known As B.E.M "
           image="https://via.placeholder.com/200x200"
         />
         <Feature
@@ -296,7 +287,7 @@ function Technology(params) {
         />
         <Feature
           title="Growers"
-          description="Have Extra Space In Your Home ? Start earning By Converting extra space in your home into a mini farm With Our DIY Home Farm Kit. have Even Bigger Space ? Get in Touch to Find Out How you Can earn Up to $20000 By growing for us."
+          description="Have Extra Space In Your Home? Find Out How you Can earn Up to $20000 By growing for us."
           image="https://via.placeholder.com/200x200"
         />
       </div>
@@ -315,7 +306,7 @@ function Hiring(params) {
           image="https://via.placeholder.com/200x200"
         />
         <Feature
-          title="Wingmen"
+          title="Job Board"
           description="From Delivery Men to Customer Care Representatives Browse through a Large catalogue of Available Positions Offered By Startups And Small Businesses Sponsored By Medik 420."
           image="https://via.placeholder.com/200x200"
         />

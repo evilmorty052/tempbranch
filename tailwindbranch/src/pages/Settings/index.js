@@ -13,6 +13,7 @@ import MenuSlider from "./partials/MenuSlider"
 import MenuButton from "./partials/MenuButton";
 import UpdateScreen from "./UpdateScreen";
 import {SuccessMessage} from './partials/Message'
+import { ErrorMessage } from "./partials/Message";
 
 export{
     Settings,
@@ -30,6 +31,7 @@ export{
     MenuSlider,
     MenuButton,
     UpdateScreen,
-    SuccessMessage
+    SuccessMessage,
+    ErrorMessage
     
 }
