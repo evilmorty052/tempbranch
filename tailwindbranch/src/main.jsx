@@ -10,6 +10,7 @@ import '../src/pages/App.css'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { store } from './Redux/store';
 import {Provider} from 'react-redux'
+import { AnimatePresence } from 'framer-motion';
 
 
 
@@ -27,9 +28,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     <Router>
        <AuthContextProvider>
-        
+        <AnimatePresence exitBeforeEnter={true}>
            <App />
-       
+        </AnimatePresence>
        </AuthContextProvider>
     </Router>
 </QueryClientProvider>  

@@ -17,13 +17,15 @@ function LineChart({label, entries}) {
        labels: label,
        datasets: [
          {
-           label: '7 day chart',
+           label: 'last 30 days',
            data: entries,
            fill: true,
            borderColor: 'rgb(75, 192, 192)',
-           tension: 0.1
+           tension: 0.1,
+           backgroundColor: '#90ee90'
          },
-       ]
+       ],
+       
      };
      
      const options = {
@@ -32,10 +34,12 @@ function LineChart({label, entries}) {
            {
              ticks: {
                beginAtZero: true
-             }
+             },
+             
            }
          ]
-       }
+       },
+       backgroundColor: 'white'
      };
      
      return(

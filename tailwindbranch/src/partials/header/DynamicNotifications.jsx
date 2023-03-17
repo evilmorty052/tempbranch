@@ -85,7 +85,7 @@ let unread = list.filter((i)=>{
 //   }, [unreadmsg])
 
  
-console.log(messages)
+
 
   
   // close on click outside

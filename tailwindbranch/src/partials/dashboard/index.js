@@ -7,8 +7,9 @@ import MobilePortfolio from "./MobilePortfolio";
 import MessageScreen from "./MessageScreen";
 import PortfolioScreen from "./PortfolioScreen";
 import MobileHub from "./MobileHub";
-import Cryptoinvestments from "./Cryptoinvestments";
+import CryptoinvestmentScreen from "./CryptoinvestmentScreen";
 import LineChart from "../charts/Linechart";
+import SyndicatesInvestmentScreen from "./SyndicatesInvestmentScreen";
 
 
 export { 
@@ -21,6 +22,7 @@ export {
     MessageScreen,
     PortfolioScreen,
     MobileHub,
-    Cryptoinvestments,
-    LineChart
+    CryptoinvestmentScreen,
+    LineChart,
+    SyndicatesInvestmentScreen
 }

@@ -10,6 +10,7 @@ import { Route, Routes } from 'react-router-dom'
 import {Settings }from './index'
 import NewsTab from '../partials/dashboard/NewsTab'
 import Agents from '../partials/dashboard/AgentCard';
+import { AnimatePresence, motion } from '../hooks/useMotion'
 
 const Test = ({children}) => {
   const [activepage, setactivepage] = useState(null)
@@ -36,6 +37,7 @@ switch (activepage) {
    <Route path='settings' element={<Settings/>}></Route>
     </Routes> 
      </div>
+     <div className='p-4 flex justify-center w-full'><Syndicatecard/></div>
     </Layout>
     <BottomNavigation/>
       </>
@@ -382,5 +384,54 @@ function MobileDashboard(params) {
    )
 }
 
+const Syndicatecard = () => {
+  const [hidden, sethidden] = useState(true)
+  return(
+      <>
+      <div className='flex'>
+
+      <motion.a
+href="#"
+class=" z-50 relative block min-w-[340px] max-w-sm overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
+>
+<div class="absolute inset-0 bg-black"></div>
+
+<div class="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
+  <div class="sm:pt-18 pt-12 text-white lg:pt-24">
+    <h3 class="text-xl font-bold sm:text-2xl">Rome</h3>
+
+    <p class="text-sm">Italy</p>
+  </div>
+
+  <span onClick={()=> sethidden(!hidden)}
+    class="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
+  >
+    4.5
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-4 w-4 text-yellow-300"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+      />
+    </svg>
+  </span>
+</div>
+
+</motion.a>
+<AnimatePresence exitBeforeEnter={true}>
+  
+     {!hidden && 
+     <motion.div  exit={{y: '-200%'}} initial={{x: '-100%'}} animate={{x: '20%'}} transition={{duration: 0.4,}} className='flex  p-20 bg-red-300 '>
+      <FaArrowLeft/>
+     </motion.div>}
+</AnimatePresence>
+      </div>
+      </>
+  )
+}
 
 export default Test

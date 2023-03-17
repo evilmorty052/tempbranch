@@ -1,36 +1,15 @@
 import {
-  Button,
-  Center,
-  chakra,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Stack,
+ 
   useToast,
-  Select,
-  SelectField,
-  NumberInput,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  NumberInputField
+
   
 } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
-import { FaGoogle } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
-import { Card } from '../components/Card'
-import DividerWithText from '../components/DividerWithText'
-import { useAuth } from '../contexts/AuthContext'
-import { Router, Routes } from 'react-router-dom'
 
-import { FaAnchor } from 'react-icons/fa'
-import { FaCircle } from 'react-icons/fa'
-import 'react-phone-number-input/style.css'
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import PhoneInput from 'react-phone-input-2'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
+
+import { useAuth } from '../contexts/AuthContext'
+
 import Longform from '../components/Longform2'
 
 

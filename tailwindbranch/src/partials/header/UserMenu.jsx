@@ -43,7 +43,7 @@ function UserMenu({name, avatar}) {
       >
         <Avatar className="w-8 h-8 rounded-full md:hidden border border-white" src={avatar} width="32" height="32" alt="User" />
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm text-white font-bold group-hover:text-green-300 uppercase">{name}</span>
+          <span className="truncate ml-2 text-sm text-black font-bold group-hover:text-green-300 uppercase">{name}</span>
           <svg className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
             <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
           </svg>

@@ -24,6 +24,13 @@ import people01 from "./people01.png";
 import people02 from "./people02.png";
 import people03 from "./people03.png";
 import plant     from './growth.svg'
+import bnb from './bnb.png'
+import bitcoin from './bitcoin.png'
+import avalanche from './avalanche.png'
+import solana from './solana.png'
+import polygon from './polygon.png'
+import ethereum from './ethereum.png'
+
 
 export {
   plant,
@@ -52,4 +59,12 @@ export {
   people01,
   people02,
   people03,
+  bnb,
+  ethereum,
+  avalanche,
+  polygon,
+  bitcoin,
+  solana,
+  
+
 };

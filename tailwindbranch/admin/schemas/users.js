@@ -197,11 +197,72 @@ export default {
               name: 'number',
               type: 'string'
             } ,
+            {
+              title: 'Deployed',
+              name: 'deployed',
+              type: 'boolean'
+            } ,
             
             
           ]
         }
       ]
+    },
+   
+    {
+      name: 'chats',
+      title: 'Chats',
+      type: 'array',
+      of: [
+          {
+            name: 'chat',
+            title: 'Chat',
+            type: 'object',
+            fields: [
+              {
+                title: 'Userid',
+                name: 'userid',
+                type: 'string'
+              },
+              {
+                title: 'Username',
+                name: 'username',
+                type: 'string'
+              },
+              {
+                title: 'Useravatar',
+                name: 'useravatar',
+                type: 'image'
+              },
+              {
+                title: 'Messages',
+                name: 'messages',
+                type: 'array',
+                of: [
+                  {
+                    title: 'Texts',
+                    type: 'object',
+                    name: 'texts',
+                    fields:[
+                      {
+                        title:'Text',
+                        name: 'text',
+                        type: 'string',
+                      },
+                      {
+                        title: 'sender',
+                        name: 'sender',
+                        type: 'string'
+                      }
+                    ]
+                  }
+                ]
+              },
+
+            ]
+          }
+      ]
+
     },
     { 
       name: 'transactions',

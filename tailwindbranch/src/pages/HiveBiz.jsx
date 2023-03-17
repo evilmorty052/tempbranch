@@ -232,7 +232,7 @@ function HiveInvest({back, ActiveCompany}) {
   }
   return(
       <>
-      <Miniheader companyName={ActiveCompany.name} avatar={ urlFor(ActiveCompany.image)} back={back}/>
+      {/* <Miniheader companyName={ActiveCompany.name} avatar={ urlFor(ActiveCompany.image)} back={back}/> */}
 
       <div className="pt-[90px] pb-20 container mx-auto max-w-5xl z-50">
        <div>
@@ -549,7 +549,6 @@ function Tags({word,}) {
     // if(item == 'All'){
     //      return
     // }
-    console.log(item)
  
  }
   
@@ -578,9 +577,9 @@ if(investing){
 
   return (
     <>
-    <Miniheader back={()=> history('/hive')}/>
-    <div className='mb-8 px-2 pt-20  '>
-    <h3 className='text-[38px] font-semibold text-gray-800 sm:text-center'>Build your investment portfolio.</h3>
+    {/* <Miniheader back={()=> history('/hive')}/> */}
+    <div className='mb-8 px-2 '>
+    <h3 className='text-[28px] font-semibold text-gray-800 sm:text-center'>Build your investment portfolio.</h3>
     <div className='flex sm:justify-center'>
     <div className='pt-4 pb-2 flex gap-x-4  overflow-scroll'>
         <Tags  />
@@ -905,11 +904,11 @@ function LockupPeriods(params) {
                 <li class="py-3 sm:py-4">
                     <div class="flex items-center space-x-4">
                         <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
                                2 months
                             </p>
                         </div>
-                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                             2.8 ROI
                         </div>
                     </div>
@@ -918,12 +917,12 @@ function LockupPeriods(params) {
                     <div class="flex items-center space-x-4">
                       
                         <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
                                 4 months
                             </p>
                             
                         </div>
-                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                            3.8 ROI
                         </div>
                     </div>
@@ -932,12 +931,12 @@ function LockupPeriods(params) {
                     <div class="flex items-center space-x-4">
                       
                         <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
                                6 months
                             </p>
                             
                         </div>
-                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                         4.8 ROI
                         </div>
                     </div>
@@ -946,12 +945,12 @@ function LockupPeriods(params) {
                     <div class="flex items-center space-x-4">
                        
                         <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
                                8 months
                             </p>
                            
                         </div>
-                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                            5.8 ROI
                         </div>
                     </div>
@@ -960,12 +959,12 @@ function LockupPeriods(params) {
                     <div class="flex items-center space-x-4">
                        
                         <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            <p class="text-sm font-medium text-gray-900 truncate ">
                                 12 Months
                             </p>
                             
                         </div>
-                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <div class="inline-flex items-center text-base font-semibold text-gray-900 ">
                             7.8 ROI
                         </div>
                     </div>

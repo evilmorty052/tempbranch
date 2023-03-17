@@ -1,29 +1,59 @@
 
-import React, {useState} from 'react'
+import { client, urlFor } from '../../../lib/client'
+import React, {useState, useEffect} from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import { people01 } from '../../assets'
+import useFetch from '../../hooks/useFetch'
 
 const MessageScreen = ({}) => {
-
+const navigate = useNavigate()
 const [showchatScreen, setshowchatScreen] = useState(false)
 const [activechat, setactivechat] = useState()
+const [userid, setuserid] = useState(5)
+const [messages, setmessages] = useState(null)
+const [loading, setloading] = useState(true)
 
-const messages = [
-    {
-      contact: 'jon',
-      time: 'kk',
-      useravatar: people01
-    },
-    {
-      contact: 'bjorn',
-      time: 'kk',
-      useravatar: people01
-    },
-    {
-      contact: 'bjorgingsen',
-      time: 'kk',
-      useravatar: people01
-    },
-]
+const emailID = localStorage.getItem('email')
+
+// let query = `*[email == "${emailID}"] {chats}`
+let query = `*[_type == 'chatrooms' && references("1ea0d8f0-d2b1-44c9-9d82-a04e47ceb237")]{messages, participants[]-> {_id}}`
+const chatlist = useFetch(query, 'kolo')
+
+function fetchmessages() {
+   
+    const setmessage = (res) => {
+        setmessages(res)
+        console.log(res)
+    }
+
+    let query = `*[_type == 'chatrooms' && references('1ea0d8f0-d2b1-44c9-9d82-a04e47ceb237')]{messages[]{message, sender -> {email, avatar, _id}}}` 
+    const chatrooms =  client.fetch(query).then((res)=>{
+      res &&  setmessage()
+      res && console.log(messages)
+      res && setloading(false)
+    })
+
+}
+
+
+// chats && console.log(chats)
+
+useEffect(() => {
+// destructure the chats you get from sanity 
+  fetchmessages()
+//    if(chatlist){
+//     const {chats} = chatlist[0]
+//     setmessages(chats)
+//     console.log(chatlist)
+//    }
+   
+}, [])
+
+
+
+
+
+
 
 function handleChat(params) {
   setactivechat()  
@@ -53,16 +83,49 @@ const Chat = ({useravatar, contact, func}) => {
 }
 
 const ChatScreen = ({activechat}) => {
+const [newmessage, setnewmessage] = useState('')
+
+function handleSend(e) {
+    e.preventDefault()
+    activechat.messages.push({
+        message: newmessage,
+        id: userid
+    })
+
+    localStorage.setItem('key',JSON.stringify({
+        message: newmessage,
+        id: userid
+    }))
+    setnewmessage('')
+
+    
+}
     return(
         <>
-        {activechat.contact}
+        <ul className='bg-slate-300 h-screen relative pt-10 '>
+            <div className='flex container max-w-2xl mx-auto h-[92%] overflow-scroll flex-col space-y-8 px-2 pb-10'>
+                {activechat?.messages.map((message)=>{
+                    return(
+                        <>
+                        <li className={message.sender != emailID ? 'p-2 min-w-[30%] w-[60%] bg-red-300' : 'p-2 w-[60%] min-w-[30%] bg-green-300 self-end text-right'}>
+                            {message.text}
+                        </li>
+                        </>
+                    )
+                })}
+            </div>
+            <div className='fixed w-full bottom-0 flex'>
+                <input  value={newmessage} onChange={(e)=> setnewmessage(e.target.value)} type="text" className='flex-1' />
+                <button onClick={handleSend}>send</button>
+            </div>
+        </ul>
         </>
     )
 }
 
-if(showchatScreen){
+if(loading){
     return(
-        <ChatScreen activechat={activechat}/>
+        <h3>....</h3>
     )
 }
 
@@ -72,17 +135,18 @@ if(showchatScreen){
     <div class="flex items-center justify-center border-b pb-4 mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-900 text-center ">Chats</h5>
    </div>
-  { messages &&
+  { chatlist &&
    <div class="flow-root transition-all duration-500">
         <ul role="list" class="divide-y divide-gray-200 ">
-            {messages?.map((message)=>{
+            { messages?.map((message)=>{
                 return(
                     <>
                     <Chat func={()=> {
                         setactivechat(message)
-                        setshowchatScreen(true)
+                        navigate('chat')
+                        
                     }} 
-                        contact={message.contact} useravatar={message.useravatar}/>
+                        contact={message.messages[0].message} useravatar={message.useravatar}/>
                     </>
                 )
             })}
@@ -96,7 +160,10 @@ if(showchatScreen){
     <div className=' bg-slate-200 h-screen'>
          {/* <div className='p-2 bg-white flex justify-center'><p>Chats</p> </div> */}
          <div>
-        <Chatlist/>
+        <Routes>
+            <Route path='/' element={<Chatlist/>}/>
+            <Route path='/chat' element={<ChatScreen activechat={activechat}/>}/>
+        </Routes>
          </div>
     </div>
   )

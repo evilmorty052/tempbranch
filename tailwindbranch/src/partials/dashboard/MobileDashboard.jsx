@@ -1,6 +1,7 @@
 import { FaArrowCircleDown, FaArrowCircleUp } from 'react-icons/fa'
 import { useState } from 'react'
 import {DebitCard, NewsTab, Agents} from './index'
+import { motion, AnimatePresence } from '../../hooks/useMotion'
 
 export default function MobileDashboard({firstname, lastname, transactions}) {
     const GiftCard = () => {
@@ -92,12 +93,13 @@ export default function MobileDashboard({firstname, lastname, transactions}) {
 
     return(
      <>
-     <div className=' pb-[73px] slide-in-right'>
-        <div className='flex flex-col gap-y-6 items-center pb-4'>
+     <AnimatePresence exitBeforeEnter={true}>
+     <motion.div key={'jjk'} exit={{y:'100%'}} initial={{y:'100%'}} animate={{y:0}} transition={{duration: 0.7}} className=' pb-[73px] '>
+        <div key={'jkkk'} className='flex flex-col gap-y-6 items-center pb-4'>
              <div className='px-2'><DebitCard lastname={lastname} firstname={firstname}/></div> 
              <div className='px-2.5'><GiftCard/></div> 
         </div>
-       <div className='space-y-8 px-4'>
+       <div key={'k'} className='space-y-8 px-4'>
        <div className=''><LatestTransactions/></div> 
        <div><NewsTab/></div> 
        <div className=' pb-8'><Agents/></div> 
@@ -105,7 +107,8 @@ export default function MobileDashboard({firstname, lastname, transactions}) {
        
         
         
-     </div>
+     </motion.div>
+     </AnimatePresence>
      </>
     )
  }

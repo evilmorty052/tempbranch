@@ -82,7 +82,7 @@ function Header({
   const history = useNavigate()
 
   return (
-    <header className=" top-0 sticky bg-gray-800 shadow-2xl border-b border-slate-200 z-30">
+    <header className=" top-0 sticky bg-gray-100 shadow-2xl border-b border-slate-200 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12 -mb-px">
 
@@ -90,7 +90,7 @@ function Header({
           <div className="flex">
             {/* Hamburger button */}
             <button
-              className="text-white  lg:hidden"
+              className="text-gray-800  lg:hidden"
               aria-controls="sidebar"
               aria-expanded={sidebarOpen}
               onClick={() => {
@@ -112,35 +112,24 @@ function Header({
        
 
           {/* Header: Right side */}
-         {dashboardpaths &&
+         {
            <div className="flex items-center">
 
           
             
-            {path ==  '/dashboard' && <Notifications unread={unread} msg={notifications} />}
+           {path =='dashboard/portfolio' && <Notifications unread={unread} msg={notifications} />}
             {
               path == '/dashboard/portfolio' && <Add/>
             }
-            {path ==  '/dashboard' && <Help />}
+            <Help />
             
             <hr className="w-px h-6 bg-slate-200 mx-3" />
             <UserMenu name={name} avatar={avatar && avatar} />
 
           </div>
           }
-         {/* {path = '/dashboard/portfolio' &&
-         <div className="flex items-center">
-
-          
-            
-            {path ==  '/dashboard' && <Notifications unread={unread} msg={notifications} />}
-            <Help />
-            
-            <hr className="w-px h-6 bg-slate-200 mx-3" />
-            <UserMenu name={name} avatar={avatar && avatar} />
-
-          </div>} */}
-          {
+        
+          {/* {
             !dashboardpaths && 
             <div className='flex items-start font-poppins '>
               <div className='flex items-end'>
@@ -151,12 +140,12 @@ function Header({
               <hr className="w-px h-6 bg-white mx-3" />
                
                <div className='flex items-end gap-x-4'>
-              {/* <UserOutlined/> */}
-              <span onClick={()=> history(-1)}  className=' text-slate-400 mr-2 text-xl' href="">Back</span>
+              
+              <span onClick={()=> history(-1)}  className=' text-gray-800 mr-2 text-xl' href="">Back</span>
                </div>
-              {/* <a className='text-sm uppercase bg-green-300 rounded-xl px-2 py-1'>Sign Up</a> */}
+              
             </div>
-          }
+          } */}
 
         </div>
       </div>

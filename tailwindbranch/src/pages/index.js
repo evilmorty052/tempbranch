@@ -48,6 +48,15 @@ import HiveLanding from './HiveLanding';
 import HiveBiz from './HiveBiz';
 import Bem from "./hive/Bem";
 import { Settings } from "./Settings/index";
+import {
+   Agreements,
+   Questions,
+   Why,
+   RegisterInputs,
+   AgeInputs,
+   AddressInputs,
+   PhoneInputs
+} from './RegistrationScreens'
 
 export {
    Hive,
@@ -91,5 +100,12 @@ export {
    Registerpage1,
    Registerpage2,
    Bem,
-   Settings
+   Settings,
+   Agreements,
+   Questions,
+   Why,
+   RegisterInputs,
+   AgeInputs,
+   AddressInputs,
+   PhoneInputs
 }

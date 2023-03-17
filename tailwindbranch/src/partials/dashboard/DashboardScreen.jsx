@@ -6,6 +6,7 @@ import { Settings } from "../../pages"
 import Header from "../Header"
 import cbd from '../../assets/stashlogo.png'
 import Loader from "../../components/Loader"
+import {  motion } from "framer-motion"
 
 const DashboardScreen = () => {
 const emailID = localStorage.getItem('email')
@@ -15,7 +16,7 @@ const userdetails = {...user?.[0]}
 // console.log(userdetails)
 
 const {avatar, firstname, lastname, transactions, accounts} = userdetails
-
+console.log(accounts)
 // if(!user){
 //     return(
 //         <>
@@ -27,8 +28,7 @@ const {avatar, firstname, lastname, transactions, accounts} = userdetails
 
   return (
     <>
-    <Header avatar={avatar ? `${urlFor(avatar)}` : ''} name={firstname} 
-    />
+    
      {/* <div className="">
    { !user ? 
    <div className=" h-screen">
@@ -44,16 +44,21 @@ const {avatar, firstname, lastname, transactions, accounts} = userdetails
     </Routes>
     }
      </div> */}
-     <div>
+     <div className="bg-white min-h-screen">
+     <Header avatar={avatar ? `${urlFor(avatar)}` : ''} name={firstname} 
+    />
+   
+        
      <Routes>
-        <Route path="dashboard" element={<MobileDashboard transactions={transactions} firstname={firstname} lastname={lastname}/>} />
-        <Route path="/" element={<MobileDashboard transactions={transactions} firstname={firstname} lastname={lastname}/>} />
-        <Route path="/portfolio" element={<MobilePortfolio portfolios={accounts}/>} />
-        <Route path="/messages" element={<MessageScreen/>} />
-        <Route path="/hub" element={<MobileHub/>} />
+        <Route key={'jg'} path="dashboard" element={<MobileDashboard transactions={transactions} firstname={firstname} lastname={lastname}/>} />
+        <Route key={'kk'} path="/" element={<MobileDashboard transactions={transactions} firstname={firstname} lastname={lastname}/>} />
+        <Route key={'ik'} path="/portfolio/*" element={<MobilePortfolio portfolios={accounts}/>} />
+        <Route key={'ll'} path="/messages/*" element={<MessageScreen/>} />
+        <Route key={'llj'} path="/hub" element={<MobileHub/>} />
     </Routes>
-     </div>
+
     <BottomNavigation/>
+     </div>
     </>
   )
 }

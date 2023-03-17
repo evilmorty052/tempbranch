@@ -18,23 +18,11 @@ import {
   
 } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
-import { FaGoogle } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
-import { Card } from '../components/Card'
-import DividerWithText from '../components/DividerWithText'
-import { useAuth } from '../contexts/AuthContext'
-import { Router, Routes } from 'react-router-dom'
 
-import { FaAnchor } from 'react-icons/fa'
-import { FaCircle } from 'react-icons/fa'
-import 'react-phone-number-input/style.css'
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
-import ListBox from '../components/listbox2'
+import { useNavigate } from 'react-router-dom'
+
 import Longform from '../components/Longform'
-import Dynamicnav from '../partials/Dynamicnav'
-import { client } from '../../lib/client'
+
 
 
 

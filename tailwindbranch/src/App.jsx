@@ -67,6 +67,7 @@ import HiveBiz from './pages/HiveBiz';
 import {Settings,} from './pages/Settings/index'
 import {Bem} from './pages/index'
 import DashboardScreen from './partials/dashboard/DashboardScreen';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const { currentUser } = useAuth()
@@ -80,6 +81,7 @@ function App() {
 
   return (
     <>
+    <AnimatePresence exitBeforeEnter={true}>
     <Routes>
       <Route exact path="/bem" element={<Bem/>} />
         <Route exact path="/settings" element={<Settings />} />
@@ -138,6 +140,7 @@ function App() {
       {/* <Route exact path="/profile" element={ProtectedRoute(<Dashboardprofile />)}/>
       <Route exact path="/dashboard" element={ProtectedRoute(<Dashboard />)}/> */}
    </Routes> 
+    </AnimatePresence>
     </>
   
   );
