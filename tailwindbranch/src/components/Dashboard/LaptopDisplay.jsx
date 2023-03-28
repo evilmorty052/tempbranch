@@ -1,29 +1,32 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { FaHome } from 'react-icons/fa'
+import { Link, Routes, Route } from 'react-router-dom'
+import { DebitCard, NewsTab } from '../../partials/dashboard'
+import { people01 } from '../../assets'
 
-const LaptopDisplay = ({avatar, logo, name , lastname}) => {
+const LaptopDisplay = ({avatar, logo, name , children}) => {
    
    
     function LaptopSidebar({avatar , stashlogo}) {
         return(
           <>
           <aside
-          class="fixed top-0 z-10 ml-[-100%] flex h-screen w-full flex-col justify-between border-r bg-slate-400 px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] dark:bg-gray-800 dark:border-gray-700"
+          class="fixed top-0 z-10  flex h-screen w-full flex-col justify-between border-r bg-slate-400 px-6 pb-3 transition duration-300 md:w-1/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] "
         >
           <div>
-            <div class="-mx-6 px-6 py-4">
+            {/* <div class="-mx-6 px-6 py-4">
               <a href="#" title="home">
                 <img src={stashlogo} class="w-32" alt="tailus logo" />
               </a>
-            </div>
+            </div> */}
       
             <div class="mt-8 text-center">
               <img
                 src={avatar}
                 alt=""
-                class="m-auto h-10 w-10 rounded-full object-cover lg:h-28 lg:w-28"
+                class="m-auto h-10 w-10 md:h-12 md:w-12 rounded-full object-cover lg:h-28 lg:w-28"
               />
-              <h5 class="mt-4 hidden text-xl font-semibold text-gray-600 lg:block dark:text-gray-300">{name}</h5>
+              <h5 class="mt-4 hidden text-xl font-semibold text-gray-600 lg:block">{name}</h5>
               <span class="hidden text-gray-400 lg:block">Admin</span>
             </div>
       
@@ -32,121 +35,10 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
                 <a
                   href="#"
                   aria-label="dashboard"
-                  class="relative flex items-center space-x-4 rounded-xl bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white"
+                  class="relative flex items-center justify-center space-x-4 rounded-xl bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 "
                 >
-                  <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
-                      class="dark:fill-slate-600 fill-current text-cyan-400"
-                    ></path>
-                    <path
-                      d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
-                      class="fill-current text-cyan-200 group-hover:text-cyan-300"
-                    ></path>
-                    <path
-                      d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
-                      class="fill-current group-hover:text-sky-300"
-                    ></path>
-                  </svg>
-                  <span class="-mr-1 font-medium">Dashboard</span>
-                </a>
-              </li>
-              <li>
-                <Link
-                   to={'/dashboard/portfolio'}
-                  class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      class="fill-current text-gray-300 group-hover:text-cyan-300"
-                      fill-rule="evenodd"
-                      d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
-                      clip-rule="evenodd"
-                    />
-                    <path
-                      class="fill-current text-gray-600 group-hover:text-cyan-600 dark:group-hover:text-sky-400"
-                      d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"
-                    />
-                  </svg>
-                  <span class="group-hover:text-gray-700 dark:group-hover:text-gray-50">Portfolio</span>
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      class="fill-current text-gray-600 group-hover:text-cyan-600 dark:group-hover:text-sky-400"
-                      fill-rule="evenodd"
-                      d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-                      clip-rule="evenodd"
-                    />
-                    <path
-                      class="fill-current text-gray-300 group-hover:text-cyan-300"
-                      d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
-                    />
-                  </svg>
-                  <span class="group-hover:text-gray-700 dark:group-hover:text-gray-50">Withdraw</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      class="fill-current text-gray-600 group-hover:text-cyan-600 dark:group-hover:text-cyan-400"
-                      d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
-                    />
-                    <path
-                      class="fill-current text-gray-300 group-hover:text-cyan-300"
-                      d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
-                    />
-                  </svg>
-                  <span class="group-hover:text-gray-700 dark:group-hover:text-gray-50">Agents</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 dark:text-gray-300"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      class="fill-current text-gray-300 group-hover:text-cyan-300"
-                      d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"
-                    />
-                    <path
-                      class="fill-current text-gray-600 group-hover:text-cyan-600 dark:group-hover:text-sky-400"
-                      fill-rule="evenodd"
-                      d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span class="group-hover:text-gray-700 dark:group-hover:text-white">Coach</span>
+                  <span><FaHome style={{fontSize: '20px', color: 'white'}}/></span>
+                  <span class="-mr-1 font-medium hidden lg:block text-white">Dashboard</span>
                 </a>
               </li>
             </ul>
@@ -168,7 +60,7 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
                   d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                 />
               </svg>
-              <span class="group-hover:text-gray-700 dark:group-hover:text-white">Logout</span>
+              <span class="group-hover:text-gray-700  hidden lg:block">Logout</span>
             </button>
           </div>
         </aside>
@@ -179,10 +71,10 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
       function LaptopHeader(params) {
         return(
           <>
-          <div class="sticky top-0 h-16 border-b bg-white dark:bg-gray-800 dark:border-gray-700 lg:py-2.5">
+          <div class="fixed top-0 md:left-[72px] right-0 h-16 border-b bg-white  md:py-2.5">
             <div class="flex items-center justify-between space-x-4 px-6 2xl:container">
-              <h5 hidden class="text-2xl font-medium text-gray-600 lg:block dark:text-white">Dashboard</h5>
-              <button class="-mr-2 h-16 w-12 border-r lg:hidden dark:border-gray-700 dark:text-gray-300">
+              <h5  class="text-2xl font-medium text-gray-600 lg:block ">Dashboard</h5>
+              {/* <button class="-mr-2 h-16 w-12 border-r lg:hidden ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="my-auto h-6 w-6"
@@ -197,10 +89,10 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
-              </button>
+              </button> */}
               <div class="flex space-x-4 items-center">
              
-                <div hidden class="md:block">
+                {/* <div hidden class="md:block">
                   <div class="relative flex items-center text-gray-400 focus-within:text-cyan-400">
                     <span class="absolute left-4 flex h-6 items-center border-r border-gray-300 pr-3 dark:border-gray-700">
                       <svg
@@ -223,7 +115,7 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
                       class="outline-none w-full rounded-xl border border-gray-300 py-2.5 pl-14 pr-4 text-sm text-gray-600 transition focus:border-cyan-300 dark:bg-gray-900 dark:border-gray-700"
                     />
                   </div>
-                </div>
+                </div> */}
          
                 <button
                   aria-label="search"
@@ -275,7 +167,7 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
                     />
                   </svg>
                 </button> */}
-                <h3 className='text-xl font-space tracking-wide'>Hi EVIL MORTY</h3>
+                <h3 className='text-xl font-space tracking-wide'>EVIL MORTY</h3>
               </div>
               
             </div>
@@ -285,28 +177,17 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
         )
       }
     
-      function DisplayArea({name, lastname}) {
+      function DisplayArea({children}) {
         return(
           <>
-            <div class="px-6 pt-6 2xl:container max-w-5xl">
+            <div class="pt-20 bg-white md:container max-w-5xl">
             <div
               class="flex pb-8 rounded-xl border-2 border-dashed border-gray-300   "
             >
               <div className='flex flex-col w-full  '>
-                <div className=' w-full flex justify-center  '>
-                <div className=' flex '>
-              <div className='px-4 '>
-                <Card firstname={name} lastname={lastname}/>
-              </div>
-              <div className='p-6 2xl:p-4'>
-                <Tabs />
-              </div>
-              </div>
-                </div>
-             
-              <div id="kk" className="grid grid-cols-12  px-10 mt-2">
-                        <DashboardCard13 />
-              </div>
+               {
+                   children
+                }
               
               </div>
                
@@ -317,15 +198,19 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
       }
 
 
+   
+
+
   return (
    
         <>
-        <body class="bg-gray-100 dark:bg-gray-900 h-screen ">
-     <LaptopSidebar avatar={avatar} stashlogo={logo}/>
-    
-      <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-        <LaptopHeader/>
-        <DisplayArea  name={name} lastname={lastname}/>
+        <body class="h-screen bg-red-300 ">
+     <LaptopSidebar avatar={people01} stashlogo={logo}/>
+      <LaptopHeader/>
+      <div class="ml-auto mb-6 md:w-[calc(100vw-72px)] lg:w-[75%] xl:w-[80%] 2xl:w-[85%] ">
+        <DisplayArea  >
+           {children}
+        </DisplayArea>
       </div>
     </body>
         </>
@@ -333,6 +218,20 @@ const LaptopDisplay = ({avatar, logo, name , lastname}) => {
   
 }
 
+export  function LaptopDashboard () {
+  return(
+    <div className=' w-full flex justify-center  '>
+          <div className=' flex gap-x-8 items-center'>
+        <div className=' '>
+          <DebitCard/>
+        </div>
+        <div className=''>
+          <NewsTab />
+        </div>
+        </div>
+      </div>
+  )
+}
 
 
 export default LaptopDisplay

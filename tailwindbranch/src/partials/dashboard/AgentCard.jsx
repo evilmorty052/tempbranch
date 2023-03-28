@@ -8,7 +8,7 @@ const AgentCard = () => {
   return (
     <motion.div initial={{ opacity: 0, scale: 0.1 }}  animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
        <div className='shadow-3xl font-poppins relative'>
-        <article class="rounded-xl border border-gray-700 bg-gray-800 p-4">
+        <article class="rounded-xl border border-gray-700 bg-gray-800 max-w-[450px] p-4">
   <div class="flex items-center">
     <img
       alt="Developer"

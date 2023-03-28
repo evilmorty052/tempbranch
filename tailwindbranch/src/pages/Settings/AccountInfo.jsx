@@ -9,7 +9,7 @@ const [account, setaccount] = useState(null)
 const [changePassword, setchangePassword] = useState(null)
 const [downloadData, setdownloadData] = useState(null)
 const [deleteData, setdeleteData] = useState(null)
-
+const email = localStorage.getItem('email')
 const AccountSettings = () => {
   const [emailchange, setemailchange] = useState(false)
   const [username, setusername] = useState(false)
@@ -179,7 +179,7 @@ else if (deleteData) {
          <a className={ styles.SettingsIcon} ><FaArrowLeft onClick={func} /></a>
          <div>
          <span>Your Account</span>
-         <p>evilmorty052@proton.me</p>
+         <p>{email}</p>
          </div>
          </div>
                 <div className='pl-4 block  sm:hidden  space-y-2'>

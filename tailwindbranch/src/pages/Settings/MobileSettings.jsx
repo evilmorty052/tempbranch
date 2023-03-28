@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import { FaAngleRight } from 'react-icons/fa'
+import { FaAngleRight, FaArrowLeft } from 'react-icons/fa'
 import styles from '../../style'
 import {AccountInfo, SecuritySettings, PrivacySettings , InvestmentSettings, NotificationSettings}from './index'
+
+
 
 
 
@@ -11,10 +13,12 @@ const MobileSettings = () => {
     const [investmentSettings, setinvestmentSettings] = useState(null)
     const [notifications, setnotifications] = useState(null)
     
+    
 
 const AllSettings = () => {
     return(
         <>
+         
         <ul  className='flex sm:hidden flex-col font-space slide-in-left '>
                     <div className='px-2 mb-8 '>
                    <div className=''>

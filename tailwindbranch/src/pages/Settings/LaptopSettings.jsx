@@ -158,18 +158,13 @@ const LaptopSettings = () => {
             </>
         )
      }
-    
-        // return(
-        //     <>
-        //        <AccountInfo/>
-        //     </>
-        // )
+   
     }
 
 
     return(
         <>
-        <div className='container mx-auto '>
+        <div className='container mx-auto  '>
             <div className='grid grid-cols-3 w-full'>
             <MainSettings />
             <AllSettings />

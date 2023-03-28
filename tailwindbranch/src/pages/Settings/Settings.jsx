@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {Header} from '../hive/index'
 import styles from '../../style'
 import { FaAngleRight, FaUser } from 'react-icons/fa'
 import {AnimatedSidebar, LaptopDisplay} from '../../components/index'
@@ -7,6 +6,8 @@ import Sidebar from '../../partials/Sidebar2'
 import { SettingPage, switchSettings } from '../../Redux/slices/settingsSlice'
 import {useDispatch} from 'react-redux'
 import {AccountInfo, SecuritySettings,MainSettings, MobileSettings, LaptopSettings} from './index'
+import Header from '../../partials/Header'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -14,15 +15,14 @@ const Settings = () => {
 
    
 const [expanded, setexpanded] = useState(true)
+const navigate = useNavigate()
 function handleSideBar(params) {
     !expanded ? setexpanded(true) : setexpanded(false)
 }
   return (
     <>
+    <div className='hidden sm:block'><Header func={()=> navigate(-1) } halfmenu={true}/></div>
     {/* <AnimatedSidebar isExpanded={expanded} /> */}
-    <div className='relative hidden sm:block'>
-       <Header back={handleSideBar}/>
-    </div>
     <AllSettings/>
     </>
   )
@@ -30,19 +30,21 @@ function handleSideBar(params) {
 
 function AllSettings(params) {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     
     return(
         <>
-        <div className='flex bg-plat h-screen '>
-            <div className='pt-2.5 sm:pt-20 lg:pt-20 container mx-auto  '>
+        
+        <div className='sm:hidden'><Header func={() => navigate(-1)} halfmenu={true}/></div>
+        <div className='flex  h-screen '>
+            <div className=' sm:pt-20 container mx-auto  '>
                   <div>
-                    <div className='hidden sm:block'>
+                    <div className='hidden sm:block '>
                  <LaptopSettings/>
                     </div>
                   </div>
                 <div className='sm:hidden'>
-                  {/* <Header/> */}
-                    <div className=''>
+                    <div className='pt-8 sm:pt-0'>
                     <MobileSettings/>
                     </div>
                 </div>

@@ -81,6 +81,11 @@ export default {
       type: 'boolean',
     },
     { 
+      name: 'claimed',
+      title: 'Claimed',
+      type: 'boolean',
+    },
+    { 
       name: 'earnings',
       title: 'Earnings',
       type: 'array',
@@ -190,7 +195,7 @@ export default {
             {
               title: 'Balance',
               name: 'balance',
-              type: 'string'
+              type: 'number'
             } ,
             {
               title: 'Number',
@@ -308,6 +313,22 @@ export default {
       type: 'array',
       of: [{type: 'reference',
       to: [{type: 'agents'}]}]
+      
+    },
+    // { 
+    //   name: 'coinvestors',
+    //   title: 'Coinvestors',
+    //   type: 'array',
+    //   of: [{type: 'reference',
+    //   to: [{type: 'members'}]}]
+      
+    // },
+    { 
+      name: 'friends',
+      title: 'Friends',
+      type: 'array',
+      of: [{type: 'reference',
+      to: [{type: 'users'}]}]
       
     },
     

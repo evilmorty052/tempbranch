@@ -232,7 +232,7 @@ function HiveInvest({back, ActiveCompany}) {
   }
   return(
       <>
-      {/* <Miniheader companyName={ActiveCompany.name} avatar={ urlFor(ActiveCompany.image)} back={back}/> */}
+      <Miniheader companyName={ActiveCompany.name} avatar={ urlFor(ActiveCompany.image)} back={back}/>
 
       <div className="pt-[90px] pb-20 container mx-auto max-w-5xl z-50">
        <div>
@@ -577,8 +577,8 @@ if(investing){
 
   return (
     <>
-    {/* <Miniheader back={()=> history('/hive')}/> */}
-    <div className='mb-8 px-2 '>
+    <Miniheader back={()=> history('/hive')}/>
+    <div className='mb-8 pt-20 px-2 '>
     <h3 className='text-[28px] font-semibold text-gray-800 sm:text-center'>Build your investment portfolio.</h3>
     <div className='flex sm:justify-center'>
     <div className='pt-4 pb-2 flex gap-x-4  overflow-scroll'>

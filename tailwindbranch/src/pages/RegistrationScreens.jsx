@@ -187,7 +187,7 @@ const RegisterInputs = () => {
   
     return (
       <>
-        <motion.div key={'motion'}  initial={{x: "-100%"}} animate={{x:'0'}} transition={{duration: 0.6}} onClick={()=>  showmodal && setshowmodal(false)} className='flex px-4 space-y-4 '>
+        <motion.div key={'motion'}  initial={{x: "-100%"}} animate={{x:'0'}} transition={{duration: 0.6}} onClick={()=>  showmodal && setshowmodal(false)} className='flex sm:pt-4 px-4 space-y-4 '>
           <div  className='py-4 mx-auto sm:min-w-[600px] '>
           <div className='text-start space-y-2 pb-4 max-w-[60ch]'>
             <h3 className={'sm:text-[28px] text-[25px] uppercase leading-tight  font-bold text-gray-800'}>{question}</h3>
@@ -257,11 +257,11 @@ const RegisterInputs = () => {
   const Agreements = ({func, account}) => {
     return (
       <>
-        <div className='flex py-10   px-4 space-y-4 slide-in-right   '>
+        <div className='flex py-8 sm:pt-4   px-4 space-y-4 slide-in-right   '>
           <div  className='py-4 mx-auto sm:min-w-[600px] '>
           <div className='text-start space-y-2 '>
-            <h3 className={'sm:text-[28px] text-[25px]  font-bold text-gray-800'}>Agreements related to your {account} Account</h3>
-            <p className='text-[14px] text-gray-700 font-medium'>Please carefully read and accept the following agreements for your new account</p>
+            <h3 className={'sm:text-[28px] text-[25px] sm:text-center  font-bold text-gray-800'}>Agreements related to your {account} Account</h3>
+            <p className='text-[14px] text-gray-700 sm:text-center  font-medium'>Please carefully read and accept the following agreements for your new account</p>
           </div>
           <div className='py-10'>
           <div className='flex items-center'>

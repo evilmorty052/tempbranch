@@ -183,3 +183,23 @@ export const clients = [
     logo: dropbox,
   },
 ];
+
+// export const explainers = [
+//   {
+//   syndicatequestion:{
+//     answer: "Syndicates are a group of 10 investors or more interested in pooling resources for larger payouts which are disbursed automatically and according to investment size by Medik 420 "
+//   }
+//   },
+// ]
+
+export const explainers = {
+  syndicatequestion:{
+        answer: "Syndicates are a group of 10 investors or more interested in pooling resources for larger payouts which are disbursed automatically and according to investment size by Medik 420 "
+      },
+  sharedPortfolioQuestion:{
+    answer: "A shared portfolio helps users pool resources with other users to target a single investment. payouts are automatically calculated and shared  by medik 420 according to investment size  "
+  }
+}
+  
+  
+  

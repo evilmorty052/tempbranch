@@ -45,7 +45,7 @@ export default function PortfolioScreen ({ActivePortfolio}) {
 
     return(
         <>
-        <div className="pt-8  bg-gray-100 h-screen slide-in-right">
+        <div className="pt-8 ">
             <div className="flex pb-[80px] flex-col gap-y-4 items-center">
                 <p className="text-lg font-bold text-gray-800" >{`${ActivePortfolio.type} Portfolio`}</p>
               <div>
@@ -90,7 +90,7 @@ export default function PortfolioScreen ({ActivePortfolio}) {
                      </div>
                 </div>
                 <div className=" pt-4"><PortfolioCard header={'Invite Friend'} description={'Boost your portfolio up to $1000'} buttontext={'Invite'}/></div>
-                <div className="self-start pb-[73px] space-y-4 px-2">
+                <div className="self-start  space-y-4 px-2">
                     <h3 className={'text-gray-800 text-[28px] font-semibold text-left font-space'}>Recent Activity</h3>
                     <div>no recent activity for this account</div>
                 </div>

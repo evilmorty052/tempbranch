@@ -3,9 +3,9 @@ import { FaChevronRight } from 'react-icons/fa';
 import stashlogo from '../../assets/stashlogo.png'
 
 
-function DebitCard({firstname, lastname}) {
+function DebitCard({firstname, lastname, amount}) {
 
-    let amount = 20
+    
     return(
         <>
         <div className='my-4  font-space  rounded-2xl '>
@@ -17,7 +17,7 @@ function DebitCard({firstname, lastname}) {
                      <h3 className='text-lg text-white'></h3>
                  </div>
                   <div className='px-4 z-40'>
-                    <p className='text-3xl text-white font-medium'>{`${'$ '}${ amount.toLocaleString('en-us', 'currency')}`}</p>
+                    <p className='text-3xl text-white font-medium'>{`${'$ '}${ amount?.toLocaleString('en-us', 'currency')}`}</p>
                   </div>
                   <div className='absolute bottom-5 left-5 z-40 '>
                     <p className='text-white text-xl uppercase font-medium leading-loose '>{`${firstname } ${ lastname}`}</p>

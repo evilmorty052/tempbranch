@@ -1,18 +1,24 @@
-import { FaChild, FaClock, FaDollarSign, FaSearch , FaArrowLeft} from "react-icons/fa"
+import { FaChild, FaCheck, FaSearch , FaArrowLeft, FaAngleDown} from "react-icons/fa"
 import styles from "../../style"
 import { useState, useEffect } from "react"
 import { Progress, Result } from 'antd'
-import {PortfolioScreen, CryptoinvestmentScreen, SyndicatesInvestmentScreen} from "./index"
+import {PortfolioScreen, CryptoinvestmentScreen, SyndicatesInvestmentScreen, BottomNavigation} from "./index"
 import { Link, Route, Routes, useNavigate , useLocation} from "react-router-dom"
-import { HiveBiz, RegisterInputs, Questions, Agreements} from "../../pages"
+import { HiveBiz, RegisterInputs, Questions, Agreements, } from "../../pages"
 import { motion, AnimatePresence } from "../../hooks/useMotion"
 import { client } from "../../../lib/client"
 import ScaleLoader from "react-spinners/ScaleLoader";
 import JSConfetti from 'js-confetti'
+import Header from "../Header"
+import Startups from "./Startups"
+import Sidebar from "../Sidebar2"
+
 
 const MobilePortfolio = ({portfolios}) => {
 const [activePortfolio, setactivePortfolio] = useState(false)
 const [crypto, setcrypto] = useState(false)
+const [sharedPortfolio, setSharedPortfolio] = useState(null)
+const [expanded, setexpanded] = useState(null)
 
 const jsConfetti = new JSConfetti()
 const navigate = useNavigate()
@@ -45,10 +51,249 @@ const Tabs = () => {
     )
 }
 
+const Pricing = () => {
+    const PricingCard = () =>{
+        return(
+            <>
+            <div
+        class="m-auto mt-12 items-center justify-center -space-y-4 md:flex md:space-y-0 md:-space-x-4 xl:w-10/12"
+      >
+        <div class="group relative z-10 -mx-4 md:mx-0 md:w-6/12 lg:w-5/12">
+          <div
+            aria-hidden="true"
+            class="absolute top-0 h-full w-full rounded-3xl border border-gray-100  bg-white  shadow-2xl shadow-gray-600/10 transition duration-500 group-hover:scale-105"
+          ></div>
+          <div class="relative space-y-6 p-8 sm:p-12">
+            <h3 class="text-center text-3xl font-semibold text-gray-700 ">Premium</h3>
+            <div>
+              <div class="relative flex justify-around">
+                <div class="flex items-end">
+                  <span class="leading-0 text-8xl font-bold text-gray-800 ">35</span>
+                  <div class="pb-2">
+                    <span class="block text-2xl font-bold text-gray-700 ">%</span>
+                    <span class="block text-xl font-bold  text-green-500">Off</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul role="list" class="m-auto w-max space-y-4 py-6 text-gray-600 ">
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>First premium advantage</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Second advantage weekly</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Third advantage donate to project</span>
+              </li>
+            </ul>
+            <a  class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+              <span class="relative text-base font-semibold text-white dark:text-dark">Subscribe</span>
+            </a>
+          </div>
+        </div>
+    
+        <div class="group relative md:w-6/12 lg:w-7/12">
+          <div
+            aria-hidden="true"
+            class="absolute top-0 h-full w-full rounded-3xl border border-gray-100  bg-white  shadow-2xl shadow-gray-600/10 transition duration-500 group-hover:scale-105"
+          ></div>
+          <div class="relative p-6 pt-16 md:rounded-r-2xl md:p-8 md:pl-12 lg:p-16 lg:pl-20">
+            <ul role="list" class="space-y-4 py-6 text-gray-600 ">
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>First premium advantage</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Second advantage weekly</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Third advantage donate to project</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Fourth, access to all components weekly</span>
+              </li>
+            </ul>
+            <p class="text-gray-700 dark:text-white">
+              Team can be any size, and you can add or switch members as needed. Companies using
+              our platform include:
+            </p>
+            <div class="mt-6 flex justify-between gap-6">
+              <img
+                class="w-16 lg:w-24"
+                src="images/clients/airbnb.svg"
+                loading="lazy"
+                alt="airbnb"
+              />
+              <img
+                class="w-8 lg:w-16"
+                src="images/clients/bissell.svg"
+                loading="lazy"
+                alt="bissell"
+              />
+              <img class="w-6 lg:w-12" src="images/clients/ge.svg" loading="lazy" alt="ge" />
+              <img
+                class="w-20 lg:w-28"
+                src="images/clients/microsoft.svg"
+                loading="lazy"
+                alt="microsoft"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+            </>
+        )
+    }
+    const TrialCard = () =>{
+    const [expanded, setexpanded] = useState(null)
+        return(
+            <>
+            <div
+        class="m-auto mt-12 items-center justify-center -space-y-4 md:flex md:space-y-0 md:-space-x-4 xl:w-10/12"
+      >
+        <div class="group relative z-10 -mx-4 md:mx-0 md:w-6/12 lg:w-5/12">
+          <div
+            aria-hidden="true"
+            class="absolute top-0 h-full w-full rounded-3xl border border-gray-100  bg-white  shadow-2xl shadow-gray-600/10 transition duration-500 group-hover:scale-105"
+          ></div>
+          <div class="relative space-y-6 p-8 sm:p-12">
+            <h3 class="text-center text-3xl font-semibold text-gray-700 ">Free Trial</h3>
+            <div>
+              <div class="relative flex justify-around">
+                <div class="flex items-end">
+                  <span class="leading-0 text-8xl font-bold text-gray-800 ">$0</span>
+                  <div class="pb-2">
+                    {/* <span class="block text-2xl font-bold text-gray-700 ">$</span>
+                    <span class="block text-xl font-bold  text-green-500"></span> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul role="list" class="m-auto w-max space-y-4 py-6 text-gray-600 ">
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Shared Portfolio</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Smart Portfolio</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-gray-500 inline-block"><FaCheck/></span>
+                <span className=" line-through">Unlimited Protected Investments</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>3 Protected Investments</span>
+              </li>
+              {/* <li class="flex items-center justify-center w-full space-x-2">
+                <p onClick={()=> setexpanded(!expanded)} className="uppercase">View More</p>
+                <span onClick={()=> setexpanded(!expanded)} class="font-semibold text-green-500 inline-block"><FaAngleDown/></span>
+              </li> */}
+            </ul>
+            <a  class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+              <span class="relative text-base font-semibold text-white dark:text-dark">Subscribe</span>
+            </a>
+          </div>
+        </div>
+    
+       {/* { expanded && 
+       <AnimatePresence>
+ <motion.div key={'jkj'} layout={'position'} exit={{x: '-100%'}} transition={{duration: 0.7}} class="group relative md:w-6/12 lg:w-7/12">
+          <div
+            aria-hidden="true"
+            class="absolute top-0 h-full w-full rounded-3xl border border-gray-100  bg-white  shadow-2xl shadow-gray-600/10 transition duration-500 group-hover:scale-105"
+          ></div>
+          <motion.div class="relative p-6 pt-16 md:rounded-r-2xl md:p-8 md:pl-12 lg:p-16 lg:pl-20">
+            <ul role="list" class="space-y-4 py-6 text-gray-600 ">
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>First premium advantage</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Second advantage weekly</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Third advantage donate to project</span>
+              </li>
+              <li class="space-x-2">
+                <span class="font-semibold  text-green-500 inline-block"><FaCheck/></span>
+                <span>Fourth, access to all components weekly</span>
+              </li>
+            </ul>
+            <p class="text-gray-700 dark:text-white">
+              Team can be any size, and you can add or switch members as needed. Companies using
+              our platform include:
+            </p>
+            <div class="mt-6 flex justify-between gap-6">
+              <img
+                class="w-16 lg:w-24"
+                src="images/clients/airbnb.svg"
+                loading="lazy"
+                alt="airbnb"
+              />
+              <img
+                class="w-8 lg:w-16"
+                src="images/clients/bissell.svg"
+                loading="lazy"
+                alt="bissell"
+              />
+              <img class="w-6 lg:w-12" src="images/clients/ge.svg" loading="lazy" alt="ge" />
+              <img
+                class="w-20 lg:w-28"
+                src="images/clients/microsoft.svg"
+                loading="lazy"
+                alt="microsoft"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+       </AnimatePresence>
+       
+        } */}
+      </div>
+            </>
+        )
+    }
+
+
+
+    return(
+        <>
+        
+        <div class="xl:container m-auto px-6 pb-[83px] pt-10 md:px-12 lg:px-20">
+      <div class="m-auto text-center lg:w-8/12 xl:w-7/12">
+      <h2 class="text-3xl font-bold text-gray-800 text-center py-4 md:text-4xl">
+          Pricing
+        </h2>
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+          You need a Subscription to  access premium features 
+        </h2>
+      </div>
+     <div className=" space-y-10">
+     <PricingCard/>
+     <TrialCard/>
+    </div> 
+      
+    </div>
+                                        
+        </>
+      )
+}
+
 const SearchInvestments = () => {
 const path = useLocation().pathname
 const [invisible, setinvisible] = useState(false)
-console.log(path)
+
 let view
 const DefaultHeader = () => {
     return(
@@ -59,7 +304,7 @@ const DefaultHeader = () => {
             {/* <span>explore investments</span> */}
         </div>
         <div className="px-4">
-        <div className="flex items-center space-x-2 p-2 bg-white rounded-xl">
+        <div className="flex items-center space-x-2 p-2 bg-gray-100 rounded-xl">
              <FaSearch/>
              <hr className="w-px  h-6 bg-slate-200 mx-4" />
              <input placeholder="Search all investments" className="flex-1 bg-transparent border-0 focus:border-0 focus:ring-0" type="text" />
@@ -149,22 +394,31 @@ const PortfolioCard = ({header, buttontext, func, description}) => {
 
 
 const AllPortfolios = () => {
+
+
+   
+    
     const availableportfolios = portfolios?.filter((portfolio) => portfolio.deployed != true)
     const yourportfolios = portfolios?.filter((portfolio) => portfolio.deployed == true)
+
+    
+
     return(
         <>
-        <div>
-         
-           <div className="px-2 pt-8 pb-[85px]">
+        
+        <Header setisExpanded={setexpanded} fullmenu={true} halfmenu={false}/>
+        <div onClick={()=> expanded && setexpanded(false)} className="pb-[90px] h-screen overflow-y-scroll pt-8">
+         <SearchInvestments/>
+           <div className="px-2 pt-8 ">
                <div className="space-y-8 ">
                   <h3 className={styles.UiHeading}>New features</h3>
                 <div className="flex justify-center">
-                <PortfolioCard header={'Shared Portfolio'} description={'find out how easy it is to share a portfolio with another user.'} buttontext={'Explore'}/>
+                <PortfolioCard func={() => setSharedPortfolio(true)} header={'Shared Portfolio'} description={'find out how easy it is to share a portfolio with another user.'} buttontext={'Explore'}/>
                 </div>
                </div>
                <div className="space-y-8 py-4">
                   <h3 className={styles.UiHeading}>Your Portfolios</h3>
-                <div className="flex flex-col  gap-y-6 items-center">
+                <div className="flex flex-col  gap-y-6 items-center sm:grid grid-cols-2 grid-flow-row ">
                  {yourportfolios?.map((portfolio) => (
                               <PortfolioCard
                               func={()=> {
@@ -183,7 +437,7 @@ const AllPortfolios = () => {
                 <PortfolioCard header={'Retirement Portfolio'} buttontext={'Set up'} description={'Setup a retirement account with tax benefits and deposit bonuses'}/>
                 <PortfolioCard header={'Kids Portfolio'} buttontext={'Set up'} description='Setup a custodial account for dependents'/>
                 </div> */}
-                <div className="flex flex-col gap-y-8 items-center">
+                <div className="flex flex-col gap-y-8 items-center sm:grid grid-cols-2 grid-flow-row">
                 {availableportfolios?.map((portfolio)=>{
                     
                     return(
@@ -196,10 +450,12 @@ const AllPortfolios = () => {
                     )
                 })}
                 </div>
-               
+           
                </div>
            </div>
+         
          </div>
+        
         </>
     )
 }
@@ -257,27 +513,6 @@ client
 }, [])
 
 
-// useEffect(() => {
-    
-//     const listen =  client.listen(`*[_id == "${updated}"]`).subscribe((res) => {
-//         if(res.transition =='update'){
-//             console.log(res)
-//             setloading(false)
-//             showconfetti()
-//             setTimeout(() => {
-//                 navigate('/dashboard/portfolio')
-//             }, 4000)
-//         }
-//         console.log(res)
-   
-//     })
-
-//   return () => {
-//    listen.unsubscribe()
-//   }
-// }, [])
-
-
 
         if (loading) {
             return (
@@ -324,7 +559,7 @@ client
         return (
             <>
             <AnimatePresence exitBeforeEnter={true} >
-            <motion.div key={'motion'} exit={{y: '100%'}} initial={{y: "-100%"}} animate={{y:'0'}} transition={{duration: 0.6}} onClick={()=>  showmodal && setshowmodal(false)} className='flex flex-col   px-4 space-y-8    '>
+            <motion.div key={'motion'} exit={{y: '100%'}} initial={{y: "-100%"}} animate={{y:'0'}} transition={{duration: 0.6}}  className='flex flex-col   px-4 space-y-8    '>
                 <div  className='py-4 mx-auto sm:min-w-[600px] '>
                 <div className='text-start space-y-2 pb-4 max-w-[60ch]'>
                   <h3 className={'sm:text-[28px] text-[25px] uppercase leading-tight  font-bold text-gray-800 text-center'}>we need some information to set up your {activePortfolio.type == 'Kids' ? 'Custodial' : activePortfolio.type } portfolio</h3>
@@ -445,19 +680,47 @@ client
     )
 }
 
+
+ const StartupsPage = () => {
+  return(
+    <>
+    <div className="">
+    <Startups/>
+    </div>
+    </>
+  )
+ }
+
+if(sharedPortfolio){
+    return(
+        <>
+        <div className="z-[7000]"><Header func={()=>{ 
+          console.log('clicked')
+          setSharedPortfolio(false)}} halfmenu={true} /></div>
+        <Pricing/>
+        </>
+    )
+}
+
   return (
-    <motion.div  initial={{x:'-100%'}} animate={{x:'0', }} transition={{duration:0.5, delayChildren:0.7}} className="pt-8  sm:container mx-auto  ">
-         <div className="sm:flex sm:justify-center"><SearchInvestments/></div> 
+   <> 
+   <div className="md:hidden"><Sidebar sidebarOpen={expanded}  setSidebarOpen={setexpanded} /></div>
+   <motion.div  initial={{x:'-100%'}} animate={{x:'0', }} transition={{duration:0.5, delayChildren:0.7}} className="  sm:container mx-auto  ">
+         {/* <div className="sm:flex sm:justify-center"><SearchInvestments/></div>  */}
         {/* <div className="w-full flex space-x-8 sm:justify-center  p-4 overflow-x-scroll"><Tabs/></div>  */}
         <Routes>
             <Route path="/" element={<AllPortfolios/>}/>
             <Route path="crypto" element={<CryptoinvestmentScreen />}/>
-            <Route path="startups" element={<HiveBiz/>}/>
+            <Route path="startups" element={<StartupsPage/>}/>
             <Route path="portfolio" element={<PortfolioScreen ActivePortfolio={activePortfolio}/>}/>
-            <Route path="syndicates" element={<SyndicatesInvestmentScreen/>}/>
+            <Route path="syndicates/*" element={<SyndicatesInvestmentScreen/>}/>
             <Route path="setup/*" element={<SetupScreen/>}/>
         </Routes>
     </motion.div>
+        
+    
+        {/* <BottomNavigation/> */}
+        </>
   )
 }
 

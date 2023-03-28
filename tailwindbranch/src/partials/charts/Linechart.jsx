@@ -22,7 +22,7 @@ function LineChart({label, entries}) {
            fill: true,
            borderColor: 'rgb(75, 192, 192)',
            tension: 0.1,
-           backgroundColor: '#90ee90'
+           backgroundColor: '#8DB89B'
          },
        ],
        

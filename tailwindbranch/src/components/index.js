@@ -11,6 +11,7 @@ import Hero from "./Hero";
 import LogoCloud from "./LogoCloud";
 import AnimatedSidebar from '../components/AnimatedSidebar'
 import LaptopDisplay from "./Dashboard/LaptopDisplay";
+import InformationModal, {ClaimModal} from './InformationModal'
 
 export {
   Navbar,
@@ -25,5 +26,7 @@ export {
   Hero,
   LogoCloud,
   AnimatedSidebar,
-  LaptopDisplay
+  LaptopDisplay,
+  InformationModal,
+  ClaimModal
 };

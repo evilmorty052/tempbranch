@@ -12,6 +12,8 @@ const [debitcard, setdebitcard] = useState(false)
 const [checking, setchecking] = useState(false)
 const [smart, setsmart] = useState(false)
 
+const email = localStorage.getItem('email')
+
 const AutoInvest = () => {
   const [autoInvestSwitch, setautoInvestSwitch] = useState(false)
   const [investmentnotifications, setinvestmentnotifications] = useState(true)
@@ -276,7 +278,7 @@ return(
          <a className={styles.SettingsIcon} ><FaArrowLeft onClick={func} /></a>
          <div>
          <span>Investment Settings</span>
-         <p>evilmorty052@proton.me</p>
+         <p>{email}</p>
          </div>
          </div>
           <div className='pl-4 block  sm:hidden  space-y-2'>

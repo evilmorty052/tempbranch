@@ -26,10 +26,22 @@ import people03 from "./people03.png";
 import plant     from './growth.svg'
 import bnb from './bnb.png'
 import bitcoin from './bitcoin.png'
+import link from './link.svg'
+import cardano from './cardano.svg'
+import uniswap from './uniswap.svg'
+import xrp from './xrp.svg'
+import polkadot from './polkadot.svg'
+import algorand from './algorand.svg'
 import avalanche from './avalanche.png'
 import solana from './solana.png'
 import polygon from './polygon.png'
 import ethereum from './ethereum.png'
+import wrappedgift from './wrappedgift.svg'
+import recommendedicon from './recommended.svg'
+import syndicatesicon from './syndicatesicon.svg'
+import sharedportfolio from './sharedportfolio.svg'
+import pattern from './pattern.png'
+import stashlogo from './stashlogo.png'
 
 
 export {
@@ -65,6 +77,19 @@ export {
   polygon,
   bitcoin,
   solana,
+  wrappedgift,
+  recommendedicon,
+  syndicatesicon,
+  sharedportfolio,
+  link,
+  cardano,
+  uniswap,
+  xrp,
+  polkadot,
+  algorand,
+  pattern,
+  stashlogo
+
   
 
 };

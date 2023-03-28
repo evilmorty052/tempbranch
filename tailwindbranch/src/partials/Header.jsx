@@ -16,7 +16,11 @@ function Header({
   name,
   sidebarOpen,
   setSidebarOpen,
-  avatar
+  avatar,
+  fullmenu,
+  halfmenu,
+  func
+
 }) {
 
   let dashboardpaths
@@ -45,7 +49,7 @@ function Header({
 
   
   let pathid
-  console.log(path)
+  
 
   switch (path) {
     case '/dashboard/portfolio':
@@ -94,7 +98,7 @@ function Header({
               aria-controls="sidebar"
               aria-expanded={sidebarOpen}
               onClick={() => {
-               sidebarOpen ? setSidebarOpen(false) : setSidebarOpen(true) ;
+               setisExpanded(!isExpanded) ;
               //  setisExpanded(true)
               }}
             >
@@ -112,25 +116,22 @@ function Header({
        
 
           {/* Header: Right side */}
-         {
+         { fullmenu == true &&
            <div className="flex items-center">
 
           
             
            {path =='dashboard/portfolio' && <Notifications unread={unread} msg={notifications} />}
-            {
-              path == '/dashboard/portfolio' && <Add/>
-            }
+            
             <Help />
             
             <hr className="w-px h-6 bg-slate-200 mx-3" />
             <UserMenu name={name} avatar={avatar && avatar} />
-
           </div>
           }
         
-          {/* {
-            !dashboardpaths && 
+          {
+            halfmenu == true  && 
             <div className='flex items-start font-poppins '>
               <div className='flex items-end'>
               <span className='text-white text-xl sm:hidden'>
@@ -141,11 +142,11 @@ function Header({
                
                <div className='flex items-end gap-x-4'>
               
-              <span onClick={()=> history(-1)}  className=' text-gray-800 mr-2 text-xl' href="">Back</span>
+              <span onClick={func}  className=' text-gray-800 mr-2 text-xl' href="">Back</span>
                </div>
               
             </div>
-          } */}
+          }
 
         </div>
       </div>
