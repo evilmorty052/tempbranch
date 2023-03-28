@@ -11,7 +11,7 @@ const LaptopDisplay = ({avatar, logo, name , children}) => {
         return(
           <>
           <aside
-          class="fixed top-0 z-[600]  flex h-screen w-full flex-col justify-between border-r bg-slate-400 px-6 pb-3 transition duration-300 md:w-1/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] "
+          class="fixed top-0 z-[600]  flex h-screen w-full flex-col justify-between border-r bg-slate-400 px-6 pb-3 transition duration-300 md:w-[100px] lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] "
         >
           <div>
             {/* <div class="-mx-6 px-6 py-4">
@@ -207,7 +207,7 @@ const LaptopDisplay = ({avatar, logo, name , children}) => {
         <body class="h-screen bg-red-300 ">
      <LaptopSidebar avatar={people01} stashlogo={logo}/>
       <LaptopHeader/>
-      <div class="ml-auto mb-6 md:w-[calc(100vw-72px)] lg:w-[75%] xl:w-[80%] 2xl:w-[85%] ">
+      <div class="ml-auto mb-6 md:w-[calc(100vw-100px)] lg:w-[75%] xl:w-[80%] 2xl:w-[85%] ">
         <DisplayArea  >
            {children}
         </DisplayArea>
