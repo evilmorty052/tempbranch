@@ -28,7 +28,7 @@ const {avatar, firstname, lastname, transactions, accounts, claimed} = userdetai
     <>
     {/* <Header/> */}
    
-   <div className="min-h-screen  bg-white md:hidden">
+   <div className="min-h-screen  bg-white lg:hidden">
    <Routes>
         <Route key={'jg'} path="dashboard/*" element={<MobileDashboard  accounts={accounts}  claimed={claimed} transactions={transactions} firstname={firstname} lastname={lastname}/>} />
         <Route key={'kk'} path="/" element={<MobileDashboard    accounts={accounts} claimed={claimed} transactions={transactions} firstname={firstname} lastname={lastname}/>} />

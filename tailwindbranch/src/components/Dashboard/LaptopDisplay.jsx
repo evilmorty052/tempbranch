@@ -11,7 +11,7 @@ const LaptopDisplay = ({avatar, logo, name , children}) => {
         return(
           <>
           <aside
-          class="fixed top-0 z-10  flex h-screen w-full flex-col justify-between border-r bg-slate-400 px-6 pb-3 transition duration-300 md:w-1/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] "
+          class="fixed top-0 z-[600]  flex h-screen w-full flex-col justify-between border-r bg-slate-400 px-6 pb-3 transition duration-300 md:w-1/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] "
         >
           <div>
             {/* <div class="-mx-6 px-6 py-4">
@@ -71,7 +71,7 @@ const LaptopDisplay = ({avatar, logo, name , children}) => {
       function LaptopHeader(params) {
         return(
           <>
-          <div class="fixed top-0 md:left-[72px] right-0 h-16 border-b bg-white  md:py-2.5">
+          <div class="fixed z-60 top-0 md:left-[72px] right-0 h-16 border-b bg-white  md:py-2.5">
             <div class="flex items-center justify-between space-x-4 px-6 2xl:container">
               <h5  class="text-2xl font-medium text-gray-600 lg:block ">Dashboard</h5>
               {/* <button class="-mr-2 h-16 w-12 border-r lg:hidden ">
@@ -182,7 +182,7 @@ const LaptopDisplay = ({avatar, logo, name , children}) => {
           <>
             <div class="pt-20 bg-white md:container max-w-5xl">
             <div
-              class="flex pb-8 rounded-xl border-2 border-dashed border-gray-300   "
+              class="flex pb-8   "
             >
               <div className='flex flex-col w-full  '>
                {
